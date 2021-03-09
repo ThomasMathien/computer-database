@@ -41,5 +41,19 @@ public class Computer {
 		this.company = company;
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder()
+				.append("Computer: ")
+				.append(this.name)
+				.append(" [")
+				.append(this.introduced != null ? this.introduced : "unknown")
+				.append("-")
+				.append(this.discontinued != null ? this.introduced : "unknown")
+				.append("] Company: ")
+				.append(this.company != null ? this.company : "unknown");
+		return sb.toString();
+	}
+	
 	
 }

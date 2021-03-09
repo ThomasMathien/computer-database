@@ -7,4 +7,17 @@ public class Company {
 	public Company(String name) {
 		this.name = name;
 	}
+	
+	public long getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public String toString() {
+		return this.name != null ? this.name : "unknown";
+	}
 }
