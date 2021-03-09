@@ -33,6 +33,6 @@ public class Company {
 
 	@Override
 	public String toString() {
-		return this.name != null ? this.name : "unknown";
+		return "Company: " + this.name != null ? this.name : "unknown";
 	}
 }

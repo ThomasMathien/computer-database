@@ -1,17 +1,14 @@
 package main.java.com.excilys.computerDatabase;
 
-import java.sql.SQLException;
-import java.util.List;
-
-import main.java.com.excilys.computerDatabase.dao.DatabaseDAO;
-import main.java.com.excilys.computerDatabase.model.Company;
-import main.java.com.excilys.computerDatabase.model.Computer;
+import main.java.com.excilys.computerDatabase.ui.CLIController;
 
 public class ComputerDatabase {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
+		new CLIController().run();
+		
+		/*
 		List<Computer> computers = DatabaseDAO.getComputers();
 		System.out.println("Result: "+computers.size()+" computer(s) found");
 		List<Company> companies = DatabaseDAO.getCompanies();
@@ -29,7 +26,7 @@ public class ComputerDatabase {
 		DatabaseDAO.updateComputer(1, computers.get(5));
 		System.out.println("Updated: "+DatabaseDAO.getComputers().get(0));
 		System.out.println("Deleted "+DatabaseDAO.deleteComputer(578)+" records");
-		System.out.println("Deleted "+DatabaseDAO.deleteComputer(578)+" records");
+		System.out.println("Deleted "+DatabaseDAO.deleteComputer(578)+" records");*/
 		
 	}
 

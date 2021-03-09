@@ -26,6 +26,9 @@ public abstract class DatabaseDAO {
 	private final static String DELETE_COMPUTER_BY_ID_QUERY = "DELETE FROM computer WHERE id=?;";
 	private final static String UPDATE_COMPUTER_BY_ID_QUERY = "UPDATE computer SET name=?,introduced=?,discontinued=?,"
 			+ "company_id=? WHERE id=?;";
+	private static final String FIND_COMPUTER_BY_ID_QUERY = "SELECT computer.id AS id, computer.name AS name, "
+			+ "introduced, discontinued, computer.company_id, company.name AS company_name "
+			+ "FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE computer.id = ?;";
 	
 	public static List<Computer> getComputers(){
 		List<Computer> computers = new ArrayList<>();
@@ -67,7 +70,26 @@ public abstract class DatabaseDAO {
 		return companies;
 	}
 	
-	public static long addComputer(Computer computer) throws SQLException {
+	public static Computer findComputer(long id){
+		Computer computer = null;
+		try (Connection conn = new DbConnect().getConnection()){
+			PreparedStatement stmt = conn.prepareStatement(FIND_COMPUTER_BY_ID_QUERY);
+			stmt.setLong(1, id);
+			ResultSet results = stmt.executeQuery();
+			if(results.next()) {
+				try {
+					computer =  ComputerMapper.toComputer(results,"company_id","company_name");
+				} catch (IncompleteResultSet e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return computer;
+	}
+	
+	public static long addComputer(Computer computer) {
 		long id = 0;
 		try(Connection conn = new DbConnect().getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement(ADD_COMPUTER_QUERY, Statement.RETURN_GENERATED_KEYS);
@@ -87,7 +109,7 @@ public abstract class DatabaseDAO {
                 id = rs.getInt(1);
             }
 		} catch (SQLException e) {
-			throw e; 
+			e.printStackTrace();
 		}
 		return id;
 	}

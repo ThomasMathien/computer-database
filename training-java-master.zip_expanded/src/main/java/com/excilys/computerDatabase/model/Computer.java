@@ -16,6 +16,10 @@ public class Computer {
 		this(0L,name,introduced,discontinued, company);
 	}
 	
+	public Computer(String name, Timestamp introduced, Timestamp discontinued, long companyId) {
+		this(0L,name,introduced,discontinued, new Company(companyId,""));
+	}
+	
 	public Computer(long id, String name, Timestamp introduced, Timestamp discontinued, Company company) {
 		super();
 		this.setId(id);
@@ -52,7 +56,7 @@ public class Computer {
 	}
 	
 	public void setIntroduced(Timestamp introduced) {
-		if (this.discontinued != null && this.introduced.compareTo(this.discontinued) > 0) {
+		if (this.introduced != null && this.discontinued != null && this.introduced.compareTo(this.discontinued) > 0) {
 			throw new IllegalArgumentException();
 		}
 		this.introduced = introduced;
@@ -63,7 +67,7 @@ public class Computer {
 	}
 	
 	public void setDiscontinued(Timestamp discontinued) {
-		if (this.introduced != null && this.introduced.compareTo(this.discontinued) < 0) {
+		if (this.introduced != null && this.discontinued != null && this.introduced.compareTo(this.discontinued) < 0) {
 			throw new IllegalArgumentException();
 		}
 		this.discontinued = discontinued;
