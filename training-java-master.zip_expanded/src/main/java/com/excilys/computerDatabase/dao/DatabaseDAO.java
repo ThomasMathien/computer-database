@@ -9,6 +9,7 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.java.com.excilys.computerDatabase.exception.IncompleteResultSet;
 import main.java.com.excilys.computerDatabase.mapper.CompanyMapper;
 import main.java.com.excilys.computerDatabase.mapper.ComputerMapper;
 import main.java.com.excilys.computerDatabase.model.Company;
@@ -16,15 +17,29 @@ import main.java.com.excilys.computerDatabase.model.Computer;
 
 public abstract class DatabaseDAO {
 	
+	private final static String GET_ALL_COMPUTERS_QUERY = "SELECT computer.id AS id, computer.name AS name, "
+			+ "introduced, discontinued, computer.company_id, company.name AS company_name "
+			+ "FROM computer LEFT JOIN company ON computer.company_id = company.id;";
+	private final static String GET_ALL_COMPANIES_QUERY = "SELECT * FROM company;";
+	private final static String ADD_COMPUTER_QUERY = "INSERT INTO computer (name,introduced,discontinued,company_id) "
+			+ "VALUES (?,?,?,?);";
+	private final static String DELETE_COMPUTER_BY_ID_QUERY = "DELETE FROM computer WHERE id=?;";
+	private final static String UPDATE_COMPUTER_BY_ID_QUERY = "UPDATE computer SET name=?,introduced=?,discontinued=?,"
+			+ "company_id=? WHERE id=?;";
+	
 	public static List<Computer> getComputers(){
 		List<Computer> computers = new ArrayList<>();
-		final String QUERY = "SELECT * FROM computer;";
 		try (Connection conn = new DbConnect().getConnection()){
 			Statement stmt = conn.createStatement();
-			ResultSet results = stmt.executeQuery(QUERY);
+			ResultSet results = stmt.executeQuery(GET_ALL_COMPUTERS_QUERY);
 			while(results.next()) {
-				Computer c = ComputerMapper.toComputer(results);
-				computers.add(c);
+				Computer c;
+				try {
+					c = ComputerMapper.toComputer(results,"company_id","company_name");
+					computers.add(c);
+				} catch (IncompleteResultSet e) {
+					e.printStackTrace();
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -34,13 +49,17 @@ public abstract class DatabaseDAO {
 	
 	public static List<Company> getCompanies(){
 		List<Company> companies = new ArrayList<>();
-		final String QUERY = "SELECT * FROM company;";
 		try (Connection conn = new DbConnect().getConnection()){
 			Statement stmt = conn.createStatement();
-			ResultSet results = stmt.executeQuery(QUERY);
+			ResultSet results = stmt.executeQuery(GET_ALL_COMPANIES_QUERY);
 			while(results.next()) {
-				Company c = CompanyMapper.toCompany(results);
-				companies.add(c);
+				Company c;
+				try {
+					c = CompanyMapper.toCompany(results);
+					companies.add(c);
+				} catch (IncompleteResultSet e) {
+					e.printStackTrace();
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -48,16 +67,15 @@ public abstract class DatabaseDAO {
 		return companies;
 	}
 	
-	public static long addComputer(Computer c) throws SQLException {
+	public static long addComputer(Computer computer) throws SQLException {
 		long id = 0;
-		final String QUERY = "INSERT INTO computer (name,introduced,discontinued,company_id) VALUES (?,?,?,?);";
 		try(Connection conn = new DbConnect().getConnection()) {
-			PreparedStatement stmt = conn.prepareStatement(QUERY, Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1,c.getName());
-			stmt.setTimestamp(2,c.getIntroduced());
-			stmt.setTimestamp(3,c.getDiscontinued());
-			if (c.getCompany() != null) {
-				stmt.setLong(4,c.getCompany().getId());
+			PreparedStatement stmt = conn.prepareStatement(ADD_COMPUTER_QUERY, Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1,computer.getName());
+			stmt.setTimestamp(2,computer.getIntroduced());
+			stmt.setTimestamp(3,computer.getDiscontinued());
+			if (computer.getCompany() != null) {
+				stmt.setLong(4,computer.getCompany().getId());
 			}
 			else {
 				stmt.setNull(4,Types.BIGINT);
@@ -71,7 +89,40 @@ public abstract class DatabaseDAO {
 		} catch (SQLException e) {
 			throw e; 
 		}
-		System.out.println("Added id: "+id);
 		return id;
+	}
+	
+	public static int deleteComputer(long id) {
+		int deletedRecords = 0;
+		try(Connection conn = new DbConnect().getConnection()) {
+			PreparedStatement stmt = conn.prepareStatement(DELETE_COMPUTER_BY_ID_QUERY);
+			stmt.setLong(1,id);
+			deletedRecords = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return deletedRecords;
+	}
+	
+	public static int updateComputer(long id, Computer computer) {
+		int updatedRecords = 0;
+		try(Connection conn = new DbConnect().getConnection()) {
+			PreparedStatement stmt = conn.prepareStatement(UPDATE_COMPUTER_BY_ID_QUERY);
+			stmt.setString(1, computer.getName());
+			stmt.setTimestamp(2,computer.getIntroduced());
+			stmt.setTimestamp(3,computer.getDiscontinued());
+			System.out.print("HERE:"+computer.getCompany().toString());
+			if (computer.getCompany() != null) {
+				stmt.setLong(4,computer.getCompany().getId());
+			}
+			else {
+				stmt.setNull(4,Types.BIGINT);
+			}
+			stmt.setLong(5, id);
+			updatedRecords = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return updatedRecords;
 	}
 }

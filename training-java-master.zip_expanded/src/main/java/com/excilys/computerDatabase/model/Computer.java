@@ -48,8 +48,8 @@ public class Computer {
 				.append(this.name)
 				.append(" [")
 				.append(this.introduced != null ? this.introduced : "unknown")
-				.append("-")
-				.append(this.discontinued != null ? this.introduced : "unknown")
+				.append(" to ")
+				.append(this.discontinued != null ? this.discontinued : "unknown")
 				.append("] Company: ")
 				.append(this.company != null ? this.company : "unknown");
 		return sb.toString();
