@@ -9,7 +9,27 @@ public class Computer {
 	private Company company;
 	
 	public Computer(String name) {
-		this.name = name;
+		this(name,null,null,null);
+	}
+
+	public Computer(String name, Timestamp introduced, Timestamp discontinued, Company company) {
+		this(0L,name,introduced,discontinued, company);
+	}
+	
+	public Computer(long id, String name, Timestamp introduced, Timestamp discontinued, Company company) {
+		super();
+		this.setId(id);
+		this.setName(name);
+		this.setIntroduced(introduced);
+		this.setDiscontinued(discontinued);
+		this.setCompany(company);
+	}
+
+	public void setId(long id) {
+		if (id < 0) {
+			throw new IllegalArgumentException();
+		}
+		this.id = id;
 	}
 	
 	public long getId() {
@@ -19,24 +39,40 @@ public class Computer {
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
+		if (name.length()>255) {
+			throw new IllegalArgumentException();
+		}
 		this.name = name;
 	}
+	
 	public Timestamp getIntroduced() {
 		return introduced;
 	}
+	
 	public void setIntroduced(Timestamp introduced) {
+		if (this.discontinued != null && this.introduced.compareTo(this.discontinued) > 0) {
+			throw new IllegalArgumentException();
+		}
 		this.introduced = introduced;
 	}
+	
 	public Timestamp getDiscontinued() {
 		return discontinued;
 	}
+	
 	public void setDiscontinued(Timestamp discontinued) {
+		if (this.introduced != null && this.introduced.compareTo(this.discontinued) < 0) {
+			throw new IllegalArgumentException();
+		}
 		this.discontinued = discontinued;
 	}
+	
 	public Company getCompany() {
 		return company;
 	}
+	
 	public void setCompany(Company company) {
 		this.company = company;
 	}
