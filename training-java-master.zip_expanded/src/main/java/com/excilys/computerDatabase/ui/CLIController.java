@@ -3,31 +3,29 @@ package main.java.com.excilys.computerDatabase.ui;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import main.java.com.excilys.computerDatabase.dao.DatabaseDAO;
 import main.java.com.excilys.computerDatabase.model.Company;
 import main.java.com.excilys.computerDatabase.model.Computer;
+import main.java.com.excilys.computerDatabase.validator.InputValidator;
 
 public class CLIController {
 
 	Scanner sc = new Scanner(System.in);
-	
-	public void displayMainMenu() {
-		System.out.println("\n*** Please enter the desired command number ***");
-		System.out.println("   1-List computers");
-		System.out.println("   2-List companies");
-		System.out.println("   3-Show computer details");
-		System.out.println("   4-Add new computer");
-		System.out.println("   5-Update existing computer");
-		System.out.println("   6-Delete existing computer");
-	}
 	
 	public void run(){
 
 		while (true) {
 			displayMainMenu();
 			System.out.print(">>");	
-			int command = sc.nextInt();
+			int command;
+			try {
+				command = Integer.parseInt(sc.nextLine());
+			}
+			catch(NumberFormatException e) {
+				command = 0;
+			}
 			System.out.println("Please wait...");
 			switch(command) {
 			case 1:
@@ -42,13 +40,31 @@ public class CLIController {
 			case 4:
 				addComputer();
 				break;
-			default:
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
 				sc.close();
 				return;
+			default: 
+				System.out.println("Invalid command, please try again");
 			}
 		}
 	}
 
+	public void displayMainMenu() {
+		System.out.println("\n*** Please enter the desired command number ***");
+		System.out.println("   1-List computers");
+		System.out.println("   2-List companies");
+		System.out.println("   3-Show computer details");
+		System.out.println("   4-Add new computer");
+		System.out.println("   5-Update existing computer");
+		System.out.println("   6-Delete existing computer");
+		System.out.println("   7-Exit");
+	}
+	
+	
 	private void displayDetails() {
 		System.out.print("Enter computer ID:\n>>");
 		long id = sc.nextLong();
@@ -74,24 +90,26 @@ public class CLIController {
 		}
 
 	}
-
+	
 	private void addComputer() {
 		System.out.println("Please enter computer informations, ignore if not applicable:");
-		System.out.print("Enter computer name (<=255 characters):\n>>");
-		String name = sc.nextLine();
-		if (name.trim().length()>255) {
-			name = name.trim().substring(0,255);
+		System.out.println("+++Enter computer name (<=255 characters):");
+		String name = takeNameInput();
+		System.out.println("+++Enter date of introduction (Format: yyyy-[m]m-[d]d [hh:mm:ss[.f...]]:");
+		Timestamp introducted = takeTimestampInput();
+		System.out.println("+++Enter date of end (Format: yyyy-[m]m-[d]d [hh:mm:ss[.f...]]:");
+		Timestamp discontinued = takeTimestampInput();
+		System.out.print("+++Enter company id:\n>>");
+		long companyId = sc.nextLong();
+		Computer c = new Computer(name,introducted,discontinued,companyId);
+		System.out.println("+++Create:"+c.toString());
+		long result = DatabaseDAO.addComputer(c);
+		if (result != 0) {
+			System.out.println("Computer successfully created! (ID="+result+")");
 		}
-		System.out.print("Enter date of introduction (Format: yyyy-[m]m-[d]d hh:mm:ss[.f...]:\n>>");
-		String introduction = sc.nextLine();
-		Timestamp intro = Timestamp.valueOf(introduction);
-		System.out.print("Enter date of end (Format: yyyy-[m]m-[d]d hh:mm:ss[.f...]:\n>>");
-		String discontinuation = sc.nextLine();
-		Timestamp ds = Timestamp.valueOf(discontinuation);			
-		System.out.print("Enter company id:\n>>");
-		long id = sc.nextLong();
-		Computer c = new Computer(name,intro,ds,id);
-		DatabaseDAO.addComputer(c);
+		else {
+			System.out.println("Computer not added");
+		}
 	}
 
 	private void displayCompanies() {
@@ -109,4 +127,33 @@ public class CLIController {
 			System.out.printf("| %-3d   %-50s |\n",computers.get(i).getId(),computers.get(i).getName());
 		}
 	}
+	
+	private String takeNameInput() {
+		System.out.print(">>");
+		String input = sc.nextLine();
+		if (input.trim().length()>255) {
+			input = input.trim().substring(0,255);
+		}
+		return input;
+	}
+	
+	private Timestamp takeTimestampInput() {
+		String input;
+		do { 
+			System.out.print(">>");
+			
+			input = sc.nextLine();
+			if(Pattern.matches("^\\d{4}-\\d{1,2}-\\d{1,2}$", input)) {
+				input += " 00:00:00";
+			}
+		} while (!InputValidator.isValidTimestamp(input));
+		return Timestamp.valueOf(input);
+	}
+	
+	protected void finalize() {
+		if (sc != null){
+			sc.close();
+		}
+	}
+	
 }

@@ -29,6 +29,7 @@ public abstract class DatabaseDAO {
 	private static final String FIND_COMPUTER_BY_ID_QUERY = "SELECT computer.id AS id, computer.name AS name, "
 			+ "introduced, discontinued, computer.company_id, company.name AS company_name "
 			+ "FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE computer.id = ?;";
+	private static final String FIND_COMPANY_BY_ID_QUERY = "SELECT id,name FROM company WHERE id=?;";
 	
 	public static List<Computer> getComputers(){
 		List<Computer> computers = new ArrayList<>();
@@ -68,6 +69,25 @@ public abstract class DatabaseDAO {
 			e.printStackTrace();
 		}
 		return companies;
+	}
+	
+	public static Company findCompany(long id){
+		Company company = null;
+		try (Connection conn = new DbConnect().getConnection()){
+			PreparedStatement stmt = conn.prepareStatement(FIND_COMPANY_BY_ID_QUERY);
+			stmt.setLong(1, id);
+			ResultSet results = stmt.executeQuery();
+			if(results.next()) {
+				try {
+					company =  CompanyMapper.toCompany(results);
+				} catch (IncompleteResultSet e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return company;
 	}
 	
 	public static Computer findComputer(long id){
