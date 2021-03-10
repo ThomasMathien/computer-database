@@ -42,6 +42,7 @@ public class CLIController {
 				addComputer();
 				break;
 			case 5:
+				updateComputer();
 				break;
 			case 6:
 				break;
@@ -92,17 +93,22 @@ public class CLIController {
 
 	}
 	
+	private void updateComputer() {
+		Computer c = createComputerForm();
+		System.out.print("+++Enter replaced computer id:\n>>");
+		long computerId = takeIdInput();
+		System.out.println("+++Update computer "+computerId+" with:"+c.toString());
+		long result = ComputerDatabaseDAO.updateComputer(computerId,c);
+		if (result != 0) {
+			System.out.println("Computer successfully updated!");
+		}
+		else {
+			System.out.println("Computer not updated");
+		}
+	}
+	
 	private void addComputer() {
-		System.out.println("Please enter computer informations, ignore if not applicable:");
-		System.out.println("+++Enter computer name (<=255 characters):");
-		String name = takeNameInput();
-		System.out.println("+++Enter date of introduction (Format: yyyy-[m]m-[d]d [hh:mm:ss[.f...]]:");
-		Timestamp introducted = takeTimestampInput();
-		System.out.println("+++Enter date of end (Format: yyyy-[m]m-[d]d [hh:mm:ss[.f...]]:");
-		Timestamp discontinued = takeTimestampInput();
-		System.out.print("+++Enter company id:\n>>");
-		long companyId = sc.nextLong();
-		Computer c = new Computer(name,introducted,discontinued,companyId);
+		Computer c = createComputerForm();
 		System.out.println("+++Create:"+c.toString());
 		long result = ComputerDatabaseDAO.addComputer(c);
 		if (result != 0) {
@@ -111,6 +117,19 @@ public class CLIController {
 		else {
 			System.out.println("Computer not added");
 		}
+	}
+	
+	private Computer createComputerForm() {
+		System.out.println("Please enter computer informations, ignore if not applicable:");
+		System.out.println("+++Enter computer name (<=255 characters):");
+		String name = takeNameInput();
+		System.out.println("+++Enter date of introduction (Format: yyyy-[m]m-[d]d [hh:mm:ss[.f...]]:");
+		Timestamp introducted = takeTimestampInput();
+		System.out.println("+++Enter date of end (Format: yyyy-[m]m-[d]d [hh:mm:ss[.f...]]:");
+		Timestamp discontinued = takeTimestampInput();
+		System.out.print("+++Enter company id:\n>>");
+		long companyId = takeIdInput();
+		return new Computer(name,introducted,discontinued,companyId);
 	}
 
 	private void displayCompanies() {
@@ -135,6 +154,15 @@ public class CLIController {
 		if (input.trim().length()>255) {
 			input = input.trim().substring(0,255);
 		}
+		return input;
+	}
+	
+	private long takeIdInput() {
+		long input;
+		do { 
+			System.out.print(">>");
+			input =  sc.nextLong();
+		} while (!InputValidator.isValidId(input));
 		return input;
 	}
 	

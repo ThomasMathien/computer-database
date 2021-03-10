@@ -13,5 +13,9 @@ public abstract class InputValidator {
 			return false;
 		}
 	}
+
+	public static boolean isValidId(long input) {
+		return input >=0;
+	}
 	
 }

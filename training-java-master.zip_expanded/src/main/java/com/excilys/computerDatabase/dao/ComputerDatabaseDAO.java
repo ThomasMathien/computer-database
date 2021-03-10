@@ -112,7 +112,6 @@ public abstract class ComputerDatabaseDAO {
 			stmt.setString(1, computer.getName());
 			stmt.setTimestamp(2,computer.getIntroduced());
 			stmt.setTimestamp(3,computer.getDiscontinued());
-			System.out.print("HERE:"+computer.getCompany().toString());
 			if (computer.getCompany() != null) {
 				stmt.setLong(4,computer.getCompany().getId());
 			}
