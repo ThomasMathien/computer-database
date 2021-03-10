@@ -2,6 +2,7 @@ package main.java.com.excilys.computerDatabase.model;
 import java.sql.Timestamp;
 
 import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
+import main.java.com.excilys.computerDatabase.validator.InputValidator;
 
 public class Computer {
 	private long id;
@@ -36,7 +37,7 @@ public class Computer {
 	}
 
 	public void setId(long id) {
-		if (id < 0) {
+		if (!InputValidator.isValidId(id)) {
 			throw new IllegalArgumentException();
 		}
 		this.id = id;
@@ -51,7 +52,7 @@ public class Computer {
 	}
 	
 	public void setName(String name) {
-		if (name.length()>255) {
+		if (!InputValidator.isValidName(name)) {
 			throw new IllegalArgumentException();
 		}
 		this.name = name;
@@ -62,7 +63,7 @@ public class Computer {
 	}
 	
 	public void setIntroduced(Timestamp introduced) {
-		if (this.introduced != null && this.discontinued != null && this.introduced.compareTo(this.discontinued) > 0) {
+		if (InputValidator.isValidTimestampInterval(introduced, discontinued)) {
 			throw new IllegalArgumentException();
 		}
 		this.introduced = introduced;
@@ -73,7 +74,7 @@ public class Computer {
 	}
 	
 	public void setDiscontinued(Timestamp discontinued) {
-		if (this.introduced != null && this.discontinued != null && this.introduced.compareTo(this.discontinued) < 0) {
+		if (InputValidator.isValidTimestampInterval(introduced, discontinued)) {
 			throw new IllegalArgumentException();
 		}
 		this.discontinued = discontinued;

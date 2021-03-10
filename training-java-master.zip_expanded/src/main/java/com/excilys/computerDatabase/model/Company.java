@@ -1,5 +1,7 @@
 package main.java.com.excilys.computerDatabase.model;
 
+import main.java.com.excilys.computerDatabase.validator.InputValidator;
+
 public class Company {
 	private long id;
 	private String name;
@@ -11,7 +13,7 @@ public class Company {
 	}
 	
 	public void setId(long id) {
-		if (id < 0) {
+		if (!InputValidator.isValidId(id)) {
 			throw new IllegalArgumentException();
 		}
 		this.id = id;
@@ -25,7 +27,7 @@ public class Company {
 	}
 	
 	private void setName(String name) {
-		if (name.length()>255) {
+		if (!InputValidator.isValidName(name)) {
 			throw new IllegalArgumentException();
 		}
 		this.name = name;

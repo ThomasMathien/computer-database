@@ -9,12 +9,12 @@ import main.java.com.excilys.computerDatabase.validator.InputValidator;
 public abstract class InputParser {
 
 	public static String takeNameInput(Scanner sc) {
-		System.out.print(">>");
-		String input = sc.nextLine();
-		if (input.trim().length()>255) {
-			input = input.trim().substring(0,255);
-		}
-		return input;
+		String name;
+		do { 
+			System.out.print(">>");
+			name =  sc.nextLine().trim();
+		} while (!InputValidator.isValidName(name));
+		return name;
 	}
 	
 	public static long takeIdInput(Scanner sc) {
