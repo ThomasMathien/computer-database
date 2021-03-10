@@ -45,6 +45,7 @@ public class CLIController {
 				updateComputer();
 				break;
 			case 6:
+				deleteComputer();
 				break;
 			case 7:
 				sc.close();
@@ -55,7 +56,19 @@ public class CLIController {
 		}
 	}
 
-	public void displayMainMenu() {
+	private void deleteComputer() {
+		System.out.print("+++Enter deleted computer id:\n>>");
+		long computerId = takeIdInput();
+		long result = ComputerDatabaseDAO.deleteComputer(computerId);
+		if (result != 0) {
+			System.out.println("Computer "+computerId+" successfully deleted!");
+		}
+		else {
+			System.out.println("Computer not deleted");
+		}
+	}
+
+	private void displayMainMenu() {
 		System.out.println("\n*** Please enter the desired command number ***");
 		System.out.println("   1-List computers");
 		System.out.println("   2-List companies");
@@ -163,6 +176,7 @@ public class CLIController {
 			System.out.print(">>");
 			input =  sc.nextLong();
 		} while (!InputValidator.isValidId(input));
+		sc.nextLine();
 		return input;
 	}
 	
