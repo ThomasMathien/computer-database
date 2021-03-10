@@ -63,7 +63,7 @@ public class Computer {
 	}
 	
 	public void setIntroduced(Timestamp introduced) {
-		if (InputValidator.isValidTimestampInterval(introduced, discontinued)) {
+		if (!InputValidator.isValidTimestampInterval(introduced, discontinued)) {
 			throw new IllegalArgumentException();
 		}
 		this.introduced = introduced;
@@ -74,7 +74,7 @@ public class Computer {
 	}
 	
 	public void setDiscontinued(Timestamp discontinued) {
-		if (InputValidator.isValidTimestampInterval(introduced, discontinued)) {
+		if (!InputValidator.isValidTimestampInterval(introduced, discontinued)) {
 			throw new IllegalArgumentException();
 		}
 		this.discontinued = discontinued;

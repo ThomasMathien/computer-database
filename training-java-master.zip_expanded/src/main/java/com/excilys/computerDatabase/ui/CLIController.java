@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
 import main.java.com.excilys.computerDatabase.dao.ComputerDatabaseDAO;
@@ -166,10 +167,10 @@ public class CLIController {
 	}
 
 	private void displayComputers() {
-		List<Computer> computers = ComputerDatabaseDAO.getComputers();
-		System.out.printf("| %-3s   %-50s |\n","ID","NAME");
+		List<Displayable> computers =  ComputerDatabaseDAO.getComputers().stream().map( c -> new ShortDisplayComputer(c)).collect(Collectors.toList());
+		Page page = new Page(computers);
 		for (int i =0; i <10; i++) {
-			System.out.printf("| %-3d   %-50s |\n",computers.get(i).getId(),computers.get(i).getName());
+			page.print(i);
 		}
 	}
 	

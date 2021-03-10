@@ -19,13 +19,15 @@ public abstract class InputValidator {
 	}
 	
 	public static boolean isValidName(String name) {
-		return name.length()<=255;
+		return name.length()<=255 && !name.isBlank();
 	}
 	
 	public static boolean isValidTimestampInterval(Timestamp from, Timestamp until) {
-		if (from == null ^ until == null) {
+		if ( (from == null) || (until == null) ) {
 			return true;
 		}
-		return from != null && from.before(until);
+		else {
+			return from.before(until);
+		}
 	}
 }
