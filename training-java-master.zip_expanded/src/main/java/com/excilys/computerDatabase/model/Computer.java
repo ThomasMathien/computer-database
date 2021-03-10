@@ -1,7 +1,7 @@
 package main.java.com.excilys.computerDatabase.model;
 import java.sql.Timestamp;
 
-import main.java.com.excilys.computerDatabase.dao.DatabaseDAO;
+import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
 
 public class Computer {
 	private long id;
@@ -22,7 +22,7 @@ public class Computer {
 		this(name);
 		this.setIntroduced(introduced);
 		this.setDiscontinued(discontinued);
-		Company c = DatabaseDAO.findCompany(companyId);
+		Company c = CompanyDatabaseDAO.findCompany(companyId);
 		this.setCompany(c);
 	}
 	

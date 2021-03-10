@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import main.java.com.excilys.computerDatabase.dao.DatabaseDAO;
+import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
+import main.java.com.excilys.computerDatabase.dao.ComputerDatabaseDAO;
 import main.java.com.excilys.computerDatabase.model.Company;
 import main.java.com.excilys.computerDatabase.model.Computer;
 import main.java.com.excilys.computerDatabase.validator.InputValidator;
@@ -68,7 +69,7 @@ public class CLIController {
 	private void displayDetails() {
 		System.out.print("Enter computer ID:\n>>");
 		long id = sc.nextLong();
-		Computer c = DatabaseDAO.findComputer(id);
+		Computer c = ComputerDatabaseDAO.findComputer(id);
 		if (c != null) {
 			System.out.println("Computer Details:");
 			String displayedName = c.getName() != null ? c.getName() : "unknown";
@@ -103,7 +104,7 @@ public class CLIController {
 		long companyId = sc.nextLong();
 		Computer c = new Computer(name,introducted,discontinued,companyId);
 		System.out.println("+++Create:"+c.toString());
-		long result = DatabaseDAO.addComputer(c);
+		long result = ComputerDatabaseDAO.addComputer(c);
 		if (result != 0) {
 			System.out.println("Computer successfully created! (ID="+result+")");
 		}
@@ -113,7 +114,7 @@ public class CLIController {
 	}
 
 	private void displayCompanies() {
-		List<Company> companies = DatabaseDAO.getCompanies();
+		List<Company> companies = CompanyDatabaseDAO.getCompanies();
 		System.out.printf("| %-3s   %-50s |\n","ID","NAME");
 		for (int i =0; i <10; i++) {
 			System.out.printf("| %-3d   %-50s |\n",companies.get(i).getId(),companies.get(i).getName());
@@ -121,7 +122,7 @@ public class CLIController {
 	}
 
 	private void displayComputers() {
-		List<Computer> computers = DatabaseDAO.getComputers();
+		List<Computer> computers = ComputerDatabaseDAO.getComputers();
 		System.out.printf("| %-3s   %-50s |\n","ID","NAME");
 		for (int i =0; i <10; i++) {
 			System.out.printf("| %-3d   %-50s |\n",computers.get(i).getId(),computers.get(i).getName());
