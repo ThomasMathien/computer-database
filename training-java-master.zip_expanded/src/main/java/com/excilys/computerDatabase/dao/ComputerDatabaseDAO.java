@@ -15,9 +15,6 @@ import main.java.com.excilys.computerDatabase.model.Computer;
 
 public abstract class ComputerDatabaseDAO {
 
-	private final static String GET_ALL_COMPUTERS_QUERY = "SELECT computer.id AS id, computer.name AS name, "
-			+ "introduced, discontinued, computer.company_id, company.name AS company_name "
-			+ "FROM computer LEFT JOIN company ON computer.company_id = company.id;";
 	private final static String ADD_COMPUTER_QUERY = "INSERT INTO computer (name,introduced,discontinued,company_id) "
 			+ "VALUES (?,?,?,?);";
 	private final static String DELETE_COMPUTER_BY_ID_QUERY = "DELETE FROM computer WHERE id=?;";

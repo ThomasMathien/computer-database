@@ -2,14 +2,11 @@ package main.java.com.excilys.computerDatabase.ui;
 
 import main.java.com.excilys.computerDatabase.model.Computer;
 
-public class ShortDisplayComputer  implements Displayable {
+public class DetailsDisplayComputer   implements Displayable {
 
 	private Computer computer;
 	
-	public ShortDisplayComputer(Computer c) {
-		if (c == null) {
-			throw new IllegalArgumentException();
-		}
+	public DetailsDisplayComputer(Computer c) {
 		this.computer = c;
 	}
 

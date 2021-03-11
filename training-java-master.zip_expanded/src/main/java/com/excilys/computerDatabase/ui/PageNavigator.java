@@ -1,10 +1,7 @@
 package main.java.com.excilys.computerDatabase.ui;
 
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Scanner;
-import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
@@ -37,7 +34,7 @@ public class PageNavigator {
 		case GET_COMPUTERS_REQUEST:
 			return ComputerDatabaseDAO.getComputers(from,amount).stream().map( c -> new ShortDisplayComputer(c)).collect(Collectors.toList());
 		case GET_COMPANIES_REQUEST:
-			return null;//TODO CompanyDatabaseDAO.getCompanyCount();
+			return CompanyDatabaseDAO.getCompanies(from, amount).stream().map( c -> new DisplayCompany(c)).collect(Collectors.toList());
 		default:
 			return null;
 		}
@@ -49,7 +46,7 @@ public class PageNavigator {
 		Page p = new Page(content, totalToFetch);
 		p.print();
 		while (true) {
-			System.out.println("***** Use - and + to navigate and 7 to exit *****");
+			System.out.println("***** Use - and + to navigate and 0 to exit *****");
 			System.out.print(">>");	
 			String command = sc.nextLine();
 			switch(command) {
@@ -84,7 +81,7 @@ public class PageNavigator {
 					System.out.println("Already at first page");
 				}
 				break;
-			case "7":
+			case "0":
 				return;
 			default: 
 				System.out.println("Invalid command, please try again");

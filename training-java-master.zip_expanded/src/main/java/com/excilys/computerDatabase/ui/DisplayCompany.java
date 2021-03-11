@@ -1,16 +1,16 @@
 package main.java.com.excilys.computerDatabase.ui;
 
-import main.java.com.excilys.computerDatabase.model.Computer;
+import main.java.com.excilys.computerDatabase.model.Company;
 
-public class ShortDisplayComputer  implements Displayable {
+public class DisplayCompany  implements Displayable {
 
-	private Computer computer;
+	private Company company;
 	
-	public ShortDisplayComputer(Computer c) {
+	public DisplayCompany(Company c) {
 		if (c == null) {
 			throw new IllegalArgumentException();
 		}
-		this.computer = c;
+		this.company = c;
 	}
 
 	@Override
@@ -20,7 +20,7 @@ public class ShortDisplayComputer  implements Displayable {
 
 	@Override
 	public void display() {
-		System.out.printf("| %-3d   %-50s |\n",computer.getId(),computer.getName());
+		System.out.printf("| %-3d   %-50s |\n",company.getId(),company.getName());
 	}
 
 	@Override

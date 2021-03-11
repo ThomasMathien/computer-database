@@ -153,11 +153,8 @@ public class CLIController {
 	}
 
 	private void displayCompanies() {
-		List<Company> companies = CompanyDatabaseDAO.getCompanies();
-		System.out.printf("| %-3s   %-50s |\n","ID","NAME");
-		for (int i =0; i <10; i++) {
-			System.out.printf("| %-3d   %-50s |\n",companies.get(i).getId(),companies.get(i).getName());
-		}
+		PageNavigator nv = new PageNavigator();
+		nv.run(sc, PageNavigator.GET_COMPANIES_REQUEST);
 	}
 
 	private void displayComputers() {

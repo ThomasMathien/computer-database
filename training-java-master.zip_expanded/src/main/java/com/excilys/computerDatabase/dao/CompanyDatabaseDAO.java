@@ -14,15 +14,21 @@ import main.java.com.excilys.computerDatabase.model.Company;
 
 public abstract class CompanyDatabaseDAO {
 	
-	private final static String GET_ALL_COMPANIES_QUERY = "SELECT * FROM company;";
 	private static final String FIND_COMPANY_BY_ID_QUERY = "SELECT id,name FROM company WHERE id=?;";
-	private static final String GET_COMPANY_COUNT_QUERY = "SELECT COUNT(*) FROM company;";;
+	private static final String GET_COMPANY_COUNT_QUERY = "SELECT COUNT(*) FROM company;";
+	private static final String FIND_COMPANIES_INTERVAL_QUERY = "SELECT * FROM company ORDER BY id LIMIT ? OFFSET ?;";
 	
 	public static List<Company> getCompanies(){
+		return getCompanies(0,getCompanyCount());
+	}
+	
+	public static List<Company> getCompanies(int from, int amount){
 		List<Company> companies = new ArrayList<>();
 		try (Connection conn = new DbConnect().getConnection()){
-			Statement stmt = conn.createStatement();
-			ResultSet results = stmt.executeQuery(GET_ALL_COMPANIES_QUERY);
+			PreparedStatement stmt = conn.prepareStatement(FIND_COMPANIES_INTERVAL_QUERY);
+			stmt.setLong(1, amount);
+			stmt.setLong(2,from);
+			ResultSet results = stmt.executeQuery();
 			while(results.next()) {
 				Company c;
 				try {
@@ -70,4 +76,5 @@ public abstract class CompanyDatabaseDAO {
 		}
 		return 0;
 	}
+
 }
