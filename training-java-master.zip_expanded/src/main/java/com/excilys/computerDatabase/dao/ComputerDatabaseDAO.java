@@ -27,13 +27,22 @@ public abstract class ComputerDatabaseDAO {
 			+ "introduced, discontinued, computer.company_id, company.name AS company_name "
 			+ "FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE computer.id = ?;";
 	private final static String GET_COMPUTERS_COUNT_QUERY = "SELECT COUNT(*) FROM computer;";
+	private static final String FIND_COMPUTERS_INTERVAL_QUERY = "SELECT computer.id AS id, computer.name AS name, "
+			+ "introduced, discontinued, computer.company_id, company.name AS company_name "
+			+ "FROM computer LEFT JOIN company ON computer.company_id = company.id ORDER BY computer.id LIMIT ? OFFSET ?;";
 
 
 	public static List<Computer> getComputers(){
+		return getComputers(0,getComputerCount());
+	}
+	
+	public static List<Computer> getComputers(long from, long amount){
 		List<Computer> computers = new ArrayList<>();
 		try (Connection conn = new DbConnect().getConnection()){
-			Statement stmt = conn.createStatement();
-			ResultSet results = stmt.executeQuery(GET_ALL_COMPUTERS_QUERY);
+			PreparedStatement stmt = conn.prepareStatement(FIND_COMPUTERS_INTERVAL_QUERY);
+			stmt.setLong(1, amount);
+			stmt.setLong(2,from);
+			ResultSet results = stmt.executeQuery();
 			while(results.next()) {
 				Computer c;
 				try {
@@ -48,7 +57,6 @@ public abstract class ComputerDatabaseDAO {
 		}
 		return computers;
 	}
-	
 
 	public static Computer findComputer(long id){
 		Computer computer = null;

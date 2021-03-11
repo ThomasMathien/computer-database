@@ -16,15 +16,16 @@ public class Page {
 		this.content = content;
 		this.maxToFetch = maxToFetch;
 		this.currentPage = 0;
-		this.maxPages = (int) Math.ceil(content.size() / MAX_LINES_PER_PAGE);
+		this.maxPages = (int) Math.ceil(maxToFetch / MAX_LINES_PER_PAGE);
+	}
+	
+	public int size() {
+		return content.size();
 	}
 	
 	public void print() {
-		System.out.print("#### Content size = "+content.size());
 		if (!content.isEmpty()) {
 			content.get(0).displayHeader();
-			System.out.println("#### Display from = "+currentPage * MAX_LINES_PER_PAGE +
-					" to "+ (currentPage * MAX_LINES_PER_PAGE +MAX_LINES_PER_PAGE));
 			for (int i = 0 ; i < MAX_LINES_PER_PAGE; i++ ) {
 				int itemIndex = currentPage * MAX_LINES_PER_PAGE + i;
 				if ( itemIndex < content.size() && content.get(itemIndex) != null) {
@@ -32,13 +33,13 @@ public class Page {
 				}
 			}
 			content.get(0).displayFooter();
-			System.out.println("      --- " + currentPage + " ---");
+			System.out.println("      --- Page " + currentPage+ " / "+ maxPages + " ---");
 		}
 	}
 	
 	public boolean needsFeeding() {
 		if (hasNextPage()) {
-			int itemsNeeded = (currentPage +1 )* MAX_LINES_PER_PAGE;
+			int itemsNeeded = (currentPage + 2 )* MAX_LINES_PER_PAGE;
 			if (content.size() >= itemsNeeded || content.size() == maxToFetch ) {
 				return false;
 			} else {
@@ -51,27 +52,26 @@ public class Page {
 	
 	public void feedContent(List<Displayable> content) {
 		this.content.addAll(content);
-		this.maxPages = (int) Math.ceil(content.size() / MAX_LINES_PER_PAGE);
 	}
 	
 	public void nextPage() throws PageOutOfBoundException {
-		currentPage++;
-		if (currentPage >= maxPages) {
+		if (!hasNextPage()) {
 			throw new PageOutOfBoundException("No more next page to go to");
 		}
+		currentPage++;
 	}
 	public void previousPage() throws PageOutOfBoundException {
-		currentPage--;
-		if (currentPage <0 ) {
+		if (!hasPreviousPage()) {
 			throw new PageOutOfBoundException("No more next page to go to");
 		}
+		currentPage--;
 	}
 	
 	public boolean hasNextPage() {
-		return currentPage +1 < maxPages;
+		return currentPage < maxPages;
 	}
 	
 	public boolean hasPreviousPage() {
-		return currentPage >= 1 ;
+		return currentPage > 0 ;
 	}
 }

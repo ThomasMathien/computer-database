@@ -32,10 +32,10 @@ public class PageNavigator {
 		}
 	}
 	
-	private List<Displayable> getDisplayables(int request) {
+	private List<Displayable> getDisplayables(int request, int from, int amount) {
 		switch(request) {
 		case GET_COMPUTERS_REQUEST:
-			return ComputerDatabaseDAO.getComputers().stream().map( c -> new ShortDisplayComputer(c)).collect(Collectors.toList());
+			return ComputerDatabaseDAO.getComputers(from,amount).stream().map( c -> new ShortDisplayComputer(c)).collect(Collectors.toList());
 		case GET_COMPANIES_REQUEST:
 			return null;//TODO CompanyDatabaseDAO.getCompanyCount();
 		default:
@@ -45,7 +45,7 @@ public class PageNavigator {
 	
 	public void run (Scanner sc, int request) {
 		int totalToFetch = getTotalToFetch(request);
-		List<Displayable> content = getDisplayables(request);
+		List<Displayable> content = getDisplayables(request,0,Page.MAX_LINES_PER_PAGE);
 		Page p = new Page(content, totalToFetch);
 		p.print();
 		while (true) {
@@ -57,8 +57,8 @@ public class PageNavigator {
 				if (p.hasNextPage()) {
 					try {
 						if (p.needsFeeding()) {
-							System.out.print("### Feeding");
-							p.feedContent(getDisplayables(request));
+							System.out.println("Loading ...");
+							p.feedContent(getDisplayables(request, p.size(),Page.MAX_LINES_PER_PAGE));
 						}
 						p.nextPage();
 						p.print();
