@@ -10,28 +10,48 @@ public class Page {
 	private List<Displayable> content;
 	private int currentPage;
 	private int maxPages;
+	private int maxToFetch;
 	
-	
-	public Page(List<Displayable> content) {
+	public Page(List<Displayable> content, int maxToFetch) {
 		this.content = content;
+		this.maxToFetch = maxToFetch;
 		this.currentPage = 0;
-		this.maxPages = content.size() % MAX_LINES_PER_PAGE;
+		this.maxPages = (int) Math.ceil(content.size() / MAX_LINES_PER_PAGE);
 	}
 	
-	public void print(int pageIndex) {
+	public void print() {
+		System.out.print("#### Content size = "+content.size());
 		if (!content.isEmpty()) {
 			content.get(0).displayHeader();
-			for (int i = pageIndex * MAX_LINES_PER_PAGE; i < MAX_LINES_PER_PAGE; i++ ) {
-				if ( i < content.size() && content.get(i) != null) {
-					content.get(i).display();
+			System.out.println("#### Display from = "+currentPage * MAX_LINES_PER_PAGE +
+					" to "+ (currentPage * MAX_LINES_PER_PAGE +MAX_LINES_PER_PAGE));
+			for (int i = 0 ; i < MAX_LINES_PER_PAGE; i++ ) {
+				int itemIndex = currentPage * MAX_LINES_PER_PAGE + i;
+				if ( itemIndex < content.size() && content.get(itemIndex) != null) {
+					content.get(itemIndex).display();
 				}
 			}
 			content.get(0).displayFooter();
+			System.out.println("      --- " + currentPage + " ---");
+		}
+	}
+	
+	public boolean needsFeeding() {
+		if (hasNextPage()) {
+			int itemsNeeded = (currentPage +1 )* MAX_LINES_PER_PAGE;
+			if (content.size() >= itemsNeeded || content.size() == maxToFetch ) {
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			return false;
 		}
 	}
 	
 	public void feedContent(List<Displayable> content) {
 		this.content.addAll(content);
+		this.maxPages = (int) Math.ceil(content.size() / MAX_LINES_PER_PAGE);
 	}
 	
 	public void nextPage() throws PageOutOfBoundException {

@@ -26,6 +26,7 @@ public abstract class ComputerDatabaseDAO {
 	private static final String FIND_COMPUTER_BY_ID_QUERY = "SELECT computer.id AS id, computer.name AS name, "
 			+ "introduced, discontinued, computer.company_id, company.name AS company_name "
 			+ "FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE computer.id = ?;";
+	private final static String GET_COMPUTERS_COUNT_QUERY = "SELECT COUNT(*) FROM computer;";
 
 
 	public static List<Computer> getComputers(){
@@ -124,5 +125,19 @@ public abstract class ComputerDatabaseDAO {
 			e.printStackTrace();
 		}
 		return updatedRecords;
+	}
+
+
+	public static int getComputerCount() {
+		try (Connection conn = new DbConnect().getConnection()){
+			Statement stmt = conn.createStatement();
+			ResultSet results = stmt.executeQuery(GET_COMPUTERS_COUNT_QUERY);
+			if(results.next()) {
+				return results.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 }

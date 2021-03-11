@@ -33,34 +33,28 @@ public class CLIController {
 		while (true) {
 			displayMainMenu();
 			System.out.print(">>");	
-			int command;
-			try {
-				command = Integer.parseInt(sc.nextLine());
-			}
-			catch(NumberFormatException e) {
-				command = 0;
-			}
+			String command = sc.nextLine();
 			System.out.println("Please wait...");
 			switch(command) {
-			case 1:
+			case "1":
 				displayComputers();
 				break;
-			case 2:
+			case "2":
 				displayCompanies();
 				break;
-			case 3: 
+			case "3": 
 				displayDetails();
 				break;
-			case 4:
+			case "4":
 				addComputer();
 				break;
-			case 5:
+			case "5":
 				updateComputer();
 				break;
-			case 6:
+			case "6":
 				deleteComputer();
 				break;
-			case 7:
+			case "7":
 				sc.close();
 				return;
 			default: 
@@ -167,11 +161,8 @@ public class CLIController {
 	}
 
 	private void displayComputers() {
-		List<Displayable> computers =  ComputerDatabaseDAO.getComputers().stream().map( c -> new ShortDisplayComputer(c)).collect(Collectors.toList());
-		Page page = new Page(computers);
-		for (int i =0; i <10; i++) {
-			page.print(i);
-		}
+		PageNavigator nv = new PageNavigator();
+		nv.run(sc, PageNavigator.GET_COMPUTERS_REQUEST);
 	}
 	
 	
