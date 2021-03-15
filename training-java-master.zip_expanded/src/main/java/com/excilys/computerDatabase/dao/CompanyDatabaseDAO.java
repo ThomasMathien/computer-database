@@ -21,6 +21,8 @@ public class CompanyDatabaseDAO {
 	
 	private static CompanyDatabaseDAO instance = null;
 	
+	private CompanyDatabaseDAO() {}
+	
 	public static CompanyDatabaseDAO getInstance() {
 		if (instance == null) {
 			instance = new CompanyDatabaseDAO();

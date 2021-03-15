@@ -1,6 +1,7 @@
 package main.java.com.excilys.computerDatabase.mapper;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -9,8 +10,8 @@ import main.java.com.excilys.computerDatabase.model.Company;
 
 public abstract class CompanyMapper {
 	
-	private final static String ID_COLUMN = "company_id";
-	private final static String NAME_COLUMN = "company_id";
+	public final static String ID_COLUMN = "company_id";
+	public final static String NAME_COLUMN = "company_name";
 	
 	public static Optional<Company> toCompany(ResultSet rs) throws IncompleteResultSetException{
 		if (rs == null) {

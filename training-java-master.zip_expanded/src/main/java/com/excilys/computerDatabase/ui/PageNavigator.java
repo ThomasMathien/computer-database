@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
 import main.java.com.excilys.computerDatabase.dao.ComputerDatabaseDAO;
 import main.java.com.excilys.computerDatabase.exception.PageOutOfBoundException;
+import main.java.com.excilys.computerDatabase.service.CompanyService;
+import main.java.com.excilys.computerDatabase.service.ComputerService;
 import main.java.com.excilys.computerDatabase.ui.view.DisplayCompany;
 import main.java.com.excilys.computerDatabase.ui.view.Displayable;
 import main.java.com.excilys.computerDatabase.ui.view.ShortDisplayComputer;
@@ -24,9 +26,9 @@ public class PageNavigator {
 	private int getTotalToFetch(int request) {
 		switch(request) {
 		case GET_COMPUTERS_REQUEST:
-			return ComputerDatabaseDAO.getComputerCount();
+			return ComputerService.getInstance().getComputerCount();
 		case GET_COMPANIES_REQUEST:
-			return CompanyDatabaseDAO.getCompanyCount();
+			return CompanyService.getInstance().getCompanyCount();
 		default:
 			return 0;
 		}
@@ -35,9 +37,9 @@ public class PageNavigator {
 	private List<Displayable> getDisplayables(int request, int from, int amount) {
 		switch(request) {
 		case GET_COMPUTERS_REQUEST:
-			return ComputerDatabaseDAO.getComputers(from,amount).stream().map( c -> new ShortDisplayComputer(c)).collect(Collectors.toList());
+			return ComputerService.getInstance().getComputers(from,amount).stream().map( c -> new ShortDisplayComputer(c)).collect(Collectors.toList());
 		case GET_COMPANIES_REQUEST:
-			return CompanyDatabaseDAO.getCompanies(from, amount).stream().map( c -> new DisplayCompany(c)).collect(Collectors.toList());
+			return CompanyService.getInstance().getCompanies(from, amount).stream().map( c -> new DisplayCompany(c)).collect(Collectors.toList());
 		default:
 			return null;
 		}
@@ -76,7 +78,6 @@ public class PageNavigator {
 						p.previousPage();
 						p.print();
 					} catch (PageOutOfBoundException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import main.java.com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import main.java.com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import main.java.com.excilys.computerDatabase.mapper.ComputerMapper;
 import main.java.com.excilys.computerDatabase.model.Computer;
@@ -22,15 +23,17 @@ public class ComputerDatabaseDAO {
 	private final static String UPDATE_COMPUTER_BY_ID_QUERY = "UPDATE computer SET name=?,introduced=?,discontinued=?,"
 			+ "company_id=? WHERE id=?;";
 	private static final String FIND_COMPUTER_BY_ID_QUERY = "SELECT computer.id AS id, computer.name AS name, "
-			+ "introduced, discontinued, computer.company_id, company.name AS company_name "
+			+ "introduced, discontinued, computer.company_id AS company_id, company.name AS company_name "
 			+ "FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE computer.id = ?;";
 	private final static String GET_COMPUTERS_COUNT_QUERY = "SELECT COUNT(*) FROM computer;";
 	private static final String FIND_COMPUTERS_INTERVAL_QUERY = "SELECT computer.id AS id, computer.name AS name, "
-			+ "introduced, discontinued, computer.company_id, company.name AS company_name "
+			+ "introduced, discontinued, computer.company_id AS company_id, company.name AS company_name "
 			+ "FROM computer LEFT JOIN company ON computer.company_id = company.id ORDER BY computer.id LIMIT ? OFFSET ?;";
 
 
 	private static ComputerDatabaseDAO instance = null;
+	
+	private ComputerDatabaseDAO() {}
 	
 	public static ComputerDatabaseDAO getInstance() {
 		if (instance == null) {
@@ -38,6 +41,7 @@ public class ComputerDatabaseDAO {
 		}
 		return instance;
 	}
+	
 	public List<Computer> getComputers(){
 		return getComputers(0,getComputerCount());
 	}
@@ -83,8 +87,7 @@ public class ComputerDatabaseDAO {
 		return computer;
 	}
 	
-	public long addComputer(Computer computer) {
-		long id = 0;
+	public void addComputer(Computer computer) throws FailedSQLRequestException {
 		try(Connection conn = new DbConnect().getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement(ADD_COMPUTER_QUERY, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1,computer.getName());
@@ -100,28 +103,28 @@ public class ComputerDatabaseDAO {
             ResultSet rs = stmt.getGeneratedKeys();
             if(rs.next())
             {
-                id = rs.getInt(1);
+        		if (rs.getInt(1) == 0) {
+        			throw new FailedSQLRequestException("Couldn't create computer:"+computer.toString());
+        		}
             }
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return id;
 	}
 	
-	public int deleteComputer(long id) {
-		int deletedRecords = 0;
+	public void deleteComputer(long id) throws FailedSQLRequestException {
 		try(Connection conn = new DbConnect().getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement(DELETE_COMPUTER_BY_ID_QUERY);
 			stmt.setLong(1,id);
-			deletedRecords = stmt.executeUpdate();
+			if (stmt.executeUpdate() == 0) {
+    			throw new FailedSQLRequestException("Couldn't delete computer with Id:"+id);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return deletedRecords;
 	}
 	
-	public int updateComputer(long id, Computer computer) {
-		int updatedRecords = 0;
+	public void updateComputer(long id, Computer computer) throws FailedSQLRequestException {
 		try(Connection conn = new DbConnect().getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement(UPDATE_COMPUTER_BY_ID_QUERY);
 			stmt.setString(1, computer.getName());
@@ -134,11 +137,12 @@ public class ComputerDatabaseDAO {
 				stmt.setNull(4,Types.BIGINT);
 			}
 			stmt.setLong(5, id);
-			updatedRecords = stmt.executeUpdate();
+			if (stmt.executeUpdate() == 0) {
+    			throw new FailedSQLRequestException("Couldn't update computer with Id:"+id+ " with Object:"+computer.toString());
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return updatedRecords;
 	}
 
 

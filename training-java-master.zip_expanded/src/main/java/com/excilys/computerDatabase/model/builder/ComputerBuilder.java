@@ -1,10 +1,12 @@
 package main.java.com.excilys.computerDatabase.model.builder;
 
 import java.sql.Timestamp;
+import java.util.Optional;
 
 import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
 import main.java.com.excilys.computerDatabase.model.Company;
 import main.java.com.excilys.computerDatabase.model.Computer;
+import main.java.com.excilys.computerDatabase.service.CompanyService;
 
 public class ComputerBuilder {
 
@@ -44,11 +46,13 @@ public class ComputerBuilder {
 	}
 	
 	public ComputerBuilder setCompany(Long companyId) {
-		this.company = CompanyDatabaseDAO.findCompany(companyId);
+		Optional<Company> company = CompanyService.getInstance().findCompany(companyId);
+		if (company.isPresent()) {
+			this.company = company.orElseThrow();
+		}
 		return this;
 	}
 
-	
 	public Computer build() {
 		Computer c = new Computer(name);
 		c.setDiscontinued(discontinued);

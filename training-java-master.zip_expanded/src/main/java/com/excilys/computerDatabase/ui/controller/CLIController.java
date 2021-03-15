@@ -5,7 +5,10 @@ import java.util.Optional;
 import java.util.Scanner;
 import main.java.com.excilys.computerDatabase.dao.ComputerDatabaseDAO;
 import main.java.com.excilys.computerDatabase.exception.CommandNotFoundException;
+import main.java.com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import main.java.com.excilys.computerDatabase.model.Computer;
+import main.java.com.excilys.computerDatabase.model.builder.ComputerBuilder;
+import main.java.com.excilys.computerDatabase.service.ComputerService;
 import main.java.com.excilys.computerDatabase.ui.InputParser;
 import main.java.com.excilys.computerDatabase.ui.PageNavigator;
 import main.java.com.excilys.computerDatabase.ui.view.DetailsDisplayComputer;
@@ -68,14 +71,14 @@ public class CLIController {
 	private void displayMainMenu() {
 		System.out.println("\n*** Please enter the desired command number ***");
 		for (MenuOption option : MenuOption.values()) {
-			System.out.printf("   %d-%s\n",option.getCommand(),option.getMessage());
+			System.out.printf("   %s-%s\n",option.getCommand(),option.getMessage());
 		}
 	}
 
 	private void displayDetails() {
 		System.out.print("Enter computer ID:\n>>");
 		long id = sc.nextLong();
-		Optional<Computer> c = ComputerDatabaseDAO.findComputer(id);
+		Optional<Computer> c = ComputerService.getInstance().findComputer(id);
 		if (c.isPresent()) {
 			new DetailsDisplayComputer(c.orElseThrow()).display();
 		}
@@ -87,25 +90,25 @@ public class CLIController {
 	private void addComputer() {
 		Computer c = createComputerForm();
 		System.out.println("+++Create:"+c.toString());
-		long result = ComputerDatabaseDAO.addComputer(c);
-		if (result != 0) {
-			System.out.println("Computer successfully created! (ID="+result+")");
+		try {
+			ComputerService.getInstance().addComputer(c);
 		}
-		else {
+		catch (FailedSQLRequestException e) {
 			System.out.println("Computer not added");
 		}
+		System.out.println("Computer successfully created!");
 	}
 	
 	private void deleteComputer() {
 		System.out.print("+++Enter deleted computer id:\n>>");
 		long computerId = InputParser.takeIdInput(sc);
-		long result = ComputerDatabaseDAO.deleteComputer(computerId);
-		if (result != 0) {
-			System.out.println("Computer "+computerId+" successfully deleted!");
+		try {
+			ComputerService.getInstance().deleteComputer(computerId);
 		}
-		else {
+		catch (FailedSQLRequestException e) {
 			System.out.println("Computer not deleted");
 		}
+		System.out.println("Computer "+computerId+" successfully deleted!");
 	}
 	
 	private void updateComputer() {
@@ -113,13 +116,13 @@ public class CLIController {
 		System.out.print("+++Enter replaced computer id:\n>>");
 		long computerId = InputParser.takeIdInput(sc);
 		System.out.println("+++Update computer "+computerId+" with:"+c.toString());
-		long result = ComputerDatabaseDAO.updateComputer(computerId,c);
-		if (result != 0) {
-			System.out.println("Computer successfully updated!");
+		try {
+			ComputerService.getInstance().updateComputer(computerId,c);
 		}
-		else {
+		catch (FailedSQLRequestException e) {
 			System.out.println("Computer not updated");
 		}
+		System.out.println("Computer successfully updated!");
 	}
 	
 	private Computer createComputerForm() {
@@ -132,7 +135,11 @@ public class CLIController {
 		Timestamp discontinued = InputParser.takeTimestampInput(sc);
 		System.out.print("+++Enter company id:\n>>");
 		long companyId = InputParser.takeIdInput(sc);
-		return new Computer(name,introducted,discontinued,companyId);
+		return new ComputerBuilder(name)
+				.setIntroduced(introducted)
+				.setDiscontinued(discontinued)
+				.setCompany(companyId)
+				.build();
 	}
 
 	private void displayCompanies() {
