@@ -8,11 +8,14 @@ import main.java.com.excilys.computerDatabase.validator.InputValidator;
 
 public abstract class InputParser {
 
+	public static String takeString(Scanner sc) {
+		System.out.print(">>"); 
+		return sc.nextLine().trim();
+	}
 	public static String takeNameInput(Scanner sc) {
 		String name;
 		do { 
-			System.out.print(">>");
-			name =  sc.nextLine().trim();
+			name = takeString(sc);;
 		} while (!InputValidator.isValidName(name));
 		return name;
 	}

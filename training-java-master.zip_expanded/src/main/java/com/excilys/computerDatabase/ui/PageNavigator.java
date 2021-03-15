@@ -7,6 +7,9 @@ import java.util.stream.Collectors;
 import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
 import main.java.com.excilys.computerDatabase.dao.ComputerDatabaseDAO;
 import main.java.com.excilys.computerDatabase.exception.PageOutOfBoundException;
+import main.java.com.excilys.computerDatabase.ui.view.DisplayCompany;
+import main.java.com.excilys.computerDatabase.ui.view.Displayable;
+import main.java.com.excilys.computerDatabase.ui.view.ShortDisplayComputer;
 
 public class PageNavigator {
 

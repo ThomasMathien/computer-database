@@ -2,6 +2,7 @@ package main.java.com.excilys.computerDatabase.model;
 import java.sql.Timestamp;
 
 import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
+import main.java.com.excilys.computerDatabase.model.builder.ComputerBuilder;
 import main.java.com.excilys.computerDatabase.validator.InputValidator;
 
 public class Computer {
@@ -12,34 +13,10 @@ public class Computer {
 	private Company company;
 	
 	public Computer(String name) {
-		this(name,null,null,null);
-	}
-
-	public Computer(String name, Timestamp introduced, Timestamp discontinued, Company company) {
-		this(0L,name,introduced,discontinued, company);
-	}
-	
-	public Computer(String name, Timestamp introduced, Timestamp discontinued, long companyId) {
-		this(name);
-		this.setIntroduced(introduced);
-		this.setDiscontinued(discontinued);
-		Company c = CompanyDatabaseDAO.findCompany(companyId);
-		this.setCompany(c);
-	}
-	
-	public Computer(long id, String name, Timestamp introduced, Timestamp discontinued, Company company) {
-		super();
-		this.setId(id);
-		this.setName(name);
-		this.setIntroduced(introduced);
-		this.setDiscontinued(discontinued);
-		this.setCompany(company);
+		this.name = name;
 	}
 
 	public void setId(long id) {
-		if (!InputValidator.isValidId(id)) {
-			throw new IllegalArgumentException();
-		}
 		this.id = id;
 	}
 	
@@ -52,9 +29,6 @@ public class Computer {
 	}
 	
 	public void setName(String name) {
-		if (!InputValidator.isValidName(name)) {
-			throw new IllegalArgumentException();
-		}
 		this.name = name;
 	}
 	
@@ -63,9 +37,6 @@ public class Computer {
 	}
 	
 	public void setIntroduced(Timestamp introduced) {
-		if (!InputValidator.isValidTimestampInterval(introduced, discontinued)) {
-			throw new IllegalArgumentException();
-		}
 		this.introduced = introduced;
 	}
 	
@@ -74,9 +45,6 @@ public class Computer {
 	}
 	
 	public void setDiscontinued(Timestamp discontinued) {
-		if (!InputValidator.isValidTimestampInterval(introduced, discontinued)) {
-			throw new IllegalArgumentException();
-		}
 		this.discontinued = discontinued;
 	}
 	
@@ -90,17 +58,54 @@ public class Computer {
 	
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder()
-				.append("Computer: ")
-				.append(this.name)
-				.append(" [")
-				.append(this.introduced != null ? this.introduced : "unknown")
-				.append(" to ")
-				.append(this.discontinued != null ? this.discontinued : "unknown")
-				.append("] Company: ")
-				.append(this.company != null ? this.company : "unknown");
-		return sb.toString();
+		return "Computer [id=" + id + ", name=" + name + ", introduced=" + introduced + ", discontinued=" + discontinued
+				+ ", company=" + company + "]";
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((company == null) ? 0 : company.hashCode());
+		result = prime * result + ((discontinued == null) ? 0 : discontinued.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((introduced == null) ? 0 : introduced.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Computer other = (Computer) obj;
+		if (company == null) {
+			if (other.company != null)
+				return false;
+		} else if (!company.equals(other.company))
+			return false;
+		if (discontinued == null) {
+			if (other.discontinued != null)
+				return false;
+		} else if (!discontinued.equals(other.discontinued))
+			return false;
+		if (id != other.id)
+			return false;
+		if (introduced == null) {
+			if (other.introduced != null)
+				return false;
+		} else if (!introduced.equals(other.introduced))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
 	
 }

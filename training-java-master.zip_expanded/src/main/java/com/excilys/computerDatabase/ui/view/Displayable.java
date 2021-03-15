@@ -1,4 +1,4 @@
-package main.java.com.excilys.computerDatabase.ui;
+package main.java.com.excilys.computerDatabase.ui.view;
 
 public interface Displayable {
 	void displayHeader();

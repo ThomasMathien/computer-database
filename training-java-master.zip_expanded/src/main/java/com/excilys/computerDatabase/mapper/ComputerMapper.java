@@ -2,34 +2,42 @@ package main.java.com.excilys.computerDatabase.mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 
-import main.java.com.excilys.computerDatabase.exception.IncompleteResultSet;
+import main.java.com.excilys.computerDatabase.exception.IncompleteResultSetException;
+import main.java.com.excilys.computerDatabase.model.Company;
 import main.java.com.excilys.computerDatabase.model.Computer;
+import main.java.com.excilys.computerDatabase.model.builder.ComputerBuilder;
 
 public abstract class ComputerMapper {
 	
-	public static Computer toComputer(ResultSet rs, String companyIdColumnName,String companyNameColumnName) throws IncompleteResultSet{
-		if (rs != null) {
-			try {
-			String name = rs.getString("name");
-			long id = rs.getLong("id");
-			if (id == 0) {
-				throw new IncompleteResultSet("ResultSet unsufficient to create a Computer object");
-			}
-			Computer computer = new Computer(name);
-			computer.setId(id);
-			computer.setIntroduced(rs.getTimestamp("introduced"));
-			computer.setDiscontinued(rs.getTimestamp("discontinued"));
-			if (rs.getLong(companyIdColumnName) != 0) {
-				computer.setCompany(CompanyMapper.toCompany(rs, companyIdColumnName, companyNameColumnName));
-			}
-			return computer;
-			}
-			catch (SQLException e) {
-				e.printStackTrace();
+	public static Optional<Computer> toComputer(ResultSet rs) throws IncompleteResultSetException{
+		if (rs == null) {
+			throw new IllegalArgumentException();
+		}
+		Optional<Computer> computer = Optional.empty();
+		try {
+		String name = rs.getString("name");
+		long id = rs.getLong("id");
+		if (id == 0) {
+			throw new IncompleteResultSetException("ResultSet requires Id to create a Computer object");
+		}
+		computer = Optional.of(new ComputerBuilder(name)
+				.setId(id)
+				.setIntroduced(rs.getTimestamp("introduced"))
+				.setDiscontinued(rs.getTimestamp("discontinued"))
+				.build());
+		if (computer.isPresent()) {
+			Optional<Company> company = CompanyMapper.toCompany(rs);
+			if (company.isPresent()) {
+				((Computer) computer.orElseThrow()).setCompany(company.orElseThrow());
 			}
 		}
-		return null;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return computer;
 	}
 	
 }

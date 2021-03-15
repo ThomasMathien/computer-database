@@ -8,12 +8,13 @@ import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import main.java.com.excilys.computerDatabase.exception.IncompleteResultSet;
+import main.java.com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import main.java.com.excilys.computerDatabase.mapper.ComputerMapper;
 import main.java.com.excilys.computerDatabase.model.Computer;
 
-public abstract class ComputerDatabaseDAO {
+public class ComputerDatabaseDAO {
 
 	private final static String ADD_COMPUTER_QUERY = "INSERT INTO computer (name,introduced,discontinued,company_id) "
 			+ "VALUES (?,?,?,?);";
@@ -29,11 +30,19 @@ public abstract class ComputerDatabaseDAO {
 			+ "FROM computer LEFT JOIN company ON computer.company_id = company.id ORDER BY computer.id LIMIT ? OFFSET ?;";
 
 
-	public static List<Computer> getComputers(){
+	private static ComputerDatabaseDAO instance = null;
+	
+	public static ComputerDatabaseDAO getInstance() {
+		if (instance == null) {
+			instance = new ComputerDatabaseDAO();
+		}
+		return instance;
+	}
+	public List<Computer> getComputers(){
 		return getComputers(0,getComputerCount());
 	}
 	
-	public static List<Computer> getComputers(long from, long amount){
+	public List<Computer> getComputers(long from, long amount){
 		List<Computer> computers = new ArrayList<>();
 		try (Connection conn = new DbConnect().getConnection()){
 			PreparedStatement stmt = conn.prepareStatement(FIND_COMPUTERS_INTERVAL_QUERY);
@@ -41,11 +50,11 @@ public abstract class ComputerDatabaseDAO {
 			stmt.setLong(2,from);
 			ResultSet results = stmt.executeQuery();
 			while(results.next()) {
-				Computer c;
+				Optional<Computer> c;
 				try {
-					c = ComputerMapper.toComputer(results,"company_id","company_name");
-					computers.add(c);
-				} catch (IncompleteResultSet e) {
+					c = ComputerMapper.toComputer(results);
+					computers.add(c.orElseThrow());
+				} catch (IncompleteResultSetException e) {
 					e.printStackTrace();
 				}
 			}
@@ -55,16 +64,16 @@ public abstract class ComputerDatabaseDAO {
 		return computers;
 	}
 
-	public static Computer findComputer(long id){
-		Computer computer = null;
+	public Optional<Computer> findComputer(long id){
+		Optional<Computer> computer = Optional.empty();;
 		try (Connection conn = new DbConnect().getConnection()){
 			PreparedStatement stmt = conn.prepareStatement(FIND_COMPUTER_BY_ID_QUERY);
 			stmt.setLong(1, id);
 			ResultSet results = stmt.executeQuery();
 			if(results.next()) {
 				try {
-					computer =  ComputerMapper.toComputer(results,"company_id","company_name");
-				} catch (IncompleteResultSet e) {
+					computer =  ComputerMapper.toComputer(results);
+				} catch (IncompleteResultSetException e) {
 					e.printStackTrace();
 				}
 			}
@@ -74,7 +83,7 @@ public abstract class ComputerDatabaseDAO {
 		return computer;
 	}
 	
-	public static long addComputer(Computer computer) {
+	public long addComputer(Computer computer) {
 		long id = 0;
 		try(Connection conn = new DbConnect().getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement(ADD_COMPUTER_QUERY, Statement.RETURN_GENERATED_KEYS);
@@ -99,7 +108,7 @@ public abstract class ComputerDatabaseDAO {
 		return id;
 	}
 	
-	public static int deleteComputer(long id) {
+	public int deleteComputer(long id) {
 		int deletedRecords = 0;
 		try(Connection conn = new DbConnect().getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement(DELETE_COMPUTER_BY_ID_QUERY);
@@ -111,7 +120,7 @@ public abstract class ComputerDatabaseDAO {
 		return deletedRecords;
 	}
 	
-	public static int updateComputer(long id, Computer computer) {
+	public int updateComputer(long id, Computer computer) {
 		int updatedRecords = 0;
 		try(Connection conn = new DbConnect().getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement(UPDATE_COMPUTER_BY_ID_QUERY);
@@ -133,7 +142,7 @@ public abstract class ComputerDatabaseDAO {
 	}
 
 
-	public static int getComputerCount() {
+	public int getComputerCount() {
 		try (Connection conn = new DbConnect().getConnection()){
 			Statement stmt = conn.createStatement();
 			ResultSet results = stmt.executeQuery(GET_COMPUTERS_COUNT_QUERY);

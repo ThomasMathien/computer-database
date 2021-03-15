@@ -1,16 +1,14 @@
-package main.java.com.excilys.computerDatabase.ui;
+package main.java.com.excilys.computerDatabase.ui.controller;
 
 import java.sql.Timestamp;
-import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-
-import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
 import main.java.com.excilys.computerDatabase.dao.ComputerDatabaseDAO;
-import main.java.com.excilys.computerDatabase.model.Company;
+import main.java.com.excilys.computerDatabase.exception.CommandNotFoundException;
 import main.java.com.excilys.computerDatabase.model.Computer;
-import main.java.com.excilys.computerDatabase.validator.InputValidator;
+import main.java.com.excilys.computerDatabase.ui.InputParser;
+import main.java.com.excilys.computerDatabase.ui.PageNavigator;
+import main.java.com.excilys.computerDatabase.ui.view.DetailsDisplayComputer;
 
 public class CLIController {
 	
@@ -29,70 +27,57 @@ public class CLIController {
 	}
 	
 	public void run(){
-
 		while (true) {
 			displayMainMenu();
-			System.out.print(">>");	
-			String command = sc.nextLine();
-			System.out.println("Please wait...");
-			switch(command) {
-			case "1":
-				displayComputers();
-				break;
-			case "2":
-				displayCompanies();
-				break;
-			case "3": 
-				displayDetails();
-				break;
-			case "4":
-				addComputer();
-				break;
-			case "5":
-				updateComputer();
-				break;
-			case "6":
-				deleteComputer();
-				break;
-			case "7":
-				sc.close();
-				return;
-			default: 
+			String command = InputParser.takeString(sc);
+			MenuOption menuOption;
+			try {
+				menuOption = MenuOption.fromCommand(command);
+				System.out.println("Please wait...");
+				switch(menuOption) {
+					case DISPLAY_ALL_COMPUTERS:
+						displayComputers();
+						break;
+					case DISPLAY_ALL_COMPANIES:
+						displayCompanies();
+						break;
+					case DISPLAY_COMPUTER_DETAILS_BY_ID: 
+						displayDetails();
+						break;
+					case ADD_COMPUTER:
+						addComputer();
+						break;
+					case UPDATE_COMPUTER:
+						updateComputer();
+						break;
+					case DELETE_COMPUTER:
+						deleteComputer();
+						break;
+					case EXIT_MENU:
+						sc.close();
+						return;
+					default:
+						throw new CommandNotFoundException("Command "+ command+ "not found");
+				}
+			} catch (CommandNotFoundException e) {
 				System.out.println("Invalid command, please try again");
 			}
-		}
+		} 
 	}
 
 	private void displayMainMenu() {
 		System.out.println("\n*** Please enter the desired command number ***");
-		System.out.println("   1-List computers");
-		System.out.println("   2-List companies");
-		System.out.println("   3-Show computer details");
-		System.out.println("   4-Add new computer");
-		System.out.println("   5-Update existing computer");
-		System.out.println("   6-Delete existing computer");
-		System.out.println("   7-Exit");
+		for (MenuOption option : MenuOption.values()) {
+			System.out.printf("   %d-%s\n",option.getCommand(),option.getMessage());
+		}
 	}
 
 	private void displayDetails() {
 		System.out.print("Enter computer ID:\n>>");
 		long id = sc.nextLong();
-		Computer c = ComputerDatabaseDAO.findComputer(id);
-		if (c != null) {
-			System.out.println("Computer Details:");
-			String displayedName = c.getName() != null ? c.getName() : "unknown";
-			System.out.printf("--- %s (%d) ---\n",displayedName,c.getId());
-			String displayedIntro = c.getIntroduced() != null ? c.getIntroduced().toString() : "unknown";
-			String displayedDisc = c.getDiscontinued() != null ? c.getDiscontinued().toString() : "unknown";
-			System.out.printf("** Produced from %s to %s \n",displayedIntro,displayedDisc);
-			Company company = c.getCompany();
-			String displayedCompanyId = "unknown";
-			String displayedCompanyName = "unknown";
-			if(company != null) {
-				displayedCompanyId = String.valueOf(company.getId());
-				displayedCompanyName = company.getName();
-			}
-			System.out.printf("** Company: %s (%s)\n",displayedCompanyName,displayedCompanyId);
+		Optional<Computer> c = ComputerDatabaseDAO.findComputer(id);
+		if (c.isPresent()) {
+			new DetailsDisplayComputer(c.orElseThrow()).display();
 		}
 		else {
 			System.out.println("No such computer found, please kindly enter a proper computer's ID");
@@ -122,8 +107,6 @@ public class CLIController {
 			System.out.println("Computer not deleted");
 		}
 	}
-
-
 	
 	private void updateComputer() {
 		Computer c = createComputerForm();

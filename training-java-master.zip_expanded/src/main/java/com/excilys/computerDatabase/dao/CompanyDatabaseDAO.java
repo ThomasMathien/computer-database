@@ -7,22 +7,32 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import main.java.com.excilys.computerDatabase.exception.IncompleteResultSet;
+import main.java.com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import main.java.com.excilys.computerDatabase.mapper.CompanyMapper;
 import main.java.com.excilys.computerDatabase.model.Company;
 
-public abstract class CompanyDatabaseDAO {
+public class CompanyDatabaseDAO {
 	
-	private static final String FIND_COMPANY_BY_ID_QUERY = "SELECT id,name FROM company WHERE id=?;";
+	private static final String FIND_COMPANY_BY_ID_QUERY = "SELECT id AS company_id,name AS company_name FROM company WHERE id=?;";
 	private static final String GET_COMPANY_COUNT_QUERY = "SELECT COUNT(*) FROM company;";
-	private static final String FIND_COMPANIES_INTERVAL_QUERY = "SELECT * FROM company ORDER BY id LIMIT ? OFFSET ?;";
+	private static final String FIND_COMPANIES_INTERVAL_QUERY = "SELECT id AS company_id,name AS company_name FROM company ORDER BY id LIMIT ? OFFSET ?;";
 	
-	public static List<Company> getCompanies(){
+	private static CompanyDatabaseDAO instance = null;
+	
+	public static CompanyDatabaseDAO getInstance() {
+		if (instance == null) {
+			instance = new CompanyDatabaseDAO();
+		}
+		return instance;
+	}
+	
+	public List<Company> getCompanies(){
 		return getCompanies(0,getCompanyCount());
 	}
 	
-	public static List<Company> getCompanies(int from, int amount){
+	public List<Company> getCompanies(int from, int amount){
 		List<Company> companies = new ArrayList<>();
 		try (Connection conn = new DbConnect().getConnection()){
 			PreparedStatement stmt = conn.prepareStatement(FIND_COMPANIES_INTERVAL_QUERY);
@@ -30,11 +40,13 @@ public abstract class CompanyDatabaseDAO {
 			stmt.setLong(2,from);
 			ResultSet results = stmt.executeQuery();
 			while(results.next()) {
-				Company c;
+				Optional<Company> c;
 				try {
 					c = CompanyMapper.toCompany(results);
-					companies.add(c);
-				} catch (IncompleteResultSet e) {
+					if (c.isPresent()) {
+						companies.add(c.orElseThrow());
+					}
+				} catch (IncompleteResultSetException e) {
 					e.printStackTrace();
 				}
 			}
@@ -44,8 +56,8 @@ public abstract class CompanyDatabaseDAO {
 		return companies;
 	}
 	
-	public static Company findCompany(long id){
-		Company company = null;
+	public Optional<Company> findCompany(long id){
+		Optional<Company> company = Optional.empty();
 		try (Connection conn = new DbConnect().getConnection()){
 			PreparedStatement stmt = conn.prepareStatement(FIND_COMPANY_BY_ID_QUERY);
 			stmt.setLong(1, id);
@@ -53,7 +65,7 @@ public abstract class CompanyDatabaseDAO {
 			if(results.next()) {
 				try {
 					company =  CompanyMapper.toCompany(results);
-				} catch (IncompleteResultSet e) {
+				} catch (IncompleteResultSetException e) {
 					e.printStackTrace();
 				}
 			}
@@ -63,8 +75,7 @@ public abstract class CompanyDatabaseDAO {
 		return company;
 	}
 	
-
-	public static int getCompanyCount() {
+	public int getCompanyCount() {
 		try (Connection conn = new DbConnect().getConnection()){
 			Statement stmt = conn.createStatement();
 			ResultSet results = stmt.executeQuery(GET_COMPANY_COUNT_QUERY);

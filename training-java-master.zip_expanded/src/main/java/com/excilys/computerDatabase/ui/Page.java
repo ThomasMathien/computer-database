@@ -3,6 +3,7 @@ package main.java.com.excilys.computerDatabase.ui;
 import java.util.List;
 
 import main.java.com.excilys.computerDatabase.exception.PageOutOfBoundException;
+import main.java.com.excilys.computerDatabase.ui.view.Displayable;
 
 public class Page {
 	public final static int MAX_LINES_PER_PAGE = 10;
