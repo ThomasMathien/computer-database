@@ -56,7 +56,7 @@ public class ComputerDatabaseDAO {
 			while(results.next()) {
 				Optional<Computer> c;
 				try {
-					c = ComputerMapper.toComputer(results);
+					c = ComputerMapper.getInstance().toComputer(results);
 					computers.add(c.orElseThrow());
 				} catch (IncompleteResultSetException e) {
 					e.printStackTrace();
@@ -76,7 +76,7 @@ public class ComputerDatabaseDAO {
 			ResultSet results = stmt.executeQuery();
 			if(results.next()) {
 				try {
-					computer =  ComputerMapper.toComputer(results);
+					computer =  ComputerMapper.getInstance().toComputer(results);
 				} catch (IncompleteResultSetException e) {
 					e.printStackTrace();
 				}

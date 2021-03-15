@@ -44,7 +44,7 @@ public class CompanyDatabaseDAO {
 			while(results.next()) {
 				Optional<Company> c;
 				try {
-					c = CompanyMapper.toCompany(results);
+					c = CompanyMapper.getInstance().toCompany(results);
 					if (c.isPresent()) {
 						companies.add(c.orElseThrow());
 					}
@@ -66,7 +66,7 @@ public class CompanyDatabaseDAO {
 			ResultSet results = stmt.executeQuery();
 			if(results.next()) {
 				try {
-					company =  CompanyMapper.toCompany(results);
+					company =  CompanyMapper.getInstance().toCompany(results);
 				} catch (IncompleteResultSetException e) {
 					e.printStackTrace();
 				}

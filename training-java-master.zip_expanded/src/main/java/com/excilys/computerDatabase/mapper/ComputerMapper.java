@@ -4,19 +4,31 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
+import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
 import main.java.com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import main.java.com.excilys.computerDatabase.model.Company;
 import main.java.com.excilys.computerDatabase.model.Computer;
 import main.java.com.excilys.computerDatabase.model.builder.ComputerBuilder;
 
-public abstract class ComputerMapper {
+public class ComputerMapper {
 	
 	public final static String ID_COLUMN = "id";
 	public final static String NAME_COLUMN = "name";
 	public final static String INTRODUCED_COLUMN = "introduced";
 	public final static String DISCONTINUED_COLUMN = "discontinued";
 	
-	public static Optional<Computer> toComputer(ResultSet rs) throws IncompleteResultSetException{
+	
+	private ComputerMapper() {}
+	private static ComputerMapper instance;
+	
+	public static ComputerMapper getInstance() {
+		if (instance == null) {
+			instance = new ComputerMapper();
+		}
+		return instance;
+	}
+	
+	public Optional<Computer> toComputer(ResultSet rs) throws IncompleteResultSetException{
 		if (rs == null) {
 			throw new IllegalArgumentException();
 		}
@@ -34,7 +46,7 @@ public abstract class ComputerMapper {
 				.build());
 		if (computer.isPresent()) {
 			if (rs.getLong(CompanyMapper.ID_COLUMN) != 0) {
-				Optional<Company> company = CompanyMapper.toCompany(rs);
+				Optional<Company> company = CompanyMapper.getInstance().toCompany(rs);
 				if (company.isPresent()) {
 					((Computer) computer.orElseThrow()).setCompany(company.orElseThrow());
 				}
