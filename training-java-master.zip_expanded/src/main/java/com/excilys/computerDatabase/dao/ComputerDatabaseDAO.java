@@ -48,18 +48,19 @@ public class ComputerDatabaseDAO {
 	
 	public List<Computer> getComputers(long from, long amount){
 		List<Computer> computers = new ArrayList<>();
-		try (Connection conn = new DbConnect().getConnection()){
-			PreparedStatement stmt = conn.prepareStatement(FIND_COMPUTERS_INTERVAL_QUERY);
+		try (Connection conn = new DbConnect().getConnection();
+				PreparedStatement stmt = conn.prepareStatement(FIND_COMPUTERS_INTERVAL_QUERY)){
 			stmt.setLong(1, amount);
 			stmt.setLong(2,from);
-			ResultSet results = stmt.executeQuery();
-			while(results.next()) {
-				Optional<Computer> c;
-				try {
-					c = ComputerMapper.getInstance().toComputer(results);
-					computers.add(c.orElseThrow());
-				} catch (IncompleteResultSetException e) {
-					e.printStackTrace();
+			try (ResultSet results = stmt.executeQuery()){
+				while(results.next()) {
+					Optional<Computer> c;
+					try {
+						c = ComputerMapper.getInstance().toComputer(results);
+						computers.add(c.orElseThrow());
+					} catch (IncompleteResultSetException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		} catch (SQLException e) {
@@ -70,15 +71,16 @@ public class ComputerDatabaseDAO {
 
 	public Optional<Computer> findComputer(long id){
 		Optional<Computer> computer = Optional.empty();;
-		try (Connection conn = new DbConnect().getConnection()){
-			PreparedStatement stmt = conn.prepareStatement(FIND_COMPUTER_BY_ID_QUERY);
+		try (Connection conn = new DbConnect().getConnection();
+				PreparedStatement stmt = conn.prepareStatement(FIND_COMPUTER_BY_ID_QUERY)){
 			stmt.setLong(1, id);
-			ResultSet results = stmt.executeQuery();
-			if(results.next()) {
-				try {
-					computer =  ComputerMapper.getInstance().toComputer(results);
-				} catch (IncompleteResultSetException e) {
-					e.printStackTrace();
+			try (ResultSet results = stmt.executeQuery()){
+				if(results.next()) {
+					try {
+						computer =  ComputerMapper.getInstance().toComputer(results);
+					} catch (IncompleteResultSetException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		} catch (SQLException e) {
@@ -88,8 +90,8 @@ public class ComputerDatabaseDAO {
 	}
 	
 	public void addComputer(Computer computer) throws FailedSQLRequestException {
-		try(Connection conn = new DbConnect().getConnection()) {
-			PreparedStatement stmt = conn.prepareStatement(ADD_COMPUTER_QUERY, Statement.RETURN_GENERATED_KEYS);
+		try(Connection conn = new DbConnect().getConnection();
+				PreparedStatement stmt = conn.prepareStatement(ADD_COMPUTER_QUERY, Statement.RETURN_GENERATED_KEYS)) {
 			stmt.setString(1,computer.getName());
 			stmt.setTimestamp(2,computer.getIntroduced());
 			stmt.setTimestamp(3,computer.getDiscontinued());
@@ -100,12 +102,13 @@ public class ComputerDatabaseDAO {
 				stmt.setNull(4,Types.BIGINT);
 			}
 			stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            if(rs.next())
-            {
-        		if (rs.getInt(1) == 0) {
-        			throw new FailedSQLRequestException("Couldn't create computer:"+computer.toString());
-        		}
+            try (ResultSet rs = stmt.getGeneratedKeys();){
+                if(rs.next())
+                {
+            		if (rs.getInt(1) == 0) {
+            			throw new FailedSQLRequestException("Couldn't create computer:"+computer.toString());
+            		}
+                }
             }
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -113,8 +116,8 @@ public class ComputerDatabaseDAO {
 	}
 	
 	public void deleteComputer(long id) throws FailedSQLRequestException {
-		try(Connection conn = new DbConnect().getConnection()) {
-			PreparedStatement stmt = conn.prepareStatement(DELETE_COMPUTER_BY_ID_QUERY);
+		try(Connection conn = new DbConnect().getConnection();
+				PreparedStatement stmt = conn.prepareStatement(DELETE_COMPUTER_BY_ID_QUERY)) {
 			stmt.setLong(1,id);
 			if (stmt.executeUpdate() == 0) {
     			throw new FailedSQLRequestException("Couldn't delete computer with Id:"+id);
@@ -125,8 +128,8 @@ public class ComputerDatabaseDAO {
 	}
 	
 	public void updateComputer(long id, Computer computer) throws FailedSQLRequestException {
-		try(Connection conn = new DbConnect().getConnection()) {
-			PreparedStatement stmt = conn.prepareStatement(UPDATE_COMPUTER_BY_ID_QUERY);
+		try(Connection conn = new DbConnect().getConnection();
+				PreparedStatement stmt = conn.prepareStatement(UPDATE_COMPUTER_BY_ID_QUERY)) {
 			stmt.setString(1, computer.getName());
 			stmt.setTimestamp(2,computer.getIntroduced());
 			stmt.setTimestamp(3,computer.getDiscontinued());
@@ -145,11 +148,10 @@ public class ComputerDatabaseDAO {
 		}
 	}
 
-
 	public int getComputerCount() {
-		try (Connection conn = new DbConnect().getConnection()){
-			Statement stmt = conn.createStatement();
-			ResultSet results = stmt.executeQuery(GET_COMPUTERS_COUNT_QUERY);
+		try (Connection conn = new DbConnect().getConnection();
+				Statement stmt = conn.createStatement();
+				ResultSet results = stmt.executeQuery(GET_COMPUTERS_COUNT_QUERY)){
 			if(results.next()) {
 				return results.getInt(1);
 			}

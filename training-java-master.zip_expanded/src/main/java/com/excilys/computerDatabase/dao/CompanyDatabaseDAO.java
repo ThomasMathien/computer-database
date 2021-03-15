@@ -36,20 +36,21 @@ public class CompanyDatabaseDAO {
 	
 	public List<Company> getCompanies(int from, int amount){
 		List<Company> companies = new ArrayList<>();
-		try (Connection conn = new DbConnect().getConnection()){
-			PreparedStatement stmt = conn.prepareStatement(FIND_COMPANIES_INTERVAL_QUERY);
+		try (Connection conn = new DbConnect().getConnection();
+				PreparedStatement stmt = conn.prepareStatement(FIND_COMPANIES_INTERVAL_QUERY)){
 			stmt.setLong(1, amount);
 			stmt.setLong(2,from);
-			ResultSet results = stmt.executeQuery();
-			while(results.next()) {
-				Optional<Company> c;
-				try {
-					c = CompanyMapper.getInstance().toCompany(results);
-					if (c.isPresent()) {
-						companies.add(c.orElseThrow());
+			try (ResultSet results = stmt.executeQuery()){
+				while(results.next()) {
+					Optional<Company> c;
+					try {
+						c = CompanyMapper.getInstance().toCompany(results);
+						if (c.isPresent()) {
+							companies.add(c.orElseThrow());
+						}
+					} catch (IncompleteResultSetException e) {
+						e.printStackTrace();
 					}
-				} catch (IncompleteResultSetException e) {
-					e.printStackTrace();
 				}
 			}
 		} catch (SQLException e) {
@@ -60,16 +61,17 @@ public class CompanyDatabaseDAO {
 	
 	public Optional<Company> findCompany(long id){
 		Optional<Company> company = Optional.empty();
-		try (Connection conn = new DbConnect().getConnection()){
-			PreparedStatement stmt = conn.prepareStatement(FIND_COMPANY_BY_ID_QUERY);
+		try (Connection conn = new DbConnect().getConnection();
+				PreparedStatement stmt = conn.prepareStatement(FIND_COMPANY_BY_ID_QUERY)){
 			stmt.setLong(1, id);
-			ResultSet results = stmt.executeQuery();
-			if(results.next()) {
-				try {
-					company =  CompanyMapper.getInstance().toCompany(results);
-				} catch (IncompleteResultSetException e) {
-					e.printStackTrace();
-				}
+			try (ResultSet results = stmt.executeQuery()){
+				if(results.next()) {
+					try {
+						company =  CompanyMapper.getInstance().toCompany(results);
+					} catch (IncompleteResultSetException e) {
+						e.printStackTrace();
+					}
+				}	
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -78,9 +80,9 @@ public class CompanyDatabaseDAO {
 	}
 	
 	public int getCompanyCount() {
-		try (Connection conn = new DbConnect().getConnection()){
-			Statement stmt = conn.createStatement();
-			ResultSet results = stmt.executeQuery(GET_COMPANY_COUNT_QUERY);
+		try (Connection conn = new DbConnect().getConnection();
+				Statement stmt = conn.createStatement();
+				ResultSet results = stmt.executeQuery(GET_COMPANY_COUNT_QUERY)){
 			if(results.next()) {
 				return results.getInt(1);
 			}
