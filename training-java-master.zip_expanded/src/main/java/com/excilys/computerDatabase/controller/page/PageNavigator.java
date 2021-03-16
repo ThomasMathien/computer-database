@@ -1,11 +1,9 @@
-package main.java.com.excilys.computerDatabase.ui;
+package main.java.com.excilys.computerDatabase.controller.page;
 
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
-import main.java.com.excilys.computerDatabase.dao.ComputerDatabaseDAO;
 import main.java.com.excilys.computerDatabase.exception.PageOutOfBoundException;
 import main.java.com.excilys.computerDatabase.service.CompanyService;
 import main.java.com.excilys.computerDatabase.service.ComputerService;
@@ -15,12 +13,24 @@ import main.java.com.excilys.computerDatabase.ui.view.ShortDisplayComputer;
 
 public class PageNavigator {
 
+	
+	private final String NEXT_PAGE_COMMAND = "+";
+	private final String PREVIOUS_PAGE_COMMAND = "-";
+	private final String EXIT_COMMAND = "7";
+	
 	public final static int GET_COMPUTERS_REQUEST = 1;
 	public final static int GET_COMPANIES_REQUEST = 2;
 	Page page;
 	
-	public PageNavigator() {
-
+	private static PageNavigator instance = null;
+	
+	private PageNavigator() {}
+	
+	public static PageNavigator getInstance() {
+		if (instance == null) {
+			instance = new PageNavigator();
+		}
+		return instance;
 	}
 
 	private int getTotalToFetch(int request) {
@@ -51,11 +61,11 @@ public class PageNavigator {
 		Page p = new Page(content, totalToFetch);
 		p.print();
 		while (true) {
-			System.out.println("***** Use - and + to navigate and 0 to exit *****");
+			System.out.println("***** Use "+PREVIOUS_PAGE_COMMAND+" and "+NEXT_PAGE_COMMAND+" to navigate and "+EXIT_COMMAND+" to exit *****");
 			System.out.print(">>");	
 			String command = sc.nextLine();
 			switch(command) {
-			case "+":
+			case NEXT_PAGE_COMMAND:
 				if (p.hasNextPage()) {
 					try {
 						if (p.needsFeeding()) {
@@ -72,7 +82,7 @@ public class PageNavigator {
 					System.out.println("No more pages");
 				}
 				break;
-			case "-":
+			case PREVIOUS_PAGE_COMMAND:
 				if (p.hasPreviousPage()) {
 					try {
 						p.previousPage();
@@ -85,7 +95,7 @@ public class PageNavigator {
 					System.out.println("Already at first page");
 				}
 				break;
-			case "0":
+			case EXIT_COMMAND:
 				return;
 			default: 
 				System.out.println("Invalid command, please try again");

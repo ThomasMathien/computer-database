@@ -1,10 +1,6 @@
 package main.java.com.excilys.computerDatabase.model;
 import java.sql.Timestamp;
 
-import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
-import main.java.com.excilys.computerDatabase.model.builder.ComputerBuilder;
-import main.java.com.excilys.computerDatabase.validator.InputValidator;
-
 public class Computer {
 	private long id;
 	private String name;

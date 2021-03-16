@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
 import main.java.com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import main.java.com.excilys.computerDatabase.model.Company;
 import main.java.com.excilys.computerDatabase.model.Computer;

@@ -1,4 +1,4 @@
-package main.java.com.excilys.computerDatabase.ui;
+package main.java.com.excilys.computerDatabase.controller.cli;
 
 import java.sql.Timestamp;
 import java.util.Scanner;

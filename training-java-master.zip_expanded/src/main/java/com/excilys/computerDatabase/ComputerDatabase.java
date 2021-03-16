@@ -1,6 +1,6 @@
 package main.java.com.excilys.computerDatabase;
 
-import main.java.com.excilys.computerDatabase.ui.controller.CLIController;
+import main.java.com.excilys.computerDatabase.controller.cli.CLIController;
 
 public class ComputerDatabase {
 

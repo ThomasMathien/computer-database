@@ -2,6 +2,8 @@ package main.java.com.excilys.computerDatabase.exception;
 
 public class IncompleteResultSetException extends Exception {
 
+	private static final long serialVersionUID = -4647265899397472295L;
+
 	public  IncompleteResultSetException(String message) {
 		super(message);
 	}

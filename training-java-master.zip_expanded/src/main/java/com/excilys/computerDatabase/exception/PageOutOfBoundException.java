@@ -2,6 +2,8 @@ package main.java.com.excilys.computerDatabase.exception;
 
 public class PageOutOfBoundException extends Exception {
 	
+	private static final long serialVersionUID = -4546579324707943245L;
+
 	public  PageOutOfBoundException(String message) {
 		super(message);
 	}

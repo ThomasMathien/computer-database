@@ -6,9 +6,9 @@ import java.util.Optional;
 import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
 import main.java.com.excilys.computerDatabase.model.Company;
 
-public class CompanyService {
+public class CompanyService{
+
 	private static CompanyService instance;
-	
 	
 	public static CompanyService getInstance() {
 		if (instance == null) {

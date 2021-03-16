@@ -1,4 +1,4 @@
-package main.java.com.excilys.computerDatabase.ui.controller;
+package main.java.com.excilys.computerDatabase.controller.cli;
 
 import main.java.com.excilys.computerDatabase.exception.CommandNotFoundException;
 

@@ -1,7 +1,6 @@
 package main.java.com.excilys.computerDatabase.mapper;
 
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Optional;
 

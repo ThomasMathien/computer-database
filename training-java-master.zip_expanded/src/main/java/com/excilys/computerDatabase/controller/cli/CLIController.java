@@ -1,16 +1,15 @@
-package main.java.com.excilys.computerDatabase.ui.controller;
+package main.java.com.excilys.computerDatabase.controller.cli;
 
 import java.sql.Timestamp;
 import java.util.Optional;
 import java.util.Scanner;
-import main.java.com.excilys.computerDatabase.dao.ComputerDatabaseDAO;
+
+import main.java.com.excilys.computerDatabase.controller.page.PageNavigator;
 import main.java.com.excilys.computerDatabase.exception.CommandNotFoundException;
 import main.java.com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import main.java.com.excilys.computerDatabase.model.Computer;
 import main.java.com.excilys.computerDatabase.model.builder.ComputerBuilder;
 import main.java.com.excilys.computerDatabase.service.ComputerService;
-import main.java.com.excilys.computerDatabase.ui.InputParser;
-import main.java.com.excilys.computerDatabase.ui.PageNavigator;
 import main.java.com.excilys.computerDatabase.ui.view.DetailsDisplayComputer;
 
 public class CLIController {
@@ -143,20 +142,11 @@ public class CLIController {
 	}
 
 	private void displayCompanies() {
-		PageNavigator nv = new PageNavigator();
-		nv.run(sc, PageNavigator.GET_COMPANIES_REQUEST);
+		PageNavigator.getInstance().run(sc, PageNavigator.GET_COMPANIES_REQUEST);
 	}
 
 	private void displayComputers() {
-		PageNavigator nv = new PageNavigator();
-		nv.run(sc, PageNavigator.GET_COMPUTERS_REQUEST);
-	}
-	
-	
-	protected void finalize() {
-		if (sc != null){
-			sc.close();
-		}
+		PageNavigator.getInstance().run(sc, PageNavigator.GET_COMPUTERS_REQUEST);
 	}
 	
 }

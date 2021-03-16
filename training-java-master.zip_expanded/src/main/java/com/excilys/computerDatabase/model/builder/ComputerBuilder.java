@@ -3,7 +3,6 @@ package main.java.com.excilys.computerDatabase.model.builder;
 import java.sql.Timestamp;
 import java.util.Optional;
 
-import main.java.com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
 import main.java.com.excilys.computerDatabase.model.Company;
 import main.java.com.excilys.computerDatabase.model.Computer;
 import main.java.com.excilys.computerDatabase.service.CompanyService;
