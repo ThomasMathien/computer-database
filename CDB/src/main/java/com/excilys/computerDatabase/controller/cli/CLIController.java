@@ -4,6 +4,10 @@ import java.sql.Timestamp;
 import java.util.Optional;
 import java.util.Scanner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.excilys.computerDatabase.ComputerDatabase;
 import com.excilys.computerDatabase.controller.page.PageNavigator;
 import com.excilys.computerDatabase.exception.CommandNotFoundException;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
@@ -16,7 +20,8 @@ public class CLIController {
 	
 	private static CLIController instance;
 	private Scanner sc;
-	
+    private static final Logger logger = LoggerFactory.getLogger(CLIController.class);
+    
 	private CLIController() {
 		 sc = new Scanner(System.in);
 	}
@@ -32,7 +37,7 @@ public class CLIController {
 		while (true) {
 			displayMainMenu();
 			String command = InputParser.takeString(sc);
-			MenuOption menuOption;
+			MenuOption menuOption = null;
 			try {
 				menuOption = MenuOption.fromCommand(command);
 				System.out.println("Please wait...");
@@ -59,9 +64,10 @@ public class CLIController {
 						sc.close();
 						return;
 					default:
-						throw new CommandNotFoundException("Command "+ command+ "not found");
+						throw new CommandNotFoundException("Command "+ command+ " not found");
 				}
 			} catch (CommandNotFoundException e) {
+				logger.info("Command not Found: no command "+menuOption+" exists",e);
 				System.out.println("Invalid command, please try again");
 			}
 		} 
@@ -93,8 +99,11 @@ public class CLIController {
 			ComputerService.getInstance().addComputer(c);
 		}
 		catch (FailedSQLRequestException e) {
+			logger.info("Add Computer Failed: "+c.toString(),e);
 			System.out.println("Computer not added");
+			return;
 		}
+		logger.info("Add Computer Success: "+c.toString());
 		System.out.println("Computer successfully created!");
 	}
 	
@@ -105,8 +114,11 @@ public class CLIController {
 			ComputerService.getInstance().deleteComputer(computerId);
 		}
 		catch (FailedSQLRequestException e) {
+			logger.info("Delete Computer Failed: for Id "+computerId,e);
 			System.out.println("Computer not deleted");
+			return;
 		}
+		logger.info("Delete Computer Success: for Id "+computerId);
 		System.out.println("Computer "+computerId+" successfully deleted!");
 	}
 	
@@ -119,8 +131,11 @@ public class CLIController {
 			ComputerService.getInstance().updateComputer(computerId,c);
 		}
 		catch (FailedSQLRequestException e) {
+			logger.info("Update Computer Failed: for Id "+computerId+" update to "+c.toString(),e);
 			System.out.println("Computer not updated");
+			return;
 		}
+		logger.info("Update Computer Success: for Id "+computerId+" update to "+c.toString());
 		System.out.println("Computer successfully updated!");
 	}
 	
