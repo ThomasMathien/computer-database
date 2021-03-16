@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
@@ -30,7 +33,8 @@ public class ComputerDatabaseDAO {
 			SELECT computer.id AS id, computer.name AS name, introduced, discontinued, computer.company_id AS company_id,
 			company.name AS company_name FROM computer LEFT JOIN company ON computer.company_id = company.id ORDER BY computer.id LIMIT ? OFFSET ?;""";
 
-
+	private Logger logger = LoggerFactory.getLogger(ComputerDatabaseDAO.class);
+	
 	private static ComputerDatabaseDAO instance = null;
 	
 	private ComputerDatabaseDAO() {}
@@ -57,14 +61,16 @@ public class ComputerDatabaseDAO {
 					Optional<Computer> c;
 					try {
 						c = ComputerMapper.getInstance().toComputer(results);
-						computers.add(c.orElseThrow());
+						if (c.isPresent()) {
+							computers.add(c.orElseThrow());
+						}
 					} catch (IncompleteResultSetException e) {
-						e.printStackTrace();
+						logger.error("Creating Computer from ResultSet Failed: with resultSet "+results.toString(),e );
 					}
 				}
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Get Computers SQL Request Failed: with request "+FIND_COMPUTERS_INTERVAL_QUERY+" for "+amount+" rows from "+from,e );
 		}
 		return computers;
 	}
@@ -79,12 +85,12 @@ public class ComputerDatabaseDAO {
 					try {
 						computer =  ComputerMapper.getInstance().toComputer(results);
 					} catch (IncompleteResultSetException e) {
-						e.printStackTrace();
+						logger.error("Creating Computer from ResultSet Failed: with resultSet "+results.toString(),e );
 					}
 				}
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Find Computer SQL Request Failed: with request "+FIND_COMPUTER_BY_ID_QUERY+" for Id"+id,e );
 		}
 		return computer;
 	}
@@ -111,7 +117,7 @@ public class ComputerDatabaseDAO {
                 }
             }
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Add Computer SQL Request Failed: with request "+ADD_COMPUTER_QUERY+" for Computer "+computer.toString(),e);
 		}
 	}
 	
@@ -123,7 +129,7 @@ public class ComputerDatabaseDAO {
     			throw new FailedSQLRequestException("Couldn't delete computer with Id:"+id);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Delete Computer SQL Request Failed: with request "+DELETE_COMPUTER_BY_ID_QUERY+" for Id "+id,e);
 		}
 	}
 	
@@ -144,7 +150,8 @@ public class ComputerDatabaseDAO {
     			throw new FailedSQLRequestException("Couldn't update computer with Id:"+id+ " with Object:"+computer.toString());
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Update Computer SQL Request Failed: with request " + UPDATE_COMPUTER_BY_ID_QUERY +
+					" for Id:"+id+ " with Object:"+computer.toString(),e);
 		}
 	}
 
@@ -156,7 +163,7 @@ public class ComputerDatabaseDAO {
 				return results.getInt(1);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Get Computer Count SQL Request Failed: with request "+GET_COMPUTERS_COUNT_QUERY,e );
 		}
 		return 0;
 	}

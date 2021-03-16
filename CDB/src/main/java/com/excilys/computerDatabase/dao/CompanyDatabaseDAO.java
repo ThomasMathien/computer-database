@@ -13,7 +13,12 @@ import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.mapper.CompanyMapper;
 import com.excilys.computerDatabase.model.Company;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class CompanyDatabaseDAO {
+	
+	private Logger logger = LoggerFactory.getLogger(CompanyDatabaseDAO.class);
 	
 	private static final String FIND_COMPANY_BY_ID_QUERY = "SELECT id AS company_id,name AS company_name FROM company WHERE id=?;";
 	private static final String GET_COMPANY_COUNT_QUERY = "SELECT COUNT(*) FROM company;";
@@ -42,19 +47,20 @@ public class CompanyDatabaseDAO {
 			stmt.setLong(2,from);
 			try (ResultSet results = stmt.executeQuery()){
 				while(results.next()) {
-					Optional<Company> c;
+					Optional<Company> company;
 					try {
-						c = CompanyMapper.getInstance().toCompany(results);
-						if (c.isPresent()) {
-							companies.add(c.orElseThrow());
+						company = CompanyMapper.getInstance().toCompany(results);
+						if (company.isPresent()) {
+							companies.add(company.orElseThrow());
 						}
 					} catch (IncompleteResultSetException e) {
+						logger.error("Creating Company from ResultSet Failed: with resultSet "+results.toString(),e );
 						e.printStackTrace();
 					}
 				}
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Get Companies SQL Request Failed: with request "+FIND_COMPANIES_INTERVAL_QUERY+" for "+amount+" rows from "+from,e );
 		}
 		return companies;
 	}
@@ -69,12 +75,12 @@ public class CompanyDatabaseDAO {
 					try {
 						company =  CompanyMapper.getInstance().toCompany(results);
 					} catch (IncompleteResultSetException e) {
-						e.printStackTrace();
+						logger.error("Creating Company from ResultSet Failed: with resultSet "+results.toString(),e );
 					}
 				}	
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Find Company SQL Request Failed: with request "+FIND_COMPANY_BY_ID_QUERY+" for Id"+id,e );
 		}
 		return company;
 	}
@@ -87,7 +93,7 @@ public class CompanyDatabaseDAO {
 				return results.getInt(1);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Get Company Count SQL Request Failed: with request "+GET_COMPANY_COUNT_QUERY,e );
 		}
 		return 0;
 	}

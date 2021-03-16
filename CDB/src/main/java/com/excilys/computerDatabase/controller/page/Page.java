@@ -51,6 +51,10 @@ public class Page {
 		}
 	}
 	
+	public int getCurrentPage() {
+		return this.currentPage;
+	}
+	
 	public void feedContent(List<Displayable> content) {
 		this.content.addAll(content);
 	}
@@ -74,5 +78,11 @@ public class Page {
 	
 	public boolean hasPreviousPage() {
 		return currentPage > 0 ;
+	}
+	
+	@Override
+	public String toString() {
+		return "Page [content=" + content + ", currentPage=" + currentPage + ", maxPages=" + maxPages + ", maxToFetch="
+				+ maxToFetch + "]";
 	}
 }

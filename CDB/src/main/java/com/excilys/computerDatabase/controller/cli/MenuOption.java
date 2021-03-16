@@ -9,7 +9,7 @@ public enum MenuOption {
 	ADD_COMPUTER("4","Add new computer"),
 	UPDATE_COMPUTER("5","Update existing computer"),
 	DELETE_COMPUTER("6","Delete existing computer"),
-	EXIT_MENU("7","Exit");
+	EXIT_MENU("0","Exit");
 	
 	private final String command;
 	private final String message;

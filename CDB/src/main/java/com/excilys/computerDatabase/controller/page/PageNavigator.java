@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.excilys.computerDatabase.exception.PageOutOfBoundException;
 import com.excilys.computerDatabase.service.CompanyService;
 import com.excilys.computerDatabase.service.ComputerService;
@@ -13,10 +16,11 @@ import com.excilys.computerDatabase.ui.view.ShortDisplayComputer;
 
 public class PageNavigator {
 
+	private final Logger logger = LoggerFactory.getLogger(PageNavigator.class);
 	
 	private final String NEXT_PAGE_COMMAND = "+";
 	private final String PREVIOUS_PAGE_COMMAND = "-";
-	private final String EXIT_COMMAND = "7";
+	private final String EXIT_COMMAND = "0";
 	
 	public final static int GET_COMPUTERS_REQUEST = 1;
 	public final static int GET_COMPANIES_REQUEST = 2;
@@ -75,7 +79,7 @@ public class PageNavigator {
 						p.nextPage();
 						p.print();
 					} catch (PageOutOfBoundException e) {
-						e.printStackTrace();
+						logger.error("Next Page Failed: from Page "+p.toString(),e);
 					}
 				}
 				else {
@@ -88,7 +92,7 @@ public class PageNavigator {
 						p.previousPage();
 						p.print();
 					} catch (PageOutOfBoundException e) {
-						e.printStackTrace();
+						logger.error("Previous Page Failed: from Page "+p.toString(),e);
 					}
 				}
 				else {
