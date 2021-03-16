@@ -17,18 +17,18 @@ import main.java.com.excilys.computerDatabase.model.Computer;
 
 public class ComputerDatabaseDAO {
 
-	private final static String ADD_COMPUTER_QUERY = "INSERT INTO computer (name,introduced,discontinued,company_id) "
-			+ "VALUES (?,?,?,?);";
+	private final static String ADD_COMPUTER_QUERY = """
+		INSERT INTO computer (name,introduced,discontinued,company_id) VALUES (?,?,?,?);""";
 	private final static String DELETE_COMPUTER_BY_ID_QUERY = "DELETE FROM computer WHERE id=?;";
-	private final static String UPDATE_COMPUTER_BY_ID_QUERY = "UPDATE computer SET name=?,introduced=?,discontinued=?,"
-			+ "company_id=? WHERE id=?;";
-	private static final String FIND_COMPUTER_BY_ID_QUERY = "SELECT computer.id AS id, computer.name AS name, "
-			+ "introduced, discontinued, computer.company_id AS company_id, company.name AS company_name "
-			+ "FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE computer.id = ?;";
+	private final static String UPDATE_COMPUTER_BY_ID_QUERY = """
+			UPDATE computer SET name=?,introduced=?,discontinued=?, company_id=? WHERE id=?;""";
+	private static final String FIND_COMPUTER_BY_ID_QUERY = """
+			SELECT computer.id AS id, computer.name AS name, introduced, discontinued, computer.company_id AS company_id,
+			company.name AS company_name FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE computer.id = ?;""";
 	private final static String GET_COMPUTERS_COUNT_QUERY = "SELECT COUNT(*) FROM computer;";
-	private static final String FIND_COMPUTERS_INTERVAL_QUERY = "SELECT computer.id AS id, computer.name AS name, "
-			+ "introduced, discontinued, computer.company_id AS company_id, company.name AS company_name "
-			+ "FROM computer LEFT JOIN company ON computer.company_id = company.id ORDER BY computer.id LIMIT ? OFFSET ?;";
+	private static final String FIND_COMPUTERS_INTERVAL_QUERY = """
+			SELECT computer.id AS id, computer.name AS name, introduced, discontinued, computer.company_id AS company_id,
+			company.name AS company_name FROM computer LEFT JOIN company ON computer.company_id = company.id ORDER BY computer.id LIMIT ? OFFSET ?;""";
 
 
 	private static ComputerDatabaseDAO instance = null;

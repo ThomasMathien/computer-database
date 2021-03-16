@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="training-java-master.zip_expanded">
-        <wb-resource deploy-path="/" source-path="/WebContent"/>
-        <property name="context-root" value="training-java-master.zip_expanded"/>
-        <property name="java-output-path" value="/training-java-master.zip_expanded/build/classes"/>
-    </wb-module>
-</project-modules>
