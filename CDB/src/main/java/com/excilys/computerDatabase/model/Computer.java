@@ -12,6 +12,14 @@ public class Computer {
 		this.name = name;
 	}
 
+	public Computer(Computer computer) {
+		this.id = computer.id;
+		this.name = computer.name;
+		this.introduced = computer.introduced;
+		this.discontinued = computer.discontinued;
+		this.company = computer.company;
+	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
