@@ -13,7 +13,7 @@ import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.model.builder.ComputerBuilder;
 
-public class ComputerDatabaseDAOTest {
+public class ComputerDAOTest {
 	
 	@Test
 	public void testGetComputers() {
