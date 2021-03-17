@@ -5,7 +5,7 @@
   <groupId>com.excilys.computerDatabase</groupId>
   <artifactId>CDB</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>CDB</name>
   <url>http://maven.apache.org</url>
@@ -21,6 +21,7 @@
 	<slf4j-simple.version>1.7.30</slf4j-simple.version>
 	<h2.version>1.4.200</h2.version>
 	<javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+	<jstl.version>1.2</jstl.version>
   </properties>
 
 	<build>
@@ -43,6 +44,12 @@
 	    <artifactId>javax.servlet-api</artifactId>
 	    <version>${javax.servlet-api.version}</version>
 	    <scope>provided</scope>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>${jstl.version}</version>
 	</dependency>
   	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 	<dependency>
