@@ -1,4 +1,4 @@
---drop schema if exists `computer-database-db_test`;
+--drop schema if exists `computer-database-db-test`;
   create schema if not exists `computer-database-db-test`;
   use `computer-database-db-test`;
 
