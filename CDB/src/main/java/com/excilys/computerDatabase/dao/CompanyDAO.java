@@ -16,21 +16,21 @@ import com.excilys.computerDatabase.model.Company;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CompanyDatabaseDAO {
+public class CompanyDAO {
 	
-	private Logger logger = LoggerFactory.getLogger(CompanyDatabaseDAO.class);
+	private Logger logger = LoggerFactory.getLogger(CompanyDAO.class);
 	
 	private static final String FIND_COMPANY_BY_ID_QUERY = "SELECT id AS company_id,name AS company_name FROM company WHERE id=?;";
 	private static final String GET_COMPANY_COUNT_QUERY = "SELECT COUNT(*) FROM company;";
 	private static final String FIND_COMPANIES_INTERVAL_QUERY = "SELECT id AS company_id,name AS company_name FROM company ORDER BY id LIMIT ? OFFSET ?;";
 	
-	private static CompanyDatabaseDAO instance = null;
+	private static CompanyDAO instance = null;
 	
-	private CompanyDatabaseDAO() {}
+	private CompanyDAO() {}
 	
-	public static CompanyDatabaseDAO getInstance() {
+	public static CompanyDAO getInstance() {
 		if (instance == null) {
-			instance = new CompanyDatabaseDAO();
+			instance = new CompanyDAO();
 		}
 		return instance;
 	}

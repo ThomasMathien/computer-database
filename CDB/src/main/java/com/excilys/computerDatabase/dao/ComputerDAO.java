@@ -18,7 +18,7 @@ import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Computer;
 
-public class ComputerDatabaseDAO {
+public class ComputerDAO {
 
 	private final static String ADD_COMPUTER_QUERY = """
 		INSERT INTO computer (name,introduced,discontinued,company_id) VALUES (?,?,?,?);""";
@@ -33,15 +33,15 @@ public class ComputerDatabaseDAO {
 			SELECT computer.id AS id, computer.name AS name, introduced, discontinued, computer.company_id AS company_id,
 			company.name AS company_name FROM computer LEFT JOIN company ON computer.company_id = company.id ORDER BY computer.id LIMIT ? OFFSET ?;""";
 
-	private Logger logger = LoggerFactory.getLogger(ComputerDatabaseDAO.class);
+	private Logger logger = LoggerFactory.getLogger(ComputerDAO.class);
 	
-	private static ComputerDatabaseDAO instance = null;
+	private static ComputerDAO instance = null;
 	
-	private ComputerDatabaseDAO() {}
+	private ComputerDAO() {}
 	
-	public static ComputerDatabaseDAO getInstance() {
+	public static ComputerDAO getInstance() {
 		if (instance == null) {
-			instance = new ComputerDatabaseDAO();
+			instance = new ComputerDAO();
 		}
 		return instance;
 	}
