@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.excilys.computerDatabase.dto.ComputerDTO;
 import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.model.Company;
 import com.excilys.computerDatabase.model.Computer;
@@ -58,9 +59,25 @@ public class ComputerMapper {
 			}
 		}
 		catch (SQLException e) {
-			logger.error("Computer Mapping Failed: for ResultSet "+rs.toString(),e);
+			logger.error("Computer Mapping Failed: for ResultSet " + rs.toString(), e);
 		}
 		return computer;
+	}
+	
+	public ComputerDTO toComputerDTO(Optional<Computer> computer) {
+		ComputerDTO dto = new ComputerDTO();
+		if (computer.isPresent()) {
+			dto.setId(String.valueOf(computer.orElseThrow().getId()));
+			dto.setName(computer.orElseThrow().getName());
+			String introduced = String.valueOf(computer.orElseThrow().getIntroduced());
+			dto.setIntroduced(introduced != "null" ? introduced : "");
+			String discontinued = String.valueOf(computer.orElseThrow().getDiscontinued());
+			dto.setDiscontinued(discontinued != "null" ? discontinued : "");
+			if (computer.orElseThrow().getCompany() != null) {
+				dto.setCompanyName(computer.orElseThrow().getCompany().getName());
+			}
+		}
+		return dto;
 	}
 	
 }

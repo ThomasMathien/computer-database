@@ -19,9 +19,10 @@
     <mockito-core.version>3.8.0</mockito-core.version>
 	<slf4j-api.version>1.7.30</slf4j-api.version>
 	<slf4j-simple.version>1.7.30</slf4j-simple.version>
-	<h2.version>1.4.200</h2.version>
+	<dbunit.version>2.7.0</dbunit.version>
 	<javax.servlet-api.version>4.0.1</javax.servlet-api.version>
 	<jstl.version>1.2</jstl.version>
+	<h2.version>1.4.200</h2.version>
   </properties>
 
 	<build>
@@ -83,7 +84,13 @@
 	    <artifactId>slf4j-simple</artifactId>
 	    <version>${slf4j-simple.version}</version>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+	<dependency>
+	  <groupId>org.dbunit</groupId>
+	  <artifactId>dbunit</artifactId>
+	  <version>${dbunit.version}</version>
+	  <scope>test</scope>
+	</dependency>
+		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
 	<dependency>
 	    <groupId>com.h2database</groupId>
 	    <artifactId>h2</artifactId>

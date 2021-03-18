@@ -9,10 +9,17 @@
 	<servlet-name>DashboardServlet</servlet-name>
 	<servlet-class>com.excilys.computerDatabase.controller.servlet.DashboardServlet</servlet-class>
 </servlet>
+<servlet>
+	<servlet-name>AddComputerServlet</servlet-name>
+	<servlet-class>com.excilys.computerDatabase.controller.servlet.AddComputerServlet</servlet-class>
+</servlet>
 
 <servlet-mapping>
 	<servlet-name>DashboardServlet</servlet-name>
 	<url-pattern>/dashboard</url-pattern>
 </servlet-mapping>
-
+<servlet-mapping>
+	<servlet-name>AddComputerServlet</servlet-name>
+	<url-pattern>/addComputer</url-pattern>
+</servlet-mapping>
 </web-app>
