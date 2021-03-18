@@ -1,6 +1,6 @@
 package com.excilys.computerDatabase.dto;
 
-public class ComputerDTO {
+public class ComputerDTO implements Pageable {
 	
 	private String id;
 	private String name;
@@ -39,6 +39,5 @@ public class ComputerDTO {
 	public String getCompanyName() {
 		return companyName;
 	}
-	
 	
 }

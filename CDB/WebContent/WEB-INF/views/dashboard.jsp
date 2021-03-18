@@ -21,7 +21,7 @@
 
 	<section id="main">
 		<div class="container">
-			<h1 id="homeTitle">${computers.size()} Computers found</h1>
+			<h1 id="homeTitle">${totalComputers} Computers found</h1>
 			<div id="actions" class="form-horizontal">
 				<div class="pull-left">
 					<form id="searchForm" action="#" method="GET" class="form-inline">
@@ -89,20 +89,44 @@
 				<li><a href="#" aria-label="Previous"> <span
 						aria-hidden="true">&laquo;</span>
 				</a></li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-				</a></li>
+				<li><a href="dashboard?pageIndex=1">1</a></li>
+				<c:choose>	
+					<c:when test="${maxPages <= 9}">
+					<c:forEach begin="2" end="${maxPages}" varStatus = "loop">
+						<li><a href="dashboard?pageIndex=${loop.index}">${loop.index}</a></li>
+					</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<li><a>...</a></li>
+						<c:choose>
+							<c:when test="${maxPages == 10}">
+								<c:forEach begin="4" end="${maxPages}" varStatus = "loop">
+									<li><a href="dashboard?pageIndex=${loop.index}">${loop.index}</a></li>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<c:set var="leftPageButtons" scope="page" value="${Math.min(4, Math.max(pageIndex -2,-1))}"/>
+								<c:set var="rightPageButtons" scope="page" value="${Math.min(4,maxPages - pageIndex - 1)}"/>
+								<c:forEach begin="${pageIndex - leftPageButtons}" end="${pageIndex+rightPageButtons}" varStatus = "loop">
+									<li><a href="dashboard?pageIndex=${loop.index}">${loop.index}</a></li>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+						<li><a>...</a></li>
+						<li><a href="dashboard?pageIndex=${maxPages}">${maxPages}</a></li>
+					</c:otherwise>
+				</c:choose>
+				<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>
 			</ul>
+				<div class="btn-group btn-group-sm pull-right" role="group">
+					<form action="dashboard" method="POST">
+						<button name="displayedRowsPerPage" type="submit" class="btn btn-default" value="10">10</button>
+						<button name="displayedRowsPerPage" type="submit" class="btn btn-default" value="50">50</button>
+						<button name="displayedRowsPerPage" type="submit" class="btn btn-default" value="100">100</button>
+					</form>
+				</div>
 
-			<div class="btn-group btn-group-sm pull-right" role="group">
-				<button type="button" class="btn btn-default">10</button>
-				<button type="button" class="btn btn-default">50</button>
-				<button type="button" class="btn btn-default">100</button>
-			</div>
+		</div>
 	</footer>
 	<script src="/CDB/js/jquery.min.js"></script>
 	<script src="/CDB/js/bootstrap.min.js"></script>

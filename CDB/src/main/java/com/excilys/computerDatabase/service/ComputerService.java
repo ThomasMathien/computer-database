@@ -2,9 +2,13 @@ package com.excilys.computerDatabase.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.excilys.computerDatabase.dao.ComputerDAO;
+import com.excilys.computerDatabase.dto.ComputerDTO;
+import com.excilys.computerDatabase.dto.Pageable;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
+import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Computer;
 
 public class ComputerService {
@@ -20,6 +24,10 @@ public class ComputerService {
 	
 	private ComputerService() {}
 	
+	public List<ComputerDTO> getAsPageable(int pageIndex, int itemAmount) {
+		List<Computer> computers = getComputers(pageIndex * itemAmount, itemAmount);
+		return computers.stream().map(c -> ComputerMapper.getInstance().toComputerDTO(Optional.of(c))).collect(Collectors.toList());
+	}
 	
 	public List<Computer> getComputers(){
 		return ComputerDAO.getInstance().getComputers();

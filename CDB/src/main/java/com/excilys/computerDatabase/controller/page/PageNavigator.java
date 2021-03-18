@@ -24,7 +24,7 @@ public class PageNavigator {
 	
 	public final static int GET_COMPUTERS_REQUEST = 1;
 	public final static int GET_COMPANIES_REQUEST = 2;
-	Page page;
+	PageCLI page;
 	
 	private static PageNavigator instance = null;
 	
@@ -61,8 +61,8 @@ public class PageNavigator {
 	
 	public void run (Scanner sc, int request) {
 		int totalToFetch = getTotalToFetch(request);
-		List<Displayable> content = getDisplayables(request,0,Page.MAX_LINES_PER_PAGE);
-		Page p = new Page(content, totalToFetch);
+		List<Displayable> content = getDisplayables(request,0,PageCLI.MAX_LINES_PER_PAGE);
+		PageCLI p = new PageCLI(content, totalToFetch);
 		p.print();
 		while (true) {
 			System.out.println("***** Use "+PREVIOUS_PAGE_COMMAND+" and "+NEXT_PAGE_COMMAND+" to navigate and "+EXIT_COMMAND+" to exit *****");
@@ -74,7 +74,7 @@ public class PageNavigator {
 					try {
 						if (p.needsFeeding()) {
 							System.out.println("Loading ...");
-							p.feedContent(getDisplayables(request, p.size(),Page.MAX_LINES_PER_PAGE));
+							p.feedContent(getDisplayables(request, p.size(),PageCLI.MAX_LINES_PER_PAGE));
 						}
 						p.nextPage();
 						p.print();
