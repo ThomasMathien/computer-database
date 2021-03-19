@@ -3,6 +3,7 @@ package com.excilys.computerDatabase.dao;
 import static org.junit.Assert.*;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -43,8 +44,8 @@ public class ComputerDAOTest {
 	@Test
 	public void testFindComputer() {
 		Optional<Computer> testComputer = Optional.of(new ComputerBuilder("")
-				.setIntroduced(Timestamp.valueOf("1980-05-01 00:00:00"))
-				.setDiscontinued(Timestamp.valueOf("1984-04-01 00:00:00"))
+				.setIntroduced(LocalDate.parse("1980-05-01 00:00:00"))
+				.setDiscontinued(LocalDate.parse("1984-04-01 00:00:00"))
 				.setCompany(1L)
 				.setId(12L)
 				.build());
@@ -79,8 +80,8 @@ public class ComputerDAOTest {
 		}
 		
 		Computer computerIdTaken = new ComputerBuilder("TEST")
-				.setIntroduced(Timestamp.valueOf("1980-05-01 00:00:00"))
-				.setDiscontinued(Timestamp.valueOf("1984-04-01 00:00:00"))
+				.setIntroduced(LocalDate.parse("1980-05-01"))
+				.setDiscontinued(LocalDate.parse("1984-04-01"))
 				.setId(12L)
 				.setCompany(1L).build();
 		
@@ -89,8 +90,8 @@ public class ComputerDAOTest {
 		});
 		
 		Computer computerWrongId = new ComputerBuilder("TEST")
-				.setIntroduced(Timestamp.valueOf("1980-05-01 00:00:00"))
-				.setDiscontinued(Timestamp.valueOf("1984-04-01 00:00:00"))
+				.setIntroduced(LocalDate.parse("1980-05-01"))
+				.setDiscontinued(LocalDate.parse("1984-04-01"))
 				.setId(18L)
 				.setCompany(1L).build();
 		assertThrows(FailedSQLRequestException.class, () -> {

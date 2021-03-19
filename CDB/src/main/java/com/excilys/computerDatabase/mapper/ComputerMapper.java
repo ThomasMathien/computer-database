@@ -2,6 +2,9 @@ package com.excilys.computerDatabase.mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -44,13 +47,15 @@ public class ComputerMapper {
 			if (id == 0) {
 				throw new IncompleteResultSetException("ResultSet requires Id to create a Computer object");
 			}
+			java.sql.Date introduced = rs.getDate(INTRODUCED_COLUMN);
+			java.sql.Date discontinued = rs.getDate(DISCONTINUED_COLUMN);
 			computer = Optional.of(new ComputerBuilder(name)
 					.setId(id)
-					.setIntroduced(rs.getTimestamp(INTRODUCED_COLUMN))
-					.setDiscontinued(rs.getTimestamp(DISCONTINUED_COLUMN))
+					.setIntroduced(introduced != null ? introduced.toLocalDate() : null)
+					.setDiscontinued(discontinued != null ? discontinued.toLocalDate() : null)
 					.build());
 			if (computer.isPresent()) {
-				if (rs.getLong(CompanyMapper.ID_COLUMN) != 0) {
+				if (rs.getLong(CompanyMapper.getInstance().ID_COLUMN) != 0) {
 					Optional<Company> company = CompanyMapper.getInstance().toCompany(rs);
 					if (company.isPresent()) {
 						((Computer) computer.orElseThrow()).setCompany(company.orElseThrow());
@@ -78,6 +83,19 @@ public class ComputerMapper {
 			}
 		}
 		return dto;
+	}
+	
+	public Computer toComputer(String name, String introduced, String discontinued, String companyId) {
+		if (name == null) {
+			throw new IllegalArgumentException();
+		}
+		ComputerBuilder builder = new ComputerBuilder(name)
+				.setIntroduced(LocalDate.parse(introduced))
+				.setDiscontinued(LocalDate.parse(discontinued));
+		if (!"0".equals(companyId)) {
+			builder.setCompany(Long.parseLong(companyId));
+		}
+		return builder.build();
 	}
 	
 }

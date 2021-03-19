@@ -1,6 +1,6 @@
 package com.excilys.computerDatabase.controller.cli;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -30,7 +30,7 @@ public abstract class InputParser {
 		return input;
 	}
 	
-	public static Timestamp takeTimestampInput(Scanner sc) {
+	public static LocalDate takeLocalDateInput(Scanner sc) {
 		String input;
 		do { 
 			System.out.print(">>");
@@ -39,7 +39,7 @@ public abstract class InputParser {
 				input += " 00:00:00";
 			}
 		} while (!InputValidator.isValidTimestamp(input));
-		return Timestamp.valueOf(input);
+		return LocalDate.parse(input);
 	}
 	
 }

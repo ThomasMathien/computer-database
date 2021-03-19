@@ -1,13 +1,12 @@
 package com.excilys.computerDatabase.controller.cli;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Scanner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.excilys.computerDatabase.ComputerDatabase;
 import com.excilys.computerDatabase.controller.page.PageNavigator;
 import com.excilys.computerDatabase.exception.CommandNotFoundException;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
@@ -144,13 +143,13 @@ public class CLIController {
 		System.out.println("+++Enter computer name (<=255 characters):");
 		String name = InputParser.takeNameInput(sc);
 		System.out.println("+++Enter date of introduction (Format: yyyy-[m]m-[d]d [hh:mm:ss[.f...]]:");
-		Timestamp introducted = InputParser.takeTimestampInput(sc);
+		LocalDate introduced = InputParser.takeLocalDateInput(sc);
 		System.out.println("+++Enter date of end (Format: yyyy-[m]m-[d]d [hh:mm:ss[.f...]]:");
-		Timestamp discontinued = InputParser.takeTimestampInput(sc);
+		LocalDate discontinued = InputParser.takeLocalDateInput(sc);
 		System.out.print("+++Enter company id:\n>>");
 		long companyId = InputParser.takeIdInput(sc);
 		return new ComputerBuilder(name)
-				.setIntroduced(introducted)
+				.setIntroduced(introduced)
 				.setDiscontinued(discontinued)
 				.setCompany(companyId)
 				.build();

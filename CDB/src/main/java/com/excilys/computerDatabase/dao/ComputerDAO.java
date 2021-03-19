@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -99,8 +101,10 @@ public class ComputerDAO {
 		try(Connection conn = new DbConnect().getConnection();
 				PreparedStatement stmt = conn.prepareStatement(ADD_COMPUTER_QUERY, Statement.RETURN_GENERATED_KEYS)) {
 			stmt.setString(1,computer.getName());
-			stmt.setTimestamp(2,computer.getIntroduced());
-			stmt.setTimestamp(3,computer.getDiscontinued());
+			LocalDate introduced = computer.getIntroduced();
+			stmt.setDate(2,introduced != null ? Date.valueOf(computer.getIntroduced()) : null);
+			LocalDate discontinued = computer.getDiscontinued();
+			stmt.setDate(3,discontinued != null ? Date.valueOf(computer.getDiscontinued()) : null);
 			if (computer.getCompany() != null) {
 				stmt.setLong(4,computer.getCompany().getId());
 			}
@@ -138,8 +142,8 @@ public class ComputerDAO {
 		try(Connection conn = new DbConnect().getConnection();
 				PreparedStatement stmt = conn.prepareStatement(UPDATE_COMPUTER_BY_ID_QUERY)) {
 			stmt.setString(1, computer.getName());
-			stmt.setTimestamp(2,computer.getIntroduced());
-			stmt.setTimestamp(3,computer.getDiscontinued());
+			stmt.setDate(2,Date.valueOf(computer.getIntroduced()));
+			stmt.setDate(3,Date.valueOf(computer.getDiscontinued()));
 			if (computer.getCompany() != null) {
 				stmt.setLong(4,computer.getCompany().getId());
 			}
