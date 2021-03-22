@@ -38,7 +38,7 @@ public class AddComputerServlet extends HttpServlet {
 			} catch (FailedSQLRequestException e) {
 				e.printStackTrace();
 			}
-			response.sendRedirect("/WEB-INF/views/dashboard.jsp");
+			response.sendRedirect("dashboard");
 		}
 
 }

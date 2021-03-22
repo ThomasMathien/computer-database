@@ -5,7 +5,6 @@ INDEX VERSION 1.131+/home/excilys-thomas/eclipse-workspaces/CDB-Workspace/.metad
 2802776400.index
 1857823108.index
 2861754271.index
-4183938638.index
 2993373411.index
 121784617.index
 3965237762.index
