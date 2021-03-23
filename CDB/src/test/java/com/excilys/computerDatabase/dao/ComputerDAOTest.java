@@ -2,7 +2,6 @@ package com.excilys.computerDatabase.dao;
 
 import static org.junit.Assert.*;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
