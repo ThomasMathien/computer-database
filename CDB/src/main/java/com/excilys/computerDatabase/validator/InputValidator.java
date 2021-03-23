@@ -1,33 +1,34 @@
 package com.excilys.computerDatabase.validator;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 public abstract class InputValidator {
 	
-	public static boolean isValidTimestamp(String s){
+	public static boolean isValidDate(String s){
 		try {
-			Timestamp.valueOf(s);
+			LocalDate.parse(s);
 			return true;
 		}
-		catch(IllegalArgumentException e) {
+		catch (DateTimeParseException e) {
 			return false;
 		}
 	}
 
 	public static boolean isValidId(long id) {
-		return id >=0;
+		return id >= 0;
 	}
 	
 	public static boolean isValidName(String name) {
-		return name.length()<=255 && !name.isBlank();
+		return name.length() <= 255 && !name.isBlank();
 	}
 	
-	public static boolean isValidTimestampInterval(Timestamp from, Timestamp until) {
-		if ( (from == null) || (until == null) ) {
+	public static boolean isValidDateInterval(LocalDate from, LocalDate until) {
+		if ((from == null) || (until == null)) {
 			return true;
 		}
 		else {
-			return from.before(until);
+			return from.isBefore(until);
 		}
 	}
 }

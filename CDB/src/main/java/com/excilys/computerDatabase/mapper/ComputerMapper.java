@@ -15,6 +15,7 @@ import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.model.Company;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.model.builder.ComputerBuilder;
+import com.excilys.computerDatabase.validator.InputValidator;
 
 public class ComputerMapper {
 	
@@ -89,9 +90,13 @@ public class ComputerMapper {
 		if (name == null) {
 			throw new IllegalArgumentException();
 		}
-		ComputerBuilder builder = new ComputerBuilder(name)
-				.setIntroduced(LocalDate.parse(introduced))
-				.setDiscontinued(LocalDate.parse(discontinued));
+		ComputerBuilder builder = new ComputerBuilder(name);
+		if (InputValidator.isValidDate(introduced)) {
+			builder.setIntroduced(LocalDate.parse(introduced));
+		}
+		if (InputValidator.isValidDate(discontinued)) {
+			builder.setDiscontinued(LocalDate.parse(discontinued));
+		}
 		if (!"0".equals(companyId)) {
 			builder.setCompany(Long.parseLong(companyId));
 		}

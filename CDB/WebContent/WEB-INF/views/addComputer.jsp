@@ -16,13 +16,12 @@
             <a class="navbar-brand" href="dashboard.html"> Application - Computer Database </a>
         </div>
     </header>
-
     <section id="main">
         <div class="container">
             <div class="row">
                 <div class="col-xs-8 col-xs-offset-2 box">
                     <h1>Add Computer</h1>
-                    <form action="addComputer" method="POST">
+                    <form id="addComputer" action="addComputer" method="POST">
                         <fieldset>
                             <div class="form-group">
                                 <label for="computerName">Computer name</label>
@@ -57,4 +56,30 @@
         </div>
     </section>
 </body>
+<script src="webjars/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+<script src="webjars/jquery-validation/1.19.3/jquery.validate.min.js" type="text/javascript"></script>
+<script src="webjars/jquery-validation/1.19.3/additional-methods.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function() {
+	jQuery.validator.addMethod("greaterThan", 
+			function(value, element, params) {
+			    if (!/Invalid|NaN/.test(new Date(value)) && !/Invalid|NaN/.test(new Date($(params).val()))){
+			        return new Date(value) > new Date($(params).val());
+			    }
+			    return true; 
+			});
+	$("#addComputer").validate({
+	 rules: {
+	   computerName: {
+		   required: true,
+		   nowhitespace: true,
+	   },
+	   discontinued: { greaterThan: "#introduced" }
+	 },
+	 messages: {
+		 discontinued: "Discontinued date must be after introduced date",
+	  },
+	});
+});
+</script>
 </html>
