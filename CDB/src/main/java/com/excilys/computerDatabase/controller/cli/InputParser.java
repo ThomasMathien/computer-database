@@ -38,7 +38,7 @@ public abstract class InputParser {
 			if(Pattern.matches("^\\d{4}-\\d{1,2}-\\d{1,2}$", input)) {
 				input += " 00:00:00";
 			}
-		} while (!InputValidator.isValidTimestamp(input));
+		} while (!InputValidator.isValidDate(input));
 		return LocalDate.parse(input);
 	}
 	
