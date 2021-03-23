@@ -118,7 +118,6 @@ public class ComputerDAO {
             		if (rs.getInt(1) == 0) {
             			throw new FailedSQLRequestException("Couldn't create computer:"+computer.toString());
             		}
-            		System.out.print(rs.getInt(1));
                 }
             }
 		} catch (SQLException e) {

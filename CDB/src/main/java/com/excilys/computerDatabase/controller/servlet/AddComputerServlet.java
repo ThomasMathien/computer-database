@@ -22,6 +22,7 @@ import com.excilys.computerDatabase.validator.InputValidator;
 
 public class AddComputerServlet extends HttpServlet {
 
+	private static final long serialVersionUID = -195965979475821843L;
 	
 		private Logger logger = LoggerFactory.getLogger(AddComputerServlet.class);
 	
@@ -34,7 +35,7 @@ public class AddComputerServlet extends HttpServlet {
 		
 		@Override
 		public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			String name = request.getParameter("computerName");
+			String name = request.getParameter("computerName").trim();
 			String introduced = request.getParameter("introduced");
 			String discontinued = request.getParameter("discontinued");
 			String companyId = request.getParameter("companyId");

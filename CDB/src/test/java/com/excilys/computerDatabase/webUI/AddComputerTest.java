@@ -72,17 +72,17 @@ public class AddComputerTest {
 		WebElement discontinued = driver.findElement(By.xpath("//input[@id='discontinued']"));
 		WebElement companyId = driver.findElement(By.xpath("//select[@id='companyId']"));
 		WebElement submit = driver.findElement(By.xpath("//input[@type='submit']"));
-		//computerName.sendKeys("Super PC 5000");
-		introduced.sendKeys("09252012");
-		discontinued.sendKeys("09252012");
+		computerName.sendKeys("Super5000");
+		introduced.sendKeys("25112012");
+		discontinued.sendKeys("25122012");
 		new Select(companyId).selectByVisibleText("Apple Inc.");
-		//submit.click();
+		submit.click();
 		assertFalse(driver.getCurrentUrl().contains("addComputer"));
 	}
 	
 	@Test
 	public void shouldHaveValidation() {
-		
+		fail();
 	}
 	
 	 @After
