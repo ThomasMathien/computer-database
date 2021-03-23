@@ -43,8 +43,8 @@ public class ComputerDAOTest {
 	@Test
 	public void testFindComputer() {
 		Optional<Computer> testComputer = Optional.of(new ComputerBuilder("")
-				.setIntroduced(LocalDate.parse("1980-05-01 00:00:00"))
-				.setDiscontinued(LocalDate.parse("1984-04-01 00:00:00"))
+				.setIntroduced(LocalDate.parse("1980-05-01"))
+				.setDiscontinued(LocalDate.parse("1984-04-01"))
 				.setCompany(1L)
 				.setId(12L)
 				.build());

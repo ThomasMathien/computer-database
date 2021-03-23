@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-xs-8 col-xs-offset-2 box">
                     <h1>Add Computer</h1>
-                    <form id="addComputerForm" action="addComputer" method="POST">
+                    <form id="addComputerForm" name="action="addComputer" method="POST">
                         <fieldset>
                             <div class="form-group">
                                 <label for="computerName">Computer name</label>
@@ -48,7 +48,7 @@
                         <div class="actions pull-right">
                             <input name="newComputer" type="submit" value="Add" class="btn btn-primary">
                             or
-                            <a href="dashboard" class="btn btn-default">Cancel</a>
+                            <a id="cancelButton" href="dashboard" class="btn btn-default">Cancel</a>
                         </div>
                     </form>
                 </div>
@@ -68,7 +68,7 @@ $(function() {
 			    }
 			    return true; 
 			});
-	$("#addComputer").validate({
+	$("#addComputerForm").validate({
 	 rules: {
 	   computerName: {
 		   required: true,

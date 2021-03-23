@@ -142,8 +142,8 @@ public class ComputerDAO {
 		try(Connection conn = new DbConnect().getConnection();
 				PreparedStatement stmt = conn.prepareStatement(UPDATE_COMPUTER_BY_ID_QUERY)) {
 			stmt.setString(1, computer.getName());
-			stmt.setDate(2,Date.valueOf(computer.getIntroduced()));
-			stmt.setDate(3,Date.valueOf(computer.getDiscontinued()));
+			stmt.setDate(2,computer.getIntroduced() != null ? Date.valueOf(computer.getIntroduced()) : null);
+			stmt.setDate(3,computer.getDiscontinued() != null ? Date.valueOf(computer.getDiscontinued()) : null);
 			if (computer.getCompany() != null) {
 				stmt.setLong(4,computer.getCompany().getId());
 			}
