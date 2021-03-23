@@ -3,7 +3,28 @@ package com.excilys.computerDatabase.validator;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+import com.excilys.computerDatabase.exception.InvalidValuesException;
+
 public abstract class InputValidator {
+	
+	public static void validateNewComputer(String name, String introduced, String discontinued, String companyId) throws InvalidValuesException {
+		if (!isValidName(name)) {
+			throw new InvalidValuesException("Name not valid");
+		}
+		if (isValidDate(introduced) || isValidDate(discontinued)) {
+			if (!isValidDateInterval(LocalDate.parse(introduced), LocalDate.parse(discontinued))) {
+				throw new InvalidValuesException("Date precedence not valid");
+			}
+		}
+		try {
+			if (!isValidId(Long.parseLong(companyId))){
+				throw new InvalidValuesException("Id not valid");
+			}
+		}
+		catch (NumberFormatException e) {
+			throw new InvalidValuesException("Id isn't a valid Long");
+		}
+	}
 	
 	public static boolean isValidDate(String s){
 		try {
