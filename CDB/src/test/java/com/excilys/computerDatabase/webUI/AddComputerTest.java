@@ -8,7 +8,9 @@ import static org.junit.Assert.fail;
 import java.util.List;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,11 +22,15 @@ public class AddComputerTest {
 
 	private final String URL = "http://localhost:8080/CDB/addComputer";
 	
-	WebDriver driver;
+	static WebDriver driver;
+	
+	@BeforeClass
+	public static void setup() {
+		driver = new FirefoxDriver();
+	}
 	
 	@Before
-	public void setup() {
-		driver = new FirefoxDriver();
+	public void reset() {
 		driver.get(URL);
 	}
 	
@@ -85,8 +91,8 @@ public class AddComputerTest {
 		fail();
 	}
 	
-	 @After
-	 public void end(){
+	 @AfterClass
+	 public static void end(){
 		 if (driver != null) {
 			 driver.quit();
 		 }

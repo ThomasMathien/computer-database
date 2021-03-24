@@ -54,7 +54,7 @@ public class ComputerDAO {
 	
 	public List<Computer> getComputers(long from, long amount){
 		List<Computer> computers = new ArrayList<>();
-		try (Connection conn = new DbConnect().getConnection();
+		try (Connection conn = getConnection();
 				PreparedStatement stmt = conn.prepareStatement(FIND_COMPUTERS_INTERVAL_QUERY)){
 			stmt.setLong(1, amount);
 			stmt.setLong(2,from);
@@ -79,8 +79,9 @@ public class ComputerDAO {
 
 	public Optional<Computer> findComputer(long id){
 		Optional<Computer> computer = Optional.empty();;
-		try (Connection conn = new DbConnect().getConnection();
+		try (Connection conn = getConnection();
 				PreparedStatement stmt = conn.prepareStatement(FIND_COMPUTER_BY_ID_QUERY)){
+			System.out.print("Connection:"+conn.toString());
 			stmt.setLong(1, id);
 			try (ResultSet results = stmt.executeQuery()){
 				if(results.next()) {
@@ -98,7 +99,7 @@ public class ComputerDAO {
 	}
 	
 	public void addComputer(Computer computer) throws FailedSQLRequestException {
-		try(Connection conn = new DbConnect().getConnection();
+		try(Connection conn = getConnection();
 				PreparedStatement stmt = conn.prepareStatement(ADD_COMPUTER_QUERY, Statement.RETURN_GENERATED_KEYS)) {
 			stmt.setString(1,computer.getName());
 			LocalDate introduced = computer.getIntroduced();
@@ -126,7 +127,7 @@ public class ComputerDAO {
 	}
 	
 	public void deleteComputer(long id) throws FailedSQLRequestException {
-		try(Connection conn = new DbConnect().getConnection();
+		try(Connection conn = getConnection();
 				PreparedStatement stmt = conn.prepareStatement(DELETE_COMPUTER_BY_ID_QUERY)) {
 			stmt.setLong(1,id);
 			if (stmt.executeUpdate() == 0) {
@@ -138,7 +139,7 @@ public class ComputerDAO {
 	}
 	
 	public void updateComputer(long id, Computer computer) throws FailedSQLRequestException {
-		try(Connection conn = new DbConnect().getConnection();
+		try(Connection conn = getConnection();
 				PreparedStatement stmt = conn.prepareStatement(UPDATE_COMPUTER_BY_ID_QUERY)) {
 			stmt.setString(1, computer.getName());
 			stmt.setDate(2,computer.getIntroduced() != null ? Date.valueOf(computer.getIntroduced()) : null);
@@ -160,7 +161,7 @@ public class ComputerDAO {
 	}
 
 	public int getComputerCount() {
-		try (Connection conn = new DbConnect().getConnection();
+		try (Connection conn = getConnection();
 				Statement stmt = conn.createStatement();
 				ResultSet results = stmt.executeQuery(GET_COMPUTERS_COUNT_QUERY)){
 			if(results.next()) {
@@ -170,5 +171,9 @@ public class ComputerDAO {
 			logger.error("Get Computer Count SQL Request Failed: with request "+GET_COMPUTERS_COUNT_QUERY,e );
 		}
 		return 0;
+	}
+
+	Connection getConnection() {
+		return new DbConnect().getConnection();
 	}
 }

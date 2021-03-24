@@ -25,7 +25,7 @@ public class CompanyDAO {
 	private static final String FIND_COMPANIES_INTERVAL_QUERY = "SELECT id AS company_id,name AS company_name FROM company ORDER BY id LIMIT ? OFFSET ?;";
 	
 	private static CompanyDAO instance = null;
-	
+	private DbConnect dbConnect = null;
 	private CompanyDAO() {}
 	
 	public static CompanyDAO getInstance() {
@@ -41,7 +41,7 @@ public class CompanyDAO {
 	
 	public List<Company> getCompanies(int from, int amount){
 		List<Company> companies = new ArrayList<>();
-		try (Connection conn = new DbConnect().getConnection();
+		try (Connection conn = getConnection();
 				PreparedStatement stmt = conn.prepareStatement(FIND_COMPANIES_INTERVAL_QUERY)){
 			stmt.setLong(1, amount);
 			stmt.setLong(2,from);
@@ -67,7 +67,7 @@ public class CompanyDAO {
 	
 	public Optional<Company> findCompany(long id){
 		Optional<Company> company = Optional.empty();
-		try (Connection conn = new DbConnect().getConnection();
+		try (Connection conn = getConnection();
 				PreparedStatement stmt = conn.prepareStatement(FIND_COMPANY_BY_ID_QUERY)){
 			stmt.setLong(1, id);
 			try (ResultSet results = stmt.executeQuery()){
@@ -86,7 +86,7 @@ public class CompanyDAO {
 	}
 	
 	public int getCompanyCount() {
-		try (Connection conn = new DbConnect().getConnection();
+		try (Connection conn = getConnection();
 				Statement stmt = conn.createStatement();
 				ResultSet results = stmt.executeQuery(GET_COMPANY_COUNT_QUERY)){
 			if(results.next()) {
@@ -96,6 +96,14 @@ public class CompanyDAO {
 			logger.error("Get Company Count SQL Request Failed: with request "+GET_COMPANY_COUNT_QUERY,e );
 		}
 		return 0;
+	}
+	
+	public void setDbConnect(DbConnect connect) {
+		this.dbConnect = connect;
+	}
+
+	Connection getConnection() {
+		return dbConnect == null ? new DbConnect().getConnection() : this.dbConnect.getConnection();
 	}
 
 }
