@@ -67,7 +67,7 @@ public class ComputerDAO {
 							computers.add(c.orElseThrow());
 						}
 					} catch (IncompleteResultSetException e) {
-						logger.error("Creating Computer from ResultSet Failed: with resultSet "+results.toString(),e );
+						logger.error("Couldn't map Computer from resultSet: with resultSet "+results.toString(),e );
 					}
 				}
 			}
@@ -87,7 +87,7 @@ public class ComputerDAO {
 					try {
 						computer =  ComputerMapper.getInstance().toComputer(results);
 					} catch (IncompleteResultSetException e) {
-						logger.error("Creating Computer from ResultSet Failed: with resultSet "+results.toString(),e );
+						logger.error("Couldn't map Computer from resultSet"+results.toString(),e );
 					}
 				}
 			}

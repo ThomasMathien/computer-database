@@ -54,8 +54,7 @@ public class CompanyDAO {
 							companies.add(company.orElseThrow());
 						}
 					} catch (IncompleteResultSetException e) {
-						logger.error("Creating Company from ResultSet Failed: with resultSet "+results.toString(),e );
-						e.printStackTrace();
+						logger.error("Couldn't map Companies: with resultSet "+results.toString(),e );
 					}
 				}
 			}
@@ -75,7 +74,7 @@ public class CompanyDAO {
 					try {
 						company =  CompanyMapper.getInstance().toCompany(results);
 					} catch (IncompleteResultSetException e) {
-						logger.error("Creating Company from ResultSet Failed: with resultSet "+results.toString(),e );
+						logger.error("Couldn't map a Company from resultSet: with resultSet "+results.toString(),e );
 					}
 				}	
 			}

@@ -25,33 +25,41 @@ public class AddComputerServlet extends HttpServlet {
 	private static final long serialVersionUID = -195965979475821843L;
 	
 		private Logger logger = LoggerFactory.getLogger(AddComputerServlet.class);
-	
+		
+		private final String REDIRECT_PAGE_AFTER_ADDING_COMPUTER = "dashboard";
+		private final String VIEW_PATH = "/WEB-INF/views/addComputer.jsp";
+		private final String COMPANIES_LIST_ATTRIBUTE = "companies";
+		private final String COMPUTER_NAME_ATTRIBUTE = "computerName";
+		private final String INTRODUCED_DATE_ATTRIBUTE = "introduced";
+		private final String DISCONTINUED_DATE_ATTRIBUTE = "discontinued";
+		private final String COMPANY_ID_ATTRIBUTE = "companyId";
+		
 		@Override
 		public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			List<CompanyDTO> companies = CompanyService.getInstance().getAsPageable();
-			request.setAttribute("companies", companies);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/views/addComputer.jsp").forward(request, response);
+			request.setAttribute(COMPANIES_LIST_ATTRIBUTE, companies);
+			this.getServletContext().getRequestDispatcher(VIEW_PATH).forward(request, response);
 		}
 		
 		@Override
 		public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			String name = request.getParameter("computerName").trim();
-			String introduced = request.getParameter("introduced");
-			String discontinued = request.getParameter("discontinued");
-			String companyId = request.getParameter("companyId");
+			String name = request.getParameter(COMPUTER_NAME_ATTRIBUTE).trim();
+			String introduced = request.getParameter(INTRODUCED_DATE_ATTRIBUTE);
+			String discontinued = request.getParameter(DISCONTINUED_DATE_ATTRIBUTE);
+			String companyId = request.getParameter(COMPANY_ID_ATTRIBUTE);
 			try {
 				InputValidator.validateNewComputer(name, introduced, discontinued, companyId);
 				Computer newComputer = ComputerMapper.getInstance().toComputer(name, introduced, discontinued, companyId);
 				try {
 					ComputerService.getInstance().addComputer(newComputer);
-					logger.info("Adding new computer success: "+newComputer.toString());
+					logger.info("Adding new computer: " + newComputer.toString());
 				} catch (FailedSQLRequestException e) {
-					logger.error("Adding new computer failed",e);
+					logger.error("Couldn't add new computer", e);
 				}
 			} catch (InvalidValuesException e) {
-				logger.error("New computer paramterers not valid",e);
+				logger.warn("New computer parameters not valid", e);
 			}
-			response.sendRedirect("dashboard");
+			response.sendRedirect(REDIRECT_PAGE_AFTER_ADDING_COMPUTER);
 		}
 
 }

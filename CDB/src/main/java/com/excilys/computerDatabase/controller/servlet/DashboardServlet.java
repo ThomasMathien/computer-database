@@ -20,18 +20,15 @@ public class DashboardServlet extends HttpServlet {
 	private int currentPageIndex = 1;
 	private int maxPages;
 	private int totalComputers;
-	
-	private Logger logger = LoggerFactory.getLogger(DashboardServlet.class);
+
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.info("DashboardServlet process GET request");
 		processRequest(request, response);
 	}
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.info("DashboardServlet process POST request");
 		request.getSession().setAttribute("displayedRowsPerPage", request.getParameter("displayedRowsPerPage"));
 		processRequest(request, response);
 	}
@@ -46,7 +43,6 @@ public class DashboardServlet extends HttpServlet {
 		request.setAttribute("maxPages", maxPages);
 		request.setAttribute("pageIndex", currentPageIndex);
 		
-		logger.info("DashboardServlet dispatch dashboard: Page:"+currentPageIndex+"/"+maxPages);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(request, response);
 	}
 	
