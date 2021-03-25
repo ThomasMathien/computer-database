@@ -54,7 +54,6 @@ class DbConnect {
 		if (conn == null) {
 			try {
 				conn = DriverManager.getConnection(url,user,password);
-				logger.info("Connection instanciation success:"+conn.toString());
 			} catch (SQLException e) {
 				logger.error("Connection instanciation failed: for URL "+url);
 			}

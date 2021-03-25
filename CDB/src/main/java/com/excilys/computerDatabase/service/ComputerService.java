@@ -24,11 +24,6 @@ public class ComputerService {
 	
 	private ComputerService() {}
 	
-	public List<ComputerDTO> getAsPageable(int pageIndex, int itemAmount) {
-		List<Computer> computers = getComputers(pageIndex * itemAmount, itemAmount);
-		return computers.stream().map(c -> ComputerMapper.getInstance().toComputerDTO(Optional.of(c))).collect(Collectors.toList());
-	}
-	
 	public List<Computer> getComputers(){
 		return ComputerDAO.getInstance().getComputers();
 	}

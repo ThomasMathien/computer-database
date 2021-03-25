@@ -28,6 +28,7 @@ public class AddComputerServlet extends HttpServlet {
 		
 		private final String REDIRECT_PAGE_AFTER_ADDING_COMPUTER = "dashboard";
 		private final String VIEW_PATH = "/WEB-INF/views/addComputer.jsp";
+		
 		private final String COMPANIES_LIST_ATTRIBUTE = "companies";
 		private final String COMPUTER_NAME_ATTRIBUTE = "computerName";
 		private final String INTRODUCED_DATE_ATTRIBUTE = "introduced";

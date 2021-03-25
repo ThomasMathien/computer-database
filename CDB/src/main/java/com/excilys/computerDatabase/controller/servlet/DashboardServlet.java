@@ -1,6 +1,10 @@
 package com.excilys.computerDatabase.controller.servlet;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,18 +14,27 @@ import org.slf4j.Logger;
 
 import com.excilys.computerDatabase.controller.page.Page;
 import com.excilys.computerDatabase.dto.ComputerDTO;
+import com.excilys.computerDatabase.mapper.ComputerMapper;
+import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.service.ComputerService;
 
 public class DashboardServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 8233813063630626361L;
-	
-	private int displayedRowsPerPage = 10;
-	private int currentPageIndex = 1;
-	private int maxPages;
-	private int totalComputers;
 
+	Logger logger = LoggerFactory.getLogger(DashboardServlet.class);
 	
+	private final String VIEW_PATH = "/WEB-INF/views/dashboard.jsp";
+	
+	private final int DEFAULT_PAGE_INDEX = 1;
+	private final int DEFAULT_ROWS_PER_PAGE = 10;
+	
+	private final String ROWS_PER_PAGE_ATTRIBUTE = "displayedRowsPerPage";
+	private final String PAGE_INDEX_ATTRIBUTE = "pageIndex";
+	private final String TOTAL_COMPUTERS_ATTRIBUTE = "totalComputers";
+	private final String COMPUTER_LIST_ATTRIBUTE = "computers";
+	private final String MAX_PAGES_ATTRIBUTE = "maxPages";
+
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
@@ -34,30 +47,45 @@ public class DashboardServlet extends HttpServlet {
 	}
 
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		actualizeProperties(request);
+		int rowsPerPage = getRequestedRowsPerPage(request);
+		int currentPageIndex = getRequestedPageIndex(request);
 		
-		Page<ComputerDTO> page = new Page<ComputerDTO>(ComputerService.getInstance().getAsPageable(currentPageIndex, displayedRowsPerPage));
+		List<Computer> computers = ComputerService.getInstance().getComputers(currentPageIndex * rowsPerPage, rowsPerPage);
+		List<ComputerDTO> dtos = computers.stream().map(c -> ComputerMapper.getInstance().toComputerDTO(Optional.of(c))).collect(Collectors.toList());
 		
-		request.setAttribute("computers", page.getContent());
-		request.setAttribute("totalComputers", totalComputers);
-		request.setAttribute("maxPages", maxPages);
-		request.setAttribute("pageIndex", currentPageIndex);
+		Page<ComputerDTO> page = new Page<ComputerDTO>(dtos);
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(request, response);
+		int totalComputers = ComputerService.getInstance().getComputerCount();
+		
+		request.setAttribute(COMPUTER_LIST_ATTRIBUTE, page.getContent());
+		request.setAttribute(TOTAL_COMPUTERS_ATTRIBUTE, totalComputers);
+		request.setAttribute(MAX_PAGES_ATTRIBUTE, (int) Math.ceil(totalComputers / rowsPerPage));
+		request.setAttribute(PAGE_INDEX_ATTRIBUTE, currentPageIndex);
+		
+		this.getServletContext().getRequestDispatcher(VIEW_PATH).forward(request, response);
 	}
 	
-	public void actualizeProperties(HttpServletRequest request) {
-		String rowsPerPargeRequest = (String) request.getSession().getAttribute("displayedRowsPerPage");
-		if (rowsPerPargeRequest != null) {
-			displayedRowsPerPage = Integer.parseInt(rowsPerPargeRequest);
+	private int getRequestedRowsPerPage(HttpServletRequest request) {
+		String rowsPerPargeRequest = (String) request.getSession().getAttribute(ROWS_PER_PAGE_ATTRIBUTE);
+		try {
+			if (rowsPerPargeRequest != null) {
+				return Integer.parseInt(rowsPerPargeRequest);
+			}
+		} catch (NumberFormatException e) {
+			logger.warn("Parameter " +ROWS_PER_PAGE_ATTRIBUTE+":"+rowsPerPargeRequest+" could'nt be conveted to an Int", e);
 		}
-		String pageIndex = request.getParameter("pageIndex");
-		if (pageIndex != null) {
-			currentPageIndex = Integer.parseInt(pageIndex);
-		}
-		totalComputers = ComputerService.getInstance().getComputerCount();
-		maxPages = (int) Math.ceil(totalComputers / displayedRowsPerPage);
+		return DEFAULT_ROWS_PER_PAGE;
 	}
 	
-	
+	private int getRequestedPageIndex(HttpServletRequest request) {
+		String pageIndex = request.getParameter(PAGE_INDEX_ATTRIBUTE);
+		try {
+			if (pageIndex != null) {
+				return Integer.parseInt(pageIndex);
+			}
+		} catch (NumberFormatException e) {
+			logger.warn("Parameter "+PAGE_INDEX_ATTRIBUTE+":"+pageIndex+" could'nt be conveted to an Int", e);
+		}
+		return DEFAULT_PAGE_INDEX;
+	}
 }
