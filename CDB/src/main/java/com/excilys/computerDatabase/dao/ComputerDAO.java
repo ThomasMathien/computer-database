@@ -81,7 +81,6 @@ public class ComputerDAO {
 		Optional<Computer> computer = Optional.empty();;
 		try (Connection conn = getConnection();
 				PreparedStatement stmt = conn.prepareStatement(FIND_COMPUTER_BY_ID_QUERY)){
-			System.out.print("Connection:"+conn.toString());
 			stmt.setLong(1, id);
 			try (ResultSet results = stmt.executeQuery()){
 				if(results.next()) {

@@ -1,13 +1,5 @@
 package com.excilys.computerDatabase.dao;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.List;
-
 import javax.sql.DataSource;
 
 import org.dbunit.DataSourceBasedDBTestCase;
@@ -16,7 +8,7 @@ import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.h2.jdbcx.JdbcDataSource;
-import org.junit.Before;
+import org.junit.Test;
 
 
 public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
@@ -43,6 +35,15 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
 	@Override
 	protected DatabaseOperation getTearDownOperation() {
 		return DatabaseOperation.DELETE_ALL;
+	}
+	
+	@Test
+	public void testShouldLoadData() throws Exception {
+		IDataSet databaseDataSet = getConnection().createDataSet();
+		ITable computerTable = databaseDataSet.getTable("COMPUTER");
+		assertEquals(15, computerTable.getRowCount());
+		ITable companyTable = databaseDataSet.getTable("COMPANY");
+		assertEquals(5, companyTable.getRowCount());
 	}
 
 }

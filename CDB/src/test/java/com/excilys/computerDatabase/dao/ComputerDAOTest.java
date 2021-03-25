@@ -23,10 +23,6 @@ public class ComputerDAOTest extends DataSourceDBUnitTest {
 	
 	private final int COMPUTERS_AMOUNT = 15;
 	static ComputerDAO dao = ComputerDAO.getInstance();
-	@BeforeClass
-	public static void init() throws FailedSQLRequestException {
-
-	}
 	
 	@Test
 	public void testGetComputers() {
@@ -97,7 +93,7 @@ public class ComputerDAOTest extends DataSourceDBUnitTest {
 				.setDiscontinued(LocalDate.parse("1984-04-01"))
 				.setId(12L)
 				.setCompany(1L).build();
-		/*
+		
 		assertThrows(FailedSQLRequestException.class, () -> {
 			ComputerDAO.getInstance().addComputer(computerIdTaken);
 		});
@@ -113,7 +109,7 @@ public class ComputerDAOTest extends DataSourceDBUnitTest {
 		
 		assertThrows(FailedSQLRequestException.class, () -> {
 			ComputerDAO.getInstance().addComputer(null);
-		});*/
+		});
 	}	
 	
 	@Test
@@ -136,22 +132,6 @@ public class ComputerDAOTest extends DataSourceDBUnitTest {
 	
 	@Test
 	public void testUpdateComputer() {
-/*
-		try {
-			Connection conn = initMock();
-
-			CompanyDAO companyDAO = CompanyDAO.getInstance();
-			int count = companyDAO.getCompanies().size();
-			System.out.print("SIZE:"+dao.getComputers().size());
-			Computer formerComputer = dao.findComputer(1).orElseThrow();
-			conn.createStatement().executeUpdate("INSERT INTO COMPANY (id,name) VALUES ( 42,'Research In Motion')");
-			List<Company> companies = companyDAO.getCompanies();
-			assertEquals(++count, companies.size());
-		} catch (SQLException e) {
-			fail();
-		}*/
-
-		/*
 		Computer formerComputer = ComputerDAO.getInstance().findComputer(3).orElseThrow();
 		Computer newComputer = new Computer(formerComputer);
 		newComputer.setName("New name");
@@ -169,7 +149,7 @@ public class ComputerDAOTest extends DataSourceDBUnitTest {
 		});
 		assertThrows(FailedSQLRequestException.class, () -> {
 			ComputerDAO.getInstance().updateComputer(5, null);
-		});*/
+		});
 	}	
 
 }

@@ -15,7 +15,7 @@ import org.mockito.Mockito;
 
 import com.excilys.computerDatabase.model.Company;
 
-public class CompanyDAOTest {
+public class CompanyDAOTest extends DataSourceDBUnitTest{
 
 	static CompanyDAO dao = CompanyDAO.getInstance();
 
@@ -23,8 +23,7 @@ public class CompanyDAOTest {
 	
 	@Test
 	public void testGetCompanies() {
-		List<Company> companies = new ArrayList<>();
-		companies = dao.getCompanies();
+		List<Company> companies = dao.getCompanies();
 		assertEquals(COMPANIES_AMOUNT,companies.size());
 		for (Company c: companies) {
 			assertTrue(c != null);
@@ -35,7 +34,7 @@ public class CompanyDAOTest {
 	@Test
 	public void testGetCompaniesWithArguments() {
 		assertEquals(dao.getCompanies(), dao.getCompanies(0, COMPANIES_AMOUNT));
-		final int offset = 3;
+		final int offset = 1;
 		final int amount = 4;
 		List<Company>  companies = dao.getCompanies(offset, amount);
 		assertEquals(amount,companies.size());
