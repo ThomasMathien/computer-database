@@ -13,19 +13,24 @@ import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.mapper.CompanyMapper;
 import com.excilys.computerDatabase.model.Company;
 
-public class CompanyDatabaseDAO {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class CompanyDAO {
+	
+	private Logger logger = LoggerFactory.getLogger(CompanyDAO.class);
 	
 	private static final String FIND_COMPANY_BY_ID_QUERY = "SELECT id AS company_id,name AS company_name FROM company WHERE id=?;";
 	private static final String GET_COMPANY_COUNT_QUERY = "SELECT COUNT(*) FROM company;";
 	private static final String FIND_COMPANIES_INTERVAL_QUERY = "SELECT id AS company_id,name AS company_name FROM company ORDER BY id LIMIT ? OFFSET ?;";
 	
-	private static CompanyDatabaseDAO instance = null;
+	private static CompanyDAO instance = null;
+	private DbConnect dbConnect = null;
+	private CompanyDAO() {}
 	
-	private CompanyDatabaseDAO() {}
-	
-	public static CompanyDatabaseDAO getInstance() {
+	public static CompanyDAO getInstance() {
 		if (instance == null) {
-			instance = new CompanyDatabaseDAO();
+			instance = new CompanyDAO();
 		}
 		return instance;
 	}
@@ -36,32 +41,32 @@ public class CompanyDatabaseDAO {
 	
 	public List<Company> getCompanies(int from, int amount){
 		List<Company> companies = new ArrayList<>();
-		try (Connection conn = new DbConnect().getConnection();
+		try (Connection conn = getConnection();
 				PreparedStatement stmt = conn.prepareStatement(FIND_COMPANIES_INTERVAL_QUERY)){
 			stmt.setLong(1, amount);
 			stmt.setLong(2,from);
 			try (ResultSet results = stmt.executeQuery()){
 				while(results.next()) {
-					Optional<Company> c;
+					Optional<Company> company;
 					try {
-						c = CompanyMapper.getInstance().toCompany(results);
-						if (c.isPresent()) {
-							companies.add(c.orElseThrow());
+						company = CompanyMapper.getInstance().toCompany(results);
+						if (company.isPresent()) {
+							companies.add(company.orElseThrow());
 						}
 					} catch (IncompleteResultSetException e) {
-						e.printStackTrace();
+						logger.error("Couldn't map Companies: with resultSet "+results.toString(),e );
 					}
 				}
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Get Companies SQL Request Failed: with request "+FIND_COMPANIES_INTERVAL_QUERY+" for "+amount+" rows from "+from,e );
 		}
 		return companies;
 	}
 	
 	public Optional<Company> findCompany(long id){
 		Optional<Company> company = Optional.empty();
-		try (Connection conn = new DbConnect().getConnection();
+		try (Connection conn = getConnection();
 				PreparedStatement stmt = conn.prepareStatement(FIND_COMPANY_BY_ID_QUERY)){
 			stmt.setLong(1, id);
 			try (ResultSet results = stmt.executeQuery()){
@@ -69,27 +74,35 @@ public class CompanyDatabaseDAO {
 					try {
 						company =  CompanyMapper.getInstance().toCompany(results);
 					} catch (IncompleteResultSetException e) {
-						e.printStackTrace();
+						logger.error("Couldn't map a Company from resultSet: with resultSet "+results.toString(),e );
 					}
 				}	
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Find Company SQL Request Failed: with request "+FIND_COMPANY_BY_ID_QUERY+" for Id"+id,e );
 		}
 		return company;
 	}
 	
 	public int getCompanyCount() {
-		try (Connection conn = new DbConnect().getConnection();
+		try (Connection conn = getConnection();
 				Statement stmt = conn.createStatement();
 				ResultSet results = stmt.executeQuery(GET_COMPANY_COUNT_QUERY)){
 			if(results.next()) {
 				return results.getInt(1);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Get Company Count SQL Request Failed: with request "+GET_COMPANY_COUNT_QUERY,e );
 		}
 		return 0;
+	}
+	
+	public void setDbConnect(DbConnect connect) {
+		this.dbConnect = connect;
+	}
+
+	Connection getConnection() {
+		return dbConnect == null ? new DbConnect().getConnection() : this.dbConnect.getConnection();
 	}
 
 }

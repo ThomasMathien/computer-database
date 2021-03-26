@@ -1,8 +1,11 @@
 package com.excilys.computerDatabase.controller.cli;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Scanner;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.excilys.computerDatabase.controller.page.PageNavigator;
 import com.excilys.computerDatabase.exception.CommandNotFoundException;
@@ -16,7 +19,8 @@ public class CLIController {
 	
 	private static CLIController instance;
 	private Scanner sc;
-	
+    private static final Logger logger = LoggerFactory.getLogger(CLIController.class);
+    
 	private CLIController() {
 		 sc = new Scanner(System.in);
 	}
@@ -32,7 +36,7 @@ public class CLIController {
 		while (true) {
 			displayMainMenu();
 			String command = InputParser.takeString(sc);
-			MenuOption menuOption;
+			MenuOption menuOption = null;
 			try {
 				menuOption = MenuOption.fromCommand(command);
 				System.out.println("Please wait...");
@@ -59,9 +63,10 @@ public class CLIController {
 						sc.close();
 						return;
 					default:
-						throw new CommandNotFoundException("Command "+ command+ "not found");
+						throw new CommandNotFoundException("Command "+ command+ " not found");
 				}
 			} catch (CommandNotFoundException e) {
+				logger.info("Command not Found: no command "+menuOption+" exists",e);
 				System.out.println("Invalid command, please try again");
 			}
 		} 
@@ -93,8 +98,11 @@ public class CLIController {
 			ComputerService.getInstance().addComputer(c);
 		}
 		catch (FailedSQLRequestException e) {
+			logger.info("Add Computer Failed: "+c.toString(),e);
 			System.out.println("Computer not added");
+			return;
 		}
+		logger.info("Add Computer Success: "+c.toString());
 		System.out.println("Computer successfully created!");
 	}
 	
@@ -105,8 +113,11 @@ public class CLIController {
 			ComputerService.getInstance().deleteComputer(computerId);
 		}
 		catch (FailedSQLRequestException e) {
+			logger.info("Delete Computer Failed: for Id "+computerId,e);
 			System.out.println("Computer not deleted");
+			return;
 		}
+		logger.info("Delete Computer Success: for Id "+computerId);
 		System.out.println("Computer "+computerId+" successfully deleted!");
 	}
 	
@@ -119,8 +130,11 @@ public class CLIController {
 			ComputerService.getInstance().updateComputer(computerId,c);
 		}
 		catch (FailedSQLRequestException e) {
+			logger.info("Update Computer Failed: for Id "+computerId+" update to "+c.toString(),e);
 			System.out.println("Computer not updated");
+			return;
 		}
+		logger.info("Update Computer Success: for Id "+computerId+" update to "+c.toString());
 		System.out.println("Computer successfully updated!");
 	}
 	
@@ -129,13 +143,13 @@ public class CLIController {
 		System.out.println("+++Enter computer name (<=255 characters):");
 		String name = InputParser.takeNameInput(sc);
 		System.out.println("+++Enter date of introduction (Format: yyyy-[m]m-[d]d [hh:mm:ss[.f...]]:");
-		Timestamp introducted = InputParser.takeTimestampInput(sc);
+		LocalDate introduced = InputParser.takeLocalDateInput(sc);
 		System.out.println("+++Enter date of end (Format: yyyy-[m]m-[d]d [hh:mm:ss[.f...]]:");
-		Timestamp discontinued = InputParser.takeTimestampInput(sc);
+		LocalDate discontinued = InputParser.takeLocalDateInput(sc);
 		System.out.print("+++Enter company id:\n>>");
 		long companyId = InputParser.takeIdInput(sc);
 		return new ComputerBuilder(name)
-				.setIntroduced(introducted)
+				.setIntroduced(introduced)
 				.setDiscontinued(discontinued)
 				.setCompany(companyId)
 				.build();

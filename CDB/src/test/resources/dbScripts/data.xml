@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<COMPANY id='1' name="Apple Inc." />
+	<COMPANY id='2' name='Thinking Machines' />
+	<COMPANY id='3' name='RCA' />
+	<COMPANY id='4' name='Netronics' />
+	<COMPANY id='5' name='Tandy Corporation' />
+	
+	<COMPUTER  id="12"  name="Apple III"  introduced='1980-05-01' discontinued='1984-04-01' company_id="1"  />     
+	<COMPUTER  id="1"  name="MacBook Pro 15.4 inch" company_id="1"  />  
+	<COMPUTER  id="2"  name="CM-2a"  company_id="2"  />                  
+	<COMPUTER  id="3"  name="New name" company_id="2"  />               
+	<COMPUTER  id="4"  name="CM-5e"  company_id="2"  />     
+	<COMPUTER  id="5"  name="CM-5" introduced='1991-01-01' company_id="2"  /> 
+	<COMPUTER  id="6"  name="MacBook Pro"  introduced='1991-01-01'  company_id="2"  />            
+	<COMPUTER  id="7"  name="Apple IIe"  introduced='2006-01-10'  company_id="1"  />              
+	<COMPUTER  id="8"  name="Apple IIc"/>              
+	<COMPUTER  id="9"  name="Apple IIGS"/>             
+	<COMPUTER  id="10"  name="Apple IIc Plus" />     
+	<COMPUTER  id="11"  name="Apple II Plus" />           
+	<COMPUTER  id="13"  name="Apple Lisa"   company_id="1"  />         
+	<COMPUTER  id="14"  name="CM-2"  company_id="2"  />               
+	<COMPUTER  id="15"  name="Connection Machine"  introduced='1987-01-01'  company_id="2"  />                                                          
+</dataset>

@@ -1,6 +1,7 @@
 package com.excilys.computerDatabase.model.builder;
 
-import java.sql.Timestamp;
+
+import java.time.LocalDate;
 import java.util.Optional;
 
 import com.excilys.computerDatabase.model.Company;
@@ -11,8 +12,8 @@ public class ComputerBuilder {
 
 	private long id;
 	private String name;
-	private Timestamp introduced;
-	private Timestamp discontinued;
+	private LocalDate introduced;
+	private LocalDate discontinued;
 	private Company company;
 
 	public ComputerBuilder(String name) {
@@ -29,12 +30,12 @@ public class ComputerBuilder {
 		return this;
 	}
 	
-	public ComputerBuilder setIntroduced(Timestamp introduced) {
+	public ComputerBuilder setIntroduced(LocalDate introduced) {
 		this.introduced = introduced;
 		return this;
 	}
 	
-	public ComputerBuilder setDiscontinued(Timestamp discontinued) {
+	public ComputerBuilder setDiscontinued(LocalDate discontinued) {
 		this.discontinued = discontinued;
 		return this;
 	}

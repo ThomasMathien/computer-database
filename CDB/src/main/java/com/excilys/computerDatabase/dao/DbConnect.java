@@ -8,9 +8,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.excilys.computerDatabase.ComputerDatabase;
 
 class DbConnect {
+
+	private Logger logger = LoggerFactory.getLogger(DbConnect.class);
 	
 	private final String CONFIG_PATH = "config/dbConnection.properties";
 	
@@ -35,12 +40,12 @@ class DbConnect {
 			else {
 				throw new FileNotFoundException();
 			}
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
+		} catch (FileNotFoundException e) {
+			logger.error("DB Connection Properties File Not Found",e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("DB Connection Properties Loading Failed",e);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			logger.error("DB Connection Properties Driver Name "+driver+" not found",e);
 		}
 		
 	}
@@ -50,21 +55,10 @@ class DbConnect {
 			try {
 				conn = DriverManager.getConnection(url,user,password);
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.error("Connection instanciation failed: for URL "+url);
 			}
 		}
 		return conn;
 	}
-	
-	protected void finalize(){
-		try {
-			if (conn != null) {
-				conn.close();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 
-	
 }

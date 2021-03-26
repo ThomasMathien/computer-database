@@ -5,7 +5,7 @@
   <groupId>com.excilys.computerDatabase</groupId>
   <artifactId>CDB</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>CDB</name>
   <url>http://maven.apache.org</url>
@@ -14,6 +14,18 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>15</maven.compiler.source>
     <maven.compiler.target>15</maven.compiler.target>
+    <mysql-connector-java.version>8.0.23</mysql-connector-java.version>
+    <junit.version>4.13.2</junit.version>
+    <mockito-core.version>3.8.0</mockito-core.version>
+	<slf4j-api.version>1.7.30</slf4j-api.version>
+	<slf4j-simple.version>1.7.30</slf4j-simple.version>
+	<dbunit.version>2.7.0</dbunit.version>
+	<javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+	<jstl.version>1.2</jstl.version>
+	<h2.version>1.4.200</h2.version>
+	<jquery.version>3.6.0</jquery.version>
+	<jquery-validation.version>1.19.3</jquery-validation.version>
+	<selenium-java.version>3.141.59</selenium-java.version>
   </properties>
 
 	<build>
@@ -22,21 +34,84 @@
 		        <directory>src/main/resources</directory>
 		    </resource>
 		</resources>
+		<testResources>
+		    <testResource>
+		        <directory>src/test/resources</directory>
+		    </testResource>
+		</testResources>
 	</build>
      
   <dependencies>
-  <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+  	<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>javax.servlet-api</artifactId>
+	    <version>${javax.servlet-api.version}</version>
+	    <scope>provided</scope>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>${jstl.version}</version>
+	</dependency>
+  	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 	<dependency>
 	    <groupId>mysql</groupId>
 	    <artifactId>mysql-connector-java</artifactId>
-	    <version>8.0.23</version>
+	    <version>${mysql-connector-java.version}</version>
 	</dependency>
-
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-api</artifactId>
+	    <version>${slf4j-api.version}</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-simple</artifactId>
+	    <version>${slf4j-simple.version}</version>
+	</dependency>	
+	<!-- https://mvnrepository.com/artifact/org.webjars/jquery-validation -->
+	<dependency>
+    	<groupId>org.webjars</groupId>
+	    <artifactId>jquery-validation</artifactId>
+	    <version>${jquery-validation.version}</version>
+	</dependency>	
+	<!-- https://mvnrepository.com/artifact/junit/junit -->
+	<dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>${junit.version}</version>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	  <groupId>org.dbunit</groupId>
+	  <artifactId>dbunit</artifactId>
+	  <version>${dbunit.version}</version>
+	  <scope>test</scope>
+	</dependency>
+		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+	<dependency>
+	    <groupId>com.h2database</groupId>
+	    <artifactId>h2</artifactId>
+	    <version>${h2.version}</version>
+	    <scope>test</scope>
+	</dependency>	
+	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+	<dependency>
+	    <groupId>org.seleniumhq.selenium</groupId>
+	    <artifactId>selenium-java</artifactId>
+	    <version>${selenium-java.version}</version>
+	    <scope>test</scope>
+	</dependency>
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+	<dependency>
+	    <groupId>org.mockito</groupId>
+	    <artifactId>mockito-core</artifactId>
+	    <version>${mockito-core.version}</version>
+	    <scope>test</scope>
+	</dependency>
   </dependencies>
 </project>

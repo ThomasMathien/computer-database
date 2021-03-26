@@ -2,8 +2,11 @@ package com.excilys.computerDatabase.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-import com.excilys.computerDatabase.dao.CompanyDatabaseDAO;
+import com.excilys.computerDatabase.dao.CompanyDAO;
+import com.excilys.computerDatabase.dto.CompanyDTO;
+import com.excilys.computerDatabase.mapper.CompanyMapper;
 import com.excilys.computerDatabase.model.Company;
 
 public class CompanyService{
@@ -19,20 +22,25 @@ public class CompanyService{
 	
 	private CompanyService() {}
 	
+	public List<CompanyDTO> getAsPageable() {
+		List<Company> companies = getCompanies();
+		return companies.stream().map(c -> CompanyMapper.getInstance().toCompanyDTO(Optional.of(c))).collect(Collectors.toList());
+	}
+	
 	public List<Company> getCompanies(){
-		return CompanyDatabaseDAO.getInstance().getCompanies();
+		return CompanyDAO.getInstance().getCompanies();
 	}
 	
 	public List<Company> getCompanies(int from, int amount){
-		return CompanyDatabaseDAO.getInstance().getCompanies(from, amount);
+		return CompanyDAO.getInstance().getCompanies(from, amount);
 	}
 	
 	public Optional<Company> findCompany(long id){
-		return CompanyDatabaseDAO.getInstance().findCompany(id);
+		return CompanyDAO.getInstance().findCompany(id);
 	}
 	
 	public int getCompanyCount() {
-		return CompanyDatabaseDAO.getInstance().getCompanyCount();
+		return CompanyDAO.getInstance().getCompanyCount();
 	}
 	
 }

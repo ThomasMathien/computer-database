@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+  xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0">
+
+<servlet>
+	<servlet-name>DashboardServlet</servlet-name>
+	<servlet-class>com.excilys.computerDatabase.controller.servlet.DashboardServlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>AddComputerServlet</servlet-name>
+	<servlet-class>com.excilys.computerDatabase.controller.servlet.AddComputerServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>DashboardServlet</servlet-name>
+	<url-pattern>/dashboard</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>AddComputerServlet</servlet-name>
+	<url-pattern>/addComputer</url-pattern>
+</servlet-mapping>
+</web-app>

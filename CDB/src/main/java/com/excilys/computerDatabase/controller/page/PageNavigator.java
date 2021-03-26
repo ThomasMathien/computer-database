@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.excilys.computerDatabase.exception.PageOutOfBoundException;
 import com.excilys.computerDatabase.service.CompanyService;
 import com.excilys.computerDatabase.service.ComputerService;
@@ -13,14 +16,15 @@ import com.excilys.computerDatabase.ui.view.ShortDisplayComputer;
 
 public class PageNavigator {
 
+	private final Logger logger = LoggerFactory.getLogger(PageNavigator.class);
 	
 	private final String NEXT_PAGE_COMMAND = "+";
 	private final String PREVIOUS_PAGE_COMMAND = "-";
-	private final String EXIT_COMMAND = "7";
+	private final String EXIT_COMMAND = "0";
 	
 	public final static int GET_COMPUTERS_REQUEST = 1;
 	public final static int GET_COMPANIES_REQUEST = 2;
-	Page page;
+	PageCLI page;
 	
 	private static PageNavigator instance = null;
 	
@@ -57,8 +61,8 @@ public class PageNavigator {
 	
 	public void run (Scanner sc, int request) {
 		int totalToFetch = getTotalToFetch(request);
-		List<Displayable> content = getDisplayables(request,0,Page.MAX_LINES_PER_PAGE);
-		Page p = new Page(content, totalToFetch);
+		List<Displayable> content = getDisplayables(request,0,PageCLI.MAX_LINES_PER_PAGE);
+		PageCLI p = new PageCLI(content, totalToFetch);
 		p.print();
 		while (true) {
 			System.out.println("***** Use "+PREVIOUS_PAGE_COMMAND+" and "+NEXT_PAGE_COMMAND+" to navigate and "+EXIT_COMMAND+" to exit *****");
@@ -70,12 +74,12 @@ public class PageNavigator {
 					try {
 						if (p.needsFeeding()) {
 							System.out.println("Loading ...");
-							p.feedContent(getDisplayables(request, p.size(),Page.MAX_LINES_PER_PAGE));
+							p.feedContent(getDisplayables(request, p.size(),PageCLI.MAX_LINES_PER_PAGE));
 						}
 						p.nextPage();
 						p.print();
 					} catch (PageOutOfBoundException e) {
-						e.printStackTrace();
+						logger.error("Next Page Failed: from Page "+p.toString(),e);
 					}
 				}
 				else {
@@ -88,7 +92,7 @@ public class PageNavigator {
 						p.previousPage();
 						p.print();
 					} catch (PageOutOfBoundException e) {
-						e.printStackTrace();
+						logger.error("Previous Page Failed: from Page "+p.toString(),e);
 					}
 				}
 				else {
