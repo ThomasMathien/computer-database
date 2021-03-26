@@ -8,10 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.excilys.computerDatabase.dto.CompanyDTO;
-import com.excilys.computerDatabase.dto.ComputerDTO;
 import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.model.Company;
-import com.excilys.computerDatabase.model.Computer;
 
 public class CompanyMapper {
 	

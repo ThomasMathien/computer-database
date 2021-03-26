@@ -2,6 +2,8 @@ package com.excilys.computerDatabase.controller.servlet;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,13 +14,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.excilys.computerDatabase.dto.CompanyDTO;
+import com.excilys.computerDatabase.dto.ComputerToDatabaseDTO;
+import com.excilys.computerDatabase.dto.builder.ComputerToDatabaseDTOBuilder;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
-import com.excilys.computerDatabase.exception.InvalidValuesException;
+import com.excilys.computerDatabase.exception.invalidValuesException.InvalidValuesException;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.service.CompanyService;
 import com.excilys.computerDatabase.service.ComputerService;
-import com.excilys.computerDatabase.validator.InputValidator;
+import com.excilys.computerDatabase.validator.ComputerValidator;
 
 public class AddComputerServlet extends HttpServlet {
 
@@ -49,13 +53,22 @@ public class AddComputerServlet extends HttpServlet {
 			String discontinued = request.getParameter(DISCONTINUED_DATE_ATTRIBUTE);
 			String companyId = request.getParameter(COMPANY_ID_ATTRIBUTE);
 			try {
-				InputValidator.validateNewComputer(name, introduced, discontinued, companyId);
-				Computer newComputer = ComputerMapper.getInstance().toComputer(name, introduced, discontinued, companyId);
+				ComputerToDatabaseDTO dto = new ComputerToDatabaseDTOBuilder()
+						.setId(companyId)
+						.setCompanyId(companyId)
+						.setDiscontinued(discontinued)
+						.setIntroduced(introduced)
+						.setName(name)
+						.build();
+				ComputerValidator.getInstance().validateComputerDTO(dto);
+				Optional<Computer> newComputer = ComputerMapper.getInstance().toComputer(dto);
 				try {
-					ComputerService.getInstance().addComputer(newComputer);
+					ComputerService.getInstance().addComputer(newComputer.orElseThrow());
 					logger.info("Adding new computer: " + newComputer.toString());
 				} catch (FailedSQLRequestException e) {
 					logger.error("Couldn't add new computer", e);
+				} catch (NoSuchElementException e) {
+					logger.warn("Computer couldn't be properly mapped from DTO");
 				}
 			} catch (InvalidValuesException e) {
 				logger.warn("New computer parameters not valid", e);

@@ -1,6 +1,6 @@
 package com.excilys.computerDatabase.dto;
 
-public class ComputerDTO implements Pageable {
+public class ComputerFormDTO implements Pageable {
 	
 	private String id;
 	private String name;

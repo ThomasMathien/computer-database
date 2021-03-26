@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 import com.excilys.computerDatabase.controller.page.Page;
-import com.excilys.computerDatabase.dto.ComputerDTO;
+import com.excilys.computerDatabase.dto.ComputerFormDTO;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.service.ComputerService;
@@ -51,9 +51,9 @@ public class DashboardServlet extends HttpServlet {
 		int currentPageIndex = getRequestedPageIndex(request);
 		
 		List<Computer> computers = ComputerService.getInstance().getComputers(currentPageIndex * rowsPerPage, rowsPerPage);
-		List<ComputerDTO> dtos = computers.stream().map(c -> ComputerMapper.getInstance().toComputerDTO(Optional.of(c))).collect(Collectors.toList());
+		List<ComputerFormDTO> dtos = computers.stream().map(c -> ComputerMapper.getInstance().toComputerFormDTO(c)).collect(Collectors.toList());
 		
-		Page<ComputerDTO> page = new Page<ComputerDTO>(dtos);
+		Page<ComputerFormDTO> page = new Page<ComputerFormDTO>(dtos);
 		
 		int totalComputers = ComputerService.getInstance().getComputerCount();
 		

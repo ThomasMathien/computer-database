@@ -6,11 +6,8 @@ import java.util.stream.Collectors;
 
 import com.excilys.computerDatabase.dao.CompanyDAO;
 import com.excilys.computerDatabase.dto.CompanyDTO;
-import com.excilys.computerDatabase.dto.ComputerDTO;
 import com.excilys.computerDatabase.mapper.CompanyMapper;
-import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Company;
-import com.excilys.computerDatabase.model.Computer;
 
 public class CompanyService{
 

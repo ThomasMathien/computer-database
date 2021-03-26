@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import com.excilys.computerDatabase.validator.InputValidator;
+import com.excilys.computerDatabase.validator.ComputerValidator;
 
 public abstract class InputParser {
 
@@ -14,31 +14,28 @@ public abstract class InputParser {
 	}
 	public static String takeNameInput(Scanner sc) {
 		String name;
-		do { 
+		//do { 
 			name = takeString(sc);;
-		} while (!InputValidator.isValidName(name));
+		//} while (!ComputerValidator.isValidName(name));
 		return name;
 	}
 	
 	public static long takeIdInput(Scanner sc) {
 		long input;
-		do { 
+		//do { 
 			System.out.print(">>");
 			input =  sc.nextLong();
-		} while (!InputValidator.isValidId(input));
+		//} while (!ComputerValidator.isValidId(input));
 		sc.nextLine();
 		return input;
 	}
 	
 	public static LocalDate takeLocalDateInput(Scanner sc) {
 		String input;
-		do { 
+	//	do { 
 			System.out.print(">>");
 			input = sc.nextLine();
-			if(Pattern.matches("^\\d{4}-\\d{1,2}-\\d{1,2}$", input)) {
-				input += " 00:00:00";
-			}
-		} while (!InputValidator.isValidDate(input));
+	//	} while (!ComputerValidator.isValidDate(input));
 		return LocalDate.parse(input);
 	}
 	
