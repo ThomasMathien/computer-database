@@ -169,7 +169,7 @@ public class ComputerDAO {
 		return 0;
 	}
 
-	Connection getConnection() {
-		return new DbConnect().getConnection();
+	Connection getConnection() throws SQLException {
+		return Datasource.getInstance().getConnection();
 	}
 }

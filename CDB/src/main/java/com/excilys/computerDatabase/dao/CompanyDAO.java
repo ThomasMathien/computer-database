@@ -25,8 +25,8 @@ public class CompanyDAO {
 	private static final String FIND_COMPANIES_INTERVAL_QUERY = "SELECT id AS company_id,name AS company_name FROM company ORDER BY id LIMIT ? OFFSET ?;";
 	
 	private static CompanyDAO instance = null;
-	private DbConnect dbConnect = null;
-	private CompanyDAO() {}
+
+	private CompanyDAO() { }
 	
 	public static CompanyDAO getInstance() {
 		if (instance == null) {
@@ -35,17 +35,17 @@ public class CompanyDAO {
 		return instance;
 	}
 	
-	public List<Company> getCompanies(){
-		return getCompanies(0,getCompanyCount());
+	public List<Company> getCompanies() {
+		return getCompanies(0, getCompanyCount());
 	}
 	
-	public List<Company> getCompanies(int from, int amount){
+	public List<Company> getCompanies(int from, int amount) {
 		List<Company> companies = new ArrayList<>();
 		try (Connection conn = getConnection();
-				PreparedStatement stmt = conn.prepareStatement(FIND_COMPANIES_INTERVAL_QUERY)){
+				PreparedStatement stmt = conn.prepareStatement(FIND_COMPANIES_INTERVAL_QUERY)) {
 			stmt.setLong(1, amount);
-			stmt.setLong(2,from);
-			try (ResultSet results = stmt.executeQuery()){
+			stmt.setLong(2, from);
+			try (ResultSet results = stmt.executeQuery()) {
 				while(results.next()) {
 					Optional<Company> company;
 					try {
@@ -96,13 +96,9 @@ public class CompanyDAO {
 		}
 		return 0;
 	}
-	
-	public void setDbConnect(DbConnect connect) {
-		this.dbConnect = connect;
-	}
 
-	Connection getConnection() {
-		return dbConnect == null ? new DbConnect().getConnection() : this.dbConnect.getConnection();
+	Connection getConnection() throws SQLException {
+		return Datasource.getInstance().getConnection();
 	}
 
 }
