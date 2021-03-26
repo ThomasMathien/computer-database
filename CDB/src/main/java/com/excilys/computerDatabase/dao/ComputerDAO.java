@@ -113,11 +113,8 @@ public class ComputerDAO {
 			}
 			stmt.executeUpdate();
             try (ResultSet rs = stmt.getGeneratedKeys();){
-                if(rs.next())
-                {
-            		if (rs.getInt(1) == 0) {
-            			throw new FailedSQLRequestException("Couldn't create computer:"+computer.toString());
-            		}
+                if(rs.next() && (computer.getId() != 0 && computer.getId() != rs.getLong(1)) ) {
+            		logger.warn("Ignored entered Id of "+computer.getId()+" as it is auto generated");
                 }
             }
 		} catch (SQLException e) {

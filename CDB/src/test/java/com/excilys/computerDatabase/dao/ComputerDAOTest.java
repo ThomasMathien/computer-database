@@ -88,26 +88,7 @@ public class ComputerDAOTest extends DataSourceDBUnitTest {
 			fail();
 		}
 		
-		Computer computerIdTaken = new ComputerBuilder("TEST")
-				.setIntroduced(LocalDate.parse("1980-05-01"))
-				.setDiscontinued(LocalDate.parse("1984-04-01"))
-				.setId(12L)
-				.setCompany(1L).build();
-		
-		assertThrows(FailedSQLRequestException.class, () -> {
-			ComputerDAO.getInstance().addComputer(computerIdTaken);
-		});
-		
-		Computer computerWrongId = new ComputerBuilder("TEST")
-				.setIntroduced(LocalDate.parse("1980-05-01"))
-				.setDiscontinued(LocalDate.parse("1984-04-01"))
-				.setId(18L)
-				.setCompany(1L).build();
-		assertThrows(FailedSQLRequestException.class, () -> {
-			ComputerDAO.getInstance().addComputer(computerWrongId);
-		});
-		
-		assertThrows(FailedSQLRequestException.class, () -> {
+		assertThrows(NullPointerException.class, () -> {
 			ComputerDAO.getInstance().addComputer(null);
 		});
 	}	
@@ -147,7 +128,7 @@ public class ComputerDAOTest extends DataSourceDBUnitTest {
 		assertThrows(FailedSQLRequestException.class, () -> {
 			ComputerDAO.getInstance().updateComputer(18, newComputer);
 		});
-		assertThrows(FailedSQLRequestException.class, () -> {
+		assertThrows(NullPointerException.class, () -> {
 			ComputerDAO.getInstance().updateComputer(5, null);
 		});
 	}	
