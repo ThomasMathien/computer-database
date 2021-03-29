@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,7 @@ import org.slf4j.Logger;
 
 import com.excilys.computerDatabase.controller.page.Page;
 import com.excilys.computerDatabase.dto.ComputerFormDTO;
+import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.service.ComputerService;
@@ -34,19 +36,43 @@ public class DashboardServlet extends HttpServlet {
 	private final String TOTAL_COMPUTERS_ATTRIBUTE = "totalComputers";
 	private final String COMPUTER_LIST_ATTRIBUTE = "computers";
 	private final String MAX_PAGES_ATTRIBUTE = "maxPages";
+	private final String SELECTED_COMPUTERS_ATTRIBUTE = "selection";
+	private final String SELECTED_COMPUTER_DELIMITER = ",";
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
+		displayResults(request, response);
 	}
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().setAttribute("displayedRowsPerPage", request.getParameter("displayedRowsPerPage"));
-		processRequest(request, response);
+		handleMultiplePosts(request);
+		displayResults(request, response);
+	}
+	
+	private void handleMultiplePosts(HttpServletRequest request) {
+		if (request.getParameter("ROWS_PER_PAGE_ATTRIBUTE") != null) {
+			setRowsPerPage(request);
+		} else if (request.getParameter(SELECTED_COMPUTERS_ATTRIBUTE) != null) {
+			deleteComputer(Stream.of(request.getParameter(SELECTED_COMPUTERS_ATTRIBUTE).split(SELECTED_COMPUTER_DELIMITER)).mapToLong(Long::parseLong).toArray());
+		}
+	}
+	
+	private void deleteComputer(long[] computersId) {
+		for (long id : computersId) {
+			try {
+				ComputerService.getInstance().deleteComputer(id);
+			} catch (FailedSQLRequestException e) {
+				logger.warn(e.getMessage());
+			}
+		}
+	}
+	
+	private void setRowsPerPage(HttpServletRequest request) {
+		request.getSession().setAttribute("ROWS_PER_PAGE_ATTRIBUTE", request.getParameter("ROWS_PER_PAGE_ATTRIBUTE"));
 	}
 
-	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void displayResults(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int rowsPerPage = getRequestedRowsPerPage(request);
 		int currentPageIndex = getRequestedPageIndex(request);
 		

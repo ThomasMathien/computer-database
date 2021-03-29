@@ -10,6 +10,9 @@
 <link href="/CDB/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="/CDB/css/font-awesome.css" rel="stylesheet" media="screen">
 <link href="/CDB/css/main.css" rel="stylesheet" media="screen">
+<script src="/CDB/js/jquery.min.js"></script>
+<script src="/CDB/js/bootstrap.min.js"></script>
+<script src="/CDB/js/dashboard.js"></script>
 </head>
 <body>
 	<header class="navbar navbar-inverse navbar-fixed-top">
@@ -71,7 +74,7 @@
 				<tbody id="results">
 					<c:forEach var="computer" items="${computers}">
 						<tr>
-							<td class="editMode"><input type="checkbox" name="cb"class="cb" value="0"></td>
+							<td class="editMode"><input type="checkbox" name="cb" class="cb" value="${computer.id}"></td>
 							<td><a href="editComputer?id=${computer.id}" >${computer.name}</a></td>
 							<td>${computer.introduced}</td>
 							<td>${computer.discontinued}</td>
@@ -128,9 +131,5 @@
 
 		</div>
 	</footer>
-	<script src="/CDB/js/jquery.min.js"></script>
-	<script src="/CDB/js/bootstrap.min.js"></script>
-	<script src="/CDB/js/dashboard.js"></script>
-
 </body>
 </html>

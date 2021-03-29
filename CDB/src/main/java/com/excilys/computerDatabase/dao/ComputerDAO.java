@@ -117,6 +117,7 @@ public class ComputerDAO {
             		logger.warn("Ignored entered Id of "+computer.getId()+" as it is auto generated");
                 }
             }
+            logger.info("Computer added:"+computer.toString());
 		} catch (SQLException e) {
 			logger.error("Add Computer SQL Request Failed: with request "+ADD_COMPUTER_QUERY+" for Computer "+computer.toString(),e);
 		}
@@ -129,6 +130,7 @@ public class ComputerDAO {
 			if (stmt.executeUpdate() == 0) {
     			throw new FailedSQLRequestException("Couldn't delete computer with Id:"+id);
 			}
+			logger.info("Computer deleted of id:"+id);
 		} catch (SQLException e) {
 			logger.error("Delete Computer SQL Request Failed: with request "+DELETE_COMPUTER_BY_ID_QUERY+" for Id "+id,e);
 		}
@@ -150,6 +152,7 @@ public class ComputerDAO {
 			if (stmt.executeUpdate() == 0) {
     			throw new FailedSQLRequestException("Couldn't update computer with Id:"+id+ " with Object:"+computer.toString());
 			}
+			logger.info("Computer updated for id:"+id+" with:"+computer.toString());
 		} catch (SQLException e) {
 			logger.error("Update Computer SQL Request Failed: with request " + UPDATE_COMPUTER_BY_ID_QUERY +
 					" for Id:"+id+ " with Object:"+computer.toString(),e);
