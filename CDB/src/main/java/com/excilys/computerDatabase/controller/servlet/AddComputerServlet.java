@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +19,9 @@ import com.excilys.computerDatabase.dto.ComputerToDatabaseDTO;
 import com.excilys.computerDatabase.dto.builder.ComputerToDatabaseDTOBuilder;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.exception.invalidValuesException.InvalidValuesException;
+import com.excilys.computerDatabase.mapper.CompanyMapper;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
+import com.excilys.computerDatabase.model.Company;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.service.CompanyService;
 import com.excilys.computerDatabase.service.ComputerService;
@@ -41,8 +44,9 @@ public class AddComputerServlet extends HttpServlet {
 		
 		@Override
 		public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			List<CompanyDTO> companies = CompanyService.getInstance().getAsPageable();
-			request.setAttribute(COMPANIES_LIST_ATTRIBUTE, companies);
+			List<Company> companies = CompanyService.getInstance().getCompanies();
+			List<CompanyDTO> dtos  = companies.stream().map(c -> CompanyMapper.getInstance().toCompanyDTO(Optional.of(c))).collect(Collectors.toList());
+			request.setAttribute(COMPANIES_LIST_ATTRIBUTE, dtos);
 			this.getServletContext().getRequestDispatcher(VIEW_PATH).forward(request, response);
 		}
 		
@@ -54,7 +58,6 @@ public class AddComputerServlet extends HttpServlet {
 			String companyId = request.getParameter(COMPANY_ID_ATTRIBUTE);
 			try {
 				ComputerToDatabaseDTO dto = new ComputerToDatabaseDTOBuilder()
-						.setId(companyId)
 						.setCompanyId(companyId)
 						.setDiscontinued(discontinued)
 						.setIntroduced(introduced)
@@ -66,7 +69,7 @@ public class AddComputerServlet extends HttpServlet {
 					ComputerService.getInstance().addComputer(newComputer.orElseThrow());
 					logger.info("Adding new computer: " + newComputer.toString());
 				} catch (FailedSQLRequestException e) {
-					logger.error("Couldn't add new computer", e);
+					logger.error("Couldn't add new computer:" + newComputer.toString(), e);
 				} catch (NoSuchElementException e) {
 					logger.warn("Computer couldn't be properly mapped from DTO");
 				}
