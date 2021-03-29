@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.excilys.computerDatabase.dao.ComputerDAO;
+import com.excilys.computerDatabase.dao.SqlFilter;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.model.Computer;
 
@@ -28,8 +29,8 @@ public class ComputerService {
 		return ComputerDAO.getInstance().getComputers(from, amount);
 	}
 
-	public List<Computer> getComputers(long from, long amount, String search) {
-		return ComputerDAO.getInstance().getComputers(from, amount, search);
+	public List<Computer> getComputers(long from, long amount, SqlFilter filter) {
+		return ComputerDAO.getInstance().getComputers(from, amount, filter);
 	}
 	public Optional<Computer> findComputer(long id){
 		return ComputerDAO.getInstance().findComputer(id);
