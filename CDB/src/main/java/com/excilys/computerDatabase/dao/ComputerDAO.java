@@ -30,10 +30,13 @@ public class ComputerDAO {
 	private static final String FIND_COMPUTER_BY_ID_QUERY = """
 			SELECT computer.id AS id, computer.name AS name, introduced, discontinued, computer.company_id AS company_id,
 			company.name AS company_name FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE computer.id = ?;""";
-	private final static String GET_COMPUTERS_COUNT_QUERY = "SELECT COUNT(*) FROM computer;";
+	private final static String GET_COMPUTERS_COUNT_FILTER_QUERY = """
+			SELECT COUNT(*) FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE LOWER(computer.name)
+			LIKE LOWER(?) OR LOWER(company.name) LIKE LOWER(?);""";
 	private static final String FIND_COMPUTERS_INTERVAL_QUERY = """
 			SELECT computer.id AS id, computer.name AS name, introduced, discontinued, computer.company_id AS company_id,
-			company.name AS company_name FROM computer LEFT JOIN company ON computer.company_id = company.id ORDER BY computer.id LIMIT ? OFFSET ?;""";
+			company.name AS company_name FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE LOWER(computer.name) 
+			LIKE LOWER(?) OR LOWER(company.name) LIKE LOWER(?) ORDER BY computer.id LIMIT ? OFFSET ?;""";
 
 	private Logger logger = LoggerFactory.getLogger(ComputerDAO.class);
 	
@@ -53,11 +56,17 @@ public class ComputerDAO {
 	}
 	
 	public List<Computer> getComputers(long from, long amount){
+		return getComputers(from, amount, "%");
+	}
+	public List<Computer> getComputers(long from, long amount, String search) {
 		List<Computer> computers = new ArrayList<>();
 		try (Connection conn = getConnection();
 				PreparedStatement stmt = conn.prepareStatement(FIND_COMPUTERS_INTERVAL_QUERY)){
-			stmt.setLong(1, amount);
-			stmt.setLong(2,from);
+			search = adaptToLikeQuery(search);
+			stmt.setString(1, search);
+			stmt.setString(2, search);
+			stmt.setLong(3, amount);
+			stmt.setLong(4,from);
 			try (ResultSet results = stmt.executeQuery()){
 				while(results.next()) {
 					Optional<Computer> c;
@@ -160,19 +169,39 @@ public class ComputerDAO {
 	}
 
 	public int getComputerCount() {
+		return getComputerCount("%");
+	}
+	
+	public int getComputerCount(String searchFilter) {
 		try (Connection conn = getConnection();
-				Statement stmt = conn.createStatement();
-				ResultSet results = stmt.executeQuery(GET_COMPUTERS_COUNT_QUERY)){
+				PreparedStatement stmt = conn.prepareStatement(GET_COMPUTERS_COUNT_FILTER_QUERY)){
+				searchFilter = adaptToLikeQuery(searchFilter);
+				stmt.setString(1, searchFilter);
+				stmt.setString(2, searchFilter);
+				ResultSet results = stmt.executeQuery();
 			if(results.next()) {
 				return results.getInt(1);
 			}
 		} catch (SQLException e) {
-			logger.error("Get Computer Count SQL Request Failed: with request "+GET_COMPUTERS_COUNT_QUERY,e );
+			logger.error("Get Computer Count SQL Request Failed: with request "+GET_COMPUTERS_COUNT_FILTER_QUERY,e );
 		}
 		return 0;
 	}
-
-	Connection getConnection() throws SQLException {
+	
+	private Connection getConnection() throws SQLException {
 		return Datasource.getInstance().getConnection();
 	}
+
+	private String adaptToLikeQuery(String search){
+		if (search != null) {
+			search = "%" + search.trim().toLowerCase() +"%";
+		} else {
+			search = "%";
+		}
+		return search;
+	}
+	
+
+
+
 }

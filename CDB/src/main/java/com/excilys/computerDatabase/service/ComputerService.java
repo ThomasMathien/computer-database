@@ -28,6 +28,9 @@ public class ComputerService {
 		return ComputerDAO.getInstance().getComputers(from, amount);
 	}
 
+	public List<Computer> getComputers(long from, long amount, String search) {
+		return ComputerDAO.getInstance().getComputers(from, amount, search);
+	}
 	public Optional<Computer> findComputer(long id){
 		return ComputerDAO.getInstance().findComputer(id);
 	}
@@ -47,4 +50,10 @@ public class ComputerService {
 	public int getComputerCount() {
 		return ComputerDAO.getInstance().getComputerCount();
 	}
+
+	public int getComputerCount(String search) {
+		return ComputerDAO.getInstance().getComputerCount(search);
+	}
+
+
 }

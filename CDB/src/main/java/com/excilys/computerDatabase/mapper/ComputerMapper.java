@@ -89,7 +89,6 @@ public class ComputerMapper {
 		try {
 			ComputerValidator.getInstance().validateComputerDTO(dto);
 			ComputerBuilder builder = new ComputerBuilder(dto.getName())
-					
 					.setIntroduced(parseToLocalDate(dto.getIntroduced()).orElse(null))
 					.setDiscontinued(parseToLocalDate(dto.getDiscontinued()).orElse(null));
 					if (dto.getCompanyId() != null) {

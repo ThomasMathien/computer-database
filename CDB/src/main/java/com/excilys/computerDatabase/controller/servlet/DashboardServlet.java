@@ -51,7 +51,7 @@ public class DashboardServlet extends HttpServlet {
 	}
 	
 	private void handleMultiplePosts(HttpServletRequest request) {
-		if (request.getParameter("ROWS_PER_PAGE_ATTRIBUTE") != null) {
+		if (request.getParameter(ROWS_PER_PAGE_ATTRIBUTE) != null) {
 			setRowsPerPage(request);
 		} else if (request.getParameter(SELECTED_COMPUTERS_ATTRIBUTE) != null) {
 			deleteComputer(Stream.of(request.getParameter(SELECTED_COMPUTERS_ATTRIBUTE).split(SELECTED_COMPUTER_DELIMITER)).mapToLong(Long::parseLong).toArray());
@@ -69,25 +69,25 @@ public class DashboardServlet extends HttpServlet {
 	}
 	
 	private void setRowsPerPage(HttpServletRequest request) {
-		request.getSession().setAttribute("ROWS_PER_PAGE_ATTRIBUTE", request.getParameter("ROWS_PER_PAGE_ATTRIBUTE"));
+		request.getSession().setAttribute(ROWS_PER_PAGE_ATTRIBUTE, request.getParameter(ROWS_PER_PAGE_ATTRIBUTE));
 	}
 
 	public void displayResults(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int rowsPerPage = getRequestedRowsPerPage(request);
 		int currentPageIndex = getRequestedPageIndex(request);
-		
-		List<Computer> computers = ComputerService.getInstance().getComputers(currentPageIndex * rowsPerPage, rowsPerPage);
+		String search = request.getParameter("search");
+		List<Computer> computers = ComputerService.getInstance().getComputers((currentPageIndex - 1) * rowsPerPage, rowsPerPage, search);
 		List<ComputerFormDTO> dtos = computers.stream().map(c -> ComputerMapper.getInstance().toComputerFormDTO(c)).collect(Collectors.toList());
 		
 		Page<ComputerFormDTO> page = new Page<ComputerFormDTO>(dtos);
 		
-		int totalComputers = ComputerService.getInstance().getComputerCount();
+		int totalComputers = ComputerService.getInstance().getComputerCount(search);
 		
 		request.setAttribute(COMPUTER_LIST_ATTRIBUTE, page.getContent());
 		request.setAttribute(TOTAL_COMPUTERS_ATTRIBUTE, totalComputers);
 		request.setAttribute(MAX_PAGES_ATTRIBUTE, (int) Math.ceil(totalComputers / rowsPerPage));
 		request.setAttribute(PAGE_INDEX_ATTRIBUTE, currentPageIndex);
-		
+
 		this.getServletContext().getRequestDispatcher(VIEW_PATH).forward(request, response);
 	}
 	
@@ -98,7 +98,7 @@ public class DashboardServlet extends HttpServlet {
 				return Integer.parseInt(rowsPerPargeRequest);
 			}
 		} catch (NumberFormatException e) {
-			logger.warn("Parameter " +ROWS_PER_PAGE_ATTRIBUTE+":"+rowsPerPargeRequest+" could'nt be conveted to an Int", e);
+			logger.warn("Parameter " + ROWS_PER_PAGE_ATTRIBUTE + ":" + rowsPerPargeRequest + " could'nt be conveted to an Int", e);
 		}
 		return DEFAULT_ROWS_PER_PAGE;
 	}
