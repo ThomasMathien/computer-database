@@ -37,6 +37,9 @@ public class ComputerDAO {
 			SELECT computer.id AS id, computer.name AS name, introduced, discontinued, computer.company_id AS company_id,
 			company.name AS company_name FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE LOWER(computer.name) 
 			LIKE LOWER(?) OR LOWER(company.name) LIKE LOWER(?) ORDER BY computer.name ASC LIMIT ? OFFSET ?;""";
+	private static final String FIND_COMPUTERS_FROM_COMPANY = """
+			SELECT computer.id FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE company.id = ?;
+			""";
 
 	private Logger logger = LoggerFactory.getLogger(ComputerDAO.class);
 	
@@ -58,6 +61,22 @@ public class ComputerDAO {
 	public List<Computer> getComputers(long from, long amount){
 		return getComputers(from, amount, new SqlFilter("%","computer.id","ASC"));
 	}
+	
+	public long [] getComputersIdFromCompany(long companyId){
+		List<Long> computersId = new ArrayList<>();
+		try (Connection conn = getConnection();
+				PreparedStatement stmt = conn.prepareStatement(FIND_COMPUTERS_FROM_COMPANY)){
+			stmt.setLong(1,companyId);
+			ResultSet results = stmt.executeQuery();
+			while(results.next()) {
+				computersId.add(results.getLong(0));
+			}
+		} catch (SQLException e) {
+			logger.error("Get Computers SQL Request Failed: with request "+FIND_COMPUTERS_FROM_COMPANY+" for compay id: "+companyId, e);
+		}
+		return computersId.stream().mapToLong( l -> l).toArray();
+	}
+	
 	public List<Computer> getComputers(long from, long amount, SqlFilter filter) {
 		List<Computer> computers = new ArrayList<>();
 		try (Connection conn = getConnection();
@@ -132,9 +151,10 @@ public class ComputerDAO {
 		}
 	}
 	
-	public void deleteComputer(long id) throws FailedSQLRequestException {
+	public void deleteComputer(long id, boolean autocommit) throws FailedSQLRequestException {
 		try(Connection conn = getConnection();
 				PreparedStatement stmt = conn.prepareStatement(DELETE_COMPUTER_BY_ID_QUERY)) {
+			conn.setAutoCommit(autocommit);
 			stmt.setLong(1,id);
 			if (stmt.executeUpdate() == 0) {
     			throw new FailedSQLRequestException("Couldn't delete computer with Id:"+id);
@@ -143,6 +163,10 @@ public class ComputerDAO {
 		} catch (SQLException e) {
 			logger.error("Delete Computer SQL Request Failed: with request "+DELETE_COMPUTER_BY_ID_QUERY+" for Id "+id,e);
 		}
+	}
+	
+	public void deleteComputer(long id) throws FailedSQLRequestException {
+		deleteComputer(id, true);
 	}
 	
 	public void updateComputer(long id, Computer computer) throws FailedSQLRequestException {
@@ -201,7 +225,4 @@ public class ComputerDAO {
 		return search;
 	}
 	
-
-
-
 }

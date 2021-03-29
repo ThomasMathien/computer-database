@@ -25,14 +25,19 @@ public class ComputerService {
 		return ComputerDAO.getInstance().getComputers();
 	}
 	
-	public List<Computer> getComputers(long from, long amount){
+	public List<Computer> getComputers(long from, long amount) {
 		return ComputerDAO.getInstance().getComputers(from, amount);
 	}
 
 	public List<Computer> getComputers(long from, long amount, SqlFilter filter) {
 		return ComputerDAO.getInstance().getComputers(from, amount, filter);
 	}
-	public Optional<Computer> findComputer(long id){
+	
+	public long[] getComputersIdFromCompany(long companyId) {
+		return ComputerDAO.getInstance().getComputersIdFromCompany(companyId);
+	}
+	
+	public Optional<Computer> findComputer(long id) {
 		return ComputerDAO.getInstance().findComputer(id);
 	}
 	
@@ -42,6 +47,10 @@ public class ComputerService {
 	
 	public void deleteComputer(long id) throws FailedSQLRequestException {
 		ComputerDAO.getInstance().deleteComputer(id);
+	}
+	
+	public void deleteComputer(long id, boolean autocommit) throws FailedSQLRequestException {
+		ComputerDAO.getInstance().deleteComputer(id, autocommit);
 	}
 	
 	public void updateComputer(long id, Computer computer) throws FailedSQLRequestException {
