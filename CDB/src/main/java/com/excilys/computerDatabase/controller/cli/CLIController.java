@@ -1,5 +1,6 @@
 package com.excilys.computerDatabase.controller.cli;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Scanner;
@@ -12,6 +13,7 @@ import com.excilys.computerDatabase.exception.CommandNotFoundException;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.model.builder.ComputerBuilder;
+import com.excilys.computerDatabase.service.CompanyService;
 import com.excilys.computerDatabase.service.ComputerService;
 import com.excilys.computerDatabase.ui.view.DetailsDisplayComputer;
 
@@ -59,6 +61,9 @@ public class CLIController {
 					case DELETE_COMPUTER:
 						deleteComputer();
 						break;
+					case DELETE_COMPANY:
+						deleteCompany();
+						break;
 					case EXIT_MENU:
 						sc.close();
 						return;
@@ -70,6 +75,19 @@ public class CLIController {
 				System.out.println("Invalid command, please try again");
 			}
 		} 
+	}
+
+	private void deleteCompany() {
+		System.out.print("+++Enter deleted company id:\n>>");
+		long companyId = InputParser.takeIdInput(sc);
+		try {
+			CompanyService.getInstance().deleteCompany(companyId);
+		}
+		catch (FailedSQLRequestException e) {
+			System.out.println("Company not deleted");
+			return;
+		}
+		System.out.println("Company "+companyId+" successfully deleted!");
 	}
 
 	private void displayMainMenu() {

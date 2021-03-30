@@ -40,6 +40,9 @@ public class ComputerDAO {
 	private static final String FIND_COMPUTERS_FROM_COMPANY = """
 			SELECT computer.id FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE company.id = ?;
 			""";
+	private static final String DELETE_COMPUTER_BY_COMPANY_ID_QUERY = """
+			DELETE FROM computer WHERE company_id=?;
+			""";
 
 	private Logger logger = LoggerFactory.getLogger(ComputerDAO.class);
 	
@@ -69,7 +72,7 @@ public class ComputerDAO {
 			stmt.setLong(1,companyId);
 			ResultSet results = stmt.executeQuery();
 			while(results.next()) {
-				computersId.add(results.getLong(0));
+				computersId.add(results.getLong(1));
 			}
 		} catch (SQLException e) {
 			logger.error("Get Computers SQL Request Failed: with request "+FIND_COMPUTERS_FROM_COMPANY+" for compay id: "+companyId, e);
@@ -151,10 +154,22 @@ public class ComputerDAO {
 		}
 	}
 	
-	public void deleteComputer(long id, boolean autocommit) throws FailedSQLRequestException {
+	public void deleteComputerByCompany(long companyId, Connection conn) throws FailedSQLRequestException {
+		try(PreparedStatement stmt = conn.prepareStatement(DELETE_COMPUTER_BY_COMPANY_ID_QUERY)) {
+			stmt.setLong(1,companyId);
+			int amount = stmt.executeUpdate();
+			if (amount == 0) {
+    			throw new FailedSQLRequestException("Couldn't delete computer with Id:"+companyId);
+			}
+			logger.info(amount + " Computers deleted for companyId:"+companyId);
+		} catch (SQLException e) {
+			logger.error("Delete Computers SQL Request Failed: with request "+DELETE_COMPUTER_BY_COMPANY_ID_QUERY+" for Id "+companyId,e);
+		}
+	}
+	
+	public void deleteComputer(long id) throws FailedSQLRequestException {
 		try(Connection conn = getConnection();
 				PreparedStatement stmt = conn.prepareStatement(DELETE_COMPUTER_BY_ID_QUERY)) {
-			conn.setAutoCommit(autocommit);
 			stmt.setLong(1,id);
 			if (stmt.executeUpdate() == 0) {
     			throw new FailedSQLRequestException("Couldn't delete computer with Id:"+id);
@@ -163,10 +178,6 @@ public class ComputerDAO {
 		} catch (SQLException e) {
 			logger.error("Delete Computer SQL Request Failed: with request "+DELETE_COMPUTER_BY_ID_QUERY+" for Id "+id,e);
 		}
-	}
-	
-	public void deleteComputer(long id) throws FailedSQLRequestException {
-		deleteComputer(id, true);
 	}
 	
 	public void updateComputer(long id, Computer computer) throws FailedSQLRequestException {

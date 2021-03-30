@@ -1,11 +1,13 @@
 package com.excilys.computerDatabase.service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.excilys.computerDatabase.dao.CompanyDAO;
 import com.excilys.computerDatabase.dto.CompanyDTO;
+import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.mapper.CompanyMapper;
 import com.excilys.computerDatabase.model.Company;
 
@@ -38,4 +40,7 @@ public class CompanyService {
 		return CompanyDAO.getInstance().getCompanyCount();
 	}
 	
+	public void deleteCompany(long id) throws FailedSQLRequestException {
+		CompanyDAO.getInstance().deleteCompany(id);
+	}
 }

@@ -100,31 +100,34 @@ public class CompanyDAO {
 		return 0;
 	}
 
-	public void deleteCompany(long id) {
+	public void deleteCompany(long id) throws FailedSQLRequestException {
 		try  {
 			Connection conn = null; 
 			PreparedStatement stmt = null;
 			try {
 				conn = getConnection(); 
-				stmt = conn.prepareStatement(DELETE_COMPANY_BY_ID_QUERY);
 				conn.setAutoCommit(false);
-				long[] computersId = ComputerService.getInstance().getComputersIdFromCompany(id);
-				for (long computerId : computersId) {
-					ComputerService.getInstance().deleteComputer(computerId, false);
-				}
+				ComputerService.getInstance().deleteComputerByCompany(id, conn);
+				stmt = conn.prepareStatement(DELETE_COMPANY_BY_ID_QUERY);
 				stmt.setLong(1, id);
 				if (stmt.executeUpdate() == 0) {
 	    			throw new FailedSQLRequestException("Couldn't delete company with Id:" + id);
 				}
 				logger.info("Company deleted of id:" + id);
-			} catch (SQLException | FailedSQLRequestException e) {
+				conn.commit();
+			} catch (SQLException e) {
 				if (conn != null) {
 					conn.rollback();
+					conn.close();
+					logger.warn("Reverting deletion of companies with company Id:"+id);
 				}
 				logger.error("Delete Company SQL Request Failed: with request " + DELETE_COMPANY_BY_ID_QUERY + " for Id " + id, e);
 			} finally {
 				if (stmt != null) {
 					stmt.close();
+				}
+				if (conn != null) {
+					conn.close();
 				}
 			}
 		} catch (SQLException e) {

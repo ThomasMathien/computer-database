@@ -56,7 +56,6 @@ public class EditComputerServlet extends HttpServlet {
 		this.getServletContext().getRequestDispatcher(VIEW_PATH).forward(request, response);
 	}
 	
-	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter(COMPUTER_NAME_ATTRIBUTE).trim();
