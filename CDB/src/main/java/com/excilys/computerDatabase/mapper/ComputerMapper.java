@@ -3,6 +3,7 @@ package com.excilys.computerDatabase.mapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -76,8 +77,8 @@ public class ComputerMapper {
 		ComputerFormDTOBuilder builder = new ComputerFormDTOBuilder()
 				.setId(String.valueOf(c.getId()))
 				.setName(c.getName())
-				.setIntroduced(Objects.toString(String.valueOf(c.getIntroduced()), ""))
-				.setDiscontinued(Objects.toString(String.valueOf(c.getDiscontinued()), ""));
+				.setIntroduced(c.getIntroduced() != null ? String.valueOf(c.getIntroduced()) : "")
+				.setDiscontinued(c.getDiscontinued() != null ? String.valueOf(c.getDiscontinued()) : "");
 			if (c.getCompany() != null) {
 				builder.setCompanyName(c.getCompany().getName());
 			}
@@ -88,16 +89,27 @@ public class ComputerMapper {
 		try {
 			ComputerValidator.getInstance().validateComputerDTO(dto);
 			ComputerBuilder builder = new ComputerBuilder(dto.getName())
-					.setIntroduced(LocalDate.parse(dto.getIntroduced()))
-					.setDiscontinued(LocalDate.parse(dto.getDiscontinued()));
-					if (!"0".equals(dto.getCompanyId())) {
+					.setIntroduced(parseToLocalDate(dto.getIntroduced()).orElse(null))
+					.setDiscontinued(parseToLocalDate(dto.getDiscontinued()).orElse(null));
+					if (dto.getCompanyId() != null) {
 						builder.setCompany(Long.parseLong(dto.getCompanyId()));
+					}
+					if (dto.getId() != null) {
+						builder.setId(Long.parseLong(dto.getId()));
 					}
 					return Optional.of(builder.build());
 		} catch (InvalidValuesException e) {
 			logger.warn("Couldn't map DTO to computer as values are invalid["+e.getMessage()+"]: DTO:"+dto.toString());
 		}
 		return Optional.empty();
+	}
+	
+	public Optional<LocalDate> parseToLocalDate(String date) {
+		try {
+			return Optional.of(LocalDate.parse(date));
+		} catch (DateTimeParseException e) {
+			return Optional.empty();
+		}
 	}
 	
 }

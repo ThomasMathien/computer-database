@@ -22,4 +22,16 @@ $(function() {
 		 discontinued: "Discontinued date must be after introduced date",
 	  },
 	});
+		$("#editComputerForm").validate({
+	 rules: {
+	   computerName: {
+		   required: true,
+		   notBlank: true,
+	   },
+	   discontinued: { greaterThan: "#introduced" }
+	 },
+	 messages: {
+		 discontinued: "Discontinued date must be after introduced date",
+	  },
+	});
 });

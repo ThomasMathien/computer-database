@@ -9,6 +9,7 @@ import com.excilys.computerDatabase.exception.invalidValuesException.InvalidDate
 import com.excilys.computerDatabase.exception.invalidValuesException.InvalidIdException;
 import com.excilys.computerDatabase.exception.invalidValuesException.InvalidNameException;
 import com.excilys.computerDatabase.exception.invalidValuesException.InvalidValuesException;
+import com.excilys.computerDatabase.mapper.ComputerMapper;
 
 public class ComputerValidator {
 	
@@ -24,7 +25,9 @@ public class ComputerValidator {
 	
 	public void validateComputerDTO(ComputerToDatabaseDTO dto) throws InvalidValuesException {
 		validateName(dto.getName());
-		validateDateInterval(LocalDate.parse(dto.getIntroduced()), LocalDate.parse(dto.getDiscontinued()));
+		Optional<LocalDate> introduced = ComputerMapper.getInstance().parseToLocalDate(dto.getIntroduced());
+		Optional<LocalDate> discontinued = ComputerMapper.getInstance().parseToLocalDate(dto.getDiscontinued());
+		validateDateInterval(introduced, discontinued);
 		if (dto.getId() != null) {
 			validateId(Long.parseLong(dto.getId()));
 		}
@@ -48,8 +51,8 @@ public class ComputerValidator {
 		}
 	}
 	
-	private void validateDateInterval(LocalDate from, LocalDate until) throws InvalidDateInterval {
-		if ((from != null) && (until != null) && !from.isBefore(until)) {
+	private void validateDateInterval(Optional<LocalDate> introduced, Optional<LocalDate> discontinued) throws InvalidDateInterval {
+		if ((introduced.isPresent()) && (discontinued.isPresent()) && discontinued.get().isBefore(introduced.get())) {
 			throw new InvalidDateInterval("Date interval should respect date precedence");
 		}
 	}

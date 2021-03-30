@@ -13,6 +13,10 @@
 	<servlet-name>AddComputerServlet</servlet-name>
 	<servlet-class>com.excilys.computerDatabase.controller.servlet.AddComputerServlet</servlet-class>
 </servlet>
+<servlet>
+	<servlet-name>EditComputerServlet</servlet-name>
+	<servlet-class>com.excilys.computerDatabase.controller.servlet.EditComputerServlet</servlet-class>
+</servlet>
 
 <servlet-mapping>
 	<servlet-name>DashboardServlet</servlet-name>
@@ -21,5 +25,9 @@
 <servlet-mapping>
 	<servlet-name>AddComputerServlet</servlet-name>
 	<url-pattern>/addComputer</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>EditComputerServlet</servlet-name>
+	<url-pattern>/editComputer</url-pattern>
 </servlet-mapping>
 </web-app>

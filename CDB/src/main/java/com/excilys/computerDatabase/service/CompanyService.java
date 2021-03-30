@@ -1,15 +1,17 @@
 package com.excilys.computerDatabase.service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.excilys.computerDatabase.dao.CompanyDAO;
 import com.excilys.computerDatabase.dto.CompanyDTO;
+import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.mapper.CompanyMapper;
 import com.excilys.computerDatabase.model.Company;
 
-public class CompanyService{
+public class CompanyService {
 
 	private static CompanyService instance;
 	
@@ -20,22 +22,17 @@ public class CompanyService{
 		return instance;
 	}
 	
-	private CompanyService() {}
+	private CompanyService() { }
 	
-	public List<CompanyDTO> getAsPageable() {
-		List<Company> companies = getCompanies();
-		return companies.stream().map(c -> CompanyMapper.getInstance().toCompanyDTO(Optional.of(c))).collect(Collectors.toList());
-	}
-	
-	public List<Company> getCompanies(){
+	public List<Company> getCompanies() {
 		return CompanyDAO.getInstance().getCompanies();
 	}
 	
-	public List<Company> getCompanies(int from, int amount){
+	public List<Company> getCompanies(int from, int amount) {
 		return CompanyDAO.getInstance().getCompanies(from, amount);
 	}
 	
-	public Optional<Company> findCompany(long id){
+	public Optional<Company> findCompany(long id) {
 		return CompanyDAO.getInstance().findCompany(id);
 	}
 	
@@ -43,4 +40,7 @@ public class CompanyService{
 		return CompanyDAO.getInstance().getCompanyCount();
 	}
 	
+	public void deleteCompany(long id) throws FailedSQLRequestException {
+		CompanyDAO.getInstance().deleteCompany(id);
+	}
 }

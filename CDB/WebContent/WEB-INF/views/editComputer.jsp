@@ -16,19 +16,24 @@
 <body>
     <header class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="dashboard.html"> Application - Computer Database </a>
+            <a class="navbar-brand" href="dashboard"> Application - Computer Database </a>
         </div>
     </header>
     <section id="main">
         <div class="container">
             <div class="row">
                 <div class="col-xs-8 col-xs-offset-2 box">
-                    <h1>Add Computer</h1>
-                    <form id="addComputerForm" action="addComputer" method="POST">
+                    <div class="label label-default pull-right">
+                        id: ${id} 
+                    </div>
+                    <h1>Edit Computer</h1>
+
+                    <form id="editComputerForm" action="editComputer" method="POST">
                         <fieldset>
+                            <input name="id" type="hidden" value=${id} id="id"/>
                             <div class="form-group">
                                 <label for="computerName">Computer name</label>
-                                <input name="computerName" type="text" class="form-control" id="computerName" placeholder="Computer name">
+                                <input name="computerName"  type="text" class="form-control" id="computerName" placeholder="Computer name">
                             </div>
                             <div class="form-group">
                                 <label for="introduced">Introduced date</label>
@@ -36,22 +41,22 @@
                             </div>
                             <div class="form-group">
                                 <label for="discontinued">Discontinued date</label>
-                                <input name="discontinued" type="date" class="form-control" id="discontinued" placeholder="Discontinued date">
+                                <input name="discontinued"  type="date" class="form-control" id="discontinued" placeholder="Discontinued date">
                             </div>
                             <div class="form-group">
                                 <label for="companyId">Company</label>
                                 <select name="companyId" class="form-control" id="companyId" >
-                                    <option  value="0">--</option>
+                                  <option  value="0">--</option>
                                 	<c:forEach var="company" items="${companies}">
                                 		<option value="${company.id}">${company.name}</option>
                                 	</c:forEach>
                                 </select>
-                            </div>                  
+                            </div>            
                         </fieldset>
                         <div class="actions pull-right">
-                            <input name="newComputer" type="submit" value="Add" class="btn btn-primary">
+                            <input type="submit" value="Edit" class="btn btn-primary">
                             or
-                            <a id="cancelButton" href="dashboard" class="btn btn-default">Cancel</a>
+                            <a href="dashboard" class="btn btn-default">Cancel</a>
                         </div>
                     </form>
                 </div>
