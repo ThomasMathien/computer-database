@@ -61,14 +61,20 @@
 									<i class="fa fa-trash-o fa-lg"></i>
 								</a>
 							</span></th>
-								<th>Computer name  <button name="sortCriteria" type="submit" class="fa fa-sort-desc" value="computerName;desc"></button>
-									<button name="sortCriteria" type="submit" class="fa fa-sort-asc" value="computerName;asc"></button>
+								<th>Computer name  <button name="sortCriteria" type="submit" class="fa fa-sort-asc" value="computerName;desc"></button>
+									<button name="sortCriteria" type="submit" class="fa fa-sort-desc" value="computerName;asc"></button>
 								</th>
-								<th>Introduced date
+								<th>Introduced date  <button name="sortCriteria" type="submit" class="fa fa-sort-asc" value="introduced;desc"></button>
+									<button name="sortCriteria" type="submit" class="fa fa-sort-desc" value="introduced;asc"></button>
+								</th>
 								<!-- Table header for Discontinued Date -->
-								<th>Discontinued date<</th>
+								<th>Discontinued date <button name="sortCriteria" type="submit" class="fa fa-sort-asc" value="discontinued;desc"></button>
+									<button name="sortCriteria" type="submit" class="fa fa-sort-desc" value="discontinued;asc"></button>
+								</th>
 								<!-- Table header for Company -->
-								<th>Company</th>
+								<th>Company  <button name="sortCriteria" type="submit" class="fa fa-sort-asc" value="companyName;desc"></button>
+									<button name="sortCriteria" type="submit" class="fa fa-sort-desc" value="companyName;asc"></button>
+								</th>
 						</tr>
 					</thead>
 					<!-- Browse attribute computers -->

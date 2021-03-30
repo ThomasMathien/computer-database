@@ -83,8 +83,8 @@ public class DashboardServlet extends HttpServlet {
 		int currentPageIndex = getRequestedPageIndex(request);
 		String search = request.getParameter(SEARCH_PARAMETER);
 		String sortingCriteria = (String) request.getSession().getAttribute(SORTING_CRITERIA_ATTRIBUTE);
-		String [] parsedSortCriterias = parseOrderBy(sortingCriteria);
-		SqlFilter filter = new SqlFilter(parsedSortCriterias[0],parsedSortCriterias[1], search);
+		String[] parsedSortCriterias = parseOrderBy(sortingCriteria);
+		SqlFilter filter = new SqlFilter(parsedSortCriterias[0], parsedSortCriterias[1], search);
 		List<Computer> computers = ComputerService.getInstance().getComputers((currentPageIndex - 1) * rowsPerPage, rowsPerPage, filter);
 		List<ComputerFormDTO> dtos = computers.stream().map(c -> ComputerMapper.getInstance().toComputerFormDTO(c)).collect(Collectors.toList());
 		

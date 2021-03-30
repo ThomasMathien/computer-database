@@ -36,7 +36,7 @@ public class ComputerDAO {
 	private static final String FIND_COMPUTERS_INTERVAL_QUERY = """
 			SELECT computer.id AS id, computer.name AS name, introduced, discontinued, computer.company_id AS company_id,
 			company.name AS company_name FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE LOWER(computer.name) 
-			LIKE LOWER(?) OR LOWER(company.name) LIKE LOWER(?) ORDER BY computer.name ASC LIMIT ? OFFSET ?;""";
+			LIKE LOWER(?) OR LOWER(company.name) LIKE LOWER(?) ! LIMIT ? OFFSET ?;""";
 	private static final String FIND_COMPUTERS_FROM_COMPANY = """
 			SELECT computer.id FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE company.id = ?;
 			""";
@@ -82,9 +82,11 @@ public class ComputerDAO {
 	
 	public List<Computer> getComputers(long from, long amount, SqlFilter filter) {
 		List<Computer> computers = new ArrayList<>();
+		final String orderByInjection = "ORDER BY " + filter.getSortedColumn()+ " "+ filter.getSortOrder()+" ";
+		final String query = FIND_COMPUTERS_INTERVAL_QUERY.replace("!", orderByInjection);
 		try (Connection conn = getConnection();
-				PreparedStatement stmt = conn.prepareStatement(FIND_COMPUTERS_INTERVAL_QUERY)){
-			String search = adaptToLikeQuery(filter.getSearch());
+				PreparedStatement stmt = conn.prepareStatement(query)){
+			String search = adaptToLikeQuery(filter.getSearchFilter());
 			stmt.setString(1, search);
 			stmt.setString(2, search);
 			stmt.setLong(3, amount);
