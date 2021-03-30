@@ -77,8 +77,8 @@ public class ComputerMapper {
 		ComputerFormDTOBuilder builder = new ComputerFormDTOBuilder()
 				.setId(String.valueOf(c.getId()))
 				.setName(c.getName())
-				.setIntroduced(Objects.toString(String.valueOf(c.getIntroduced()), ""))
-				.setDiscontinued(Objects.toString(String.valueOf(c.getDiscontinued()), ""));
+				.setIntroduced(c.getIntroduced() != null ? String.valueOf(c.getIntroduced()) : "")
+				.setDiscontinued(c.getDiscontinued() != null ? String.valueOf(c.getDiscontinued()) : "");
 			if (c.getCompany() != null) {
 				builder.setCompanyName(c.getCompany().getName());
 			}

@@ -42,7 +42,7 @@ public class ComputerDAOTest extends DataSourceDBUnitTest {
 		assertEquals(ComputerDAO.getInstance().getComputers(), computers);
 		final int offset = 2;
 		computers = ComputerDAO.getInstance().getComputers(offset, 5);
-		assertTrue(computers.size() == 5);
+		assertEquals(5, computers.size());
 		for (int i = 0; i < computers.size(); i++) {
 			assertEquals(ComputerDAO.getInstance().findComputer(i + 1 + offset).orElseThrow(), computers.get(i));
 		}
