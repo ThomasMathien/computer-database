@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import com.excilys.computerDatabase.dto.CompanyDTO;
 import com.excilys.computerDatabase.dto.ComputerToDatabaseDTO;
 import com.excilys.computerDatabase.dto.builder.ComputerToDatabaseDTOBuilder;
@@ -27,7 +29,8 @@ import com.excilys.computerDatabase.service.CompanyService;
 import com.excilys.computerDatabase.service.ComputerService;
 import com.excilys.computerDatabase.validator.ComputerValidator;
 
-public class AddComputerServlet extends HttpServlet {
+@Component
+public class AddComputerServlet extends SpringServlet {
 
 	private static final long serialVersionUID = -195965979475821843L;
 	
@@ -42,9 +45,12 @@ public class AddComputerServlet extends HttpServlet {
 		private final String DISCONTINUED_DATE_ATTRIBUTE = "discontinued";
 		private final String COMPANY_ID_ATTRIBUTE = "companyId";
 		
+		@Autowired
+		CompanyService companyService;
+		  
 		@Override
 		public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			List<Company> companies = CompanyService.getInstance().getCompanies();
+			List<Company> companies = companyService.getCompanies();
 			List<CompanyDTO> dtos  = companies.stream().map(c -> CompanyMapper.getInstance().toCompanyDTO(Optional.of(c))).collect(Collectors.toList());
 			request.setAttribute(COMPANIES_LIST_ATTRIBUTE, dtos);
 			this.getServletContext().getRequestDispatcher(VIEW_PATH).forward(request, response);

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.excilys.computerDatabase.dto.CompanyDTO;
 import com.excilys.computerDatabase.dto.ComputerToDatabaseDTO;
@@ -27,7 +28,7 @@ import com.excilys.computerDatabase.service.CompanyService;
 import com.excilys.computerDatabase.service.ComputerService;
 import com.excilys.computerDatabase.validator.ComputerValidator;
 
-public class EditComputerServlet extends HttpServlet {
+public class EditComputerServlet extends SpringServlet {
 
 	private static final long serialVersionUID = -8675864653659504656L;	
 	
@@ -42,15 +43,16 @@ public class EditComputerServlet extends HttpServlet {
 	private static final String DISCONTINUED_DATE_ATTRIBUTE = "discontinued";
 	private static final String COMPANY_ID_ATTRIBUTE = "companyId";
 	
-
-	
 	private Logger logger = LoggerFactory.getLogger(EditComputerServlet.class);
 
+	@Autowired
+	CompanyService companyService;
+	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter(COMPUTER_ID_PARAMETER);
 		request.setAttribute(COMPUTER_ID_ATTRIBUTE, id);
-		List<Company> companies = CompanyService.getInstance().getCompanies();
+		List<Company> companies = companyService.getCompanies();
 		List<CompanyDTO> dtos  = companies.stream().map(c -> CompanyMapper.getInstance().toCompanyDTO(Optional.of(c))).collect(Collectors.toList());
 		request.setAttribute(COMPANIES_LIST_ATTRIBUTE, dtos);
 		this.getServletContext().getRequestDispatcher(VIEW_PATH).forward(request, response);

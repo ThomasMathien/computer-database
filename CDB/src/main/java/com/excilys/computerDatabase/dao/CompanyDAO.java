@@ -17,7 +17,9 @@ import com.excilys.computerDatabase.service.ComputerService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class CompanyDAO {
 	
 	private Logger logger = LoggerFactory.getLogger(CompanyDAO.class);
@@ -27,17 +29,6 @@ public class CompanyDAO {
 	private static final String FIND_COMPANIES_INTERVAL_QUERY = "SELECT id AS company_id,name AS company_name FROM company ORDER BY id LIMIT ? OFFSET ?;";
 	private static final String DELETE_COMPANY_BY_ID_QUERY = "DELETE FROM company WHERE id = ?;";
 
-	private static CompanyDAO instance = null;
-
-	private CompanyDAO() { }
-	
-	public static CompanyDAO getInstance() {
-		if (instance == null) {
-			instance = new CompanyDAO();
-		}
-		return instance;
-	}
-	
 	public List<Company> getCompanies() {
 		return getCompanies(0, getCompanyCount());
 	}

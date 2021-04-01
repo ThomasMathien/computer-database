@@ -1,12 +1,12 @@
 package com.excilys.computerDatabase.controller.cli;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Scanner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.excilys.computerDatabase.controller.page.PageNavigator;
 import com.excilys.computerDatabase.exception.CommandNotFoundException;
@@ -22,6 +22,9 @@ public class CLIController {
 	private static CLIController instance;
 	private Scanner sc;
     private static final Logger logger = LoggerFactory.getLogger(CLIController.class);
+    
+    @Autowired
+    CompanyService companyService;
     
 	private CLIController() {
 		 sc = new Scanner(System.in);
@@ -81,7 +84,7 @@ public class CLIController {
 		System.out.print("+++Enter deleted company id:\n>>");
 		long companyId = InputParser.takeIdInput(sc);
 		try {
-			CompanyService.getInstance().deleteCompany(companyId);
+			companyService.deleteCompany(companyId);
 		}
 		catch (FailedSQLRequestException e) {
 			System.out.println("Company not deleted");

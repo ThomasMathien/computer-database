@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.excilys.computerDatabase.exception.PageOutOfBoundException;
 import com.excilys.computerDatabase.service.CompanyService;
@@ -26,6 +27,8 @@ public class PageNavigator {
 	public final static int GET_COMPANIES_REQUEST = 2;
 	PageCLI page;
 	
+	@Autowired
+	CompanyService companyService;
 	private static PageNavigator instance = null;
 	
 	private PageNavigator() {}
@@ -42,7 +45,7 @@ public class PageNavigator {
 		case GET_COMPUTERS_REQUEST:
 			return ComputerService.getInstance().getComputerCount();
 		case GET_COMPANIES_REQUEST:
-			return CompanyService.getInstance().getCompanyCount();
+			return companyService.getCompanyCount();
 		default:
 			return 0;
 		}
@@ -53,7 +56,7 @@ public class PageNavigator {
 		case GET_COMPUTERS_REQUEST:
 			return ComputerService.getInstance().getComputers(from,amount).stream().map( c -> new ShortDisplayComputer(c)).collect(Collectors.toList());
 		case GET_COMPANIES_REQUEST:
-			return CompanyService.getInstance().getCompanies(from, amount).stream().map( c -> new DisplayCompany(c)).collect(Collectors.toList());
+			return companyService.getCompanies(from, amount).stream().map( c -> new DisplayCompany(c)).collect(Collectors.toList());
 		default:
 			return null;
 		}
