@@ -2,22 +2,19 @@ package com.excilys.computerDatabase.dao;
 
 import static org.junit.Assert.*;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.excilys.computerDatabase.model.Company;
 
+
 public class CompanyDAOTest extends DataSourceDBUnitTest{
 
-	static CompanyDAO dao = CompanyDAO.getInstance();
+	@Autowired
+	static CompanyDAO dao;
 
 	private final int COMPANIES_AMOUNT = 5;
 	

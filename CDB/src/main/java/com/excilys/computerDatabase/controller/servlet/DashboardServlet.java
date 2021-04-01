@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.slf4j.Logger;
 
 import com.excilys.computerDatabase.controller.page.Page;
@@ -21,7 +22,7 @@ import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.service.ComputerService;
 
-@Configuration
+@Component
 public class DashboardServlet extends SpringServlet {
 
 	private static final long serialVersionUID = 8233813063630626361L;

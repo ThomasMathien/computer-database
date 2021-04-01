@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.model.Company;
@@ -22,29 +23,30 @@ import com.excilys.computerDatabase.model.builder.ComputerBuilder;
 public class ComputerDAOTest extends DataSourceDBUnitTest {
 	
 	private final int COMPUTERS_AMOUNT = 15;
-	static ComputerDAO dao = ComputerDAO.getInstance();
+	@Autowired
+	static ComputerDAO dao ;
 	
 	@Test
 	public void testGetComputers() {
 		List<Computer> computers = new ArrayList<>();
-		computers = ComputerDAO.getInstance().getComputers();
+		computers = dao.getComputers();
 		assertEquals(COMPUTERS_AMOUNT,computers.size());
 		for (Computer c: computers) {
 			assertTrue(c != null);
-			assertEquals(c, ComputerDAO.getInstance().findComputer(c.getId()).orElseThrow());
+			assertEquals(c, dao.findComputer(c.getId()).orElseThrow());
 		}	
 	}
 	
 	@Test
 	public void testGetComputersWithArguments() {
 		List<Computer> computers = new ArrayList<>();
-		computers = ComputerDAO.getInstance().getComputers(0, COMPUTERS_AMOUNT);
-		assertEquals(ComputerDAO.getInstance().getComputers(), computers);
+		computers = dao.getComputers(0, COMPUTERS_AMOUNT);
+		assertEquals(dao.getComputers(), computers);
 		final int offset = 2;
-		computers = ComputerDAO.getInstance().getComputers(offset, 5);
+		computers = dao.getComputers(offset, 5);
 		assertEquals(5, computers.size());
 		for (int i = 0; i < computers.size(); i++) {
-			assertEquals(ComputerDAO.getInstance().findComputer(i + 1 + offset).orElseThrow(), computers.get(i));
+			assertEquals(dao.findComputer(i + 1 + offset).orElseThrow(), computers.get(i));
 		}
 	}
 	
@@ -58,16 +60,16 @@ public class ComputerDAOTest extends DataSourceDBUnitTest {
 				.setId(12L)
 				.build());
 		
-		Optional<Computer> foundComputer = ComputerDAO.getInstance().findComputer(12);
+		Optional<Computer> foundComputer = dao.findComputer(12);
 		assertTrue(foundComputer.isPresent());
 		assertNotEquals(foundComputer, testComputer);
 		
 		testComputer.orElseThrow().setName("Apple III");
 		
 		assertEquals(foundComputer, testComputer);
-		assertTrue(ComputerDAO.getInstance().findComputer(145).isEmpty());
-		assertTrue(ComputerDAO.getInstance().findComputer(0).isEmpty());	
-		assertTrue(ComputerDAO.getInstance().findComputer(-2).isEmpty());
+		assertTrue(dao.findComputer(145).isEmpty());
+		assertTrue(dao.findComputer(0).isEmpty());	
+		assertTrue(dao.findComputer(-2).isEmpty());
 	}
 	
 	@Test
@@ -75,37 +77,37 @@ public class ComputerDAOTest extends DataSourceDBUnitTest {
 		
 		try {
 			Computer newComputer = new ComputerBuilder("TEST").build();
-			int count = ComputerDAO.getInstance().getComputerCount();
-			ComputerDAO.getInstance().addComputer(newComputer);
-			assertEquals(++count, ComputerDAO.getInstance().getComputerCount());
-			assertTrue(ComputerDAO.getInstance().findComputer(COMPUTERS_AMOUNT+1).isPresent());
-			assertNotEquals(ComputerDAO.getInstance().findComputer(COMPUTERS_AMOUNT+1).orElseThrow(), newComputer);
+			int count = dao.getComputerCount();
+			dao.addComputer(newComputer);
+			assertEquals(++count, dao.getComputerCount());
+			assertTrue(dao.findComputer(COMPUTERS_AMOUNT+1).isPresent());
+			assertNotEquals(dao.findComputer(COMPUTERS_AMOUNT+1).orElseThrow(), newComputer);
 			
 			newComputer.setId(COMPUTERS_AMOUNT+1);
 			
-			assertEquals(ComputerDAO.getInstance().findComputer(COMPUTERS_AMOUNT+1).orElseThrow(), newComputer);
+			assertEquals(dao.findComputer(COMPUTERS_AMOUNT+1).orElseThrow(), newComputer);
 		} catch (FailedSQLRequestException e) {
 			fail();
 		}
 		
 		assertThrows(NullPointerException.class, () -> {
-			ComputerDAO.getInstance().addComputer(null);
+			dao.addComputer(null);
 		});
 	}	
 	
 	@Test
 	public void testDeleteComputer() {
 		assertThrows(FailedSQLRequestException.class, () -> {
-			ComputerDAO.getInstance().deleteComputer(0);
+			dao.deleteComputer(0);
 		});
 		try {
-			ComputerDAO.getInstance().deleteComputer(5);
+			dao.deleteComputer(5);
 		} catch (FailedSQLRequestException e) {
 			fail();
 		}
-		assertTrue(ComputerDAO.getInstance().findComputer(5).isEmpty());
+		assertTrue(dao.findComputer(5).isEmpty());
 		assertThrows(FailedSQLRequestException.class, () -> {
-			ComputerDAO.getInstance().deleteComputer(5);
+			dao.deleteComputer(5);
 		});
 	}
 	
@@ -113,23 +115,23 @@ public class ComputerDAOTest extends DataSourceDBUnitTest {
 	
 	@Test
 	public void testUpdateComputer() {
-		Computer formerComputer = ComputerDAO.getInstance().findComputer(3).orElseThrow();
+		Computer formerComputer = dao.findComputer(3).orElseThrow();
 		Computer newComputer = new Computer(formerComputer);
 		newComputer.setName("New name");
 		try {
-			ComputerDAO.getInstance().updateComputer(3, newComputer);
-			assertEquals(newComputer, ComputerDAO.getInstance().findComputer(3).orElseThrow());
+			dao.updateComputer(3, newComputer);
+			assertEquals(newComputer, dao.findComputer(3).orElseThrow());
 		} catch (FailedSQLRequestException e) {
 			fail();
 		}
 		assertThrows(FailedSQLRequestException.class, () -> {
-			ComputerDAO.getInstance().updateComputer(0, newComputer);
+			dao.updateComputer(0, newComputer);
 		});
 		assertThrows(FailedSQLRequestException.class, () -> {
-			ComputerDAO.getInstance().updateComputer(18, newComputer);
+			dao.updateComputer(18, newComputer);
 		});
 		assertThrows(NullPointerException.class, () -> {
-			ComputerDAO.getInstance().updateComputer(5, null);
+			dao.updateComputer(5, null);
 		});
 	}	
 
