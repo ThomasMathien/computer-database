@@ -34,6 +34,8 @@ public class CompanyDAO {
 	ComputerService computerService;
 	@Autowired
 	CompanyMapper companyMapper;
+	@Autowired
+	Datasource datasource;
 	
 	public List<Company> getCompanies() {
 		return getCompanies(0, getCompanyCount());
@@ -133,7 +135,7 @@ public class CompanyDAO {
 	}
 	
 	Connection getConnection() throws SQLException {
-		return Datasource.getInstance().getConnection();
+		return datasource.getConnection();
 	}
 
 }

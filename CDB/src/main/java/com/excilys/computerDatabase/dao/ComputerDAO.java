@@ -51,6 +51,8 @@ public class ComputerDAO {
 	
 	@Autowired
 	ComputerMapper computerMapper;
+	@Autowired
+	Datasource datasource;
 	
 	public List<Computer> getComputers(){
 		return getComputers(0,getComputerCount());
@@ -221,7 +223,7 @@ public class ComputerDAO {
 	}
 	
 	private Connection getConnection() throws SQLException {
-		return Datasource.getInstance().getConnection();
+		return datasource.getConnection();
 	}
 
 	private String adaptToLikeQuery(String search){
