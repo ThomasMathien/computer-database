@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,6 +29,7 @@ import com.excilys.computerDatabase.service.ComputerService;
 import com.excilys.computerDatabase.validator.ComputerValidator;
 
 @Component
+@WebServlet(urlPatterns="/addComputer")
 public class AddComputerServlet extends SpringServlet {
 
 	private static final long serialVersionUID = -195965979475821843L;

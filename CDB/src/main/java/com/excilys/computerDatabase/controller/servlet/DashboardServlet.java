@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,7 @@ import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.service.ComputerService;
 
 @Component
+@WebServlet(urlPatterns="/dashboard")
 public class DashboardServlet extends SpringServlet {
 
 	private static final long serialVersionUID = 8233813063630626361L;

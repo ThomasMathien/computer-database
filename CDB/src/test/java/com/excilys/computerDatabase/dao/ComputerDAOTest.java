@@ -20,6 +20,7 @@ import com.excilys.computerDatabase.model.Company;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.model.builder.ComputerBuilder;
 
+
 public class ComputerDAOTest extends DataSourceDBUnitTest {
 	
 	private final int COMPUTERS_AMOUNT = 15;
