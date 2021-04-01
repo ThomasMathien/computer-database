@@ -4,66 +4,62 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.excilys.computerDatabase.dao.ComputerDAO;
 import com.excilys.computerDatabase.dao.SqlFilter;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.model.Computer;
 
+@Service
 public class ComputerService {
-
-	private static ComputerService instance;
 	
-	public static ComputerService getInstance() {
-		if (instance == null) {
-			instance = new ComputerService();
-		}
-		return instance;
-	}
-	
-	private ComputerService() { }
+	@Autowired
+	ComputerDAO computerDAO;
 	
 	public List<Computer> getComputers() {
-		return ComputerDAO.getInstance().getComputers();
+		return computerDAO.getComputers();
 	}
 	
 	public List<Computer> getComputers(long from, long amount) {
-		return ComputerDAO.getInstance().getComputers(from, amount);
+		return computerDAO.getComputers(from, amount);
 	}
 
 	public List<Computer> getComputers(long from, long amount, SqlFilter filter) {
-		return ComputerDAO.getInstance().getComputers(from, amount, filter);
+		return computerDAO.getComputers(from, amount, filter);
 	}
 	
 	public long[] getComputersIdFromCompany(long companyId) {
-		return ComputerDAO.getInstance().getComputersIdFromCompany(companyId);
+		return computerDAO.getComputersIdFromCompany(companyId);
 	}
 	
 	public Optional<Computer> findComputer(long id) {
-		return ComputerDAO.getInstance().findComputer(id);
+		return computerDAO.findComputer(id);
 	}
 	
 	public void addComputer(Computer computer) throws FailedSQLRequestException {
-		ComputerDAO.getInstance().addComputer(computer);
+		computerDAO.addComputer(computer);
 	}
 	
 	public void deleteComputer(long id) throws FailedSQLRequestException {
-		ComputerDAO.getInstance().deleteComputer(id);
+		computerDAO.deleteComputer(id);
 	}
 	
 	public void deleteComputerByCompany(long companyId, Connection conn) throws FailedSQLRequestException {
-		ComputerDAO.getInstance().deleteComputerByCompany(companyId, conn);
+		computerDAO.deleteComputerByCompany(companyId, conn);
 	}
 	
 	public void updateComputer(long id, Computer computer) throws FailedSQLRequestException {
-		ComputerDAO.getInstance().updateComputer(id, computer);
+		computerDAO.updateComputer(id, computer);
 	}
 
 	public int getComputerCount() {
-		return ComputerDAO.getInstance().getComputerCount();
+		return computerDAO.getComputerCount();
 	}
 
 	public int getComputerCount(String search) {
-		return ComputerDAO.getInstance().getComputerCount(search);
+		return computerDAO.getComputerCount(search);
 	}
 
 

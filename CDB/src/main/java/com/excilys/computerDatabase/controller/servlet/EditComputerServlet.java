@@ -7,7 +7,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -47,6 +46,8 @@ public class EditComputerServlet extends SpringServlet {
 
 	@Autowired
 	CompanyService companyService;
+	@Autowired
+	ComputerService computerService;
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -76,7 +77,7 @@ public class EditComputerServlet extends SpringServlet {
 			ComputerValidator.getInstance().validateComputerDTO(dto);
 			Optional<Computer> computer = ComputerMapper.getInstance().toComputer(dto);
 			try {
-				ComputerService.getInstance().updateComputer(Long.parseLong(computerId), computer.orElseThrow());
+				computerService.updateComputer(Long.parseLong(computerId), computer.orElseThrow());
 				logger.info("Updating computer: " + computer.get().toString());
 			} catch (FailedSQLRequestException e) {
 				logger.error("Couldn't update computer:" + computer.get().toString(), e);

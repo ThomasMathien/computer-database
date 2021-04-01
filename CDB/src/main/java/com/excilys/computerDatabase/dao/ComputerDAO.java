@@ -14,12 +14,14 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Computer;
 
+@Repository
 public class ComputerDAO {
 
 	private final static String ADD_COMPUTER_QUERY = """
@@ -45,17 +47,6 @@ public class ComputerDAO {
 			""";
 
 	private Logger logger = LoggerFactory.getLogger(ComputerDAO.class);
-	
-	private static ComputerDAO instance = null;
-	
-	private ComputerDAO() {}
-	
-	public static ComputerDAO getInstance() {
-		if (instance == null) {
-			instance = new ComputerDAO();
-		}
-		return instance;
-	}
 	
 	public List<Computer> getComputers(){
 		return getComputers(0,getComputerCount());

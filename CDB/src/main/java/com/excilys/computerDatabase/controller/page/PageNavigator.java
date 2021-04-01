@@ -29,6 +29,9 @@ public class PageNavigator {
 	
 	@Autowired
 	CompanyService companyService;
+	@Autowired
+	ComputerService computerService;
+	
 	private static PageNavigator instance = null;
 	
 	private PageNavigator() {}
@@ -43,7 +46,7 @@ public class PageNavigator {
 	private int getTotalToFetch(int request) {
 		switch(request) {
 		case GET_COMPUTERS_REQUEST:
-			return ComputerService.getInstance().getComputerCount();
+			return computerService.getComputerCount();
 		case GET_COMPANIES_REQUEST:
 			return companyService.getCompanyCount();
 		default:
@@ -54,7 +57,7 @@ public class PageNavigator {
 	private List<Displayable> getDisplayables(int request, int from, int amount) {
 		switch(request) {
 		case GET_COMPUTERS_REQUEST:
-			return ComputerService.getInstance().getComputers(from,amount).stream().map( c -> new ShortDisplayComputer(c)).collect(Collectors.toList());
+			return computerService.getComputers(from,amount).stream().map( c -> new ShortDisplayComputer(c)).collect(Collectors.toList());
 		case GET_COMPANIES_REQUEST:
 			return companyService.getCompanies(from, amount).stream().map( c -> new DisplayCompany(c)).collect(Collectors.toList());
 		default:

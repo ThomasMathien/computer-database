@@ -25,7 +25,9 @@ public class CLIController {
     
     @Autowired
     CompanyService companyService;
-    
+	@Autowired
+	ComputerService computerService;
+	
 	private CLIController() {
 		 sc = new Scanner(System.in);
 	}
@@ -103,7 +105,7 @@ public class CLIController {
 	private void displayDetails() {
 		System.out.print("Enter computer ID:\n>>");
 		long id = sc.nextLong();
-		Optional<Computer> c = ComputerService.getInstance().findComputer(id);
+		Optional<Computer> c = computerService.findComputer(id);
 		if (c.isPresent()) {
 			new DetailsDisplayComputer(c.orElseThrow()).display();
 		}
@@ -116,7 +118,7 @@ public class CLIController {
 		Computer c = createComputerForm();
 		System.out.println("+++Create:"+c.toString());
 		try {
-			ComputerService.getInstance().addComputer(c);
+			computerService.addComputer(c);
 		}
 		catch (FailedSQLRequestException e) {
 			logger.info("Add Computer Failed: "+c.toString(),e);
@@ -131,7 +133,7 @@ public class CLIController {
 		System.out.print("+++Enter deleted computer id:\n>>");
 		long computerId = InputParser.takeIdInput(sc);
 		try {
-			ComputerService.getInstance().deleteComputer(computerId);
+			computerService.deleteComputer(computerId);
 		}
 		catch (FailedSQLRequestException e) {
 			logger.info("Delete Computer Failed: for Id "+computerId,e);
@@ -148,7 +150,7 @@ public class CLIController {
 		long computerId = InputParser.takeIdInput(sc);
 		System.out.println("+++Update computer "+computerId+" with:"+c.toString());
 		try {
-			ComputerService.getInstance().updateComputer(computerId,c);
+			computerService.updateComputer(computerId,c);
 		}
 		catch (FailedSQLRequestException e) {
 			logger.info("Update Computer Failed: for Id "+computerId+" update to "+c.toString(),e);

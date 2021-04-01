@@ -6,9 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -47,7 +45,9 @@ public class AddComputerServlet extends SpringServlet {
 		
 		@Autowired
 		CompanyService companyService;
-		  
+		@Autowired
+		ComputerService computerService;
+		
 		@Override
 		public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			List<Company> companies = companyService.getCompanies();
@@ -72,7 +72,7 @@ public class AddComputerServlet extends SpringServlet {
 				ComputerValidator.getInstance().validateComputerDTO(dto);
 				Optional<Computer> newComputer = ComputerMapper.getInstance().toComputer(dto);
 				try {
-					ComputerService.getInstance().addComputer(newComputer.orElseThrow());
+					computerService.addComputer(newComputer.orElseThrow());
 					logger.info("Adding new computer: " + newComputer.toString());
 				} catch (FailedSQLRequestException e) {
 					logger.error("Couldn't add new computer:" + newComputer.toString(), e);
