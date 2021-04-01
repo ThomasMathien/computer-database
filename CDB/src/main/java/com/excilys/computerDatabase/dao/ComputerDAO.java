@@ -14,6 +14,7 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
@@ -47,6 +48,9 @@ public class ComputerDAO {
 			""";
 
 	private Logger logger = LoggerFactory.getLogger(ComputerDAO.class);
+	
+	@Autowired
+	ComputerMapper computerMapper;
 	
 	public List<Computer> getComputers(){
 		return getComputers(0,getComputerCount());
@@ -86,7 +90,7 @@ public class ComputerDAO {
 				while(results.next()) {
 					Optional<Computer> c;
 					try {
-						c = ComputerMapper.getInstance().toComputer(results);
+						c = computerMapper.toComputer(results);
 						if (c.isPresent()) {
 							computers.add(c.orElseThrow());
 						}
@@ -109,7 +113,7 @@ public class ComputerDAO {
 			try (ResultSet results = stmt.executeQuery()){
 				if(results.next()) {
 					try {
-						computer =  ComputerMapper.getInstance().toComputer(results);
+						computer =  computerMapper.toComputer(results);
 					} catch (IncompleteResultSetException e) {
 						logger.error("Couldn't map Computer from resultSet"+results.toString(),e );
 					}

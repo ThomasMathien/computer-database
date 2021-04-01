@@ -6,29 +6,19 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import com.excilys.computerDatabase.dto.CompanyDTO;
 import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.model.Company;
 
+@Component
 public class CompanyMapper {
 	
 	private Logger logger = LoggerFactory.getLogger(CompanyMapper.class);
 	
 	public final String ID_COLUMN = "company_id";
 	public final String NAME_COLUMN = "company_name";
-	
-	
-	private CompanyMapper() { }
-	
-	private static CompanyMapper instance;
-	
-	public static CompanyMapper getInstance() {
-		if (instance == null) {
-			instance = new CompanyMapper();
-		}
-		return instance;
-	}
 	
 	public Optional<Company> toCompany(ResultSet rs) throws IncompleteResultSetException{
 		if (rs == null) {

@@ -32,6 +32,8 @@ public class CompanyDAO {
 
 	@Autowired
 	ComputerService computerService;
+	@Autowired
+	CompanyMapper companyMapper;
 	
 	public List<Company> getCompanies() {
 		return getCompanies(0, getCompanyCount());
@@ -47,7 +49,7 @@ public class CompanyDAO {
 				while(results.next()) {
 					Optional<Company> company;
 					try {
-						company = CompanyMapper.getInstance().toCompany(results);
+						company = companyMapper.toCompany(results);
 						if (company.isPresent()) {
 							companies.add(company.orElseThrow());
 						}
@@ -70,7 +72,7 @@ public class CompanyDAO {
 			try (ResultSet results = stmt.executeQuery()){
 				if(results.next()) {
 					try {
-						company =  CompanyMapper.getInstance().toCompany(results);
+						company =  companyMapper.toCompany(results);
 					} catch (IncompleteResultSetException e) {
 						logger.error("Couldn't map a Company from resultSet: with resultSet "+results.toString(),e );
 					}

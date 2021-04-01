@@ -1,8 +1,10 @@
 package com.excilys.computerDatabase.validator;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.excilys.computerDatabase.dto.ComputerToDatabaseDTO;
 import com.excilys.computerDatabase.exception.invalidValuesException.InvalidDateInterval;
@@ -11,22 +13,16 @@ import com.excilys.computerDatabase.exception.invalidValuesException.InvalidName
 import com.excilys.computerDatabase.exception.invalidValuesException.InvalidValuesException;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
 
+@Component
 public class ComputerValidator {
 	
-	private static ComputerValidator instance = null;
-	private ComputerValidator() { };
-	
-	public static ComputerValidator getInstance() {
-		if (instance == null) {
-			instance = new ComputerValidator();
-		}
-		return instance;
-	}
+	@Autowired
+	ComputerMapper computerMapper;
 	
 	public void validateComputerDTO(ComputerToDatabaseDTO dto) throws InvalidValuesException {
 		validateName(dto.getName());
-		Optional<LocalDate> introduced = ComputerMapper.getInstance().parseToLocalDate(dto.getIntroduced());
-		Optional<LocalDate> discontinued = ComputerMapper.getInstance().parseToLocalDate(dto.getDiscontinued());
+		Optional<LocalDate> introduced = computerMapper.parseToLocalDate(dto.getIntroduced());
+		Optional<LocalDate> discontinued = computerMapper.parseToLocalDate(dto.getDiscontinued());
 		validateDateInterval(introduced, discontinued);
 		if (dto.getId() != null) {
 			validateId(Long.parseLong(dto.getId()));

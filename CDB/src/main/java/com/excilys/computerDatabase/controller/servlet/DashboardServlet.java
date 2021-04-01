@@ -49,6 +49,8 @@ public class DashboardServlet extends SpringServlet {
 	
 	@Autowired
 	ComputerService computerService;
+	@Autowired
+	ComputerMapper computerMapper;
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -93,7 +95,7 @@ public class DashboardServlet extends SpringServlet {
 		String[] parsedSortCriterias = parseOrderBy(sortingCriteria);
 		SqlFilter filter = new SqlFilter(parsedSortCriterias[0], parsedSortCriterias[1], search);
 		List<Computer> computers = computerService.getComputers((currentPageIndex - 1) * rowsPerPage, rowsPerPage, filter);
-		List<ComputerFormDTO> dtos = computers.stream().map(c -> ComputerMapper.getInstance().toComputerFormDTO(c)).collect(Collectors.toList());
+		List<ComputerFormDTO> dtos = computers.stream().map(c -> computerMapper.toComputerFormDTO(c)).collect(Collectors.toList());
 		
 		Page<ComputerFormDTO> page = new Page<ComputerFormDTO>(dtos);
 		

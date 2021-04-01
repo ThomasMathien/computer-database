@@ -52,13 +52,19 @@ public class EditComputerServlet extends SpringServlet {
 	CompanyService companyService;
 	@Autowired
 	ComputerService computerService;
+	@Autowired
+	CompanyMapper companyMapper;
+	@Autowired
+	ComputerMapper computerMapper;
+	@Autowired 
+	ComputerValidator computerValidator;
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter(COMPUTER_ID_PARAMETER);
 		request.setAttribute(COMPUTER_ID_ATTRIBUTE, id);
 		List<Company> companies = companyService.getCompanies();
-		List<CompanyDTO> dtos  = companies.stream().map(c -> CompanyMapper.getInstance().toCompanyDTO(Optional.of(c))).collect(Collectors.toList());
+		List<CompanyDTO> dtos  = companies.stream().map(c -> companyMapper.toCompanyDTO(Optional.of(c))).collect(Collectors.toList());
 		request.setAttribute(COMPANIES_LIST_ATTRIBUTE, dtos);
 		this.getServletContext().getRequestDispatcher(VIEW_PATH).forward(request, response);
 	}
@@ -78,8 +84,8 @@ public class EditComputerServlet extends SpringServlet {
 					.setIntroduced(introduced)
 					.setName(name)
 					.build();
-			ComputerValidator.getInstance().validateComputerDTO(dto);
-			Optional<Computer> computer = ComputerMapper.getInstance().toComputer(dto);
+			computerValidator.validateComputerDTO(dto);
+			Optional<Computer> computer = computerMapper.toComputer(dto);
 			try {
 				computerService.updateComputer(Long.parseLong(computerId), computer.orElseThrow());
 				logger.info("Updating computer: " + computer.get().toString());
