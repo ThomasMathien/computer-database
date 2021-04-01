@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import com.excilys.computerDatabase.controller.page.PageNavigator;
 import com.excilys.computerDatabase.exception.CommandNotFoundException;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
+import com.excilys.computerDatabase.model.Company;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.model.builder.ComputerBuilder;
 import com.excilys.computerDatabase.service.CompanyService;
@@ -167,11 +168,14 @@ public class CLIController {
 		LocalDate discontinued = InputParser.takeLocalDateInput(sc);
 		System.out.print("+++Enter company id:\n>>");
 		long companyId = InputParser.takeIdInput(sc);
-		return new ComputerBuilder(name)
+		ComputerBuilder builder = new ComputerBuilder(name)
 				.setIntroduced(introduced)
-				.setDiscontinued(discontinued)
-				.setCompany(companyId)
-				.build();
+				.setDiscontinued(discontinued);
+		Optional<Company> company = companyService.findCompany(companyId);
+		if (company.isPresent()) {
+			builder.setCompany(company.orElseThrow());
+		}
+		return builder.build();
 	}
 
 	private void displayCompanies() {

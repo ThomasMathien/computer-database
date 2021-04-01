@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.excilys.computerDatabase.model.Company;
 import com.excilys.computerDatabase.model.Computer;
@@ -17,9 +19,6 @@ public class ComputerBuilder {
 	private LocalDate introduced;
 	private LocalDate discontinued;
 	private Company company;
-
-	@Autowired
-	CompanyService companyService;
 	
 	public ComputerBuilder(String name) {
 		this.name = name;
@@ -50,14 +49,6 @@ public class ComputerBuilder {
 		return this;
 	}
 	
-	public ComputerBuilder setCompany(Long companyId) {
-		Optional<Company> company = companyService.findCompany(companyId);
-		if (company.isPresent()) {
-			this.company = company.orElseThrow();
-		}
-		return this;
-	}
-
 	public Computer build() {
 		Computer c = new Computer(name);
 		c.setDiscontinued(discontinued);

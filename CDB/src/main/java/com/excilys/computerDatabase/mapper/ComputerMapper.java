@@ -21,6 +21,7 @@ import com.excilys.computerDatabase.exception.invalidValuesException.InvalidValu
 import com.excilys.computerDatabase.model.Company;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.model.builder.ComputerBuilder;
+import com.excilys.computerDatabase.service.CompanyService;
 import com.excilys.computerDatabase.validator.ComputerValidator;
 
 @Component
@@ -37,6 +38,8 @@ public class ComputerMapper {
 	CompanyMapper companyMapper;
 	@Autowired 
 	ComputerValidator computerValidator;
+	@Autowired
+	CompanyService companyService;
 	
 	public Optional<Computer> toComputer(ResultSet rs) throws IncompleteResultSetException{
 		if (rs == null) {
@@ -89,7 +92,10 @@ public class ComputerMapper {
 					.setIntroduced(parseToLocalDate(dto.getIntroduced()).orElse(null))
 					.setDiscontinued(parseToLocalDate(dto.getDiscontinued()).orElse(null));
 					if (dto.getCompanyId() != null) {
-						builder.setCompany(Long.parseLong(dto.getCompanyId()));
+						Optional<Company> company = companyService.findCompany(Long.parseLong(dto.getCompanyId()));
+						if (company.isPresent()) {
+							builder.setCompany(company.orElseThrow());
+						}
 					}
 					if (dto.getId() != null) {
 						builder.setId(Long.parseLong(dto.getId()));
