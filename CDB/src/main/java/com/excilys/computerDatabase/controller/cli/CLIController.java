@@ -7,6 +7,7 @@ import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.excilys.computerDatabase.controller.page.PageNavigator;
 import com.excilys.computerDatabase.exception.CommandNotFoundException;
@@ -17,9 +18,9 @@ import com.excilys.computerDatabase.service.CompanyService;
 import com.excilys.computerDatabase.service.ComputerService;
 import com.excilys.computerDatabase.ui.view.DetailsDisplayComputer;
 
+@Component
 public class CLIController {
 	
-	private static CLIController instance;
 	private Scanner sc;
     private static final Logger logger = LoggerFactory.getLogger(CLIController.class);
     
@@ -27,16 +28,10 @@ public class CLIController {
     CompanyService companyService;
 	@Autowired
 	ComputerService computerService;
-	
+	@Autowired
+	PageNavigator pageNavigator;
 	private CLIController() {
 		 sc = new Scanner(System.in);
-	}
-	
-	public static CLIController getCLIController() {
-		if (instance == null) {
-			instance = new CLIController();
-		}
-		return instance;
 	}
 	
 	public void run(){
@@ -179,11 +174,11 @@ public class CLIController {
 	}
 
 	private void displayCompanies() {
-		PageNavigator.getInstance().run(sc, PageNavigator.GET_COMPANIES_REQUEST);
+		pageNavigator.run(sc, PageNavigator.GET_COMPANIES_REQUEST);
 	}
 
 	private void displayComputers() {
-		PageNavigator.getInstance().run(sc, PageNavigator.GET_COMPUTERS_REQUEST);
+		pageNavigator.run(sc, PageNavigator.GET_COMPUTERS_REQUEST);
 	}
 	
 }

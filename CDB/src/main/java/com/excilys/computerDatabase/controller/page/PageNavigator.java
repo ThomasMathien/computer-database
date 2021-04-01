@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.excilys.computerDatabase.exception.PageOutOfBoundException;
 import com.excilys.computerDatabase.service.CompanyService;
@@ -15,6 +16,7 @@ import com.excilys.computerDatabase.ui.view.DisplayCompany;
 import com.excilys.computerDatabase.ui.view.Displayable;
 import com.excilys.computerDatabase.ui.view.ShortDisplayComputer;
 
+@Component
 public class PageNavigator {
 
 	private final Logger logger = LoggerFactory.getLogger(PageNavigator.class);
@@ -31,17 +33,6 @@ public class PageNavigator {
 	CompanyService companyService;
 	@Autowired
 	ComputerService computerService;
-	
-	private static PageNavigator instance = null;
-	
-	private PageNavigator() {}
-	
-	public static PageNavigator getInstance() {
-		if (instance == null) {
-			instance = new PageNavigator();
-		}
-		return instance;
-	}
 
 	private int getTotalToFetch(int request) {
 		switch(request) {
