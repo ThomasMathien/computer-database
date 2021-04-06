@@ -7,6 +7,7 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.http.HttpServlet;
 
+@SuppressWarnings("serial")
 public abstract class SpringServlet extends HttpServlet {
 
 	@Override

@@ -16,7 +16,6 @@ import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
@@ -52,10 +51,13 @@ public class ComputerDAO {
 
 	private Logger logger = LoggerFactory.getLogger(ComputerDAO.class);
 	
-	@Autowired
 	ComputerMapper computerMapper;
-	@Autowired
 	DataSource datasource;
+	
+	public ComputerDAO(ComputerMapper computerMapper, DataSource datasource) {
+		this.computerMapper = computerMapper;
+		this.datasource = datasource;
+	}
 	
 	public List<Computer> getComputers(){
 		return getComputers(0,getComputerCount());

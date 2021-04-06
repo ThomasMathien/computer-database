@@ -29,10 +29,13 @@ public class PageNavigator {
 	public final static int GET_COMPANIES_REQUEST = 2;
 	PageCLI page;
 	
-	@Autowired
 	CompanyService companyService;
-	@Autowired
 	ComputerService computerService;
+	
+	public PageNavigator(CompanyService companyService, ComputerService computerService) {
+		this.companyService = companyService;
+		this.computerService =computerService;
+	}
 
 	private int getTotalToFetch(int request) {
 		switch(request) {

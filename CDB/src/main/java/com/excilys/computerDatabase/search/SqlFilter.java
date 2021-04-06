@@ -1,10 +1,13 @@
 package com.excilys.computerDatabase.search;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.slf4j.Logger;
 
 import com.excilys.computerDatabase.exception.InvalidColumnNameException;
 import com.excilys.computerDatabase.mapper.ColumnsNameMapper;
+
 
 public class SqlFilter {
 	
@@ -17,6 +20,13 @@ public class SqlFilter {
 	String sortedColmun;
 	String sortOrder;
 	String searchFilter;
+	
+	ColumnsNameMapper columnsNameMapper;
+	
+	@Autowired
+	public void setColumnsNameMapper(ColumnsNameMapper columnsNameMapper) {
+		this.columnsNameMapper = columnsNameMapper;
+	}
 	
 	public SqlFilter(String column, String order) {
 		this(column, order, DEFAULT_SEARCH);

@@ -19,7 +19,6 @@ import com.excilys.computerDatabase.service.ComputerService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -32,12 +31,15 @@ public class CompanyDAO {
 	private static final String FIND_COMPANIES_INTERVAL_QUERY = "SELECT id AS company_id,name AS company_name FROM company ORDER BY id LIMIT ? OFFSET ?;";
 	private static final String DELETE_COMPANY_BY_ID_QUERY = "DELETE FROM company WHERE id = ?;";
 
-	@Autowired
 	ComputerService computerService;
-	@Autowired
 	CompanyMapper companyMapper;
-	@Autowired
 	DataSource datasource;
+	
+	public CompanyDAO(ComputerService computerService, CompanyMapper companyMapper, DataSource datasource) {
+		this.computerService = computerService;
+		this.companyMapper = companyMapper;
+		this.datasource = datasource;
+	}
 	
 	public List<Company> getCompanies() {
 		return getCompanies(0, getCompanyCount());
@@ -50,7 +52,7 @@ public class CompanyDAO {
 			stmt.setLong(1, amount);
 			stmt.setLong(2, from);
 			try (ResultSet results = stmt.executeQuery()) {
-				while(results.next()) {
+				while (results.next()) {
 					Optional<Company> company;
 					try {
 						company = companyMapper.toCompany(results);

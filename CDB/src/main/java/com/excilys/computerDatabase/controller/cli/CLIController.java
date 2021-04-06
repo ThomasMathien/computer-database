@@ -23,20 +23,20 @@ import com.excilys.computerDatabase.ui.view.DetailsDisplayComputer;
 public class CLIController {
 	
 	private Scanner sc;
-    private static final Logger logger = LoggerFactory.getLogger(CLIController.class);
+    private static Logger logger = LoggerFactory.getLogger(CLIController.class);
     
-    @Autowired
     CompanyService companyService;
-	@Autowired
 	ComputerService computerService;
-	@Autowired
 	PageNavigator pageNavigator;
-	private CLIController() {
+	
+	public CLIController(CompanyService companyService, ComputerService computerService, PageNavigator pageNavigator) {
+		this.companyService = companyService;
+		this.computerService = computerService;
+		this.pageNavigator = pageNavigator;
 		 sc = new Scanner(System.in);
 	}
 	
-	
-	public void run(){
+	public void run() {
 		while (true) {
 			displayMainMenu();
 			String command = InputParser.takeString(sc);
@@ -44,7 +44,7 @@ public class CLIController {
 			try {
 				menuOption = MenuOption.fromCommand(command);
 				System.out.println("Please wait...");
-				switch(menuOption) {
+				switch (menuOption) {
 					case DISPLAY_ALL_COMPUTERS:
 						displayComputers();
 						break;
