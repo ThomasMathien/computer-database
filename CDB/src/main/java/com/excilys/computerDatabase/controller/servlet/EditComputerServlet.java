@@ -33,6 +33,7 @@ import com.excilys.computerDatabase.validator.ComputerValidator;
 @WebServlet(urlPatterns="/editComputer")
 public class EditComputerServlet extends SpringServlet {
 
+	
 	private static final long serialVersionUID = -8675864653659504656L;	
 	
 	private static final String REDIRECT_PAGE_AFTER_ADDING_COMPUTER = "dashboard";
@@ -61,6 +62,7 @@ public class EditComputerServlet extends SpringServlet {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String id = request.getParameter(COMPUTER_ID_PARAMETER);
 		request.setAttribute(COMPUTER_ID_ATTRIBUTE, id);
 		List<Company> companies = companyService.getCompanies();

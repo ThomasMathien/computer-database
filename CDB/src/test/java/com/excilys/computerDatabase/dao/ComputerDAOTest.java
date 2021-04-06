@@ -19,13 +19,16 @@ import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.model.Company;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.model.builder.ComputerBuilder;
+import com.excilys.computerDatabase.service.CompanyService;
 
 
 public class ComputerDAOTest extends DataSourceDBUnitTest {
 	
 	private final int COMPUTERS_AMOUNT = 15;
 	@Autowired
-	static ComputerDAO dao ;
+	ComputerDAO dao ;
+	@Autowired
+	CompanyService companyService;
 	
 	@Test
 	public void testGetComputers() {
@@ -54,10 +57,11 @@ public class ComputerDAOTest extends DataSourceDBUnitTest {
 	
 	@Test
 	public void testFindComputer() {
+		Optional<Company> company = companyService.findCompany(1L);
 		Optional<Computer> testComputer = Optional.of(new ComputerBuilder("")
 				.setIntroduced(LocalDate.parse("1980-05-01"))
 				.setDiscontinued(LocalDate.parse("1984-04-01"))
-				.setCompany(1L)
+				.setCompany(company.orElseThrow())
 				.setId(12L)
 				.build());
 		
