@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.sql.DataSource;
+
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.mapper.CompanyMapper;
@@ -17,7 +19,9 @@ import com.excilys.computerDatabase.service.ComputerService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class CompanyDAO {
 	
 	private Logger logger = LoggerFactory.getLogger(CompanyDAO.class);
@@ -27,15 +31,14 @@ public class CompanyDAO {
 	private static final String FIND_COMPANIES_INTERVAL_QUERY = "SELECT id AS company_id,name AS company_name FROM company ORDER BY id LIMIT ? OFFSET ?;";
 	private static final String DELETE_COMPANY_BY_ID_QUERY = "DELETE FROM company WHERE id = ?;";
 
-	private static CompanyDAO instance = null;
-
-	private CompanyDAO() { }
+	ComputerService computerService;
+	CompanyMapper companyMapper;
+	DataSource datasource;
 	
-	public static CompanyDAO getInstance() {
-		if (instance == null) {
-			instance = new CompanyDAO();
-		}
-		return instance;
+	public CompanyDAO(ComputerService computerService, CompanyMapper companyMapper, DataSource datasource) {
+		this.computerService = computerService;
+		this.companyMapper = companyMapper;
+		this.datasource = datasource;
 	}
 	
 	public List<Company> getCompanies() {
@@ -49,10 +52,10 @@ public class CompanyDAO {
 			stmt.setLong(1, amount);
 			stmt.setLong(2, from);
 			try (ResultSet results = stmt.executeQuery()) {
-				while(results.next()) {
+				while (results.next()) {
 					Optional<Company> company;
 					try {
-						company = CompanyMapper.getInstance().toCompany(results);
+						company = companyMapper.toCompany(results);
 						if (company.isPresent()) {
 							companies.add(company.orElseThrow());
 						}
@@ -75,7 +78,7 @@ public class CompanyDAO {
 			try (ResultSet results = stmt.executeQuery()){
 				if(results.next()) {
 					try {
-						company =  CompanyMapper.getInstance().toCompany(results);
+						company =  companyMapper.toCompany(results);
 					} catch (IncompleteResultSetException e) {
 						logger.error("Couldn't map a Company from resultSet: with resultSet "+results.toString(),e );
 					}
@@ -107,7 +110,7 @@ public class CompanyDAO {
 			try {
 				conn = getConnection(); 
 				conn.setAutoCommit(false);
-				ComputerService.getInstance().deleteComputerByCompany(id, conn);
+				computerService.deleteComputerByCompany(id, conn);
 				stmt = conn.prepareStatement(DELETE_COMPANY_BY_ID_QUERY);
 				stmt.setLong(1, id);
 				if (stmt.executeUpdate() == 0) {
@@ -136,7 +139,7 @@ public class CompanyDAO {
 	}
 	
 	Connection getConnection() throws SQLException {
-		return Datasource.getInstance().getConnection();
+		return datasource.getConnection();
 	}
 
 }

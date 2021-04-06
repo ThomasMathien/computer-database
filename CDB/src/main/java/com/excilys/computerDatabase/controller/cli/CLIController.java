@@ -1,40 +1,42 @@
 package com.excilys.computerDatabase.controller.cli;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Scanner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.excilys.computerDatabase.controller.page.PageNavigator;
 import com.excilys.computerDatabase.exception.CommandNotFoundException;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
+import com.excilys.computerDatabase.model.Company;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.model.builder.ComputerBuilder;
 import com.excilys.computerDatabase.service.CompanyService;
 import com.excilys.computerDatabase.service.ComputerService;
 import com.excilys.computerDatabase.ui.view.DetailsDisplayComputer;
 
+@Component
 public class CLIController {
 	
-	private static CLIController instance;
 	private Scanner sc;
-    private static final Logger logger = LoggerFactory.getLogger(CLIController.class);
+    private static Logger logger = LoggerFactory.getLogger(CLIController.class);
     
-	private CLIController() {
+    CompanyService companyService;
+	ComputerService computerService;
+	PageNavigator pageNavigator;
+	
+	public CLIController(CompanyService companyService, ComputerService computerService, PageNavigator pageNavigator) {
+		this.companyService = companyService;
+		this.computerService = computerService;
+		this.pageNavigator = pageNavigator;
 		 sc = new Scanner(System.in);
 	}
 	
-	public static CLIController getCLIController() {
-		if (instance == null) {
-			instance = new CLIController();
-		}
-		return instance;
-	}
-	
-	public void run(){
+	public void run() {
 		while (true) {
 			displayMainMenu();
 			String command = InputParser.takeString(sc);
@@ -42,7 +44,7 @@ public class CLIController {
 			try {
 				menuOption = MenuOption.fromCommand(command);
 				System.out.println("Please wait...");
-				switch(menuOption) {
+				switch (menuOption) {
 					case DISPLAY_ALL_COMPUTERS:
 						displayComputers();
 						break;
@@ -81,7 +83,7 @@ public class CLIController {
 		System.out.print("+++Enter deleted company id:\n>>");
 		long companyId = InputParser.takeIdInput(sc);
 		try {
-			CompanyService.getInstance().deleteCompany(companyId);
+			companyService.deleteCompany(companyId);
 		}
 		catch (FailedSQLRequestException e) {
 			System.out.println("Company not deleted");
@@ -100,7 +102,7 @@ public class CLIController {
 	private void displayDetails() {
 		System.out.print("Enter computer ID:\n>>");
 		long id = sc.nextLong();
-		Optional<Computer> c = ComputerService.getInstance().findComputer(id);
+		Optional<Computer> c = computerService.findComputer(id);
 		if (c.isPresent()) {
 			new DetailsDisplayComputer(c.orElseThrow()).display();
 		}
@@ -113,7 +115,7 @@ public class CLIController {
 		Computer c = createComputerForm();
 		System.out.println("+++Create:"+c.toString());
 		try {
-			ComputerService.getInstance().addComputer(c);
+			computerService.addComputer(c);
 		}
 		catch (FailedSQLRequestException e) {
 			logger.info("Add Computer Failed: "+c.toString(),e);
@@ -128,7 +130,7 @@ public class CLIController {
 		System.out.print("+++Enter deleted computer id:\n>>");
 		long computerId = InputParser.takeIdInput(sc);
 		try {
-			ComputerService.getInstance().deleteComputer(computerId);
+			computerService.deleteComputer(computerId);
 		}
 		catch (FailedSQLRequestException e) {
 			logger.info("Delete Computer Failed: for Id "+computerId,e);
@@ -145,7 +147,7 @@ public class CLIController {
 		long computerId = InputParser.takeIdInput(sc);
 		System.out.println("+++Update computer "+computerId+" with:"+c.toString());
 		try {
-			ComputerService.getInstance().updateComputer(computerId,c);
+			computerService.updateComputer(computerId,c);
 		}
 		catch (FailedSQLRequestException e) {
 			logger.info("Update Computer Failed: for Id "+computerId+" update to "+c.toString(),e);
@@ -166,19 +168,22 @@ public class CLIController {
 		LocalDate discontinued = InputParser.takeLocalDateInput(sc);
 		System.out.print("+++Enter company id:\n>>");
 		long companyId = InputParser.takeIdInput(sc);
-		return new ComputerBuilder(name)
+		ComputerBuilder builder = new ComputerBuilder(name)
 				.setIntroduced(introduced)
-				.setDiscontinued(discontinued)
-				.setCompany(companyId)
-				.build();
+				.setDiscontinued(discontinued);
+		Optional<Company> company = companyService.findCompany(companyId);
+		if (company.isPresent()) {
+			builder.setCompany(company.orElseThrow());
+		}
+		return builder.build();
 	}
 
 	private void displayCompanies() {
-		PageNavigator.getInstance().run(sc, PageNavigator.GET_COMPANIES_REQUEST);
+		pageNavigator.run(sc, PageNavigator.GET_COMPANIES_REQUEST);
 	}
 
 	private void displayComputers() {
-		PageNavigator.getInstance().run(sc, PageNavigator.GET_COMPUTERS_REQUEST);
+		pageNavigator.run(sc, PageNavigator.GET_COMPUTERS_REQUEST);
 	}
 	
 }

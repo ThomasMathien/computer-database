@@ -1,46 +1,40 @@
 package com.excilys.computerDatabase.service;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
 
 import com.excilys.computerDatabase.dao.CompanyDAO;
-import com.excilys.computerDatabase.dto.CompanyDTO;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
-import com.excilys.computerDatabase.mapper.CompanyMapper;
 import com.excilys.computerDatabase.model.Company;
 
+@Service
 public class CompanyService {
 
-	private static CompanyService instance;
+	CompanyDAO companyDAO;
 	
-	public static CompanyService getInstance() {
-		if (instance == null) {
-			instance = new CompanyService();
-		}
-		return instance;
+	public CompanyService(CompanyDAO companyDAO) {
+		this.companyDAO = companyDAO;
 	}
 	
-	private CompanyService() { }
-	
 	public List<Company> getCompanies() {
-		return CompanyDAO.getInstance().getCompanies();
+		return companyDAO.getCompanies();
 	}
 	
 	public List<Company> getCompanies(int from, int amount) {
-		return CompanyDAO.getInstance().getCompanies(from, amount);
+		return companyDAO.getCompanies(from, amount);
 	}
 	
 	public Optional<Company> findCompany(long id) {
-		return CompanyDAO.getInstance().findCompany(id);
+		return companyDAO.findCompany(id);
 	}
 	
 	public int getCompanyCount() {
-		return CompanyDAO.getInstance().getCompanyCount();
+		return companyDAO.getCompanyCount();
 	}
 	
 	public void deleteCompany(long id) throws FailedSQLRequestException {
-		CompanyDAO.getInstance().deleteCompany(id);
+		companyDAO.deleteCompany(id);
 	}
 }

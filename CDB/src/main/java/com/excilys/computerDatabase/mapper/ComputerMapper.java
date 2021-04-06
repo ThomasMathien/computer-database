@@ -2,18 +2,15 @@ package com.excilys.computerDatabase.mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
-import java.util.Objects;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import com.excilys.computerDatabase.dto.ComputerFormDTO;
 import com.excilys.computerDatabase.dto.ComputerToDatabaseDTO;
 import com.excilys.computerDatabase.dto.builder.ComputerFormDTOBuilder;
-import com.excilys.computerDatabase.dto.builder.ComputerToDatabaseDTOBuilder;
 import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.exception.invalidValuesException.InvalidValuesException;
 import com.excilys.computerDatabase.model.Company;
@@ -21,6 +18,7 @@ import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.model.builder.ComputerBuilder;
 import com.excilys.computerDatabase.validator.ComputerValidator;
 
+@Component
 public class ComputerMapper {
 	
 	private Logger logger = LoggerFactory.getLogger(ComputerMapper.class);
@@ -30,18 +28,17 @@ public class ComputerMapper {
 	public static final String INTRODUCED_COLUMN = "introduced";
 	public static final String DISCONTINUED_COLUMN = "discontinued";
 	
+	LocalDateMapper localDateMapper;
+	CompanyMapper companyMapper;
+	ComputerValidator computerValidator;
 	
-	private ComputerMapper() { }
-	private static ComputerMapper instance;
-	
-	public static ComputerMapper getInstance() {
-		if (instance == null) {
-			instance = new ComputerMapper();
-		}
-		return instance;
+	public ComputerMapper(CompanyMapper companyMapper, ComputerValidator computerValidator, LocalDateMapper localDateMapper) {
+		this.companyMapper = companyMapper;
+		this.computerValidator = computerValidator;
+		this.localDateMapper = localDateMapper;
 	}
 	
-	public Optional<Computer> toComputer(ResultSet rs) throws IncompleteResultSetException{
+	public Optional<Computer> toComputer(ResultSet rs) throws IncompleteResultSetException {
 		if (rs == null) {
 			throw new IllegalArgumentException();
 		}
@@ -60,8 +57,8 @@ public class ComputerMapper {
 					.setDiscontinued(discontinued != null ? discontinued.toLocalDate() : null)
 					.build());
 			if (computer.isPresent()) {
-				if (rs.getLong(CompanyMapper.getInstance().ID_COLUMN) != 0) {
-					Optional<Company> company = CompanyMapper.getInstance().toCompany(rs);
+				if (rs.getLong(companyMapper.ID_COLUMN) != 0) {
+					Optional<Company> company = companyMapper.toCompany(rs);
 					if (company.isPresent()) {
 						((Computer) computer.orElseThrow()).setCompany(company.orElseThrow());
 					}
@@ -87,27 +84,20 @@ public class ComputerMapper {
 
 	public Optional<Computer> toComputer(ComputerToDatabaseDTO dto) {
 		try {
-			ComputerValidator.getInstance().validateComputerDTO(dto);
+			computerValidator.validateComputerDTO(dto);
 			ComputerBuilder builder = new ComputerBuilder(dto.getName())
-					.setIntroduced(parseToLocalDate(dto.getIntroduced()).orElse(null))
-					.setDiscontinued(parseToLocalDate(dto.getDiscontinued()).orElse(null));
+					.setIntroduced(localDateMapper.parseToLocalDate(dto.getIntroduced()).orElse(null))
+					.setDiscontinued(localDateMapper.parseToLocalDate(dto.getDiscontinued()).orElse(null));
 					if (dto.getCompanyId() != null) {
-						builder.setCompany(Long.parseLong(dto.getCompanyId()));
+						Company company = new Company(Long.parseLong(dto.getCompanyId()));
+						builder.setCompany(company);
 					}
 					if (dto.getId() != null) {
 						builder.setId(Long.parseLong(dto.getId()));
 					}
 					return Optional.of(builder.build());
 		} catch (InvalidValuesException e) {
-			logger.warn("Couldn't map DTO to computer as values are invalid["+e.getMessage()+"]: DTO:"+dto.toString());
-		}
-		return Optional.empty();
-	}
-	
-	public Optional<LocalDate> parseToLocalDate(String date) {
-		try {
-			return Optional.of(LocalDate.parse(date));
-		} catch (DateTimeParseException e) {
+			logger.warn("Couldn't map DTO to computer as values are invalid[" + e.getMessage() + "]: DTO:" + dto.toString());
 			return Optional.empty();
 		}
 	}

@@ -2,26 +2,30 @@ package com.excilys.computerDatabase.controller.servlet;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.slf4j.Logger;
 
 import com.excilys.computerDatabase.controller.page.Page;
-import com.excilys.computerDatabase.dao.SqlFilter;
 import com.excilys.computerDatabase.dto.ComputerFormDTO;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Computer;
+import com.excilys.computerDatabase.search.SqlFilter;
 import com.excilys.computerDatabase.service.ComputerService;
 
-public class DashboardServlet extends HttpServlet {
+@Component
+@WebServlet(urlPatterns="/dashboard")
+public class DashboardServlet extends SpringServlet {
 
 	private static final long serialVersionUID = 8233813063630626361L;
 	
@@ -42,6 +46,11 @@ public class DashboardServlet extends HttpServlet {
 	
 	private final int DEFAULT_PAGE_INDEX = 1;
 	private final int DEFAULT_ROWS_PER_PAGE = 10;
+	
+	@Autowired
+	ComputerService computerService;
+	@Autowired
+	ComputerMapper computerMapper;
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -67,7 +76,7 @@ public class DashboardServlet extends HttpServlet {
 	private void deleteComputer(long[] computersId) {
 		for (long id : computersId) {
 			try {
-				ComputerService.getInstance().deleteComputer(id);
+				computerService.deleteComputer(id);
 			} catch (FailedSQLRequestException e) {
 				logger.warn(e.getMessage());
 			}
@@ -85,12 +94,12 @@ public class DashboardServlet extends HttpServlet {
 		String sortingCriteria = (String) request.getSession().getAttribute(SORTING_CRITERIA_ATTRIBUTE);
 		String[] parsedSortCriterias = parseOrderBy(sortingCriteria);
 		SqlFilter filter = new SqlFilter(parsedSortCriterias[0], parsedSortCriterias[1], search);
-		List<Computer> computers = ComputerService.getInstance().getComputers((currentPageIndex - 1) * rowsPerPage, rowsPerPage, filter);
-		List<ComputerFormDTO> dtos = computers.stream().map(c -> ComputerMapper.getInstance().toComputerFormDTO(c)).collect(Collectors.toList());
+		List<Computer> computers = computerService.getComputers((currentPageIndex - 1) * rowsPerPage, rowsPerPage, filter);
+		List<ComputerFormDTO> dtos = computers.stream().map(c -> computerMapper.toComputerFormDTO(c)).collect(Collectors.toList());
 		
 		Page<ComputerFormDTO> page = new Page<ComputerFormDTO>(dtos);
 		
-		int totalComputers = ComputerService.getInstance().getComputerCount(search);
+		int totalComputers = computerService.getComputerCount(search);
 		
 		request.setAttribute(COMPUTER_LIST_ATTRIBUTE, page.getContent());
 		request.setAttribute(TOTAL_COMPUTERS_ATTRIBUTE, totalComputers);
