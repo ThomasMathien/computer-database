@@ -23,6 +23,7 @@ import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Computer;
+import com.excilys.computerDatabase.search.SqlFilter;
 
 @Repository
 public class ComputerDAO {

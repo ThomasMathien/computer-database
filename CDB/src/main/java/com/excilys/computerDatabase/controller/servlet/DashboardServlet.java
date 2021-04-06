@@ -16,11 +16,11 @@ import org.springframework.stereotype.Component;
 import org.slf4j.Logger;
 
 import com.excilys.computerDatabase.controller.page.Page;
-import com.excilys.computerDatabase.dao.SqlFilter;
 import com.excilys.computerDatabase.dto.ComputerFormDTO;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Computer;
+import com.excilys.computerDatabase.search.SqlFilter;
 import com.excilys.computerDatabase.service.ComputerService;
 
 @Component

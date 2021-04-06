@@ -1,4 +1,4 @@
-package com.excilys.computerDatabase.dao;
+package com.excilys.computerDatabase.search;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;

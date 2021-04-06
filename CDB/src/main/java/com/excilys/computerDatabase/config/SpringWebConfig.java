@@ -1,8 +1,5 @@
 package com.excilys.computerDatabase.config;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
@@ -16,7 +13,13 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-@ComponentScan("com.excilys.computerDatabase")
+@ComponentScan({"com.excilys.computerDatabase.controller.servlet",
+		"com.excilys.computerDatabase.controller.cli",
+		"com.excilys.computerDatabase.controller.page",
+		"com.excilys.computerDatabase.dao",
+		"com.excilys.computerDatabase.mapper",
+		"com.excilys.computerDatabase.service",
+		"com.excilys.computerDatabase.validator"})
 public class SpringWebConfig extends AbstractContextLoaderInitializer {
 	
  	private final String DATASOURCE_CONFIG_PATH = "/config/datasource.properties";

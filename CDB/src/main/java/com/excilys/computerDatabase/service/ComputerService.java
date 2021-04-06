@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.excilys.computerDatabase.dao.ComputerDAO;
-import com.excilys.computerDatabase.dao.SqlFilter;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.model.Computer;
+import com.excilys.computerDatabase.search.SqlFilter;
 
 @Service
 public class ComputerService {
