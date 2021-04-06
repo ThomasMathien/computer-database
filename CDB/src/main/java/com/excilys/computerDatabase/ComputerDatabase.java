@@ -1,13 +1,20 @@
 package com.excilys.computerDatabase;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.excilys.computerDatabase.config.SpringWebConfig;
 import com.excilys.computerDatabase.controller.cli.CLIController;
+
 
 public class ComputerDatabase {
     
 	public static void main(String[] args) {
-		
-		CLIController.getCLIController().run();
-
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringWebConfig.class);
+        CLIController cli = ctx.getBean(CLIController.class);
+        cli.run();
+    	((ConfigurableApplicationContext) ctx).close();
 	}
 
 }

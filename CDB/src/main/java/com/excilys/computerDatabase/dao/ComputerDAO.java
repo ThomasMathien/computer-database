@@ -12,14 +12,19 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.sql.DataSource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Computer;
+import com.excilys.computerDatabase.search.SqlFilter;
 
+@Repository
 public class ComputerDAO {
 
 	private final static String ADD_COMPUTER_QUERY = """
@@ -46,15 +51,12 @@ public class ComputerDAO {
 
 	private Logger logger = LoggerFactory.getLogger(ComputerDAO.class);
 	
-	private static ComputerDAO instance = null;
+	ComputerMapper computerMapper;
+	DataSource datasource;
 	
-	private ComputerDAO() {}
-	
-	public static ComputerDAO getInstance() {
-		if (instance == null) {
-			instance = new ComputerDAO();
-		}
-		return instance;
+	public ComputerDAO(ComputerMapper computerMapper, DataSource datasource) {
+		this.computerMapper = computerMapper;
+		this.datasource = datasource;
 	}
 	
 	public List<Computer> getComputers(){
@@ -95,7 +97,7 @@ public class ComputerDAO {
 				while(results.next()) {
 					Optional<Computer> c;
 					try {
-						c = ComputerMapper.getInstance().toComputer(results);
+						c = computerMapper.toComputer(results);
 						if (c.isPresent()) {
 							computers.add(c.orElseThrow());
 						}
@@ -118,7 +120,7 @@ public class ComputerDAO {
 			try (ResultSet results = stmt.executeQuery()){
 				if(results.next()) {
 					try {
-						computer =  ComputerMapper.getInstance().toComputer(results);
+						computer =  computerMapper.toComputer(results);
 					} catch (IncompleteResultSetException e) {
 						logger.error("Couldn't map Computer from resultSet"+results.toString(),e );
 					}
@@ -226,7 +228,7 @@ public class ComputerDAO {
 	}
 	
 	private Connection getConnection() throws SQLException {
-		return Datasource.getInstance().getConnection();
+		return datasource.getConnection();
 	}
 
 	private String adaptToLikeQuery(String search){

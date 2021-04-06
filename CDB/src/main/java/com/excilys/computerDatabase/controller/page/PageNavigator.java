@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.excilys.computerDatabase.exception.PageOutOfBoundException;
 import com.excilys.computerDatabase.service.CompanyService;
@@ -14,6 +16,7 @@ import com.excilys.computerDatabase.ui.view.DisplayCompany;
 import com.excilys.computerDatabase.ui.view.Displayable;
 import com.excilys.computerDatabase.ui.view.ShortDisplayComputer;
 
+@Component
 public class PageNavigator {
 
 	private final Logger logger = LoggerFactory.getLogger(PageNavigator.class);
@@ -26,23 +29,20 @@ public class PageNavigator {
 	public final static int GET_COMPANIES_REQUEST = 2;
 	PageCLI page;
 	
-	private static PageNavigator instance = null;
+	CompanyService companyService;
+	ComputerService computerService;
 	
-	private PageNavigator() {}
-	
-	public static PageNavigator getInstance() {
-		if (instance == null) {
-			instance = new PageNavigator();
-		}
-		return instance;
+	public PageNavigator(CompanyService companyService, ComputerService computerService) {
+		this.companyService = companyService;
+		this.computerService =computerService;
 	}
 
 	private int getTotalToFetch(int request) {
 		switch(request) {
 		case GET_COMPUTERS_REQUEST:
-			return ComputerService.getInstance().getComputerCount();
+			return computerService.getComputerCount();
 		case GET_COMPANIES_REQUEST:
-			return CompanyService.getInstance().getCompanyCount();
+			return companyService.getCompanyCount();
 		default:
 			return 0;
 		}
@@ -51,9 +51,9 @@ public class PageNavigator {
 	private List<Displayable> getDisplayables(int request, int from, int amount) {
 		switch(request) {
 		case GET_COMPUTERS_REQUEST:
-			return ComputerService.getInstance().getComputers(from,amount).stream().map( c -> new ShortDisplayComputer(c)).collect(Collectors.toList());
+			return computerService.getComputers(from,amount).stream().map( c -> new ShortDisplayComputer(c)).collect(Collectors.toList());
 		case GET_COMPANIES_REQUEST:
-			return CompanyService.getInstance().getCompanies(from, amount).stream().map( c -> new DisplayCompany(c)).collect(Collectors.toList());
+			return companyService.getCompanies(from, amount).stream().map( c -> new DisplayCompany(c)).collect(Collectors.toList());
 		default:
 			return null;
 		}
