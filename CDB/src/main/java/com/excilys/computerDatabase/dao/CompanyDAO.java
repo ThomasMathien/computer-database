@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.sql.DataSource;
+
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.mapper.CompanyMapper;
@@ -35,7 +37,7 @@ public class CompanyDAO {
 	@Autowired
 	CompanyMapper companyMapper;
 	@Autowired
-	Datasource datasource;
+	DataSource datasource;
 	
 	public List<Company> getCompanies() {
 		return getCompanies(0, getCompanyCount());
