@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import com.excilys.computerDatabase.dto.CompanyDTO;
@@ -13,7 +14,7 @@ import com.excilys.computerDatabase.exception.IncompleteResultSetException;
 import com.excilys.computerDatabase.model.Company;
 
 @Component
-public class CompanyMapper {
+public class CompanyMapper implements RowMapper<Company> {
 	
 	private Logger logger = LoggerFactory.getLogger(CompanyMapper.class);
 	
@@ -46,6 +47,26 @@ public class CompanyMapper {
 			dto.setName(company.orElseThrow().getName());
 		}
 		return dto;
+	}
+
+
+	@Override
+	public Company mapRow(ResultSet rs, int rowNum) throws SQLException {
+		Company company = null;
+		try {
+			long id = rs.getLong(ID_COLUMN);
+			String name =  rs.getString(NAME_COLUMN);
+			if (id == 0) {
+				throw new IncompleteResultSetException("ResultSet requires Id to create a Company object");
+			}
+			company =  new Company(id, name);
+		} catch (SQLException e) {
+			logger.error("Company Mapping Failed: for ResultSet " + rs.toString(), e);
+			throw e;
+		} catch (IncompleteResultSetException e) {
+			logger.error(e.getMessage());
+		}
+		return company;
 	}
 	
 }

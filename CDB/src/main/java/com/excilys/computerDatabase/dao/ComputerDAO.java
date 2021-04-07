@@ -45,9 +45,7 @@ public class ComputerDAO {
 	private static final String FIND_COMPUTERS_FROM_COMPANY = """
 			SELECT computer.id FROM computer LEFT JOIN company ON computer.company_id = company.id WHERE company.id = ?;
 			""";
-	private static final String DELETE_COMPUTER_BY_COMPANY_ID_QUERY = """
-			DELETE FROM computer WHERE company_id=?;
-			""";
+
 
 	private Logger logger = LoggerFactory.getLogger(ComputerDAO.class);
 	
@@ -155,19 +153,6 @@ public class ComputerDAO {
             logger.info("Computer added:"+computer.toString());
 		} catch (SQLException e) {
 			logger.error("Add Computer SQL Request Failed: with request "+ADD_COMPUTER_QUERY+" for Computer "+computer.toString(),e);
-		}
-	}
-	
-	public void deleteComputerByCompany(long companyId, Connection conn) throws FailedSQLRequestException {
-		try(PreparedStatement stmt = conn.prepareStatement(DELETE_COMPUTER_BY_COMPANY_ID_QUERY)) {
-			stmt.setLong(1,companyId);
-			int amount = stmt.executeUpdate();
-			if (amount == 0) {
-    			throw new FailedSQLRequestException("Couldn't delete computer with Id:"+companyId);
-			}
-			logger.info(amount + " Computers deleted for companyId:"+companyId);
-		} catch (SQLException e) {
-			logger.error("Delete Computers SQL Request Failed: with request "+DELETE_COMPUTER_BY_COMPANY_ID_QUERY+" for Id "+companyId,e);
 		}
 	}
 	

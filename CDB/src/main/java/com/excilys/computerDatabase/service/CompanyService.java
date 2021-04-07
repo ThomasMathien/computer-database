@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.excilys.computerDatabase.dao.CompanyDAO;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
@@ -34,6 +35,7 @@ public class CompanyService {
 		return companyDAO.getCompanyCount();
 	}
 	
+	@Transactional
 	public void deleteCompany(long id) throws FailedSQLRequestException {
 		companyDAO.deleteCompany(id);
 	}
