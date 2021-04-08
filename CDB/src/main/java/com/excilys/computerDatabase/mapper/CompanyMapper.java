@@ -21,7 +21,7 @@ public class CompanyMapper implements RowMapper<Company> {
 	public final String ID_COLUMN = "company_id";
 	public final String NAME_COLUMN = "company_name";
 	
-	public Optional<Company> toCompany(ResultSet rs) throws IncompleteResultSetException{
+	public Optional<Company> toCompany(ResultSet rs) throws IncompleteResultSetException {
 		if (rs == null) {
 			throw new IllegalArgumentException();
 		}

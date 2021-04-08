@@ -1,6 +1,5 @@
 package com.excilys.computerDatabase.service;
 
-import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,10 +45,6 @@ public class ComputerService {
 	
 	public void deleteComputer(long id) throws FailedSQLRequestException {
 		computerDAO.deleteComputer(id);
-	}
-	
-	public void deleteComputerByCompany(long companyId, Connection conn) throws FailedSQLRequestException {
-		computerDAO.deleteComputerByCompany(companyId, conn);
 	}
 	
 	public void updateComputer(long id, Computer computer) throws FailedSQLRequestException {

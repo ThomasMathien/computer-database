@@ -42,7 +42,7 @@ public class SpringWebConfig extends AbstractContextLoaderInitializer {
 	}
 	
 	@Bean
-	public JdbcTemplate getJdbcTemplate(HikariDataSource dataSource) {
+	public JdbcTemplate getJdbcTemplate(DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
 	}
 	

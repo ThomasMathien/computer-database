@@ -65,8 +65,8 @@ public class ComputerValidator {
 	
 	private void validateCompanyId(long id) throws InvalidIdException, CompanyNotExistantException{
 		validateId(id);
-		if (companyService.findCompany(id).isEmpty()) {
+		/*if (companyService.findCompany(id).isEmpty()) {
 			throw new CompanyNotExistantException(id);
-		}
+		}*/
 	}
 }

@@ -56,7 +56,7 @@ public class CompanyDAO {
 		try {
 			company = Optional.of(jdbcTemplate.queryForObject(FIND_COMPANY_BY_ID_QUERY, companyMapper, id));
 		} catch (DataAccessException e) {
-			logger.error("Find Company SQL Request Failed: with request " + FIND_COMPANY_BY_ID_QUERY + " for Id" + id, e);
+			logger.error("Find Company SQL Request Failed: with request " + FIND_COMPANY_BY_ID_QUERY + " for Id " + id, e);
 		}
 		return company;
 	}
