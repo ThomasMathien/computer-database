@@ -29,7 +29,7 @@ import com.excilys.computerDatabase.service.ComputerService;
 import com.excilys.computerDatabase.validator.ComputerValidator;
 
 @Component
-@WebServlet(urlPatterns = "/addComputer")
+//@WebServlet(urlPatterns = "/addComputer")
 public class AddComputerServlet extends SpringServlet {
 
 	private static final long serialVersionUID = -195965979475821843L;

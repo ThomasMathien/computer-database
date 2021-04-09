@@ -79,8 +79,7 @@ public class ComputerDAO {
 			computers = jdbcTemplate.query(query, computerMapper, search, search, amount, from);
 		} catch (DataAccessException e) {
 			logger.error("Get Computers SQL Request Failed: with request "+FIND_COMPUTERS_INTERVAL_QUERY+" for "+amount+" rows from "+from,e );
-		}
-		
+		}		
 		return computers;
 	}
 

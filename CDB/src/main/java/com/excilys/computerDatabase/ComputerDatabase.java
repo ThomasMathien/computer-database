@@ -5,6 +5,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.excilys.computerDatabase.config.SpringWebConfig;
+import com.excilys.computerDatabase.config.WebInitializer;
 import com.excilys.computerDatabase.controller.cli.CLIController;
 
 

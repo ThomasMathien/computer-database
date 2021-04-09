@@ -30,7 +30,7 @@ import com.excilys.computerDatabase.service.ComputerService;
 import com.excilys.computerDatabase.validator.ComputerValidator;
 
 @Component
-@WebServlet(urlPatterns="/editComputer")
+//@WebServlet(urlPatterns="/editComputer")
 public class EditComputerServlet extends SpringServlet {
 
 	

@@ -8,7 +8,7 @@
 <!-- Bootstrap -->
 <link href="/CDB/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="/CDB/css/font-awesome.css" rel="stylesheet" media="screen">
-<link href="/CDB/css/main.css" rel="stylesheet" media="screen">
+<link href="/css/main.css" rel="stylesheet" media="screen">
 <script src="/CDB/js/jquery.min.js" type="text/javascript"></script>
 <script src="webjars/jquery-validation/1.19.3/jquery.validate.min.js" type="text/javascript"></script>
 <script src="/CDB/js/addComputerValidation.js" type="text/javascript"></script>
