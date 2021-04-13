@@ -12,12 +12,12 @@
 <link href="/CDB/css/main.css" rel="stylesheet" media="screen">
 <script src="/CDB/js/jquery.min.js" type="text/javascript"></script>
 <script src="webjars/jquery-validation/1.19.3/jquery.validate.min.js" type="text/javascript"></script>
-
+<script src="/CDB/js/addComputerValidation.js" type="text/javascript"></script>
 </head>
 <body>
     <header class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="dashboard"> Application - Computer Database </a>
+            <a class="navbar-brand" href="dashboard">Application - Computer Database </a>
         </div>
     </header>
     <section id="main">
@@ -39,8 +39,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="discontinued">Discontinued date</label>
-                                <form:input path="introduced" name="discontinued" type="date" class="form-control" id="discontinued" placeholder="Discontinued date"/>
-                           		<form:errors path="introduced" cssClass="error"/>  
+                                <form:input path="discontinued" name="discontinued" type="date" class="form-control" id="discontinued" placeholder="Discontinued date"/>
+                           		<form:errors path="discontinued" cssClass="error"/>  
                             </div>
                             <div class="form-group">
                                 <label for="companyId">Company</label>

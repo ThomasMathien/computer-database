@@ -75,6 +75,7 @@ public class AddComputerController {
 			}
 			return new ModelAndView(REDIRECT_VIEW_NAME);
 		} else {
+			logger.info("Adding Computer Form Error:"+result.getAllErrors());
 			return getFormMV((ComputerToDatabaseDTO) result.getTarget());
 		}
 	}

@@ -46,10 +46,10 @@ public class ComputerValidator implements Validator {
 		try {
 			long parsedId = Long.parseLong(id);
 			if (parsedId < 0) {
-				e.rejectValue("id", "field."+field+".negative");
+				e.rejectValue("id", "field." + field + ".negative");
 			}
 		} catch (NumberFormatException numberFormatException) {
-			e.rejectValue("id", "field."+field+".notANumber");
+			e.rejectValue("id", "field." + field + ".notANumber");
 		}
 
 	}
@@ -78,10 +78,10 @@ public class ComputerValidator implements Validator {
 	
 	private Optional<LocalDate> validateDate(String date, String field, Errors e) {
 		Optional<LocalDate> parsedDate = Optional.empty();
-		if (date != null) {
+		if (date != null && !date.isBlank()) {
 			parsedDate = localDateMapper.parseToLocalDate(date);
 			if (parsedDate.isEmpty()) {
-				e.rejectValue(field, "field."+field+".NotADate");
+				e.rejectValue(field, "field." + field + ".NotADate");
 			}
 		}
 		return parsedDate;
