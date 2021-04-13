@@ -66,5 +66,4 @@ public class SpringWebConfig implements WebMvcConfigurer {
     public PlatformTransactionManager txManager() {
         return new DataSourceTransactionManager(getDataSource());
     }
-
 }

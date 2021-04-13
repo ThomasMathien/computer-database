@@ -85,10 +85,13 @@ public class ComputerMapper implements RowMapper<Computer> {
 
 	public Optional<Computer> toComputer(ComputerToDatabaseDTO dto) {
 		try {
-			computerValidator.validateComputerDTO(dto);
-			ComputerBuilder builder = new ComputerBuilder(dto.getName())
-					.setIntroduced(localDateMapper.parseToLocalDate(dto.getIntroduced()).orElse(null))
-					.setDiscontinued(localDateMapper.parseToLocalDate(dto.getDiscontinued()).orElse(null));
+			ComputerBuilder builder = new ComputerBuilder(dto.getName());
+					if (dto.getIntroduced() != null) {
+						builder.setIntroduced(localDateMapper.parseToLocalDate(dto.getIntroduced()).orElse(null));
+					}
+					if (dto.getDiscontinued() != null) {
+						builder.setDiscontinued(localDateMapper.parseToLocalDate(dto.getDiscontinued()).orElse(null));;
+					}
 					if (dto.getCompanyId() != null && Long.parseLong(dto.getCompanyId()) != 0) {
 						Company company = new Company(Long.parseLong(dto.getCompanyId()));
 						builder.setCompany(company);
@@ -97,7 +100,7 @@ public class ComputerMapper implements RowMapper<Computer> {
 						builder.setId(Long.parseLong(dto.getId()));
 					}
 					return Optional.of(builder.build());
-		} catch (InvalidValuesException e) {
+		} catch (NumberFormatException e) {
 			logger.warn("Couldn't map DTO to computer as values are invalid[" + e.getMessage() + "]: DTO:" + dto.toString());
 			return Optional.empty();
 		}

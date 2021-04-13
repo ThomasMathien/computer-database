@@ -5,19 +5,17 @@ import java.util.Optional;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
 
 import com.excilys.computerDatabase.dto.ComputerToDatabaseDTO;
-import com.excilys.computerDatabase.exception.invalidValuesException.CompanyNotExistantException;
-import com.excilys.computerDatabase.exception.invalidValuesException.InvalidDateInterval;
-import com.excilys.computerDatabase.exception.invalidValuesException.InvalidIdException;
-import com.excilys.computerDatabase.exception.invalidValuesException.InvalidNameException;
-import com.excilys.computerDatabase.exception.invalidValuesException.InvalidValuesException;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.mapper.LocalDateMapper;
 import com.excilys.computerDatabase.service.CompanyService;
 
 @Component
-public class ComputerValidator {
+public class ComputerValidator implements Validator {
 
 	ComputerMapper computerMapper;
 	LocalDateMapper localDateMapper;
@@ -28,45 +26,64 @@ public class ComputerValidator {
 		this.localDateMapper = localDateMapper;
 		this.companyService = companyService;
 	}
-	
-	public void validateComputerDTO(ComputerToDatabaseDTO dto) throws InvalidValuesException {
-		validateName(dto.getName());
+
+	@Override
+	public void validate(Object target, Errors e) {
+		ComputerToDatabaseDTO dto = (ComputerToDatabaseDTO) target;
+		validateName(dto.getName(), e);
+		validateId(dto.getId(), "id", e);
+		validateDate(dto.getIntroduced(), "introduced", e);
+		validateDate(dto.getDiscontinued(), "discontinued", e);
 		Optional<LocalDate> introduced = localDateMapper.parseToLocalDate(dto.getIntroduced());
 		Optional<LocalDate> discontinued = localDateMapper.parseToLocalDate(dto.getDiscontinued());
-		validateDateInterval(introduced, discontinued);
-		if (dto.getId() != null) {
-			validateId(Long.parseLong(dto.getId()));
-		}
-		if (dto.getCompanyId() != null) {
-			validateCompanyId(Long.parseLong(dto.getCompanyId()));
-		}
+		validateDateInterval(introduced, discontinued, e);
+		validateCompanyId(dto.getCompanyId(), e);
 	}
 
-	private void validateId(long id) throws InvalidIdException {
-		if (id < 0) {
-			throw new InvalidIdException("Id should not be negative");
+	
+	private void validateId(String id, String field,  Errors e) {
+		ValidationUtils.rejectIfEmpty(e, "id", "field.id.empty");
+		try {
+			long parsedId = Long.parseLong(id);
+			if (parsedId < 0) {
+				e.rejectValue("id", "field."+field+".negative");
+			}
+		} catch (NumberFormatException numberFormatException) {
+			e.rejectValue("id", "field."+field+".notANumber");
 		}
+
 	}
 	
-	private void validateName(String name) throws InvalidNameException {
+	private void validateName(String name, Errors e) {
+		ValidationUtils.rejectIfEmptyOrWhitespace(e, "name", "field.name.blank");
 		if (name.length() > 255) {
-			throw new InvalidNameException("Name should not be more than 255 characters");
-		}
-		if (name.isBlank()) {
-			throw new InvalidNameException("Name should not be comprised of only Spaces characters");	
+			e.rejectValue("name", "field.name.maxSize");
 		}
 	}
 	
-	private void validateDateInterval(Optional<LocalDate> introduced, Optional<LocalDate> discontinued) throws InvalidDateInterval {
+	private void validateDateInterval(Optional<LocalDate> introduced, Optional<LocalDate> discontinued, Errors e) {
 		if ((introduced.isPresent()) && (discontinued.isPresent()) && discontinued.get().isBefore(introduced.get())) {
-			throw new InvalidDateInterval("Date interval should respect date precedence");
+			e.rejectValue("discontinued", "field.discontinued.NotAfterIntroduced");
 		}
 	}
 	
-	private void validateCompanyId(long id) throws InvalidIdException, CompanyNotExistantException{
-		validateId(id);
-		/*if (companyService.findCompany(id).isEmpty()) {
-			throw new CompanyNotExistantException(id);
-		}*/
+	private void validateCompanyId(String id, Errors e) {
+		validateId(id, "companyId", e);
+	}
+
+	@Override
+	public boolean supports(Class<?> clazz) {
+		return ComputerToDatabaseDTO.class.isAssignableFrom(clazz);
+	}
+	
+	private Optional<LocalDate> validateDate(String date, String field, Errors e) {
+		Optional<LocalDate> parsedDate = Optional.empty();
+		if (date != null) {
+			parsedDate = localDateMapper.parseToLocalDate(date);
+			if (parsedDate.isEmpty()) {
+				e.rejectValue(field, "field."+field+".NotADate");
+			}
+		}
+		return parsedDate;
 	}
 }

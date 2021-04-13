@@ -15,6 +15,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.excilys.computerDatabase.dto.CompanyDTO;
 import com.excilys.computerDatabase.dto.ComputerToDatabaseDTO;
@@ -29,15 +35,12 @@ import com.excilys.computerDatabase.service.CompanyService;
 import com.excilys.computerDatabase.service.ComputerService;
 import com.excilys.computerDatabase.validator.ComputerValidator;
 
-@Component
-//@WebServlet(urlPatterns="/editComputer")
-public class EditComputerServlet extends SpringServlet {
-
-	
-	private static final long serialVersionUID = -8675864653659504656L;	
+@Controller
+@RequestMapping(value = "/editComputer")
+public class EditComputerController {
 	
 	private static final String REDIRECT_PAGE_AFTER_ADDING_COMPUTER = "dashboard";
-	private static final String VIEW_PATH =  "/WEB-INF/views/editComputer.jsp";
+	private static final String VIEW_NAME =  "editComputer";
 	
 	private static final String COMPUTER_ID_ATTRIBUTE = "id";
 	private static final String COMPUTER_ID_PARAMETER = "id";
@@ -47,38 +50,42 @@ public class EditComputerServlet extends SpringServlet {
 	private static final String DISCONTINUED_DATE_ATTRIBUTE = "discontinued";
 	private static final String COMPANY_ID_ATTRIBUTE = "companyId";
 	
-	private Logger logger = LoggerFactory.getLogger(EditComputerServlet.class);
+	private Logger logger = LoggerFactory.getLogger(EditComputerController.class);
 
-	@Autowired
 	CompanyService companyService;
-	@Autowired
 	ComputerService computerService;
-	@Autowired
 	CompanyMapper companyMapper;
-	@Autowired
 	ComputerMapper computerMapper;
-	@Autowired 
 	ComputerValidator computerValidator;
 	
-	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String id = request.getParameter(COMPUTER_ID_PARAMETER);
-		request.setAttribute(COMPUTER_ID_ATTRIBUTE, id);
-		List<Company> companies = companyService.getCompanies();
-		List<CompanyDTO> dtos  = companies.stream().map(c -> companyMapper.toCompanyDTO(Optional.of(c))).collect(Collectors.toList());
-		request.setAttribute(COMPANIES_LIST_ATTRIBUTE, dtos);
-		this.getServletContext().getRequestDispatcher(VIEW_PATH).forward(request, response);
+	public EditComputerController(CompanyService companyService, ComputerService computerService,
+			CompanyMapper companyMapper, ComputerMapper computerMapper, ComputerValidator computerValidator) {
+		this.companyService = companyService;
+		this.computerService = computerService;
+		this.companyMapper = companyMapper;
+		this.computerMapper = computerMapper;
+		this.computerValidator = computerValidator;
 	}
 	
-	@Override
+	@GetMapping
+	public ModelAndView doGet(@RequestParam(name = COMPUTER_ID_PARAMETER) String computerId) {
+		ModelAndView mv = new ModelAndView(VIEW_NAME);
+		
+		List<Company> companies = companyService.getCompanies();
+		List<CompanyDTO> dtos  = companies.stream().map(c -> companyMapper.toCompanyDTO(Optional.of(c))).collect(Collectors.toList());
+		mv.getModel().put(COMPUTER_ID_ATTRIBUTE, computerId);
+		mv.getModel().put(COMPANIES_LIST_ATTRIBUTE, dtos);
+		return mv;
+	}
+	
+	@PostMapping
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter(COMPUTER_NAME_ATTRIBUTE).trim();
 		String introduced = request.getParameter(INTRODUCED_DATE_ATTRIBUTE);
 		String discontinued = request.getParameter(DISCONTINUED_DATE_ATTRIBUTE);
 		String companyId = request.getParameter(COMPANY_ID_ATTRIBUTE);
 		String computerId = request.getParameter(COMPUTER_ID_ATTRIBUTE);
-		try {
+
 			ComputerToDatabaseDTO dto = new ComputerToDatabaseDTOBuilder()
 					.setId(computerId)
 					.setCompanyId(companyId)
@@ -86,7 +93,7 @@ public class EditComputerServlet extends SpringServlet {
 					.setIntroduced(introduced)
 					.setName(name)
 					.build();
-			computerValidator.validateComputerDTO(dto);
+		//	computerValidator.validateComputerDTO(dto);
 			Optional<Computer> computer = computerMapper.toComputer(dto);
 			try {
 				computerService.updateComputer(Long.parseLong(computerId), computer.orElseThrow());
@@ -96,9 +103,6 @@ public class EditComputerServlet extends SpringServlet {
 			} catch (NoSuchElementException e) {
 				logger.warn("Computer couldn't be properly mapped from DTO");
 			}
-		} catch (InvalidValuesException e) {
-			logger.warn("Updated computer parameters not valid", e);
-		}
 		response.sendRedirect(REDIRECT_PAGE_AFTER_ADDING_COMPUTER);
 	}
 }
