@@ -59,16 +59,6 @@ public class ComputerDAO {
 		return getComputers(from, amount, new SqlFilter("%","computer.id","ASC"));
 	}
 	
-	public long [] getComputersIdFromCompany(long companyId){
-		List<Long> computersId = new ArrayList<>();
-		try {
-			computersId = jdbcTemplate.queryForList(FIND_COMPUTERS_FROM_COMPANY, Long.class, companyId);
-		} catch (DataAccessException e) {
-			logger.error("Get Computers SQL Request Failed: with request "+FIND_COMPUTERS_FROM_COMPANY+" for compay id: "+companyId, e);
-		}
-		return computersId.stream().mapToLong( l -> l).toArray();
-	}
-	
 	public List<Computer> getComputers(long from, long amount, SqlFilter filter) {
 		List<Computer> computers = new ArrayList<>();
 		final String orderByInjection = "ORDER BY " + filter.getSortedColumn()+ " "+ filter.getSortOrder()+" ";
@@ -81,7 +71,19 @@ public class ComputerDAO {
 			logger.error("Get Computers SQL Request Failed: with request "+FIND_COMPUTERS_INTERVAL_QUERY+" for "+amount+" rows from "+from,e );
 		}		
 		return computers;
+	}	
+	
+	public long [] getComputersIdFromCompany(long companyId){
+		List<Long> computersId = new ArrayList<>();
+		try {
+			computersId = jdbcTemplate.queryForList(FIND_COMPUTERS_FROM_COMPANY, Long.class, companyId);
+		} catch (DataAccessException e) {
+			logger.error("Get Computers SQL Request Failed: with request "+FIND_COMPUTERS_FROM_COMPANY+" for compay id: "+companyId, e);
+		}
+		return computersId.stream().mapToLong( l -> l).toArray();
 	}
+	
+
 
 	public Optional<Computer> findComputer(long id){
 		Optional<Computer> computer = Optional.empty();;

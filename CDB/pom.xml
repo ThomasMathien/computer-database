@@ -16,8 +16,11 @@
     <maven.compiler.source>15</maven.compiler.source>
     <maven.compiler.target>15</maven.compiler.target>
 	<HikariCP.version>4.0.3</HikariCP.version>
+	<spring-data-jpa.version>2.4.7</spring-data-jpa.version>
 	<hibernate-validator.version>7.0.1.Final</hibernate-validator.version>
+	<hibernate-core.version>5.4.30.Final</hibernate-core.version>
 	<validation-api.version>2.0.1.Final</validation-api.version>
+	<javax.persistence-api.version>2.2</javax.persistence-api.version>
     <mysql-connector-java.version>8.0.23</mysql-connector-java.version>
     <junit.version>4.13.2</junit.version>
     <mockito-core.version>3.8.0</mockito-core.version>
@@ -109,6 +112,12 @@
 	    <artifactId>validation-api</artifactId>
 	    <version>${validation-api.version}</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
+	<dependency>
+	    <groupId>javax.persistence</groupId>
+	    <artifactId>javax.persistence-api</artifactId>
+	    <version>${javax.persistence-api.version}</version>
+	</dependency>
 	<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
 	<dependency>
 	    <groupId>org.hibernate.validator</groupId>
@@ -119,6 +128,23 @@
 	    <groupId>org.hibernate</groupId>
 	    <artifactId>hibernate-validator-annotation-processor</artifactId>
 	    <version>${hibernate-validator.version}</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-core</artifactId>
+	    <version>${hibernate-core.version}</version>
+	</dependency>
+	        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            	    <version>${hibernate-core.version}</version>
+        </dependency>
+	<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+	<dependency>
+	    <groupId>org.springframework.data</groupId>
+	    <artifactId>spring-data-jpa</artifactId>
+	    <version>${spring-data-jpa.version}</version>
 	</dependency>
   	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 	<dependency>

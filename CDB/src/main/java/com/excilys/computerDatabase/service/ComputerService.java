@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.excilys.computerDatabase.dao.ComputerDAO;
+import com.excilys.computerDatabase.dao.ComputerRepository;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.search.SqlFilter;
@@ -14,9 +15,10 @@ import com.excilys.computerDatabase.search.SqlFilter;
 public class ComputerService {
 	
 	ComputerDAO computerDAO;
-	
-	public ComputerService(ComputerDAO computerDAO) {
+	ComputerRepository repository;
+	public ComputerService(ComputerDAO computerDAO, ComputerRepository repository) {
 		this.computerDAO = computerDAO;
+		this.repository = repository;
 	}
 	
 	public List<Computer> getComputers() {
@@ -32,7 +34,7 @@ public class ComputerService {
 	}
 	
 	public long[] getComputersIdFromCompany(long companyId) {
-		return computerDAO.getComputersIdFromCompany(companyId);
+		return repository.getComputersIdFromCompany(companyId);
 	}
 	
 	public Optional<Computer> findComputer(long id) {
