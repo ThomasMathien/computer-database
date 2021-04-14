@@ -11,7 +11,10 @@ public class LocalDateMapper {
 	
 	public Optional<LocalDate> parseToLocalDate(String date) {
 		try {
-			return Optional.of(LocalDate.parse(date));
+			if (date != null) {
+				return Optional.of(LocalDate.parse(date));
+			}
+			return Optional.empty();
 		} catch (DateTimeParseException e) {
 			return Optional.empty();
 		}

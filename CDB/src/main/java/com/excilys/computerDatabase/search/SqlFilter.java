@@ -12,7 +12,7 @@ import com.excilys.computerDatabase.mapper.ColumnsNameMapper;
 public class SqlFilter {
 	
 	private static final String DEFAULT_COLUMN = "computer.name";
-	private static final String DEFAULT_SEARCH = "%";
+	public static final String DEFAULT_SEARCH = "%";
 	private static final String DEFAULT_ORDER = "ASC";
 	
 	private Logger logger = LoggerFactory.getLogger(SqlFilter.class);

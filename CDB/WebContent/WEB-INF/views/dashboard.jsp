@@ -7,12 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="utf-8">
 <!-- Bootstrap -->
-<link href="/CDB/css/bootstrap.min.css" rel="stylesheet" media="screen">
-<link href="/CDB/css/font-awesome.min.css" rel="stylesheet" media="screen">
-<link href="/CDB/css/main.css" rel="stylesheet" media="screen">
-<script src="/CDB/js/jquery.min.js"></script>
-<script src="/CDB/js/bootstrap.min.js"></script>
-<script src="/CDB/js/dashboard.js"></script>
+<link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet" media="screen">
+<link href="<c:url value="/css/font-awesome.min.css"/>" rel="stylesheet" media="screen">
+<link href="<c:url value="/css/main.css"/>" rel="stylesheet" media="screen">
+<script src="<c:url value="/js/jquery.min.js"/>" ></script>
+<script src="<c:url value="/js/bootstrap.min.js"/>" ></script>
+<script src="<c:url value="/js/dashboard.js"/>" ></script>
 </head>
 <body>
 	<header class="navbar navbar-inverse navbar-fixed-top">
@@ -116,9 +116,10 @@
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<c:set var="leftPageButtons" scope="page" value="${Math.min(4, Math.max(pageIndex -2,-1))}"/>
-								<c:set var="rightPageButtons" scope="page" value="${Math.min(4,maxPages - pageIndex - 1)}"/>
-								<c:forEach begin="${pageIndex - leftPageButtons}" end="${pageIndex+rightPageButtons}" varStatus = "loop">
+								<c:set var="pageButtonNumber" scope="page" value="5"/>
+								<c:set var="from" scope="page" value="${Math.max(2, Math.min(pageIndex + 0, maxPages -1 - pageButtonNumber))}"/>
+								<c:set var="to" scope="page" value="${Math.min(pageIndex + pageButtonNumber, maxPages -1)}"/>
+								<c:forEach begin="${from}" end="${to}" varStatus = "loop">
 									<li><a href="dashboard?pageIndex=${loop.index}">${loop.index}</a></li>
 								</c:forEach>
 							</c:otherwise>

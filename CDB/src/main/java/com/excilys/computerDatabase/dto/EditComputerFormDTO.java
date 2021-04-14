@@ -1,6 +1,6 @@
 package com.excilys.computerDatabase.dto;
 
-public class ComputerToDatabaseDTO {
+public class EditComputerFormDTO {
 	
 	private String id;
 	private String name;
