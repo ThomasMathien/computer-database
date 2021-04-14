@@ -1,6 +1,6 @@
 package com.excilys.computerDatabase.dto.builder;
 
-import com.excilys.computerDatabase.dto.ComputerToDatabaseDTO;
+import com.excilys.computerDatabase.dto.EditComputerFormDTO;
 
 public class ComputerToDatabaseDTOBuilder {
 	
@@ -37,8 +37,8 @@ public class ComputerToDatabaseDTOBuilder {
 		return this;
 	}
 	
-	public ComputerToDatabaseDTO build() {
-		ComputerToDatabaseDTO dto = new ComputerToDatabaseDTO();
+	public EditComputerFormDTO build() {
+		EditComputerFormDTO dto = new EditComputerFormDTO();
 		dto.setId(id);
 		dto.setName(name);
 		dto.setIntroduced(introduced);
