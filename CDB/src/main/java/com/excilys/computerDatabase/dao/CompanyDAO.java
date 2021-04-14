@@ -37,40 +37,6 @@ public class CompanyDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	public List<Company> getCompanies() {
-		return getCompanies(0, getCompanyCount());
-	}
-	
-	public List<Company> getCompanies(int from, int amount) {
-		List<Company> companies = new ArrayList<Company>();
-		try {
-			companies = jdbcTemplate.query(FIND_COMPANIES_INTERVAL_QUERY, companyMapper, amount, from);
-		} catch (DataAccessException e) {
-			logger.error("Get Companies SQL Request Failed: with request "+FIND_COMPANIES_INTERVAL_QUERY+" for "+amount+" rows from "+from,e );
-		}
-		return companies;
-	}
-	
-	public Optional<Company> findCompany(long id) {
-		Optional<Company> company = Optional.empty();
-		try {
-			company = Optional.of(jdbcTemplate.queryForObject(FIND_COMPANY_BY_ID_QUERY, companyMapper, id));
-		} catch (DataAccessException e) {
-			logger.error("Find Company SQL Request Failed: with request " + FIND_COMPANY_BY_ID_QUERY + " for Id " + id, e);
-		}
-		return company;
-	}
-	
-	public int getCompanyCount() {
-		try {
-			return jdbcTemplate.queryForObject(GET_COMPANY_COUNT_QUERY, Integer.class);
-		} catch (DataAccessException e) {
-			logger.error("Get Company Count SQL Request Failed: with request " + GET_COMPANY_COUNT_QUERY, e);
-		}
-		return 0;
-	}
-
-
 	@Transactional
 	public void deleteCompany(long id) {
 		try {

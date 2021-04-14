@@ -11482,3 +11482,87 @@ Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range:
 	at com.puppycrawl.tools.checkstyle.Checker.processFile(Checker.java:337)
 	at com.puppycrawl.tools.checkstyle.Checker.processFiles(Checker.java:298)
 	... 16 more
+
+!ENTRY net.sf.eclipsecs.core 4 0 2021-04-14 15:52:40.859
+!MESSAGE Checkstyle-Plugin: Exception was thrown while processing /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/src/main/java/com/excilys/computerDatabase/dao/CompanyRepository.java
+!STACK 0
+com.puppycrawl.tools.checkstyle.api.CheckstyleException: Exception was thrown while processing /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/src/main/java/com/excilys/computerDatabase/dao/CompanyRepository.java
+	at com.puppycrawl.tools.checkstyle.Checker.processFiles(Checker.java:311)
+	at com.puppycrawl.tools.checkstyle.Checker.process(Checker.java:221)
+	at net.sf.eclipsecs.core.builder.Auditor.runAudit(Auditor.java:146)
+	at net.sf.eclipsecs.core.builder.CheckstyleBuilder.handleBuildSelection(CheckstyleBuilder.java:307)
+	at net.sf.eclipsecs.core.builder.CheckstyleBuilder.build(CheckstyleBuilder.java:173)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:845)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:228)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:276)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:329)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:332)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:384)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:405)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:154)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:244)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: com.puppycrawl.tools.checkstyle.api.CheckstyleException: IllegalStateException occurred while parsing file /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/src/main/java/com/excilys/computerDatabase/dao/CompanyRepository.java.
+	at com.puppycrawl.tools.checkstyle.JavaParser.parse(JavaParser.java:120)
+	at com.puppycrawl.tools.checkstyle.TreeWalker.processFiltered(TreeWalker.java:149)
+	at com.puppycrawl.tools.checkstyle.api.AbstractFileSetCheck.process(AbstractFileSetCheck.java:87)
+	at com.puppycrawl.tools.checkstyle.Checker.processFile(Checker.java:337)
+	at com.puppycrawl.tools.checkstyle.Checker.processFiles(Checker.java:298)
+	... 16 more
+Caused by: java.lang.IllegalStateException: /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/src/main/java/com/excilys/computerDatabase/dao/CompanyRepository.java:19:42: unexpected token: ;
+	at com.puppycrawl.tools.checkstyle.JavaParser$1.reportError(JavaParser.java:108)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.typeDefinition(GeneratedJavaRecognizer.java:424)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.compilationUnit(GeneratedJavaRecognizer.java:212)
+	at com.puppycrawl.tools.checkstyle.JavaParser.parse(JavaParser.java:114)
+	... 20 more
+Caused by: /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/src/main/java/com/excilys/computerDatabase/dao/CompanyRepository.java:19:42: unexpected token: ;
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.field(GeneratedJavaRecognizer.java:3225)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.classBlock(GeneratedJavaRecognizer.java:3415)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.interfaceDefinition(GeneratedJavaRecognizer.java:699)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.typeDefinitionInternal(GeneratedJavaRecognizer.java:568)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.typeDefinition(GeneratedJavaRecognizer.java:402)
+	... 22 more
+
+!ENTRY net.sf.eclipsecs.core 4 0 2021-04-14 15:54:05.575
+!MESSAGE Checkstyle-Plugin: Exception was thrown while processing /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/src/main/java/com/excilys/computerDatabase/dao/CompanyRepository.java
+!STACK 0
+com.puppycrawl.tools.checkstyle.api.CheckstyleException: Exception was thrown while processing /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/src/main/java/com/excilys/computerDatabase/dao/CompanyRepository.java
+	at com.puppycrawl.tools.checkstyle.Checker.processFiles(Checker.java:311)
+	at com.puppycrawl.tools.checkstyle.Checker.process(Checker.java:221)
+	at net.sf.eclipsecs.core.builder.Auditor.runAudit(Auditor.java:146)
+	at net.sf.eclipsecs.core.builder.CheckstyleBuilder.handleBuildSelection(CheckstyleBuilder.java:307)
+	at net.sf.eclipsecs.core.builder.CheckstyleBuilder.build(CheckstyleBuilder.java:173)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:845)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:228)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:276)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:329)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:332)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:384)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:405)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:154)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:244)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: com.puppycrawl.tools.checkstyle.api.CheckstyleException: IllegalStateException occurred while parsing file /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/src/main/java/com/excilys/computerDatabase/dao/CompanyRepository.java.
+	at com.puppycrawl.tools.checkstyle.JavaParser.parse(JavaParser.java:120)
+	at com.puppycrawl.tools.checkstyle.TreeWalker.processFiltered(TreeWalker.java:149)
+	at com.puppycrawl.tools.checkstyle.api.AbstractFileSetCheck.process(AbstractFileSetCheck.java:87)
+	at com.puppycrawl.tools.checkstyle.Checker.processFile(Checker.java:337)
+	at com.puppycrawl.tools.checkstyle.Checker.processFiles(Checker.java:298)
+	... 16 more
+Caused by: java.lang.IllegalStateException: /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/src/main/java/com/excilys/computerDatabase/dao/CompanyRepository.java:20:35: unexpected token: ;
+	at com.puppycrawl.tools.checkstyle.JavaParser$1.reportError(JavaParser.java:108)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.typeDefinition(GeneratedJavaRecognizer.java:424)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.compilationUnit(GeneratedJavaRecognizer.java:212)
+	at com.puppycrawl.tools.checkstyle.JavaParser.parse(JavaParser.java:114)
+	... 20 more
+Caused by: /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/src/main/java/com/excilys/computerDatabase/dao/CompanyRepository.java:20:35: unexpected token: ;
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.field(GeneratedJavaRecognizer.java:3225)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.classBlock(GeneratedJavaRecognizer.java:3415)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.interfaceDefinition(GeneratedJavaRecognizer.java:699)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.typeDefinitionInternal(GeneratedJavaRecognizer.java:568)
+	at com.puppycrawl.tools.checkstyle.grammar.GeneratedJavaRecognizer.typeDefinition(GeneratedJavaRecognizer.java:402)
+	... 22 more

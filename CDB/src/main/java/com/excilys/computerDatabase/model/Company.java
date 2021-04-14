@@ -3,14 +3,18 @@ package com.excilys.computerDatabase.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "company")
 public class Company {
 
 	@Id
 	@GeneratedValue
 	private long id;
 	private String name;
+	
+	public Company() {}
 	
 	public Company(long id) {
 		this(id, "");
