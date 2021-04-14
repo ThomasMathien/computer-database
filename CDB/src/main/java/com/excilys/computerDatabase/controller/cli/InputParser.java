@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import com.excilys.computerDatabase.validator.ComputerValidator;
 
 public abstract class InputParser {
 

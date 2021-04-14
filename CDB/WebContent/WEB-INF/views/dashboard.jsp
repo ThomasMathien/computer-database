@@ -116,9 +116,10 @@
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<c:set var="leftPageButtons" scope="page" value="${Math.min(4, Math.max(pageIndex -2,-1))}"/>
-								<c:set var="rightPageButtons" scope="page" value="${Math.min(4,maxPages - pageIndex - 1)}"/>
-								<c:forEach begin="${pageIndex - leftPageButtons}" end="${pageIndex+rightPageButtons}" varStatus = "loop">
+								<c:set var="pageButtonNumber" scope="page" value="5"/>
+								<c:set var="from" scope="page" value="${Math.max(2, Math.min(pageIndex + 0, maxPages -1 - pageButtonNumber))}"/>
+								<c:set var="to" scope="page" value="${Math.min(pageIndex + pageButtonNumber, maxPages -1)}"/>
+								<c:forEach begin="${from}" end="${to}" varStatus = "loop">
 									<li><a href="dashboard?pageIndex=${loop.index}">${loop.index}</a></li>
 								</c:forEach>
 							</c:otherwise>

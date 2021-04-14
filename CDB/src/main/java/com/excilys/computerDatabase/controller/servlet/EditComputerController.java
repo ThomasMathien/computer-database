@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.excilys.computerDatabase.dto.CompanyDTO;
-import com.excilys.computerDatabase.dto.ComputerToDatabaseDTO;
+import com.excilys.computerDatabase.dto.EditComputerFormDTO;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.mapper.CompanyMapper;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
@@ -27,13 +27,13 @@ import com.excilys.computerDatabase.model.Company;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.service.CompanyService;
 import com.excilys.computerDatabase.service.ComputerService;
-import com.excilys.computerDatabase.validator.ComputerValidator;
+import com.excilys.computerDatabase.validator.EditComputerFormDTOValidator;
 
 @Controller
 @RequestMapping(value = "/editComputer")
 public class EditComputerController {
 	
-	private static final String REDIRECT_VIEW_NAME_AFTER_EDITING_COMPUTER = "dashboard";
+	private static final String REDIRECT_VIEW_NAME_AFTER_EDITING_COMPUTER = "redirect:/dashboard";
 	private static final String VIEW_NAME =  "editComputer";
 	private static final String MODEL_ATTRIBUTE = "computer";
 	
@@ -46,10 +46,10 @@ public class EditComputerController {
 	ComputerService computerService;
 	CompanyMapper companyMapper;
 	ComputerMapper computerMapper;
-	ComputerValidator computerValidator;
+	EditComputerFormDTOValidator computerValidator;
 	
 	public EditComputerController(CompanyService companyService, ComputerService computerService,
-			CompanyMapper companyMapper, ComputerMapper computerMapper, ComputerValidator computerValidator) {
+			CompanyMapper companyMapper, ComputerMapper computerMapper, EditComputerFormDTOValidator computerValidator) {
 		this.companyService = companyService;
 		this.computerService = computerService;
 		this.companyMapper = companyMapper;
@@ -59,7 +59,7 @@ public class EditComputerController {
 	
 	@GetMapping
 	public ModelAndView doGet(@RequestParam(name = COMPUTER_ID_PARAMETER) String computerId) {
-		ComputerToDatabaseDTO dto = new ComputerToDatabaseDTO();
+		EditComputerFormDTO dto = new EditComputerFormDTO();
 		dto.setId(computerId);
 		ModelAndView mv = getFormMV(dto);
 		mv.getModel().put(COMPUTER_ID_PARAMETER, computerId);
@@ -67,7 +67,7 @@ public class EditComputerController {
 	}
 	
 	@PostMapping
-	public ModelAndView submitForm(@ModelAttribute(name = MODEL_ATTRIBUTE) @Valid ComputerToDatabaseDTO dto, BindingResult result) {
+	public ModelAndView submitForm(@ModelAttribute(name = MODEL_ATTRIBUTE) @Valid EditComputerFormDTO dto, BindingResult result) {
 		computerValidator.validate(dto, result);
 		if (!result.hasErrors()) {
 			Optional<Computer> editedComputer = computerMapper.toComputer(dto);
@@ -82,13 +82,13 @@ public class EditComputerController {
 			return new ModelAndView(REDIRECT_VIEW_NAME_AFTER_EDITING_COMPUTER);
 		} else {
 			logger.info("Editing Computer Form Error:"+result.getAllErrors());
-			ModelAndView mv = getFormMV((ComputerToDatabaseDTO) result.getTarget());
+			ModelAndView mv = getFormMV((EditComputerFormDTO) result.getTarget());
 			mv.getModel().put(COMPUTER_ID_PARAMETER, dto.getId());
 			return mv;
 		}
 	}
 	
-	private ModelAndView getFormMV(ComputerToDatabaseDTO dto) {
+	private ModelAndView getFormMV(EditComputerFormDTO dto) {
 		ModelAndView mv = new ModelAndView(VIEW_NAME);
 		List<Company> companies = companyService.getCompanies();
 		List<CompanyDTO> dtos  = companies.stream().map(c -> companyMapper.toCompanyDTO(Optional.of(c)))

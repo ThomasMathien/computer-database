@@ -4,20 +4,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
+import com.excilys.computerDatabase.dto.AddComputerFormDTO;
 import com.excilys.computerDatabase.dto.ComputerFormDTO;
-import com.excilys.computerDatabase.dto.ComputerToDatabaseDTO;
+import com.excilys.computerDatabase.dto.EditComputerFormDTO;
 import com.excilys.computerDatabase.dto.builder.ComputerFormDTOBuilder;
 import com.excilys.computerDatabase.exception.IncompleteResultSetException;
-import com.excilys.computerDatabase.exception.invalidValuesException.InvalidValuesException;
 import com.excilys.computerDatabase.model.Company;
 import com.excilys.computerDatabase.model.Computer;
 import com.excilys.computerDatabase.model.builder.ComputerBuilder;
-import com.excilys.computerDatabase.validator.ComputerValidator;
 
 @Component
 public class ComputerMapper implements RowMapper<Computer> {
@@ -31,11 +32,9 @@ public class ComputerMapper implements RowMapper<Computer> {
 	
 	LocalDateMapper localDateMapper;
 	CompanyMapper companyMapper;
-	ComputerValidator computerValidator;
 	
-	public ComputerMapper(CompanyMapper companyMapper, ComputerValidator computerValidator, LocalDateMapper localDateMapper) {
+	public ComputerMapper(CompanyMapper companyMapper, LocalDateMapper localDateMapper) {
 		this.companyMapper = companyMapper;
-		this.computerValidator = computerValidator;
 		this.localDateMapper = localDateMapper;
 	}
 	
@@ -83,7 +82,7 @@ public class ComputerMapper implements RowMapper<Computer> {
 		return builder.build();
 	}
 
-	public Optional<Computer> toComputer(ComputerToDatabaseDTO dto) {
+	public Optional<Computer> toComputer(EditComputerFormDTO dto) {
 		try {
 			ComputerBuilder builder = new ComputerBuilder(dto.getName());
 					if (dto.getIntroduced() != null) {
@@ -98,6 +97,26 @@ public class ComputerMapper implements RowMapper<Computer> {
 					}
 					if (dto.getId() != null) {
 						builder.setId(Long.parseLong(dto.getId()));
+					}
+					return Optional.of(builder.build());
+		} catch (NumberFormatException e) {
+			logger.warn("Couldn't map DTO to computer as values are invalid[" + e.getMessage() + "]: DTO:" + dto.toString());
+			return Optional.empty();
+		}
+	}
+	
+	public Optional<Computer> toComputer(@Valid AddComputerFormDTO dto) {
+		try {
+			ComputerBuilder builder = new ComputerBuilder(dto.getName());
+					if (dto.getIntroduced() != null) {
+						builder.setIntroduced(localDateMapper.parseToLocalDate(dto.getIntroduced()).orElse(null));
+					}
+					if (dto.getDiscontinued() != null) {
+						builder.setDiscontinued(localDateMapper.parseToLocalDate(dto.getDiscontinued()).orElse(null));;
+					}
+					if (dto.getCompanyId() != null && Long.parseLong(dto.getCompanyId()) != 0) {
+						Company company = new Company(Long.parseLong(dto.getCompanyId()));
+						builder.setCompany(company);
 					}
 					return Optional.of(builder.build());
 		} catch (NumberFormatException e) {

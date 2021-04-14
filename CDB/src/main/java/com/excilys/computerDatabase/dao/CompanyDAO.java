@@ -72,7 +72,7 @@ public class CompanyDAO {
 
 
 	@Transactional
-	public void deleteCompany(long id) throws FailedSQLRequestException {
+	public void deleteCompany(long id) {
 		try {
 			jdbcTemplate.update(DELETE_COMPUTER_BY_COMPANY_ID_QUERY, id);
 			jdbcTemplate.update(DELETE_COMPANY_BY_ID_QUERY, id);
