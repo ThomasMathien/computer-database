@@ -23,6 +23,7 @@ public class Computer {
 	@JoinColumn(name = "company_id")
 	private Company company;
 	
+	public Computer() { };
 	public Computer(String name) {
 		this.name = name;
 	}

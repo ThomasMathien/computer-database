@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Computer;
-import com.excilys.computerDatabase.search.SqlFilter;
+
 
 @Repository
 public class ComputerDAO {
@@ -51,27 +51,7 @@ public class ComputerDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	public List<Computer> getComputers(){
-		return getComputers(0,getComputerCount());
-	}
-	
-	public List<Computer> getComputers(long from, long amount){
-		return getComputers(from, amount, new SqlFilter("%","computer.id","ASC"));
-	}
-	
-	public List<Computer> getComputers(long from, long amount, SqlFilter filter) {
-		List<Computer> computers = new ArrayList<>();
-		final String orderByInjection = "ORDER BY " + filter.getSortedColumn()+ " "+ filter.getSortOrder()+" ";
-		final String query = FIND_COMPUTERS_INTERVAL_QUERY.replace("!", orderByInjection);
-		
-		try {
-			String search = adaptToLikeQuery(filter.getSearchFilter());
-			computers = jdbcTemplate.query(query, computerMapper, search, search, amount, from);
-		} catch (DataAccessException e) {
-			logger.error("Get Computers SQL Request Failed: with request "+FIND_COMPUTERS_INTERVAL_QUERY+" for "+amount+" rows from "+from,e );
-		}		
-		return computers;
-	}	
+
 	
 	public long [] getComputersIdFromCompany(long companyId){
 		List<Long> computersId = new ArrayList<>();
