@@ -3,45 +3,42 @@ package com.excilys.computerDatabase.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.excilys.computerDatabase.dao.CompanyDAO;
-import com.excilys.computerDatabase.dao.CompanyRepository;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.model.Company;
+import com.excilys.computerDatabase.repository.CompanyRepository;
 
 @Service
 public class CompanyService {
 
-	CompanyDAO companyDAO;
 	CompanyRepository repository;
 	
-	public CompanyService(CompanyDAO companyDAO, CompanyRepository repository) {
-		this.companyDAO = companyDAO;
+	public CompanyService(CompanyRepository repository) {
 		this.repository = repository;
 	}
 	
 	public List<Company> getCompanies() {
-		return repository.getCompanies();
+		return repository.findAll();
 	}
 	
-	public List<Company> getCompanies(int page, int amount) {
-		return repository.getCompanies(PageRequest.of(page, amount));
+	public Page<Company> getCompanies(int page, int amount) {
+		return repository.findAll(PageRequest.of(page, amount));
 	}
 	
 	public Optional<Company> findCompany(long id) {
-		return repository.findCompany(id);
+		return repository.findById(id);
 	}
 	
-	public int getCompanyCount() {
-		return repository.getCompanyCount();
+	public long getCompanyCount() {
+		return repository.count();
 	}
 	
 	@Transactional
 	public void deleteCompany(long id) throws FailedSQLRequestException {
-		companyDAO.deleteCompany(id);
+		repository.deleteById(id);
 	}
 }

@@ -7,22 +7,20 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.excilys.computerDatabase.dao.ComputerDAO;
-import com.excilys.computerDatabase.dao.ComputerRepository;
 import com.excilys.computerDatabase.dto.ComputerDashboardDTO;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Computer;
+import com.excilys.computerDatabase.repository.ComputerRepository;
 
 @Service
 public class ComputerService {
 	
-	ComputerDAO computerDAO;
+
 	ComputerRepository repository;
 	ComputerMapper computerMapper;
 	
-	public ComputerService(ComputerDAO computerDAO, ComputerRepository repository, ComputerMapper computerMapper) {
-		this.computerDAO = computerDAO;
+	public ComputerService(ComputerRepository repository, ComputerMapper computerMapper) {
 		this.repository = repository;
 		this.computerMapper = computerMapper;
 	}
@@ -46,27 +44,28 @@ public class ComputerService {
 	}
 	
 	public Optional<Computer> findComputer(long id) {
-		return computerDAO.findComputer(id);
+		return repository.findById(id);
 	}
 	
 	public void addComputer(Computer computer) throws FailedSQLRequestException {
-		computerDAO.addComputer(computer);
+		repository.save(computer);
 	}
 	
 	public void deleteComputer(long id) throws FailedSQLRequestException {
-		computerDAO.deleteComputer(id);
+		repository.deleteById(id);
 	}
 	
 	public void updateComputer(long id, Computer computer) throws FailedSQLRequestException {
-		computerDAO.updateComputer(id, computer);
+		computer.setId(id);
+		repository.save(computer);
 	}
 
-	public int getComputerCount() {
-		return computerDAO.getComputerCount();
+	public long getComputerCount() {
+		return repository.count();
 	}
 
-	public int getComputerCount(String search) {
-		return computerDAO.getComputerCount(search);
+	public long getComputerCount(String search) {
+		return repository.countByName(search);
 	}
 
 

@@ -2,6 +2,7 @@ package com.excilys.computerDatabase.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,11 +11,11 @@ import javax.persistence.Table;
 public class Company {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name;
 	
-	public Company() {}
+	public Company() { }
 	
 	public Company(long id) {
 		this(id, "");

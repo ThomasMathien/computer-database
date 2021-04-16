@@ -1,19 +1,15 @@
 package com.excilys.computerDatabase.config;
 
 import java.util.Locale;
-import java.util.Properties;
-
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -41,14 +37,14 @@ import com.zaxxer.hikari.HikariDataSource;
 @ComponentScan({"com.excilys.computerDatabase.controller.servlet",
 		"com.excilys.computerDatabase.controller.cli",
 		"com.excilys.computerDatabase.controller.page",
-		"com.excilys.computerDatabase.dao",
+		"com.excilys.computerDatabase.repository",
 		"com.excilys.computerDatabase.mapper",
 		"com.excilys.computerDatabase.service",
 		"com.excilys.computerDatabase.validator",
 		"com.excilys.computerDatabase.session"})
 @EnableTransactionManagement
 @EnableWebMvc
-@EnableJpaRepositories(basePackages = "com.excilys.computerDatabase.dao")
+@EnableJpaRepositories(basePackages = "com.excilys.computerDatabase.repository")
 public class SpringWebConfig implements WebMvcConfigurer {
 	
  	private final String DATASOURCE_CONFIG_PATH = "/config/datasource.properties";
