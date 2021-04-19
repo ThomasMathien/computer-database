@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.excilys</groupId>
+    <artifactId>computerDatabase</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>webapp</artifactId>
+  <packaging>war</packaging>
+  
+  	<build>
+		<resources>
+		    <resource>
+		        <directory>src/main/resources</directory>
+		    </resource>
+		</resources>
+		<testResources>
+		    <testResource>
+		        <directory>src/test/resources</directory>
+		    </testResource>
+		</testResources>
+	</build>
+	
+  <dependencies>
+    <dependency>
+	    <groupId>com.excilys</groupId>
+	    <artifactId>core</artifactId>
+	    <version>${project.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.excilys</groupId>
+	    <artifactId>service</artifactId>
+	    <version>${project.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>javax.servlet-api</artifactId>
+	    <version>${javax.servlet-api.version}</version>
+	    <scope>provided</scope>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>${jstl.version}</version>
+	</dependency>
+	<dependency>
+    	<groupId>org.webjars</groupId>
+	    <artifactId>jquery-validation</artifactId>
+	    <version>${jquery-validation.version}</version>
+	</dependency>	
+	<dependency>
+	    <groupId>com.h2database</groupId>
+	    <artifactId>h2</artifactId>
+	    <version>${h2.version}</version>
+	    <scope>test</scope>
+	</dependency>	
+	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+	<dependency>
+	    <groupId>org.seleniumhq.selenium</groupId>
+	    <artifactId>selenium-java</artifactId>
+	    <version>${selenium-java.version}</version>
+	    <scope>test</scope>
+	</dependency>
+  </dependencies>
+</project>
