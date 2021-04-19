@@ -6,11 +6,9 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.model.Company;
-import com.excilys.computerDatabase.repository.CompanyRepository;
+import com.excilys.computerDatabase.repository.company.CompanyRepository;
 
 @Service
 public class CompanyService {
@@ -37,8 +35,7 @@ public class CompanyService {
 		return repository.count();
 	}
 	
-	@Transactional
-	public void deleteCompany(long id) throws FailedSQLRequestException {
+	public void deleteCompany(long id) {
 		repository.deleteById(id);
 	}
 }

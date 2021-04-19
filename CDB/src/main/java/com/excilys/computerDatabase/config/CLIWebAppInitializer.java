@@ -46,12 +46,7 @@ public class CLIWebAppInitializer implements WebApplicationInitializer {
 		context.register(SpringWebConfig.class);
 		context.setServletContext(container);
 		context.close();
-		
-		/*ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(ctx));
-		servlet.setLoadOnStartup(1);
-		servlet.addMapping("/");*/
 	}
-
 
 	@Bean
 	public DataSource getDataSource() {

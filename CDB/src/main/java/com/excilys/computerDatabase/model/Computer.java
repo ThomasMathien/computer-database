@@ -1,6 +1,7 @@
 package com.excilys.computerDatabase.model;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,7 @@ public class Computer {
 	private LocalDate introduced;
 	private LocalDate discontinued;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "company_id")
 	private Company company;
 	
