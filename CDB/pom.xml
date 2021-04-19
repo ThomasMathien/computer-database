@@ -1,16 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <groupId>com.excilys.computerDatabase</groupId>
-  <artifactId>CDB</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
-
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+  <groupId>com.excilys</groupId>
+  <artifactId>computerDatabase</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
   <name>CDB</name>
-  <url>http://maven.apache.org</url>
-
-  <properties>
+  <description>Computer Database</description>
+  
+  <modules>
+  	<module>core</module>
+  	<module>persistence</module>
+  	<module>service</module>
+  	<module>binding</module>
+  	<module>webapp</module>
+  	<module>console</module>
+  </modules>
+ 
+   <dependencyManagement>
+    	<dependencies>
+    		<dependency>
+           <groupId>org.springframework</groupId>
+           <artifactId>spring-framework-bom</artifactId>
+           <version>${spring-framework-bom.version}</version>
+           <type>pom</type>
+			<scope>import</scope>
+       	</dependency>
+    	</dependencies>
+    </dependencyManagement>
+    
+   <properties>
   	<spring-framework-bom.version>5.3.5</spring-framework-bom.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>15</maven.compiler.source>
@@ -28,7 +48,6 @@
     <logback-classic.version>1.1.7</logback-classic.version>
 	<slf4j-api.version>1.7.30</slf4j-api.version>
 	<slf4j-simple.version>1.7.30</slf4j-simple.version>
-	<spring-test.version>5.3.5</spring-test.version>
 	<spring-test-dbunit.version>1.3.0</spring-test-dbunit.version>
 	<dbunit.version>2.7.0</dbunit.version>
 	<javax.servlet-api.version>4.0.1</javax.servlet-api.version>
@@ -38,189 +57,5 @@
 	<jquery-validation.version>1.19.3</jquery-validation.version>
 	<selenium-java.version>3.141.59</selenium-java.version>
   </properties>
-
-	<build>
-		<resources>
-		    <resource>
-		        <directory>src/main/resources</directory>
-		    </resource>
-		</resources>
-		<testResources>
-		    <testResource>
-		        <directory>src/test/resources</directory>
-		    </testResource>
-		</testResources>
-	</build>
-     
-     <dependencyManagement>
-     	<dependencies>
-     		<dependency>
-	           <groupId>org.springframework</groupId>
-	           <artifactId>spring-framework-bom</artifactId>
-	           <version>${spring-framework-bom.version}</version>
-	           <type>pom</type>
-				<scope>import</scope>
-        	</dependency>
-     	</dependencies>
-     </dependencyManagement>
-  <dependencies>
-  <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
-	<dependency>
-	    <groupId>org.springframework</groupId>
-	    <artifactId>spring-context</artifactId>
-	</dependency>
-	<dependency>
-	    <groupId>org.springframework</groupId>
-	    <artifactId>spring-jdbc</artifactId>
-	</dependency>
-	<dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-webmvc</artifactId>
-    </dependency>
-	<dependency>
-	    <groupId>org.springframework</groupId>
-	    <artifactId>spring-core</artifactId>
-	    <exclusions>
-            <exclusion>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-            </exclusion>
-        </exclusions>
-	</dependency>
-  	<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-	<dependency>
-	    <groupId>javax.servlet</groupId>
-	    <artifactId>javax.servlet-api</artifactId>
-	    <version>${javax.servlet-api.version}</version>
-	    <scope>provided</scope>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
-	<dependency>
-	    <groupId>javax.servlet</groupId>
-	    <artifactId>jstl</artifactId>
-	    <version>${jstl.version}</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
-	<dependency>
-	    <groupId>com.zaxxer</groupId>
-	    <artifactId>HikariCP</artifactId>
-	    <version>${HikariCP.version}</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
-	<dependency>
-	    <groupId>javax.validation</groupId>
-	    <artifactId>validation-api</artifactId>
-	    <version>${validation-api.version}</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
-	<dependency>
-	    <groupId>javax.persistence</groupId>
-	    <artifactId>javax.persistence-api</artifactId>
-	    <version>${javax.persistence-api.version}</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
-	<dependency>
-	    <groupId>org.hibernate.validator</groupId>
-	    <artifactId>hibernate-validator</artifactId>
-	    <version>${hibernate-validator.version}</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.hibernate</groupId>
-	    <artifactId>hibernate-validator-annotation-processor</artifactId>
-	    <version>${hibernate-validator.version}</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
-	<dependency>
-	    <groupId>org.hibernate</groupId>
-	    <artifactId>hibernate-core</artifactId>
-	    <version>${hibernate-core.version}</version>
-	</dependency>
-	        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            	    <version>${hibernate-core.version}</version>
-        </dependency>
-	<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
-	<dependency>
-	    <groupId>org.springframework.data</groupId>
-	    <artifactId>spring-data-jpa</artifactId>
-	    <version>${spring-data-jpa.version}</version>
-	</dependency>
-  	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-	<dependency>
-	    <groupId>mysql</groupId>
-	    <artifactId>mysql-connector-java</artifactId>
-	    <version>${mysql-connector-java.version}</version>
-	</dependency>
-    <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>jcl-over-slf4j</artifactId>
-        <version>${jcl-over-slf4j.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>ch.qos.logback</groupId>
-        <artifactId>logback-classic</artifactId>
-        <version>${logback-classic.version}</version>
-    </dependency>
-	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-	<dependency>
-	    <groupId>org.slf4j</groupId>
-	    <artifactId>slf4j-api</artifactId>
-	    <version>${slf4j-api.version}</version>
-	</dependency>	
-	<!-- https://mvnrepository.com/artifact/org.webjars/jquery-validation -->
-	<dependency>
-    	<groupId>org.webjars</groupId>
-	    <artifactId>jquery-validation</artifactId>
-	    <version>${jquery-validation.version}</version>
-	</dependency>	
-	<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
-	<dependency>
-	    <groupId>org.springframework</groupId>
-	    <artifactId>spring-test</artifactId>
-	    <version>${spring-test.version}</version>
-	    <scope>test</scope>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/com.github.springtestdbunit/spring-test-dbunit -->
-	<dependency>
-	    <groupId>com.github.springtestdbunit</groupId>
-	    <artifactId>spring-test-dbunit</artifactId>
-	    <version>${spring-test-dbunit.version}</version>
-	    <scope>test</scope>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/junit/junit -->
-	<dependency>
-	    <groupId>junit</groupId>
-	    <artifactId>junit</artifactId>
-	    <version>${junit.version}</version>
-	    <scope>test</scope>
-	</dependency>
-	<dependency>
-	  <groupId>org.dbunit</groupId>
-	  <artifactId>dbunit</artifactId>
-	  <version>${dbunit.version}</version>
-	  <scope>test</scope>
-	</dependency>
-		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
-	<dependency>
-	    <groupId>com.h2database</groupId>
-	    <artifactId>h2</artifactId>
-	    <version>${h2.version}</version>
-	    <scope>test</scope>
-	</dependency>	
-	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-	<dependency>
-	    <groupId>org.seleniumhq.selenium</groupId>
-	    <artifactId>selenium-java</artifactId>
-	    <version>${selenium-java.version}</version>
-	    <scope>test</scope>
-	</dependency>
-		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
-	<dependency>
-	    <groupId>org.mockito</groupId>
-	    <artifactId>mockito-core</artifactId>
-	    <version>${mockito-core.version}</version>
-	    <scope>test</scope>
-	</dependency>
-  </dependencies>
+  
 </project>
