@@ -37,7 +37,7 @@ public class PageNavigator {
 		this.computerService =computerService;
 	}
 
-	private int getTotalToFetch(int request) {
+	private long getTotalToFetch(int request) {
 		switch(request) {
 		case GET_COMPUTERS_REQUEST:
 			return computerService.getComputerCount();
@@ -60,7 +60,7 @@ public class PageNavigator {
 	}
 	
 	public void run (Scanner sc, int request) {
-		int totalToFetch = getTotalToFetch(request);
+		int totalToFetch =(int) getTotalToFetch(request);
 		List<Displayable> content = getDisplayables(request,0,PageCLI.MAX_LINES_PER_PAGE);
 		PageCLI p = new PageCLI(content, totalToFetch);
 		p.print();

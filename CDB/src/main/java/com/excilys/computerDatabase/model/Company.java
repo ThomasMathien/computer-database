@@ -1,9 +1,21 @@
 package com.excilys.computerDatabase.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "company")
 public class Company {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name;
+	
+	public Company() { }
 	
 	public Company(long id) {
 		this(id, "");
@@ -14,6 +26,10 @@ public class Company {
 		this.name = name;
 	}
 	
+	public Company(String name) {
+		this.name = name;
+	}
+
 	public long getId() {
 		return id;
 	}

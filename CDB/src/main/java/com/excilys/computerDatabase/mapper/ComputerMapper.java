@@ -8,10 +8,12 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import com.excilys.computerDatabase.dto.AddComputerFormDTO;
+import com.excilys.computerDatabase.dto.ComputerDashboardDTO;
 import com.excilys.computerDatabase.dto.ComputerFormDTO;
 import com.excilys.computerDatabase.dto.EditComputerFormDTO;
 import com.excilys.computerDatabase.dto.builder.ComputerFormDTOBuilder;
@@ -82,6 +84,32 @@ public class ComputerMapper implements RowMapper<Computer> {
 		return builder.build();
 	}
 
+	public Optional<Computer> toComputer(ComputerDashboardDTO dto) {
+		try {
+			ComputerBuilder builder = new ComputerBuilder(dto.getName());
+					if (dto.getIntroduced() != null) {
+						builder.setIntroduced(dto.getIntroduced());
+					}
+					if (dto.getDiscontinued() != null) {
+						builder.setDiscontinued(dto.getDiscontinued());
+					}
+					if (dto.getCompanyName() != null && !dto.getCompanyName().isBlank()) {
+						Company company = new Company(dto.getCompanyName());
+						builder.setCompany(company);
+					}
+					if (dto.getName() != null && !dto.getName().isBlank()) {
+						builder.setName(dto.getName());
+					}
+					if (dto.getId() != null) {
+						builder.setId(Long.parseLong(dto.getId()));
+					}
+					return Optional.of(builder.build());
+		} catch (NumberFormatException e) {
+			logger.warn("Couldn't map DTO to computer as values are invalid[" + e.getMessage() + "]: DTO:" + dto.toString());
+			return Optional.empty();
+		}
+	}
+	
 	public Optional<Computer> toComputer(EditComputerFormDTO dto) {
 		try {
 			ComputerBuilder builder = new ComputerBuilder(dto.getName());
@@ -153,5 +181,7 @@ public class ComputerMapper implements RowMapper<Computer> {
 		}
 		return computer;
 	}
+
+
 	
 }

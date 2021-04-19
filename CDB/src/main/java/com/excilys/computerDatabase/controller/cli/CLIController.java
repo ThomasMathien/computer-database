@@ -84,7 +84,7 @@ public class CLIController {
 		try {
 			companyService.deleteCompany(companyId);
 		}
-		catch (FailedSQLRequestException e) {
+		catch (Exception e) {
 			System.out.println("Company not deleted");
 			return;
 		}
