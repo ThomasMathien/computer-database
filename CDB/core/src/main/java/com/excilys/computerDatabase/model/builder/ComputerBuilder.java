@@ -2,11 +2,6 @@ package com.excilys.computerDatabase.model.builder;
 
 
 import java.time.LocalDate;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import com.excilys.computerDatabase.model.Company;
 import com.excilys.computerDatabase.model.Computer;

@@ -16496,3 +16496,762 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.excilys:p
 2021-04-19 17:01:48,984 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
 2021-04-19 17:01:48,993 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2021-04-19 17:01:48,994 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:08:16,982 [Worker-14: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:08:16,985 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:08:16,988 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:08:17,032 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:08:17,033 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:08:17,035 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:08:17,036 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:08:30,322 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:08:30,334 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:08:30,337 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:08:30,337 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:08:53,294 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:08:53,296 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-04-19 17:08:53,299 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:08:53,299 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:08:57,485 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:08:57,488 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:08:57,490 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:08:57,490 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:09:25,303 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:09:25,304 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-04-19 17:09:25,314 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:09:25,314 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:09:36,224 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:09:36,225 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:09:36,227 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:09:36,227 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:09:53,551 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:09:53,556 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:09:53,564 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:09:53,564 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:11:37,134 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:11:37,135 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:11:37,137 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:11:37,137 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:16:29,379 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:16:29,380 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:16:29,382 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:16:29,382 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:17:08,832 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:17:08,832 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-04-19 17:17:08,836 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:17:08,836 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:17:54,529 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:17:54,529 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:17:54,531 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:17:54,532 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:19:01,577 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:19:01,577 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-04-19 17:19:01,579 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:19:01,580 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:20:56,759 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:20:56,760 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:20:56,761 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:20:56,761 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:21:05,223 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:21:05,223 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-04-19 17:21:05,225 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:21:05,225 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:23:05,583 [Worker-23: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:persistence:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/persistence/pom.xml.
+2021-04-19 17:23:05,878 [Worker-23: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:23:05,879 [Worker-23: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:23:05,881 [Worker-23: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:23:05,916 [Worker-23: Building] ERROR o.e.m.c.i.p.ProjectConfigurationManager - Could not read maven project
+org.eclipse.core.runtime.CoreException: Could not read maven project
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.readProjectWithDependencies(ProjectRegistryManager.java:850)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.lambda$22(ProjectRegistryManager.java:1069)
+	at com.google.common.cache.LocalCache$LocalManualCache$1.load(LocalCache.java:4878)
+	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3529)
+	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2278)
+	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2155)
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2045)
+	at com.google.common.cache.LocalCache.get(LocalCache.java:3953)
+	at com.google.common.cache.LocalCache$LocalManualCache.get(LocalCache.java:4873)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.getMavenProject(ProjectRegistryManager.java:1068)
+	at org.eclipse.m2e.core.internal.project.registry.MavenProjectFacade.getMavenProject(MavenProjectFacade.java:243)
+	at org.eclipse.m2e.wtp.jaxrs.internal.configurators.JaxRsProjectConfigurator.mavenProjectChanged(JaxRsProjectConfigurator.java:175)
+	at org.eclipse.m2e.core.internal.project.ProjectConfigurationManager.mavenProjectChanged(ProjectConfigurationManager.java:1040)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.notifyProjectChangeListeners(ProjectRegistryManager.java:824)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.applyMutableProjectRegistry(ProjectRegistryManager.java:990)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:317)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:151)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:89)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:88)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:197)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:845)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:228)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:276)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:329)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:332)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:384)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:405)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:154)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:244)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-04-19 17:23:06,112 [Worker-23: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:30,755 [Worker-36: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:core:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/core/pom.xml.
+2021-04-19 17:27:30,851 [Worker-36: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:console:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/console/pom.xml.
+2021-04-19 17:27:30,855 [Worker-36: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.excilys:core:jar:0.0.1-SNAPSHOT is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2021-04-19 17:27:30,859 [Worker-36: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.excilys:persistence:jar:0.0.1-SNAPSHOT is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2021-04-19 17:27:30,876 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:30,876 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:30,876 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:30,876 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:27:30,934 [Worker-36: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:binding:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/binding/pom.xml.
+2021-04-19 17:27:30,940 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:30,980 [Worker-36: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:webapp:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/webapp/pom.xml.
+2021-04-19 17:27:31,043 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:31,043 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:31,043 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:31,097 [Worker-36: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:service:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/service/pom.xml.
+2021-04-19 17:27:31,099 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:31,100 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:31,144 [Worker-36: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:persistence:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/persistence/pom.xml.
+2021-04-19 17:27:31,340 [Worker-36: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:27:31,341 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:31,341 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:31,711 [AetherRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.0-alpha1/slf4j-api-2.0.0-alpha1.jar
+2021-04-19 17:27:31,727 [AetherRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/spring-jdbc/5.3.6/spring-jdbc-5.3.6.jar
+2021-04-19 17:27:31,745 [AetherRepositoryConnector-repo.maven.apache.org-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/spring-expression/5.3.6/spring-expression-5.3.6.jar
+2021-04-19 17:27:31,745 [AetherRepositoryConnector-repo.maven.apache.org-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/spring-context/5.3.6/spring-context-5.3.6.jar
+2021-04-19 17:27:31,746 [AetherRepositoryConnector-repo.maven.apache.org-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/spring-core/5.3.6/spring-core-5.3.6.jar
+2021-04-19 17:27:31,787 [AetherRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.0-alpha1/slf4j-api-2.0.0-alpha1.jar
+2021-04-19 17:27:31,841 [AetherRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/5.3.6/spring-jcl-5.3.6.jar
+2021-04-19 17:27:31,912 [AetherRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/5.3.6/spring-jcl-5.3.6.jar
+2021-04-19 17:27:31,989 [AetherRepositoryConnector-repo.maven.apache.org-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/spring-expression/5.3.6/spring-expression-5.3.6.jar
+2021-04-19 17:27:32,020 [AetherRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/spring-jdbc/5.3.6/spring-jdbc-5.3.6.jar
+2021-04-19 17:27:32,180 [AetherRepositoryConnector-repo.maven.apache.org-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/spring-context/5.3.6/spring-context-5.3.6.jar
+2021-04-19 17:27:32,194 [AetherRepositoryConnector-repo.maven.apache.org-0-4] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/spring-core/5.3.6/spring-core-5.3.6.jar
+2021-04-19 17:27:32,693 [Worker-36: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:console:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/console/pom.xml.
+2021-04-19 17:27:32,696 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:32,697 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:32,697 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:32,697 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:27:32,730 [Worker-36: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:webapp:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/webapp/pom.xml.
+2021-04-19 17:27:32,735 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:32,736 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:32,736 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:32,788 [Worker-36: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:service:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/service/pom.xml.
+2021-04-19 17:27:32,790 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:32,791 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:32,855 [Worker-36: Building] ERROR o.e.m.c.i.p.ProjectConfigurationManager - Could not read maven project
+org.eclipse.core.runtime.CoreException: Could not read maven project
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.readProjectWithDependencies(ProjectRegistryManager.java:850)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.lambda$22(ProjectRegistryManager.java:1069)
+	at com.google.common.cache.LocalCache$LocalManualCache$1.load(LocalCache.java:4878)
+	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3529)
+	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2278)
+	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2155)
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2045)
+	at com.google.common.cache.LocalCache.get(LocalCache.java:3953)
+	at com.google.common.cache.LocalCache$LocalManualCache.get(LocalCache.java:4873)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.getMavenProject(ProjectRegistryManager.java:1068)
+	at org.eclipse.m2e.core.internal.project.registry.MavenProjectFacade.getMavenProject(MavenProjectFacade.java:243)
+	at org.eclipse.m2e.wtp.jaxrs.internal.configurators.JaxRsProjectConfigurator.mavenProjectChanged(JaxRsProjectConfigurator.java:175)
+	at org.eclipse.m2e.core.internal.project.ProjectConfigurationManager.mavenProjectChanged(ProjectConfigurationManager.java:1040)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.notifyProjectChangeListeners(ProjectRegistryManager.java:824)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.applyMutableProjectRegistry(ProjectRegistryManager.java:990)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:317)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:151)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:89)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:88)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:197)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:845)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:228)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:276)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:329)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:332)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:384)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:405)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:154)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:244)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-04-19 17:27:32,861 [Worker-36: Building] ERROR o.e.m.c.i.p.ProjectConfigurationManager - Could not read maven project
+org.eclipse.core.runtime.CoreException: Could not read maven project
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.readProjectWithDependencies(ProjectRegistryManager.java:850)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.lambda$22(ProjectRegistryManager.java:1069)
+	at com.google.common.cache.LocalCache$LocalManualCache$1.load(LocalCache.java:4878)
+	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3529)
+	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2278)
+	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2155)
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2045)
+	at com.google.common.cache.LocalCache.get(LocalCache.java:3953)
+	at com.google.common.cache.LocalCache$LocalManualCache.get(LocalCache.java:4873)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.getMavenProject(ProjectRegistryManager.java:1068)
+	at org.eclipse.m2e.core.internal.project.registry.MavenProjectFacade.getMavenProject(MavenProjectFacade.java:243)
+	at org.eclipse.m2e.wtp.jaxrs.internal.configurators.JaxRsProjectConfigurator.mavenProjectChanged(JaxRsProjectConfigurator.java:175)
+	at org.eclipse.m2e.core.internal.project.ProjectConfigurationManager.mavenProjectChanged(ProjectConfigurationManager.java:1040)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.notifyProjectChangeListeners(ProjectRegistryManager.java:824)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.applyMutableProjectRegistry(ProjectRegistryManager.java:990)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:317)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:151)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:89)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:179)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:153)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:101)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:88)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:197)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:845)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:228)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:276)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:329)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:332)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:384)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:405)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:154)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:244)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2021-04-19 17:27:33,024 [Worker-36: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.excilys:core:jar:0.0.1-SNAPSHOT is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2021-04-19 17:27:33,028 [Worker-36: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.excilys:persistence:jar:0.0.1-SNAPSHOT is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2021-04-19 17:27:33,085 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:33,085 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:33,086 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:33,128 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:33,129 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:34,473 [Worker-36: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.excilys:core:jar:0.0.1-SNAPSHOT is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2021-04-19 17:27:34,476 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:34,485 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:27:34,486 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:27:34,491 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:27:34,491 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:27:34,983 [Worker-29: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.excilys:core:jar:0.0.1-SNAPSHOT is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2021-04-19 17:27:34,985 [Worker-29: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.excilys:persistence:jar:0.0.1-SNAPSHOT is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2021-04-19 17:27:34,986 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:34,988 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:35,007 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:27:35,008 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:27:35,010 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:27:35,010 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:27:35,348 [Worker-29: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.excilys:core:jar:0.0.1-SNAPSHOT is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2021-04-19 17:27:35,352 [Worker-29: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.excilys:persistence:jar:0.0.1-SNAPSHOT is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2021-04-19 17:27:35,480 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:35,480 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:35,480 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:35,494 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:27:35,496 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-04-19 17:27:35,503 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:27:35,503 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:27:36,773 [Worker-36: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.excilys:core:jar:0.0.1-SNAPSHOT is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2021-04-19 17:27:36,779 [Worker-36: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.excilys:persistence:jar:0.0.1-SNAPSHOT is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2021-04-19 17:27:36,788 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:36,789 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:36,789 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:36,789 [Worker-36: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:27:36,797 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:27:36,797 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:27:36,800 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:27:36,800 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:27:47,227 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:console:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/console/pom.xml.
+2021-04-19 17:27:47,454 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:47,456 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:47,457 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:47,457 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:47,460 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:27:47,491 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:binding:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/binding/pom.xml.
+2021-04-19 17:27:47,495 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:47,533 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:core:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/core/pom.xml.
+2021-04-19 17:27:47,581 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:persistence:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/persistence/pom.xml.
+2021-04-19 17:27:47,591 [Worker-29: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:27:47,592 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:47,594 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:47,609 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.excilys:computerDatabase:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/pom.xml.
+2021-04-19 17:27:47,658 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:webapp:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/webapp/pom.xml.
+2021-04-19 17:27:47,733 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:47,736 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:47,736 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:47,737 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:47,766 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:service:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/service/pom.xml.
+2021-04-19 17:27:47,772 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:47,774 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:47,774 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:47,799 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:console:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/console/pom.xml.
+2021-04-19 17:27:47,805 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:47,806 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:47,807 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:47,808 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:47,811 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:27:47,834 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:binding:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/binding/pom.xml.
+2021-04-19 17:27:47,837 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:47,860 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:core:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/core/pom.xml.
+2021-04-19 17:27:47,884 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:persistence:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/persistence/pom.xml.
+2021-04-19 17:27:47,890 [Worker-29: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:27:47,891 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:47,892 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:47,915 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:webapp:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/webapp/pom.xml.
+2021-04-19 17:27:47,926 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:47,928 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:47,929 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:47,929 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:47,963 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:console:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/console/pom.xml.
+2021-04-19 17:27:47,970 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:47,972 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:47,972 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:47,972 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:47,975 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:27:47,995 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:service:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/service/pom.xml.
+2021-04-19 17:27:48,003 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:48,005 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:48,006 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:48,042 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:binding:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/binding/pom.xml.
+2021-04-19 17:27:48,059 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:48,100 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:console:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/console/pom.xml.
+2021-04-19 17:27:48,121 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:48,123 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:48,123 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:48,124 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:48,127 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:27:48,173 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:webapp:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/webapp/pom.xml.
+2021-04-19 17:27:48,186 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:48,188 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:48,189 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:48,189 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:48,217 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:persistence:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/persistence/pom.xml.
+2021-04-19 17:27:48,223 [Worker-29: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:27:48,223 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:48,225 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:48,251 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:service:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/service/pom.xml.
+2021-04-19 17:27:48,257 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:48,259 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:48,259 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:48,284 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:console:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/console/pom.xml.
+2021-04-19 17:27:48,290 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:48,292 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:48,292 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:48,292 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:48,296 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:27:48,320 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:webapp:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/webapp/pom.xml.
+2021-04-19 17:27:48,328 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:48,329 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:48,330 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:48,330 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:48,354 [Worker-29: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.excilys:console:0.0.1-SNAPSHOT @ /home/excilys-thomas/eclipse-workspaces/CDB-Workspace/CDB/console/pom.xml.
+2021-04-19 17:27:48,359 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:48,361 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:48,362 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:48,362 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:48,367 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:27:48,393 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:48,659 [Worker-29: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:27:48,660 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:48,662 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:49,076 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:49,079 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:27:49,080 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:49,080 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:27:49,106 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:27:49,107 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:27:49,108 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:28:23,052 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:28:23,054 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:28:23,070 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:28:23,073 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:28:23,519 [Worker-34: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:28:23,720 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:28:23,721 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:28:23,736 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:28:23,737 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:28:24,174 [Worker-34: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:28:24,175 [Worker-34: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:28:24,177 [Worker-34: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:28:24,185 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:28:24,185 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:28:24,186 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:28:24,187 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:28:24,622 [Worker-34: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:28:24,624 [Worker-34: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:28:24,625 [Worker-34: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:28:24,637 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:28:24,637 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:28:24,639 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:28:24,639 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:28:34,562 [Worker-37: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:28:34,565 [Worker-37: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:28:34,565 [Worker-37: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:28:34,570 [Worker-37: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:28:34,585 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:28:34,585 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-04-19 17:28:34,596 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:28:34,597 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:28:35,592 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:28:35,594 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:28:35,594 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:28:35,594 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:28:35,597 [Worker-29: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:28:35,602 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:28:35,603 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:28:35,604 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:28:35,604 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:31:38,934 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:31:38,935 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-04-19 17:31:38,937 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:31:38,937 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:32:28,239 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:32:28,239 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-04-19 17:32:28,240 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:32:28,241 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:33:50,054 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:33:50,055 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-04-19 17:33:50,058 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:33:50,059 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:35:18,545 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:35:18,546 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-04-19 17:35:18,548 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:35:18,548 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:35:48,494 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:35:48,495 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:35:48,497 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:35:48,497 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:35:59,156 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:35:59,157 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-04-19 17:35:59,158 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:35:59,158 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:36:12,893 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:36:12,894 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:36:12,896 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:36:12,897 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:38:30,627 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:38:30,628 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-04-19 17:38:30,629 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:38:30,629 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:38:41,915 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:38:41,916 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:38:41,917 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:38:41,917 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:40:23,203 [Worker-48: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:40:23,204 [Worker-48: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:40:23,206 [Worker-48: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:40:23,215 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:40:23,215 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:40:23,218 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:40:23,218 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:40:52,714 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:40:52,716 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:40:52,716 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:40:52,731 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:40:52,802 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:40:52,803 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:40:52,804 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:40:52,804 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:40:52,821 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier null to /core/target/classes
+2021-04-19 17:40:52,823 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier null to /service/target/classes
+2021-04-19 17:40:52,825 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier null to /persistence/target/classes
+2021-04-19 17:40:52,826 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier null to /binding/target/classes
+2021-04-19 17:40:52,827 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier null to /webapp/target/classes
+2021-04-19 17:40:53,118 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:40:53,121 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:40:53,122 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:40:53,122 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:40:53,125 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:40:53,164 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:40:53,166 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:40:53,166 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:40:53,182 [Worker-48: Launching ComputerDatabase (1)] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:40:53,183 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:40:53,184 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:40:53,198 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:40:53,263 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:40:53,265 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:40:53,266 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:40:53,266 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:40:53,282 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier null to /core/target/classes
+2021-04-19 17:40:53,283 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier null to /service/target/classes
+2021-04-19 17:40:53,284 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier null to /persistence/target/classes
+2021-04-19 17:40:53,284 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier null to /binding/target/classes
+2021-04-19 17:40:53,285 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier null to /webapp/target/classes
+2021-04-19 17:40:53,595 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:40:53,597 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:40:53,597 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:40:53,597 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:40:53,601 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:40:53,631 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:40:53,633 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:40:53,633 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:40:53,647 [Worker-48: Launching ComputerDatabase (1)] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:40:53,648 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:40:53,649 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:40:53,662 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:40:53,722 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:40:53,724 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:40:53,724 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:40:53,724 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:40:53,738 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier null to /core/target/classes
+2021-04-19 17:40:53,739 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier null to /service/target/classes
+2021-04-19 17:40:53,740 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier null to /persistence/target/classes
+2021-04-19 17:40:53,740 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier null to /binding/target/classes
+2021-04-19 17:40:53,741 [Worker-48: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier null to /webapp/target/classes
+2021-04-19 17:41:49,078 [Worker-52: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:41:49,081 [Worker-52: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:41:49,081 [Worker-52: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:41:49,081 [Worker-52: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:41:49,084 [Worker-52: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:41:49,098 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:41:49,098 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:41:49,100 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:41:49,100 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:42:04,336 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:04,338 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:04,338 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:04,351 [Worker-51: Launching ComputerDatabase (1)] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:42:04,352 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:04,353 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:04,367 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:04,432 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:04,435 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:42:04,435 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:04,435 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:04,451 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier null to /core/target/classes
+2021-04-19 17:42:04,451 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier null to /service/target/classes
+2021-04-19 17:42:04,452 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier null to /persistence/target/classes
+2021-04-19 17:42:04,452 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier null to /binding/target/classes
+2021-04-19 17:42:04,453 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier null to /webapp/target/classes
+2021-04-19 17:42:04,665 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:04,667 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:42:04,667 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:04,667 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:04,669 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:42:04,696 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:04,698 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:04,698 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:04,712 [Worker-51: Launching ComputerDatabase (1)] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:42:04,713 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:04,714 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:04,725 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:04,830 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:04,832 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:42:04,832 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:04,832 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:04,847 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier null to /core/target/classes
+2021-04-19 17:42:04,848 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier null to /service/target/classes
+2021-04-19 17:42:04,848 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier null to /persistence/target/classes
+2021-04-19 17:42:04,849 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier null to /binding/target/classes
+2021-04-19 17:42:04,850 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier null to /webapp/target/classes
+2021-04-19 17:42:05,073 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:05,075 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:42:05,075 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:05,076 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:05,079 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:42:05,108 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:05,111 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:05,111 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:05,124 [Worker-51: Launching ComputerDatabase (1)] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:42:05,125 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:05,126 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:05,138 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:05,197 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:05,199 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:42:05,199 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:05,199 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:05,213 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier null to /core/target/classes
+2021-04-19 17:42:05,213 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier null to /service/target/classes
+2021-04-19 17:42:05,214 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier null to /persistence/target/classes
+2021-04-19 17:42:05,214 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier null to /binding/target/classes
+2021-04-19 17:42:05,215 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier null to /webapp/target/classes
+2021-04-19 17:42:24,251 [Worker-50: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:24,253 [Worker-50: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:42:24,253 [Worker-50: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:24,254 [Worker-50: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:24,257 [Worker-50: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:42:24,265 [Worker-50: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:42:24,265 [Worker-50: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:42:24,267 [Worker-50: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:42:24,267 [Worker-50: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:42:26,074 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:42:26,075 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:42:26,076 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:42:26,076 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:42:32,639 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:32,641 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:32,641 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:32,653 [Worker-51: Launching ComputerDatabase (1)] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:42:32,654 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:32,656 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:32,665 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:32,723 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:32,725 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:42:32,726 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:32,726 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:32,740 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier null to /core/target/classes
+2021-04-19 17:42:32,741 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier null to /service/target/classes
+2021-04-19 17:42:32,741 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier null to /persistence/target/classes
+2021-04-19 17:42:32,742 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier null to /binding/target/classes
+2021-04-19 17:42:32,743 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier null to /webapp/target/classes
+2021-04-19 17:42:32,937 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:32,939 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:42:32,939 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:32,939 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:32,942 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:42:32,969 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:32,971 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:32,971 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:32,983 [Worker-51: Launching ComputerDatabase (1)] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:42:32,983 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:32,984 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:32,996 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:33,046 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:33,048 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:42:33,048 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:33,049 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:33,063 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier null to /core/target/classes
+2021-04-19 17:42:33,064 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier null to /service/target/classes
+2021-04-19 17:42:33,064 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier null to /persistence/target/classes
+2021-04-19 17:42:33,065 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier null to /binding/target/classes
+2021-04-19 17:42:33,066 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier null to /webapp/target/classes
+2021-04-19 17:42:33,267 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:33,268 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:42:33,268 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:33,268 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:33,270 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:42:33,289 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:33,291 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:33,291 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:33,300 [Worker-51: Launching ComputerDatabase (1)] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:42:33,301 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:33,301 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:33,311 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:33,354 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:42:33,355 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:42:33,355 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:42:33,355 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:42:33,364 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier null to /core/target/classes
+2021-04-19 17:42:33,364 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier null to /service/target/classes
+2021-04-19 17:42:33,365 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier null to /persistence/target/classes
+2021-04-19 17:42:33,365 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier null to /binding/target/classes
+2021-04-19 17:42:33,365 [Worker-51: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier null to /webapp/target/classes
+2021-04-19 17:43:44,682 [Worker-51: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:43:44,685 [Worker-51: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:43:44,685 [Worker-51: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:43:44,685 [Worker-51: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:43:44,688 [Worker-51: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:43:44,693 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:43:44,693 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:43:44,695 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:43:44,695 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:44:16,511 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:44:16,511 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:44:16,513 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:44:16,513 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:44:27,335 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:44:27,335 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 5 resources
+2021-04-19 17:44:27,337 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:44:27,337 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:46:41,632 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:46:41,633 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:46:41,634 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:46:41,635 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:46:58,043 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:46:58,044 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:46:58,045 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:46:58,045 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:49:18,652 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:49:18,653 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-04-19 17:49:18,654 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:49:18,654 [Worker-29: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:49:24,128 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:49:24,129 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:49:24,130 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:49:24,130 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:49:27,711 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:49:27,711 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:49:27,712 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:49:27,713 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:50:01,890 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:50:01,890 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:50:01,892 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:50:01,892 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:50:06,061 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:50:06,062 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-04-19 17:50:06,064 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:50:06,064 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:50:12,672 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:50:12,673 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:50:12,674 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:50:12,675 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:50:26,191 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:50:26,192 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-04-19 17:50:26,193 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:50:26,193 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:50:34,303 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:50:34,304 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:50:34,305 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:50:34,305 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:50:43,304 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:50:43,305 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-04-19 17:50:43,306 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:50:43,307 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:50:48,013 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:50:48,014 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:50:48,015 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-04-19 17:50:48,016 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-04-19 17:52:00,848 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:52:00,850 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:52:00,850 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:52:00,863 [Worker-42: Launching ComputerDatabase (1)] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:52:00,865 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:52:00,866 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:52:00,878 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:52:00,953 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:52:00,954 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:52:00,955 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:52:00,955 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:52:00,970 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier null to /core/target/classes
+2021-04-19 17:52:00,971 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier null to /service/target/classes
+2021-04-19 17:52:00,972 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier null to /persistence/target/classes
+2021-04-19 17:52:00,973 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier null to /binding/target/classes
+2021-04-19 17:52:00,974 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier null to /webapp/target/classes
+2021-04-19 17:52:01,215 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:52:01,217 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:52:01,217 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:52:01,217 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:52:01,221 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:52:01,249 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:52:01,251 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:52:01,251 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:52:01,263 [Worker-42: Launching ComputerDatabase (1)] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:52:01,264 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:52:01,265 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:52:01,276 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:52:01,335 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:52:01,336 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:52:01,337 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:52:01,337 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:52:01,351 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier null to /core/target/classes
+2021-04-19 17:52:01,352 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier null to /service/target/classes
+2021-04-19 17:52:01,352 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier null to /persistence/target/classes
+2021-04-19 17:52:01,352 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier null to /binding/target/classes
+2021-04-19 17:52:01,353 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier null to /webapp/target/classes
+2021-04-19 17:52:01,638 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:52:01,647 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:52:01,647 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:52:01,647 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:52:01,650 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier  to /webapp/target/classes
+2021-04-19 17:52:01,687 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:52:01,689 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:52:01,689 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:52:01,702 [Worker-42: Launching ComputerDatabase (1)] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator-annotation-processor:jar:7.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator-annotation-processor:jar:7.0.1.Final
+2021-04-19 17:52:01,704 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:52:01,706 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:52:01,718 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:52:01,782 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier  to /core/target/classes
+2021-04-19 17:52:01,784 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier  to /service/target/classes
+2021-04-19 17:52:01,784 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier  to /persistence/target/classes
+2021-04-19 17:52:01,784 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier  to /binding/target/classes
+2021-04-19 17:52:01,798 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/core: com.excilys:core:0.0.1-SNAPSHOT with classifier null to /core/target/classes
+2021-04-19 17:52:01,799 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/service: com.excilys:service:0.0.1-SNAPSHOT with classifier null to /service/target/classes
+2021-04-19 17:52:01,799 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/persistence: com.excilys:persistence:0.0.1-SNAPSHOT with classifier null to /persistence/target/classes
+2021-04-19 17:52:01,800 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/binding: com.excilys:binding:0.0.1-SNAPSHOT with classifier null to /binding/target/classes
+2021-04-19 17:52:01,800 [Worker-42: Launching ComputerDatabase (1)] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/webapp: com.excilys:webapp:0.0.1-SNAPSHOT with classifier null to /webapp/target/classes

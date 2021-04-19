@@ -1,13 +1,9 @@
 package com.excilys.computerDatabase.config;
 
-
 import javax.persistence.EntityManagerFactory;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -18,35 +14,17 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-@ComponentScan({"com.excilys.computerDatabase.controller.servlet",
-	"com.excilys.computerDatabase.controller.cli",
-	"com.excilys.computerDatabase.controller.page",
-	"com.excilys.computerDatabase.mapper",
-	"com.excilys.computerDatabase.service",
-	"com.excilys.computerDatabase.validator",
-	"com.excilys.computerDatabase.session",
-	"com.excilys.computerDatabase.parser"})
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.excilys.computerDatabase.repository")
-public class CLIWebAppInitializer implements WebApplicationInitializer {
+public class PersistenceConfig {
 
  	private final String DATASOURCE_CONFIG_PATH = "/config/datasource.properties";
  	
-	@Override
-	public void onStartup(ServletContext container) throws ServletException {
-		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-		context.register(SpringWebConfig.class);
-		context.setServletContext(container);
-		context.close();
-	}
-
 	@Bean
 	public DataSource getDataSource() {
 		return new HikariDataSource(new HikariConfig(DATASOURCE_CONFIG_PATH));
@@ -81,6 +59,5 @@ public class CLIWebAppInitializer implements WebApplicationInitializer {
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
 		return new PersistenceExceptionTranslationPostProcessor();
 	}
-
-
+	
 }
