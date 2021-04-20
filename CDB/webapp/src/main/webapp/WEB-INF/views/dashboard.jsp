@@ -19,6 +19,7 @@
 		<div class="container">
 			<a id="home-button" class="navbar-brand" href="dashboard"> Application -
 				Computer Database </a>
+            <a class="btn btn-success" href="logout">Log out</a>
 		</div>
 	</header>
 

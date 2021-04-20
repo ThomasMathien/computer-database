@@ -16,6 +16,7 @@
   	<module>binding</module>
   	<module>webapp</module>
   	<module>console</module>
+  	<module>security</module>
   </modules>
  
    <dependencyManagement>

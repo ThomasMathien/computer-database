@@ -11,6 +11,7 @@
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/binding" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/webapp" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/console" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/security" type="4"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1615194956507_2" label="Window Working Set" name="Aggregate for window 1615194956507"/>
 </workingSetManager>
