@@ -22,6 +22,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan({"com.excilys.computerDatabase.controller.servlet",
 		"com.excilys.computerDatabase.controller.cli",
 		"com.excilys.computerDatabase.controller.page",
+		"com.excilys.computerDatabase.controller.restController",
 		"com.excilys.computerDatabase.mapper",
 		"com.excilys.computerDatabase.service",
 		"com.excilys.computerDatabase.validator",

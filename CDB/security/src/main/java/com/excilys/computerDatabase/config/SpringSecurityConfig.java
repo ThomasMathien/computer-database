@@ -19,7 +19,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
  			.authorizeRequests()
  				.mvcMatchers("login").anonymous()
  				.mvcMatchers("addComputer", "editComputer").hasRole("ADMIN")
- 				.mvcMatchers("dashboard").authenticated()
+ 				.mvcMatchers("/dashboard").authenticated()
  				.and()
 			.formLogin()
 				.defaultSuccessUrl("/dashboard", false)

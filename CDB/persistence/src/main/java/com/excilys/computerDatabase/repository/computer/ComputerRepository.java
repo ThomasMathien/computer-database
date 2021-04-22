@@ -23,7 +23,8 @@ public interface ComputerRepository extends JpaRepository<Computer, Long> {
 	@Query("SELECT c.id FROM Computer c WHERE c.company.id = :companyId")
 	long[] getComputersIdFromCompany(@Param("companyId") long companyId);
 	
-	long countByName(String name);
+	@Query("SELECT COUNT(c) FROM Computer c WHERE c.name LIKE %:filter%")
+	long countByName(@Param(value = "filter") String name);
 	
 	List<Computer> findAllByCompanyId(long companyId);
 	
