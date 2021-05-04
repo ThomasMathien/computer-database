@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import com.excilys.computerDatabase.exception.CompanyNotFoundException;
+import com.excilys.computerDatabase.exception.ComputerNotFoundException;
 import com.excilys.computerDatabase.model.Company;
 import com.excilys.computerDatabase.repository.company.CompanyRepository;
 
@@ -27,8 +29,8 @@ public class CompanyService {
 		return repository.findAll(PageRequest.of(page, amount));
 	}
 	
-	public Optional<Company> findCompany(long id) {
-		return repository.findById(id);
+	public Company findCompany(long id) throws CompanyNotFoundException {
+		return repository.findById(id).orElseThrow(() -> new CompanyNotFoundException(id));
 	}
 	
 	public long getCompanyCount() {

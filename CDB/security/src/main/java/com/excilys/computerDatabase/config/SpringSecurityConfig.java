@@ -16,6 +16,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
  		http
+ 			.csrf().disable()
  			.authorizeRequests()
  				.mvcMatchers("login").anonymous()
  				.mvcMatchers("addComputer", "editComputer").hasRole("ADMIN")

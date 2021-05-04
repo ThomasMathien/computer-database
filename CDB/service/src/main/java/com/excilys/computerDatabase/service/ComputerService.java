@@ -1,13 +1,13 @@
 package com.excilys.computerDatabase.service;
 
 import java.util.List;
-import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.excilys.computerDatabase.dto.ComputerDashboardDTO;
+import com.excilys.computerDatabase.exception.ComputerNotFoundException;
 import com.excilys.computerDatabase.exception.FailedSQLRequestException;
 import com.excilys.computerDatabase.mapper.ComputerMapper;
 import com.excilys.computerDatabase.model.Computer;
@@ -43,15 +43,15 @@ public class ComputerService {
 		return repository.getComputersIdFromCompany(companyId);
 	}
 	
-	public Optional<Computer> findComputer(long id) {
-		return repository.findById(id);
+	public Computer findComputer(long id) throws ComputerNotFoundException {
+		return repository.findById(id).orElseThrow(() -> new ComputerNotFoundException(id));
 	}
 	
 	public void addComputer(Computer computer) throws FailedSQLRequestException {
 		repository.save(computer);
 	}
 	
-	public void deleteComputer(long id) throws FailedSQLRequestException {
+	public void deleteComputer(long id) {
 		repository.deleteById(id);
 	}
 	

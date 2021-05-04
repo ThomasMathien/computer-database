@@ -103,11 +103,7 @@ public class DashboardController {
 	
 	private void deleteComputers(long[] computersId) {
 		for (long id : computersId) {
-			try {
-				computerService.deleteComputer(id);
-			} catch (FailedSQLRequestException e) {
-				logger.warn(e.getMessage());
-			}
+			computerService.deleteComputer(id);
 		}
 	}
 	

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.excilys.computerDatabase.exception.CompanyNotFoundException;
 import com.excilys.computerDatabase.model.Company;
 import com.excilys.computerDatabase.service.CompanyService;
 
@@ -36,20 +37,13 @@ public class CompanyRestController {
 	}
 	
 	@GetMapping(value = "/get", params = {"id"})
-	public Company findCompany(@RequestParam long id) {
-		return companyService.findCompany(id).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Company not found"));
+	public Company findCompany(@RequestParam long id) throws CompanyNotFoundException {
+		return companyService.findCompany(id);
 	}
 	
 	@GetMapping(value = "/count")
 	public long getCompanyCount() {
 		return companyService.getCompanyCount();
 	}
-	
-	/*
-
-	
-	public void deleteCompany(long id) {
-		repository.deleteById(id);
-	}
-	 */
+	 
 }
